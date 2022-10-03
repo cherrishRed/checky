@@ -2,7 +2,7 @@
 //  checkyApp.swift
 //  checky
 //
-//  Created by RED on 2022/09/30.
+//  Created by RED, Taeangel on 2022/09/30.
 //
 
 import SwiftUI
@@ -11,7 +11,9 @@ import SwiftUI
 struct checkyApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+          let dataHolder = DateHolder()
+            MainView()
+            .environmentObject(dataHolder)
         }
     }
 }
