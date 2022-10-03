@@ -7,14 +7,14 @@
 
 import Foundation
 
-enum Week: String, CaseIterable {
-  case sunday
-  case monday
-  case tuesday
-  case wednessday
-  case thursday
-  case friday
-  case saturday
+enum Week: Int, CaseIterable {
+  case sunday = 1
+  case monday = 2
+  case tuesday = 3
+  case wednessday = 4
+  case thursday = 5
+  case friday = 6
+  case saturday = 7
   
   var short: String {
     switch self {
@@ -38,19 +38,19 @@ enum Week: String, CaseIterable {
   var koreanShort: String {
     switch self {
     case .sunday:
-      return "월"
-    case .monday:
-      return "화"
-    case .tuesday:
-      return "수"
-    case .wednessday:
-      return "목"
-    case .thursday:
-      return "금"
-    case .friday:
-      return "토"
-    case .saturday:
       return "일"
+    case .monday:
+      return "월"
+    case .tuesday:
+      return "화"
+    case .wednessday:
+      return "수"
+    case .thursday:
+      return "목"
+    case .friday:
+      return "금"
+    case .saturday:
+      return "토"
     }
   }
 }

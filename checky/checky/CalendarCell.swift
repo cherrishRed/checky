@@ -9,32 +9,23 @@ import SwiftUI
 
 struct CalendarCell: View {
   @EnvironmentObject var dateHolder: DateHolder
-  let count: Int
-  let startingSpaces: Int
-  let daysInMonth: Int
-  let daysInPrevMonth: Int
+  var date: Date
+  var isCurrentDate: Bool = true
   
     var body: some View {
-      Text(monthStruct().day())
-        .foregroundColor(textColor(type: monthStruct().monthType))
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+//      let date = calendar.dateComponents([.day], from: date)
+      Text(date.onlyDay)
     }
-  
-  func textColor(type: MonthType) -> Color {
-    return type == MonthType.current ? Color.black : Color.gray
-  }
-  
-  func monthStruct() -> MonthStruct {
-    let start = startingSpaces == 0 ? startingSpaces + 7 : startingSpaces
-    if(count <= start) {
-      let day = daysInPrevMonth + count - start
-      return MonthStruct(monthType: MonthType.previous, dayInt: day)
-      
-    } else if (count - start > daysInMonth) {
-      let day = count - start - daysInMonth
-      return MonthStruct(monthType: MonthType.next, dayInt: day)
-    }
-    let day = count - start
-    return MonthStruct(monthType: MonthType.current, dayInt: day)
+}
+
+// Calendar cell 에 있어야 할 내용이
+// Date 와 요일이 없다면 요일
+// isCurrentMonth: Bool
+
+extension Date {
+  var onlyDay: String {
+    let dateformmater = DateFormatter()
+    dateformmater.dateFormat = "d"
+    return dateformmater.string(from: self)
   }
 }

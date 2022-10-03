@@ -31,16 +31,19 @@ struct CalendarHelper {
   
   func dayOfMonth(_ date: Date) -> Int {
     let components = calendar.dateComponents([.day], from: date)
+    print("dayOfMonth : \(components.day!)")
     return components.day!
   }
   
   func firstOfMonth(_ date: Date) -> Date {
     let components = calendar.dateComponents([.year, .month], from: date)
+    print("firstOfMonth : \(calendar.date(from: components)!)")
     return calendar.date(from: components)!
   }
   
   func weekDay(_ date: Date) -> Int {
     let components = calendar.dateComponents([.weekday, .month], from: date)
+    print("weekDay: \(components.weekday! - 1)")
     return components.weekday! - 1
   }
 }
