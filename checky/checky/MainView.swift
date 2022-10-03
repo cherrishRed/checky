@@ -58,6 +58,37 @@ struct MainView: View {
   func extractDates() -> [DateValue] {
     return []
   }
+  
+  private func previousDates(firstDayOfMonth: Date) -> [Date] {
+    let calendar = Calendar.current
+    let customWeekStart = startingWeek
+    let firstDayOfWeekday = calendar.component(.weekday, from: firstDayOfMonth)
+    
+    guard let firstWeekday = Week(rawValue: firstDayOfWeekday) else {
+      return []
+    }
+    
+    var previousMonthDayCount: Int = 0
+    
+    if customWeekStart.rawValue > firstWeekday.rawValue {
+      previousMonthDayCount = 7 - customWeekStart.rawValue + firstWeekday.rawValue
+    } else {
+      previousMonthDayCount = firstWeekday.rawValue - customWeekStart.rawValue
+    }
+    
+    var previousDays: [Date] = []
+    
+    if previousMonthDayCount != 0 {
+      for number in 1...previousMonthDayCount {
+        guard let day = calendar.date(byAdding: .day, value: -number, to: firstDayOfMonth) else {
+          return []
+        }
+        previousDays.insert(day, at: 0)
+      }
+    }
+    
+    return previousDays
+  }
 }
 
 extension Text {
