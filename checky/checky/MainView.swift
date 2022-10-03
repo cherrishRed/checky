@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainView: View {
   @EnvironmentObject var dateHolder: DateHolder
+  @State var weekOption = "KoreanShot"
   
   var body: some View {
     VStack(spacing: 1) {
@@ -24,13 +25,18 @@ struct MainView: View {
   
   var dayOfWeekStack: some View {
     HStack(spacing: 1) {
-      Text("Sun").dayOfWeek()
-      Text("Mon").dayOfWeek()
-      Text("Tue").dayOfWeek()
-      Text("Wed").dayOfWeek()
-      Text("Thu").dayOfWeek()
-      Text("Fri").dayOfWeek()
-      Text("Sat").dayOfWeek()
+      ForEach(Week.allCases, id: \.rawValue) { week in
+        if weekOption == "KoreanShot" {
+          Text(week.koreanShort)
+            .weekStyle()
+        } else if weekOption == "EnglishShort" {
+          Text(week.short)
+            .weekStyle()
+        } else {
+          Text(week.rawValue)
+            .weekStyle()
+        }
+      }
     }
   }
   
@@ -59,7 +65,7 @@ struct MainView: View {
 }
 
 extension Text {
-  func dayOfWeek() -> some View {
+  func weekStyle() -> some View {
     self.frame(maxWidth: .infinity)
       .padding(.top)
       .lineLimit(1)
