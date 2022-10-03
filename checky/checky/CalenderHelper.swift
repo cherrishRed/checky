@@ -41,6 +41,7 @@ struct CalendarHelper {
   
   func weekDay(_ date: Date) -> Int {
     let components = calendar.dateComponents([.weekday, .month], from: date)
-    return components.weekday! - 1
+    
+    return components.weekday! - 2
   }
 }

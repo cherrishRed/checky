@@ -10,6 +10,7 @@ import SwiftUI
 struct MainView: View {
   @EnvironmentObject var dateHolder: DateHolder
   @State var weekOption = "KoreanShot"
+  @State var currentOffsetX: CGSize = .zero
   
   var body: some View {
     VStack(spacing: 1) {
@@ -20,7 +21,36 @@ struct MainView: View {
       dayOfWeekStack
       
       calendarGrid
+      
     }
+    .gesture(
+      DragGesture()
+        .onChanged({ value in
+          withAnimation(.spring()) {
+            currentOffsetX = value.translation
+          }
+          
+        })
+        .onEnded({ value in
+          if currentOffsetX.width < 0 {
+            previousMonth()
+          } else if currentOffsetX.width > 0 {
+            nextMonth()
+          }
+          
+          withAnimation(.spring()) {
+            currentOffsetX = .zero
+          }
+        })
+    )
+  }
+  
+  func previousMonth() {
+    dateHolder.date = CalendarHelper().minusMonth(dateHolder.date)
+  }
+  
+  func nextMonth() {
+    dateHolder.date = CalendarHelper().plusMonth(dateHolder.date)
   }
   
   var dayOfWeekStack: some View {
