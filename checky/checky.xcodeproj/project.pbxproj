@@ -17,6 +17,7 @@
 		DA466EA428E685D90076AEE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA466EA328E685D90076AEE4 /* Assets.xcassets */; };
 		DA466EA728E685D90076AEE4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA466EA628E685D90076AEE4 /* Preview Assets.xcassets */; };
 		DA91E7D628EABDED0091B6A3 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91E7D528EABDED0091B6A3 /* Week.swift */; };
+		DA91E7D828EB57AF0091B6A3 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91E7D728EB57AF0091B6A3 /* DateValue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		DA466EA328E685D90076AEE4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA466EA628E685D90076AEE4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DA91E7D528EABDED0091B6A3 /* Week.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
+		DA91E7D728EB57AF0091B6A3 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				DA466E9F28E685D70076AEE4 /* checkyApp.swift */,
 				DA466EA128E685D70076AEE4 /* MainView.swift */,
 				86FC8CFB28EAB4EC00B7752F /* CalendarCell.swift */,
+				DA91E7D728EB57AF0091B6A3 /* DateValue.swift */,
 				86FC8CF228EAB2FF00B7752F /* MonthStruct.swift */,
 				86FC8CF428EAB3CF00B7752F /* DateHolder.swift */,
 				DA91E7D528EABDED0091B6A3 /* Week.swift */,
@@ -161,6 +164,7 @@
 				DA466EA028E685D70076AEE4 /* checkyApp.swift in Sources */,
 				86FC8CFA28EAB49B00B7752F /* DateScrollerView.swift in Sources */,
 				86FC8CF328EAB2FF00B7752F /* MonthStruct.swift in Sources */,
+				DA91E7D828EB57AF0091B6A3 /* DateValue.swift in Sources */,
 				86FC8CF528EAB3CF00B7752F /* DateHolder.swift in Sources */,
 				86FC8CF828EAB42500B7752F /* CalenderHelper.swift in Sources */,
 			);
