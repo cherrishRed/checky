@@ -18,6 +18,7 @@
 		DA466EA728E685D90076AEE4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA466EA628E685D90076AEE4 /* Preview Assets.xcassets */; };
 		DA91E7D628EABDED0091B6A3 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91E7D528EABDED0091B6A3 /* Week.swift */; };
 		DA91E7D828EB57AF0091B6A3 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91E7D728EB57AF0091B6A3 /* DateValue.swift */; };
+		DA91E7DA28EB58310091B6A3 /* Extension+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91E7D928EB58310091B6A3 /* Extension+Date.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		DA466EA628E685D90076AEE4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DA91E7D528EABDED0091B6A3 /* Week.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
 		DA91E7D728EB57AF0091B6A3 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
+		DA91E7D928EB58310091B6A3 /* Extension+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Date.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				86FC8CF228EAB2FF00B7752F /* MonthStruct.swift */,
 				86FC8CF428EAB3CF00B7752F /* DateHolder.swift */,
 				DA91E7D528EABDED0091B6A3 /* Week.swift */,
+				DA91E7D928EB58310091B6A3 /* Extension+Date.swift */,
 				DA466EA328E685D90076AEE4 /* Assets.xcassets */,
 				DA466EA528E685D90076AEE4 /* Preview Content */,
 			);
@@ -167,6 +170,7 @@
 				DA91E7D828EB57AF0091B6A3 /* DateValue.swift in Sources */,
 				86FC8CF528EAB3CF00B7752F /* DateHolder.swift in Sources */,
 				86FC8CF828EAB42500B7752F /* CalenderHelper.swift in Sources */,
+				DA91E7DA28EB58310091B6A3 /* Extension+Date.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
