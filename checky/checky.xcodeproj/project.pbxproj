@@ -11,6 +11,7 @@
 		86FC8CF528EAB3CF00B7752F /* DateHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FC8CF428EAB3CF00B7752F /* DateHolder.swift */; };
 		86FC8CF828EAB42500B7752F /* CalenderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FC8CF728EAB42500B7752F /* CalenderHelper.swift */; };
 		86FC8CFA28EAB49B00B7752F /* DateScrollerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FC8CF928EAB49B00B7752F /* DateScrollerView.swift */; };
+		86FC8CFC28EAB4EC00B7752F /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FC8CFB28EAB4EC00B7752F /* CalendarCell.swift */; };
 		DA466EA028E685D70076AEE4 /* checkyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA466E9F28E685D70076AEE4 /* checkyApp.swift */; };
 		DA466EA228E685D70076AEE4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA466EA128E685D70076AEE4 /* ContentView.swift */; };
 		DA466EA428E685D90076AEE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA466EA328E685D90076AEE4 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 		86FC8CF428EAB3CF00B7752F /* DateHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHolder.swift; sourceTree = "<group>"; };
 		86FC8CF728EAB42500B7752F /* CalenderHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderHelper.swift; sourceTree = "<group>"; };
 		86FC8CF928EAB49B00B7752F /* DateScrollerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateScrollerView.swift; sourceTree = "<group>"; };
+		86FC8CFB28EAB4EC00B7752F /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		DA466E9C28E685D70076AEE4 /* checky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = checky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA466E9F28E685D70076AEE4 /* checkyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkyApp.swift; sourceTree = "<group>"; };
 		DA466EA128E685D70076AEE4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				86FC8CF928EAB49B00B7752F /* DateScrollerView.swift */,
 				DA466E9F28E685D70076AEE4 /* checkyApp.swift */,
 				DA466EA128E685D70076AEE4 /* ContentView.swift */,
+				86FC8CFB28EAB4EC00B7752F /* CalendarCell.swift */,
 				86FC8CF228EAB2FF00B7752F /* MonthStruct.swift */,
 				86FC8CF428EAB3CF00B7752F /* DateHolder.swift */,
 				DA466EA328E685D90076AEE4 /* Assets.xcassets */,
@@ -150,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA466EA228E685D70076AEE4 /* ContentView.swift in Sources */,
+				86FC8CFC28EAB4EC00B7752F /* CalendarCell.swift in Sources */,
 				DA466EA028E685D70076AEE4 /* checkyApp.swift in Sources */,
 				86FC8CFA28EAB49B00B7752F /* DateScrollerView.swift in Sources */,
 				86FC8CF328EAB2FF00B7752F /* MonthStruct.swift in Sources */,
