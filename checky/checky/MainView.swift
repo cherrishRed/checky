@@ -43,15 +43,27 @@ struct MainView: View {
   }
   
   var CalendarGrid: some View {
-    let columns = Array(repeating: GridItem(.flexible()), count: 7)
+    let columns = Array(repeating: GridItem(.flexible(), spacing: nil, alignment: nil), count: 7)
+    let columnsCount: CGFloat = extractDates().count > 35 ? CGFloat(6) : CGFloat(5)
     
     var body: some View {
-      LazyVGrid(columns: columns, spacing: 15) {
-        ForEach(extractDates()) { value in
-          Text(value.date.day)
-            .foregroundColor(value.isCurrentMonth ? .black : .gray)
+      GeometryReader { geo in
+        LazyVGrid(columns: columns, spacing: 0) {
+          
+          ForEach(extractDates()) { value in
+            ZStack(alignment: .top) {
+              Rectangle()
+                .fill(.white)
+                .border(.gray)
+              Text(value.date.day)
+                .foregroundColor(value.isCurrentMonth ? .black : .gray)
+            }
+            .frame(width: geo.size.width / 7, height: geo.size.height / columnsCount)
+            
+          }
         }
       }
+      .frame(maxHeight: .infinity)
     }
     return body
   }
