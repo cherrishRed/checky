@@ -10,6 +10,7 @@ import SwiftUI
 struct MainView: View {
   @EnvironmentObject var dateHolder: DateHolder
   @State var weekOption = "KoreanShot"
+  @State var startingWeek: Week = Week.sunday
   
   var body: some View {
     VStack(spacing: 1) {
@@ -25,7 +26,7 @@ struct MainView: View {
   
   var dayOfWeekStack: some View {
     HStack(spacing: 1) {
-      ForEach(Week.allCases, id: \.rawValue) { week in
+      ForEach(startingWeek.allWeeks(), id: \.rawValue) { week in
         if weekOption == "KoreanShot" {
           Text(week.koreanShort)
             .weekStyle()
