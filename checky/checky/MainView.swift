@@ -89,6 +89,40 @@ struct MainView: View {
     
     return previousDays
   }
+  
+  private func nextDates(lastDayOfMonth: Date) -> [Date] {
+     let calendar = Calendar.current
+     let customWeekStart = startingWeek
+     let lastDayOfWeekday = calendar.component(.weekday, from: lastDayOfMonth)
+    guard let lastWeekday = Week(rawValue: lastDayOfWeekday) else {
+      return []
+    }
+     
+     var nextMonthDayCount: Int = 0
+     
+     if customWeekStart.rawValue >= lastWeekday.rawValue {
+       if lastWeekday.rawValue - lastWeekday.rawValue == 0 {
+         nextMonthDayCount = 6
+       } else {
+         nextMonthDayCount = lastWeekday.rawValue - lastWeekday.rawValue
+       }
+     } else {
+       nextMonthDayCount = 7 - lastWeekday.rawValue
+     }
+     
+     var nextDays: [Date] = []
+     
+     if nextMonthDayCount != 0 {
+       for number in 1...nextMonthDayCount {
+         guard let day = calendar.date(byAdding: .day, value: number, to: lastDayOfMonth) else {
+           return []
+         }
+         nextDays.append(day)
+       }
+     }
+
+     return nextDays
+   }
 }
 
 extension Text {
