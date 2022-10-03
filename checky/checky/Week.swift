@@ -53,4 +53,23 @@ enum Week: Int, CaseIterable {
       return "토"
     }
   }
+  
+  func allWeeks() -> [Week] {
+    switch self {
+    case .sunday:
+      return [.sunday, .monday, .tuesday, .wednessday, .thursday, .friday, .saturday]
+    case .monday:
+      return [.monday, .tuesday, .wednessday, .thursday, .friday, .saturday, .sunday]
+    case .tuesday:
+      return [.tuesday, .wednessday, .thursday, .friday, .saturday, .sunday, .monday]
+    case .wednessday:
+      return [.wednessday, .thursday, .friday, .saturday, .sunday, .monday, .tuesday]
+    case .thursday:
+      return [.thursday, .friday, .saturday, .sunday, .monday, .tuesday, .wednessday]
+    case .friday:
+      return [.friday, .saturday, .sunday, .monday, .tuesday, .thursday, .wednessday]
+    case .saturday:
+      return [.saturday, .sunday, .monday, .tuesday, .wednessday, .thursday, .friday]
+    }
+  }
 }

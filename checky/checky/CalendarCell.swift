@@ -22,10 +22,3 @@ struct CalendarCell: View {
 // Date 와 요일이 없다면 요일
 // isCurrentMonth: Bool
 
-extension Date {
-  var onlyDay: String {
-    let dateformmater = DateFormatter()
-    dateformmater.dateFormat = "d"
-    return dateformmater.string(from: self)
-  }
-}

@@ -11,6 +11,7 @@ struct MainView: View {
   @EnvironmentObject var dateHolder: DateHolder
   @State var weekOption = "KoreanShot"
   @State var currentMonth: Int = 0
+  @State var startingWeek: Week = Week.sunday
   
   var body: some View {
     VStack(spacing: 1) {
@@ -23,15 +24,14 @@ struct MainView: View {
       CalendarGrid
     }
     .onAppear {
-//      print(Date().getAllDates())
-      extractDate()
+      print(extractDate())
     }
   }
 
   
   var dayOfWeekStack: some View {
     HStack(spacing: 1) {
-      ForEach(Week.allCases, id: \.rawValue) { week in
+      ForEach(startingWeek.allWeeks(), id: \.rawValue) { week in
         if weekOption == "KoreanShot" {
           Text(week.koreanShort)
             .weekStyle()
@@ -61,88 +61,25 @@ struct MainView: View {
   }
   
   func extractDate() -> [DateValue] {
-    // 이건 이제 LazyVGrid 에 넣을 정보를 내보내는 것
-    
-    // 지금으로 따지면 9월 26일 부터 11월 6일까지의 정보가 들어 있어야 함.
-    
-    
-    // 그리고 9월 11월 날짜들은 이번달이 아니다 라는 정보도 같이 있어야 함.
-    
-    // 그래서 일단 이번달 정보는 다 있고
-    
-    // 그 전달 그 다음달 정보가 몇일까지 필요한지를 계산해서
-    // 그 정보들을 다 합쳐서 알려줌. 
-    
     let calendar = Calendar.current
-    // Getting Current Month Date...
-    guard let currentMonth = calendar.date(byAdding: .month, value: currentMonth, to: Date()) else { return [] }
-    
-//    print("엑스트랙 currentMonth: \(currentMonth)")
+    guard let currentMonth = calendar.date(byAdding: .month, value: currentMonth, to: dateHolder.date) else { return [] }
     
     let days = currentMonth.getAllDates()
     let firstDayOfMonth = days.first!
     let lastDayOfMonth = days.last!
     
-//    print("last day : \(lastDayOfMonth)")
+    let previousDays = previousDates(firstDayOfMonth: firstDayOfMonth)
+    let nextDays = nextDates(lastDayOfMonth: lastDayOfMonth)
     
-    let firstDayOfWeekday = calendar.component(.weekday, from: firstDayOfMonth)
-    let firstWeekday = Week(rawValue: firstDayOfWeekday)!
+  // case sunday = 1 시작날짜
+  // case monday = 2
+  // case tuesday = 3
+  // case wednessday = 4
+  // case thursday = 5
+  // case friday = 6
+  // case saturday = 7
     
-    let lastDayOfWeekday = calendar.component(.weekday, from: lastDayOfMonth)
-    let lastWeekday = Week(rawValue: lastDayOfWeekday)!
-  
-    // 월 화 수 목 금 토 일
-    // 시작 요일 부터 지금 요일 까지의 차이의 수를 구하고 그 수 많큼 앞에 요일의 것을 추가 해 줄 것
-    
-    let customWeekStart = Week.monday
-    
-    var previousMonthDayCount: Int = 0
-    
-    if customWeekStart.rawValue > firstWeekday.rawValue {
-      previousMonthDayCount = 7 - customWeekStart.rawValue + firstWeekday.rawValue
-    } else {
-      previousMonthDayCount = firstWeekday.rawValue - customWeekStart.rawValue
-    }
-    
-  // case sunday = 2 마지막날
-  // case monday = 3 끝날짜
-  // case tuesday = 4
-  // case wednessday = 5 여기까지야
-  // case thursday = 6
-  // case friday = 7
-  // case saturday = 1 오늘 날짜
-    
-    var previousDays: [Date] = []
-    
-    for number in 1...previousMonthDayCount {
-      let day = calendar.date(byAdding: .day, value: -number, to: firstDayOfMonth)!
-      previousDays.insert(day, at: 0)
-    }
-    
-    print("previousDays: \n \(previousDays)")
-    
-    var nextMonthDayCount: Int = 0
-    
-    if customWeekStart.rawValue >= lastWeekday.rawValue {
-      if lastWeekday.rawValue - lastWeekday.rawValue == 0 {
-        nextMonthDayCount = 6
-      } else {
-        nextMonthDayCount = lastWeekday.rawValue - lastWeekday.rawValue
-      }
-    } else {
-      nextMonthDayCount = 7 - lastWeekday.rawValue + customWeekStart.rawValue
-    }
-    
-    print("nextMonthDayCount: \(nextMonthDayCount)")
-    
-    var nextDays: [Date] = []
-    
-    for number in 1...nextMonthDayCount {
-      let day = calendar.date(byAdding: .day, value: number, to: lastDayOfMonth)!
-      nextDays.append(day)
-    }
-    
-    print("nexDays : \n \(nextDays)")
+  // 만약 월요일이면 이렇게 해라
     
     
     var result: [DateValue]  = []
@@ -163,6 +100,83 @@ struct MainView: View {
     
     return result
   }
+  
+  private func nextDates(lastDayOfMonth: Date) -> [Date] {
+    // case sunday = 1 시작날짜
+    // case monday = 2  달의 마지막날
+    // case tuesday = 3
+    // case wednessday = 4
+    // case thursday = 5
+    // case friday = 6
+    // case saturday = 7 끝날짜
+      
+    // 만약 월요일이면 이렇게 해라
+    
+    let calendar = Calendar.current
+    let customWeekStart = startingWeek
+    
+    let lastDayOfWeekday = calendar.component(.weekday, from: lastDayOfMonth)
+    let lastWeekday = Week(rawValue: lastDayOfWeekday)!
+
+    
+    var nextMonthDayCount: Int = 0
+    
+    if customWeekStart.rawValue >= lastWeekday.rawValue {
+      if lastWeekday.rawValue - lastWeekday.rawValue == 0 {
+        nextMonthDayCount = 6
+      } else {
+        nextMonthDayCount = lastWeekday.rawValue - lastWeekday.rawValue
+      }
+    } else {
+      nextMonthDayCount = 7 - lastWeekday.rawValue
+    }
+    
+    var nextDays: [Date] = []
+    
+    if nextMonthDayCount != 0 {
+      for number in 1...nextMonthDayCount {
+        let day = calendar.date(byAdding: .day, value: number, to: lastDayOfMonth)!
+        nextDays.append(day)
+      }
+    }
+
+    return nextDays
+  }
+  
+  private func previousDates(firstDayOfMonth: Date) -> [Date] {
+    let calendar = Calendar.current
+    let customWeekStart = startingWeek
+    let firstDayOfWeekday = calendar.component(.weekday, from: firstDayOfMonth)
+    let firstWeekday = Week(rawValue: firstDayOfWeekday)!
+    
+    var previousMonthDayCount: Int = 0
+    
+    if customWeekStart.rawValue > firstWeekday.rawValue {
+      previousMonthDayCount = 7 - customWeekStart.rawValue + firstWeekday.rawValue
+    } else {
+      previousMonthDayCount = firstWeekday.rawValue - customWeekStart.rawValue
+    }
+    
+    var previousDays: [Date] = []
+    
+    if previousMonthDayCount != 0 {
+      for number in 1...previousMonthDayCount {
+        let day = calendar.date(byAdding: .day, value: -number, to: firstDayOfMonth)!
+        previousDays.insert(day, at: 0)
+      }
+    }
+    
+    return previousDays
+  }
+  
+//  func nextDaysCount(firstweekday: Week, lastDayOfMonth: Week) -> Int {
+//    let gap = 7 - firstweekday.rawValue
+//
+//    if firstweekday.rawValue == lastDayOfMonth.rawValue {
+//      return 6
+//    }
+//
+//  }
 }
 
 
@@ -209,5 +223,14 @@ extension Date {
     return range.compactMap { day -> Date in
       return calendar.date(byAdding: .day, value: day - 1, to: startDate)!
     }
+  }
+}
+
+extension Date {
+  var onlyDay: String {
+    let dateformmater = DateFormatter()
+    dateformmater.locale = Locale(identifier: "ko_KR")
+    dateformmater.dateFormat = "d"
+    return dateformmater.string(from: self)
   }
 }

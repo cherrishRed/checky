@@ -64,8 +64,8 @@
 			isa = PBXGroup;
 			children = (
 				86FC8CF728EAB42500B7752F /* CalenderHelper.swift */,
-				86FC8CF928EAB49B00B7752F /* DateScrollerView.swift */,
 				DA466E9F28E685D70076AEE4 /* checkyApp.swift */,
+				86FC8CF928EAB49B00B7752F /* DateScrollerView.swift */,
 				DA466EA128E685D70076AEE4 /* MainView.swift */,
 				86FC8CFB28EAB4EC00B7752F /* CalendarCell.swift */,
 				86FC8CF228EAB2FF00B7752F /* MonthStruct.swift */,
