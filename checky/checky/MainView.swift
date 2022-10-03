@@ -41,27 +41,22 @@ struct MainView: View {
     }
   }
   
-  var calendarGrid: some View {
+  var CalendarGrid: some View {
+    let columns = Array(repeating: GridItem(.flexible()), count: 7)
     
-    VStack(spacing: 1) {
-      
-      let daysInMonth = CalendarHelper().daysInMonth(dateHolder.date)
-      let firstDayOfMonth = CalendarHelper().firstOfMonth(dateHolder.date)
-      let startingSpace = CalendarHelper().weekDay(firstDayOfMonth)
-      let prevMonth = CalendarHelper().minusMonth(dateHolder.date)
-      let daysInPrevMonth = CalendarHelper().daysInMonth(prevMonth)
-      
-      ForEach(0..<6) { row in
-        HStack(spacing: 1) {
-          ForEach(1..<8) { column in
-            let count = column + (row * 7)
-            CalendarCell(count: count, startingSpaces: startingSpace, daysInMonth: daysInMonth, daysInPrevMonth: daysInPrevMonth)
-              .environmentObject(dateHolder)
-          }
+    var body: some View {
+      LazyVGrid(columns: columns, spacing: 15) {
+        ForEach(extractDates()) { value in
+          Text(value.date.day)
+            .foregroundColor(value.isCurrentMonth ? .black : .gray)
         }
       }
     }
-    .frame(maxWidth: .infinity)
+    return body
+  }
+  
+  func extractDates() -> [DateValue] {
+    return []
   }
 }
 
