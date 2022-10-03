@@ -61,6 +61,18 @@ struct MainView: View {
   }
   
   func extractDate() -> [DateValue] {
+    // 이건 이제 LazyVGrid 에 넣을 정보를 내보내는 것
+    
+    // 지금으로 따지면 9월 26일 부터 11월 6일까지의 정보가 들어 있어야 함.
+    
+    
+    // 그리고 9월 11월 날짜들은 이번달이 아니다 라는 정보도 같이 있어야 함.
+    
+    // 그래서 일단 이번달 정보는 다 있고
+    
+    // 그 전달 그 다음달 정보가 몇일까지 필요한지를 계산해서
+    // 그 정보들을 다 합쳐서 알려줌. 
+    
     let calendar = Calendar.current
     // Getting Current Month Date...
     guard let currentMonth = calendar.date(byAdding: .month, value: currentMonth, to: Date()) else { return [] }
@@ -174,7 +186,11 @@ struct DateValue: Identifiable {
 
 extension Date {
   func getAllDates() -> [Date] {
+    // 이 메서드는 그 달의 모든 날짜를 배열로 반환해 주는 메서드
+    // 그러니까 10월 1일 부터 10월 31일 일까지의 정보를 반환해줌.
+    
     let calendar = Calendar.current
+    
     
     // getting start Date...
     let startDate = calendar.date(from: Calendar.current.dateComponents([.year, .month], from: self))!
