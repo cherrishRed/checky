@@ -11,6 +11,7 @@ struct MainView: View {
   @EnvironmentObject var dateHolder: DateHolder
   @State var weekOption = "KoreanShot"
   @State var startingWeek: Week = Week.sunday
+  @State var plusMinusMonth: Int = 0
   
   var body: some View {
     VStack(spacing: 1) {
@@ -20,7 +21,7 @@ struct MainView: View {
       
       dayOfWeekStack
       
-      calendarGrid
+      CalendarGrid
     }
   }
   
@@ -34,7 +35,7 @@ struct MainView: View {
           Text(week.short)
             .weekStyle()
         } else {
-          Text(week.rawValue)
+          Text("\(week.rawValue)")
             .weekStyle()
         }
       }
@@ -55,8 +56,32 @@ struct MainView: View {
     return body
   }
   
-  func extractDates() -> [DateValue] {
-    return []
+  private func extractDates() -> [DateValue] {
+    let calendar = Calendar.current
+    guard let currentMonth = calendar.date(byAdding: .month, value: plusMinusMonth, to: dateHolder.date) else { return [] }
+    
+    let days = currentMonth.getAllDates()
+    let firstDayOfMonth = days.first!
+    let lastDayOfMonth = days.last!
+    let previousDays = previousDates(firstDayOfMonth: firstDayOfMonth)
+    let nextDays = nextDates(lastDayOfMonth: lastDayOfMonth)
+    var result: [DateValue]  = []
+    
+    for previousDay in previousDays {
+      let day = DateValue(date: previousDay, isCurrentMonth: false)
+      result.append(day)
+    }
+    
+    for day in days {
+      result.append(DateValue(date: day))
+    }
+    
+    for nextDay in nextDays {
+      let day = DateValue(date: nextDay, isCurrentMonth: false)
+      result.append(day)
+    }
+    
+    return result
   }
   
   private func previousDates(firstDayOfMonth: Date) -> [Date] {
