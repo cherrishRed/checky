@@ -7,14 +7,14 @@
 
 import Foundation
 
-enum Week: String, CaseIterable {
-  case sunday
-  case monday
-  case tuesday
-  case wednessday
-  case thursday
-  case friday
-  case saturday
+enum Week: Int, CaseIterable {
+  case sunday = 1
+  case monday = 2
+  case tuesday = 3
+  case wednessday = 4
+  case thursday = 5
+  case friday = 6
+  case saturday = 7
   
   var short: String {
     switch self {
