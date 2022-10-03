@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		86FC8CF328EAB2FF00B7752F /* MonthStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FC8CF228EAB2FF00B7752F /* MonthStruct.swift */; };
 		DA466EA028E685D70076AEE4 /* checkyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA466E9F28E685D70076AEE4 /* checkyApp.swift */; };
 		DA466EA228E685D70076AEE4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA466EA128E685D70076AEE4 /* ContentView.swift */; };
 		DA466EA428E685D90076AEE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA466EA328E685D90076AEE4 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		86FC8CF228EAB2FF00B7752F /* MonthStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthStruct.swift; sourceTree = "<group>"; };
 		DA466E9C28E685D70076AEE4 /* checky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = checky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA466E9F28E685D70076AEE4 /* checkyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkyApp.swift; sourceTree = "<group>"; };
 		DA466EA128E685D70076AEE4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 			children = (
 				DA466E9F28E685D70076AEE4 /* checkyApp.swift */,
 				DA466EA128E685D70076AEE4 /* ContentView.swift */,
+				86FC8CF228EAB2FF00B7752F /* MonthStruct.swift */,
 				DA466EA328E685D90076AEE4 /* Assets.xcassets */,
 				DA466EA528E685D90076AEE4 /* Preview Content */,
 			);
@@ -139,6 +142,7 @@
 			files = (
 				DA466EA228E685D70076AEE4 /* ContentView.swift in Sources */,
 				DA466EA028E685D70076AEE4 /* checkyApp.swift in Sources */,
+				86FC8CF328EAB2FF00B7752F /* MonthStruct.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
