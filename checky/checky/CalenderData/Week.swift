@@ -38,19 +38,19 @@ enum Week: Int, CaseIterable {
   var koreanShort: String {
     switch self {
     case .sunday:
-      return "월"
-    case .monday:
-      return "화"
-    case .tuesday:
-      return "수"
-    case .wednessday:
-      return "목"
-    case .thursday:
-      return "금"
-    case .friday:
-      return "토"
-    case .saturday:
       return "일"
+    case .monday:
+      return "월"
+    case .tuesday:
+      return "화"
+    case .wednessday:
+      return "수"
+    case .thursday:
+      return "목"
+    case .friday:
+      return "금"
+    case .saturday:
+      return "토"
     }
   }
   
