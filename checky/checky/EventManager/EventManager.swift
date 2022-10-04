@@ -50,4 +50,16 @@ class EventManager {
     
     return list
   }
+  
+  func getAllReminderforThisMonth(date: Date) -> [EKReminder] {
+    let categories = store.calendars(for: .reminder)
+      let predicate = store.predicateForReminders(in: categories)
+    
+    var list: [EKReminder] = []
+      
+    store.fetchReminders(matching: predicate) { reminder in
+      list.append(contentsOf: reminder ?? [])
+    }
+    return list
+  }
 }
