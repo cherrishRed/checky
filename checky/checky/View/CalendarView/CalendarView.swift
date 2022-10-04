@@ -12,6 +12,7 @@ struct CalendarView: View {
   @State var currentOffsetX: CGSize = .zero
   let eventManager: EventManager = EventManager()
   @State var events: [Event] = []
+  @State var reminders: [Reminder] = []
   
   var body: some View {
     VStack(spacing: 1) {
@@ -25,11 +26,19 @@ struct CalendarView: View {
     }
     .onChange(of: dateHolder.date) { newValue in
       events = eventManager.getAllEventforThisMonth(date: dateHolder.date)
+      eventManager.getAllReminderforThisMonth(date: dateHolder.date) { reminderList in
+        reminders = reminderList
+        print(reminderList)
+      }
     }
     .onAppear {
       eventManager.getPermission()
       
       events = eventManager.getAllEventforThisMonth(date: dateHolder.date)
+      eventManager.getAllReminderforThisMonth(date: dateHolder.date) { reminderList in
+        reminders = reminderList
+        print(reminderList)
+      }
     }
   }
   
@@ -64,7 +73,16 @@ struct CalendarView: View {
               
             }
             
-            CalendarCellView(dateValue: value, allEvnets: filteredEvent)
+            let filteredReminder = reminders.filter { reminder in
+              let dateComponent: DateComponents = Calendar.current.dateComponents([.day, .month], from: value.date)
+              let sameDay = reminder.ekreminder.dueDateComponents?.day == dateComponent.day
+              let sameMonth = reminder.ekreminder.dueDateComponents?.month == dateComponent.month
+              
+              return sameDay && sameMonth
+            }
+            
+            
+            CalendarCellView(dateValue: value, allEvnets: filteredEvent, allReminders: filteredReminder)
             .frame(width: geo.size.width / 7, height: geo.size.height / columnsCount)
           }
         }
