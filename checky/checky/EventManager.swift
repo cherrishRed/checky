@@ -10,6 +10,7 @@ import EventKit
 
 class EventManager {
   let store = EKEventStore()
+  let calendar = Calendar.current
   
   func getPermission() {
     store.requestAccess(to: .reminder) { granted, error in
@@ -35,5 +36,18 @@ class EventManager {
         return
       }
     }
+  }
+  
+  func getAllEventforThisMonth(date: Date) -> [EKEvent] {
+    let allDates = date.getAllDates()
+    guard let firstDate = allDates.first, let lastDate = allDates.last else {
+      return []
+    }
+    
+    let predicate = store.predicateForEvents(withStart: firstDate, end: lastDate, calendars: [])
+    
+    let list = store.events(matching: predicate)
+    
+    return list
   }
 }
