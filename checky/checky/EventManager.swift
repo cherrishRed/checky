@@ -13,17 +13,26 @@ class EventManager {
   
   func getPermission() {
     store.requestAccess(to: .reminder) { granted, error in
-      if granted == true {
-        print("권한 얻기 성공")
-      } else {
-        print("에러 : \(String(describing: error?.localizedDescription))")
+      guard error == nil else {
+        print("에러가 있습니다")
+        return
+      }
+      
+      guard granted == true else {
+        print("권한이 이상합니다")
+        return
       }
     }
+    
     store.requestAccess(to: .event) { granted, error in
-      if granted == true {
-        print("권한 얻기 성공")
-      } else {
-        print("에러 : \(String(describing: error?.localizedDescription))")
+      guard error == nil else {
+        print("에러가 있습니다")
+        return
+      }
+      
+      guard granted == true else {
+        print("권한이 이상합니다")
+        return
       }
     }
   }

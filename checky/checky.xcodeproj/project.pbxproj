@@ -22,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		865BE51828EC2E6F00305899 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		86FC8CF228EAB2FF00B7752F /* MonthStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthStruct.swift; sourceTree = "<group>"; };
 		86FC8CF428EAB3CF00B7752F /* DateHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHolder.swift; sourceTree = "<group>"; };
 		86FC8CF728EAB42500B7752F /* CalenderHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderHelper.swift; sourceTree = "<group>"; };
@@ -67,6 +68,7 @@
 		DA466E9E28E685D70076AEE4 /* checky */ = {
 			isa = PBXGroup;
 			children = (
+				865BE51828EC2E6F00305899 /* Info.plist */,
 				86FC8CF728EAB42500B7752F /* CalenderHelper.swift */,
 				86FC8CF928EAB49B00B7752F /* DateScrollerView.swift */,
 				DA466E9F28E685D70076AEE4 /* checkyApp.swift */,
@@ -301,6 +303,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"checky/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = checky/Info.plist;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "\"캘린더 사용 디스크립션\"";
+				INFOPLIST_KEY_NSRemindersUsageDescription = "\"리마인더 사용 디스크립션\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -329,6 +334,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"checky/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = checky/Info.plist;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "\"캘린더 사용 디스크립션\"";
+				INFOPLIST_KEY_NSRemindersUsageDescription = "\"리마인더 사용 디스크립션\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
