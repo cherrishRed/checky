@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DateScrollerView: View {
+struct HeaderView: View {
   @EnvironmentObject var dateHolder: DateHolder
 
     var body: some View {
@@ -28,6 +28,6 @@ struct DateScrollerView: View {
 
 struct DateScrollerView_Previews: PreviewProvider {
     static var previews: some View {
-        DateScrollerView()
+        HeaderView()
     }
 }

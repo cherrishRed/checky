@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 struct CalendarHelper {
   let calendar: Calendar
   var weekOption: WeekOption

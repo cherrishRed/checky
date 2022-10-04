@@ -12,7 +12,7 @@ struct CalendarView: View {
   @State var currentOffsetX: CGSize = .zero
   var body: some View {
     VStack(spacing: 1) {
-      DateScrollerView()
+      HeaderView()
         .environmentObject(dateHolder)
         .padding()
       
@@ -51,7 +51,6 @@ struct CalendarView: View {
               Rectangle()
                 .fill(.white)
                 .border(.gray)
-
                 
               Text(value.date.day)
                 .foregroundColor(value.isCurrentMonth ? .black : .gray)
