@@ -59,15 +59,24 @@ class EventManager {
     return list
   }
   
-  func getAllReminderforThisMonth(date: Date) -> [EKReminder] {
+  func getAllReminderforThisMonth(date: Date) -> [Reminder] {
     let categories = store.calendars(for: .reminder)
-      let predicate = store.predicateForReminders(in: categories)
     
-    var list: [EKReminder] = []
+    var list: [Reminder] = []
+    
+    for category in categories {
+      let predicate: NSPredicate = store.predicateForReminders(in: [category])
       
-    store.fetchReminders(matching: predicate) { reminder in
-      list.append(contentsOf: reminder ?? [])
+      var ekreminders: [EKReminder] = []
+      store.fetchReminders(matching: predicate) { ekreminder in
+        ekreminders = ekreminder ?? []
+      }
+      let reminders = ekreminders.map { ekreminder in
+        Reminder(ekreminder: ekreminder, category: category)
+      }
+      list.append(contentsOf: reminders)
     }
+    
     return list
   }
 }
