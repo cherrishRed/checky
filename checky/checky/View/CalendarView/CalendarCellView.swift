@@ -21,9 +21,12 @@ struct CalendarCellView: View {
             .foregroundColor(dateValue.isCurrentMonth ? .black : .gray)
           ForEach(allEvnets, id: \.self) { event in
             Text(event.ekevent.title)
+              .lineLimit(1)
+              .font(.caption)
               .foregroundColor(.white)
               .background(Color(event.category.cgColor))
-              .cornerRadius(4)
+              .cornerRadius(2)
+              .frame(maxWidth: .infinity)
         }
         }
       }
