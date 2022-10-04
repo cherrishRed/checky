@@ -32,4 +32,24 @@ extension Date {
     dateformmater.dateFormat = "d"
     return dateformmater.string(from: self)
   }
+  
+  func dateCompare(fromDate: Date) -> String {
+    var strDateMessage:String = ""
+    let result:ComparisonResult = self.compare(fromDate)
+    switch result {
+    case .orderedAscending:
+      strDateMessage = "Future"
+      break
+    case .orderedDescending:
+      strDateMessage = "Past"
+      break
+    case .orderedSame:
+      strDateMessage = "Same"
+      break
+    default:
+      strDateMessage = "Error"
+      break
+    }
+    return strDateMessage
+  }
 }

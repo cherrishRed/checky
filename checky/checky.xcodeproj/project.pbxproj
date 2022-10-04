@@ -22,6 +22,7 @@
 		DA91E7DC28EC1E880091B6A3 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91E7DB28EC1E880091B6A3 /* EventManager.swift */; };
 		DA91E7E128EC8DFC0091B6A3 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91E7E028EC8DFC0091B6A3 /* Event.swift */; };
 		DA91E7E328EC8E580091B6A3 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91E7E228EC8E580091B6A3 /* Reminder.swift */; };
+		DA91E7E528EC94180091B6A3 /* CalendarCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91E7E428EC94170091B6A3 /* CalendarCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		DA91E7DB28EC1E880091B6A3 /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		DA91E7E028EC8DFC0091B6A3 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		DA91E7E228EC8E580091B6A3 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
+		DA91E7E428EC94170091B6A3 /* CalendarCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				DA466EA128E685D70076AEE4 /* CalendarView.swift */,
+				DA91E7E428EC94170091B6A3 /* CalendarCellView.swift */,
 			);
 			path = CalendarView;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				DA91E7D628EABDED0091B6A3 /* Week.swift in Sources */,
 				DA466EA028E685D70076AEE4 /* checkyApp.swift in Sources */,
 				865BE52628EC867900305899 /* WeekOption.swift in Sources */,
+				DA91E7E528EC94180091B6A3 /* CalendarCellView.swift in Sources */,
 				DA91E7E128EC8DFC0091B6A3 /* Event.swift in Sources */,
 				86FC8CFA28EAB49B00B7752F /* HeaderView.swift in Sources */,
 				DA91E7DC28EC1E880091B6A3 /* EventManager.swift in Sources */,

@@ -55,15 +55,13 @@ struct CalendarView: View {
       GeometryReader { geo in
         LazyVGrid(columns: columns, spacing: 0) {
           ForEach(CalendarHelper().extractDates(dateHolder.date)) { value in
-            ZStack(alignment: .top) {
-              Rectangle()
-                .fill(.white)
-                .border(.gray)
-                
-              Text(value.date.day)
-                .foregroundColor(value.isCurrentMonth ? .black : .gray)
-              Text()
+            
+            let filteredEvent = events.filter { event in
+              return event.ekevent.startDate.dateCompare(fromDate: value.date) == "Same"
+              
             }
+            
+            CalendarCellView(dateValue: value, allEvnets: filteredEvent)
             .frame(width: geo.size.width / 7, height: geo.size.height / columnsCount)
           }
         }
