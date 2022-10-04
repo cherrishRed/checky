@@ -24,11 +24,11 @@ struct CalendarView: View {
   
   var dayOfWeekStack: some View {
     HStack(spacing: 1) {
-      ForEach(CalendarHelper(date: dateHolder.date).startingWeek.allWeeks(), id: \.rawValue) { week in
-        if CalendarHelper(date: dateHolder.date).weekOption == "KoreanShot" {
+      ForEach(CalendarHelper().startingWeek.allWeeks(), id: \.rawValue) { week in
+        if CalendarHelper().weekOption == WeekOption.KoreanShort {
           Text(week.koreanShort)
             .weekStyle()
-        } else if CalendarHelper(date: dateHolder.date).weekOption == "EnglishShort" {
+        } else if CalendarHelper().weekOption == WeekOption.EnglishShort {
           Text(week.short)
             .weekStyle()
         } else {
@@ -40,17 +40,19 @@ struct CalendarView: View {
   }
   
   var CalendarGrid: some View {
-    let columns = Array(repeating: GridItem(.flexible(), spacing: nil, alignment: nil), count: 7)
-    let columnsCount: CGFloat = CalendarHelper(date: dateHolder.date).extractDates().count > 35 ? CGFloat(6) : CGFloat(5)
+    let columns = Array(repeating: GridItem(.flexible(), spacing: 0, alignment: nil), count: 7)
+    let columnsCount: CGFloat = CalendarHelper().extractDates(dateHolder.date).count > 35 ? CGFloat(6) : CGFloat(5)
     
     var body: some View {
       GeometryReader { geo in
-        LazyVGrid(columns: columns, spacing: .zero) {
-          ForEach(CalendarHelper(date: dateHolder.date).extractDates()) { value in
+        LazyVGrid(columns: columns, spacing: 0) {
+          ForEach(CalendarHelper().extractDates(dateHolder.date)) { value in
             ZStack(alignment: .top) {
               Rectangle()
                 .fill(.white)
                 .border(.gray)
+
+                
               Text(value.date.day)
                 .foregroundColor(value.isCurrentMonth ? .black : .gray)
             }
@@ -67,9 +69,9 @@ struct CalendarView: View {
           }
           .onEnded { value in
             if currentOffsetX.width < 0 {
-              dateHolder.date = CalendarHelper(date: dateHolder.date).plusMonth()
+              dateHolder.date = CalendarHelper().plusMonth(dateHolder.date)
             } else if currentOffsetX.width > 0 {
-              dateHolder.date = CalendarHelper(date: dateHolder.date).minusMonth()
+              dateHolder.date = CalendarHelper().minusMonth(dateHolder.date)
             }
             withAnimation(.linear(duration: 0.4)) {
               currentOffsetX = .zero

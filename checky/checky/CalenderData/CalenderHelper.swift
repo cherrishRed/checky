@@ -7,20 +7,19 @@
 
 import Foundation
 
+
+
 struct CalendarHelper {
-  var date: Date
   let calendar: Calendar
-  var weekOption: String
+  var weekOption: WeekOption
   var startingWeek: Week
   var plusMinusMonth: Int
   
-  init(date: Date,
-       calendar: Calendar = Calendar.current,
-       weekOption: String = "KoreanShot",
+  init(calendar: Calendar = Calendar.current,
+       weekOption: WeekOption = WeekOption.KoreanShort,
        startingWeek: Week = Week.sunday,
        plusMinusMonth: Int = 0
   ) {
-    self.date = date
     self.calendar = calendar
     self.weekOption = weekOption
     self.startingWeek = startingWeek
@@ -33,21 +32,21 @@ struct CalendarHelper {
     return dataFormatter.string(from: date)
   }
   
-  func plusMonth() -> Date {
+  func plusMonth(_ date: Date) -> Date {
     guard let nextMonth = calendar.date(byAdding: .month, value: 1, to: date) else {
       return Date()
     }
     return nextMonth
   }
   
-  func minusMonth() -> Date {
+  func minusMonth(_ date: Date) -> Date {
     guard let frontMonth = calendar.date(byAdding: .month, value: -1, to: date) else {
       return Date()
     }
     return frontMonth
   }
   
-  private func saveDaysOfCurrentMonth() -> [DateValue] {
+  private func saveDaysOfCurrentMonth(_ date: Date) -> [DateValue] {
     guard let currentMonth = calendar.date(byAdding: .month, value: plusMinusMonth, to: date) else {
       return []
     }
@@ -55,10 +54,10 @@ struct CalendarHelper {
     return currentMonth.getAllDates().map { DateValue(date: $0, isCurrentMonth: true) }
   }
   
-  func extractDates() -> [DateValue] {
+  func extractDates(_ date: Date) -> [DateValue] {
     var currentCalendar: [DateValue] = []
     
-    let days = saveDaysOfCurrentMonth()
+    let days = saveDaysOfCurrentMonth(date)
     
     guard let firstDayOfMonth = days.first, let lastDayOfMonth = days.last else {
       return []

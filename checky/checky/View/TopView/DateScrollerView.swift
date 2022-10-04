@@ -15,7 +15,7 @@ struct DateScrollerView: View {
       HStack {
         Spacer()
  
-        Text(CalendarHelper(date: dateHolder.date).monthYearString(dateHolder.date))
+        Text(CalendarHelper().monthYearString(dateHolder.date))
           .font(.title)
           .bold()
           .animation(.none)
