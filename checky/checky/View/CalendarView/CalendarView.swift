@@ -11,6 +11,7 @@ struct CalendarView: View {
   @EnvironmentObject var dateHolder: DateHolder
   @State var currentOffsetX: CGSize = .zero
   let eventManager: EventManager = EventManager()
+  @State var events: [Event] = []
   
   var body: some View {
     VStack(spacing: 1) {
@@ -24,6 +25,8 @@ struct CalendarView: View {
     }
     .onAppear {
       eventManager.getPermission()
+      
+      events = eventManager.getAllEventforThisMonth(date: dateHolder.date)
     }
   }
   
@@ -59,6 +62,7 @@ struct CalendarView: View {
                 
               Text(value.date.day)
                 .foregroundColor(value.isCurrentMonth ? .black : .gray)
+              Text()
             }
             .frame(width: geo.size.width / 7, height: geo.size.height / columnsCount)
           }
