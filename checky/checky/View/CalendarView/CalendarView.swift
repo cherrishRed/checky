@@ -23,6 +23,9 @@ struct CalendarView: View {
       
       CalendarGrid
     }
+    .onChange(of: dateHolder.date) { newValue in
+      events = eventManager.getAllEventforThisMonth(date: dateHolder.date)
+    }
     .onAppear {
       eventManager.getPermission()
       
