@@ -15,7 +15,7 @@ struct CalendarHelper {
   
   init(calendar: Calendar = Calendar.current,
        weekOption: WeekOption = WeekOption.KoreanShort,
-       startingWeek: Week = Week.sunday,
+       startingWeek: Week = Week.friday,
        plusMinusMonth: Int = 0
   ) {
     self.calendar = calendar
@@ -72,7 +72,7 @@ struct CalendarHelper {
   }
   
   private func saveWeek(targetDate: DateValue) -> Week {
-    let firstDayOfWeekday = calendar.component(.weekday, from: targetDate.date)
+    let firstDayOfWeekday = calendar.component(.weekday, from: targetDate.date) // 요일 일요일1
     
     guard let firstWeekday = Week(rawValue: firstDayOfWeekday) else {
       return Week.sunday
@@ -83,15 +83,12 @@ struct CalendarHelper {
   
   private func savepreviousMonthDayCount(targetDate: DateValue) -> Int {
     let firstWeekday = saveWeek(targetDate: targetDate)
-    var previousMonthDayCount: Int = 0
     
     guard startingWeek.rawValue > firstWeekday.rawValue else {
-      previousMonthDayCount = firstWeekday.rawValue - startingWeek.rawValue
-      return previousMonthDayCount
+      return firstWeekday.rawValue - startingWeek.rawValue
     }
     
-    previousMonthDayCount = 7 - startingWeek.rawValue + firstWeekday.rawValue
-    return previousMonthDayCount
+    return 7 - startingWeek.rawValue + firstWeekday.rawValue
   }
   
   private func previousDates(firstDayOfCurrentMonth: DateValue) -> [DateValue] {
@@ -112,20 +109,12 @@ struct CalendarHelper {
   
   private func saveNextMonthDayCount(targetDate: DateValue) -> Int {
     let lastWeekday = saveWeek(targetDate: targetDate)
-    var nextMonthDayCount: Int = 0
     
-    guard startingWeek.rawValue >= lastWeekday.rawValue else {
-      nextMonthDayCount = 7 - lastWeekday.rawValue
-      return nextMonthDayCount
+    guard startingWeek.rawValue <= lastWeekday.rawValue else {
+      return startingWeek.rawValue - lastWeekday.rawValue - 1
     }
     
-    guard lastWeekday.rawValue - lastWeekday.rawValue == 0 else {
-      nextMonthDayCount = lastWeekday.rawValue - lastWeekday.rawValue
-      return nextMonthDayCount
-    }
-    
-    nextMonthDayCount = 6
-    return nextMonthDayCount
+    return 6 - lastWeekday.rawValue + startingWeek.rawValue
   }
   
   private func nextDates(lastDayOfCurrentMonth: DateValue) -> [DateValue] {

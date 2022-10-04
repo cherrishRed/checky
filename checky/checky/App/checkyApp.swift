@@ -9,11 +9,11 @@ import SwiftUI
 
 @main
 struct checkyApp: App {
-    var body: some Scene {
-        WindowGroup {
-          let dataHolder = DateHolder()
-            CalendarView()
-            .environmentObject(dataHolder)
-        }
+  var body: some Scene {
+    WindowGroup {
+      let dataHolder = DateHolder()
+      CalendarView()
+        .environmentObject(dataHolder)
     }
+  }
 }
