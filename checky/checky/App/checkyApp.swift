@@ -12,7 +12,7 @@ struct checkyApp: App {
     var body: some Scene {
         WindowGroup {
           let dataHolder = DateHolder()
-            MainView()
+            CalendarView()
             .environmentObject(dataHolder)
         }
     }
