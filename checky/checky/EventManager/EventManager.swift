@@ -38,15 +38,23 @@ class EventManager {
     }
   }
   
-  func getAllEventforThisMonth(date: Date) -> [EKEvent] {
+  func getAllEventforThisMonth(date: Date) -> [Event] {
     let allDates = date.getAllDates()
     guard let firstDate = allDates.first, let lastDate = allDates.last else {
       return []
     }
     
-    let predicate = store.predicateForEvents(withStart: firstDate, end: lastDate, calendars: [])
+    let categories = store.calendars(for: .event)
     
-    let list = store.events(matching: predicate)
+    var list: [Event] = []
+    
+    for category in categories {
+      let predicate = store.predicateForEvents(withStart: firstDate, end: lastDate, calendars: [category])
+      let eventList = store.events(matching: predicate).map { ekevent -> Event in
+        return Event(ekevent: ekevent, category: category)
+      }
+      list.append(contentsOf: eventList)
+    }
     
     return list
   }
