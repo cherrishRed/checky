@@ -10,6 +10,8 @@ import SwiftUI
 struct CalendarView: View {
   @EnvironmentObject var dateHolder: DateHolder
   @State var currentOffsetX: CGSize = .zero
+  let eventManager: EventManager = EventManager()
+  
   var body: some View {
     VStack(spacing: 1) {
       HeaderView()
@@ -19,6 +21,9 @@ struct CalendarView: View {
       dayOfWeekStack
       
       CalendarGrid
+    }
+    .onAppear {
+      eventManager.getPermission()
     }
   }
   
