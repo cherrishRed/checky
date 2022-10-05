@@ -67,22 +67,7 @@ struct CalendarView: View {
       GeometryReader { geo in
         LazyVGrid(columns: columns, spacing: 0) {
           ForEach(CalendarHelper().extractDates(dateHolder.date)) { value in
-            
-            let filteredEvent = events.filter { event in
-              return event.ekevent.startDate.dateCompare(fromDate: value.date) == "Same"
-              
-            }
-            
-            let filteredReminder = reminders.filter { reminder in
-              let dateComponent: DateComponents = Calendar.current.dateComponents([.day, .month], from: value.date)
-              let sameDay = reminder.ekreminder.dueDateComponents?.day == dateComponent.day
-              let sameMonth = reminder.ekreminder.dueDateComponents?.month == dateComponent.month
-              
-              return sameDay && sameMonth
-            }
-            
-            
-            CalendarCellView(dateValue: value, allEvnets: filteredEvent, allReminders: filteredReminder)
+            CalendarCellView(dateValue: value, allEvnets: eventManager.filterEvent(events, value.date), allReminders: eventManager.filterReminder(reminders, value.date))
             .frame(width: geo.size.width / 7, height: geo.size.height / columnsCount)
           }
         }

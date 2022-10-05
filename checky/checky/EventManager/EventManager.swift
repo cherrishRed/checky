@@ -76,9 +76,24 @@ class EventManager {
         completionHandler(list)
         }
     }
-//    
-//    
-//    print("list start: \(list)")
-//    completionHandler(list)
+  }
+  
+  func filterReminder(_ reminders: [Reminder], _ date: Date) -> [Reminder] {
+    let filteredReminder = reminders.filter { reminder in
+      let dateComponent: DateComponents = Calendar.current.dateComponents([.day, .month], from: date)
+      let sameDay = reminder.ekreminder.dueDateComponents?.day == dateComponent.day
+      let sameMonth = reminder.ekreminder.dueDateComponents?.month == dateComponent.month
+      
+      return sameDay && sameMonth
+  }
+    return filteredReminder
+  }
+  
+  func filterEvent(_ data: [Event], _ date: Date) -> [Event] {
+    let filteredDatas = data.filter { event in
+      return event.ekevent.startDate.dateCompare(fromDate: date) == "Same"
+    }
+    
+    return filteredDatas
   }
 }
