@@ -15,7 +15,7 @@ struct CalendarHelper {
   
   init(calendar: Calendar = Calendar.current,
        weekOption: WeekOption = WeekOption.KoreanShort,
-       startingWeek: Week = Week.friday,
+       startingWeek: Week = Week.sunday,
        plusMinusMonth: Int = 0
   ) {
     self.calendar = calendar
