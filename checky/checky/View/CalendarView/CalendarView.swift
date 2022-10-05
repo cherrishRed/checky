@@ -12,9 +12,8 @@ struct CalendarView: View {
   
   var body: some View {
     VStack(spacing: 1) {
-//      HeaderView()
-//        .environmentObject(dateHolder)
-//        .padding()
+      HeaderView(viewModel: HeaderViewModel(dateHolder: viewModel.dateHolder, calendarHelper: viewModel.calendarHelper))
+        .padding()
       
       dayOfWeekStack
       
