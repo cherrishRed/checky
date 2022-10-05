@@ -12,8 +12,11 @@ struct checkyApp: App {
   var body: some Scene {
     WindowGroup {
       let dataHolder = DateHolder()
-      CalendarView()
-        .environmentObject(dataHolder)
+      let eventManager = EventManager()
+      let calendarHelper = CalendarHelper()
+      
+      CalendarView(viewModel: CalendarViewModel(dateHolder: dataHolder, eventManager: eventManager, calendarHelper: calendarHelper))
+//        .environmentObject(dataHolder)
     }
   }
 }

@@ -8,37 +8,35 @@
 import SwiftUI
 
 struct CalendarView: View {
-  @EnvironmentObject var dateHolder: DateHolder
-  @State var currentOffsetX: CGSize = .zero
-  let eventManager: EventManager = EventManager()
-  @State var events: [Event] = []
-  @State var reminders: [Reminder] = []
+  @ObservedObject var viewModel: CalendarViewModel
+//  @EnvironmentObject var dateHolder: DateHolder
+//  @State var currentOffsetX: CGSize = .zero
+//  let eventManager: EventManager = EventManager()
+//  @State var events: [Event] = []
+//  @State var reminders: [Reminder] = []
   
   var body: some View {
     VStack(spacing: 1) {
-      HeaderView()
-        .environmentObject(dateHolder)
-        .padding()
+//      HeaderView()
+//        .environmentObject(dateHolder)
+//        .padding()
       
       dayOfWeekStack
       
       CalendarGrid
     }
-    .onChange(of: dateHolder.date) { newValue in
-      events = eventManager.getAllEventforThisMonth(date: dateHolder.date)
-      eventManager.getAllReminderforThisMonth(date: dateHolder.date) { reminderList in
-        reminders = reminderList
-        print(reminderList)
+    .onChange(of: viewModel.dateHolder.date) { newValue in
+      viewModel.fetchEvents()
+      viewModel.fetchReminder()
+//      events = eventManager.getAllEventforThisMonth(date: dateHolder.date)
+//      eventManager.getAllReminderforThisMonth(date: dateHolder.date) { reminderList in
+//        reminders = reminderList
+//        print(reminderList)
       }
-    }
     .onAppear {
-      eventManager.getPermission()
-      
-      events = eventManager.getAllEventforThisMonth(date: dateHolder.date)
-      eventManager.getAllReminderforThisMonth(date: dateHolder.date) { reminderList in
-        reminders = reminderList
-        print(reminderList)
-      }
+      viewModel.getPermission()
+      viewModel.fetchEvents()
+      viewModel.fetchReminder()
     }
   }
   
@@ -61,32 +59,27 @@ struct CalendarView: View {
   
   var CalendarGrid: some View {
     let columns = Array(repeating: GridItem(.flexible(), spacing: 0, alignment: nil), count: 7)
-    let columnsCount: CGFloat = CalendarHelper().extractDates(dateHolder.date).count > 35 ? CGFloat(6) : CGFloat(5)
+    let columnsCount: CGFloat = viewModel.gridCloumnsCount
     
     var body: some View {
       GeometryReader { geo in
         LazyVGrid(columns: columns, spacing: 0) {
-          ForEach(CalendarHelper().extractDates(dateHolder.date)) { value in
-            CalendarCellView(dateValue: value, allEvnets: eventManager.filterEvent(events, value.date), allReminders: eventManager.filterReminder(reminders, value.date))
+          ForEach(viewModel.allDatesForDisplay) { value in
+            CalendarCellView(dateValue: value, allEvnets: viewModel.filteredEvent(viewModel.dateHolder.date), allReminders: viewModel.filteredReminder(viewModel.dateHolder.date))
             .frame(width: geo.size.width / 7, height: geo.size.height / columnsCount)
           }
         }
       }
       .frame(maxHeight: .infinity)
-      .offset(x: currentOffsetX.width)
       .gesture(
         DragGesture()
           .onChanged { value in
-            currentOffsetX = value.translation
+            viewModel.currentOffsetX = value.translation
           }
           .onEnded { value in
-            if currentOffsetX.width < 0 {
-              dateHolder.date = CalendarHelper().plusMonth(dateHolder.date)
-            } else if currentOffsetX.width > 0 {
-              dateHolder.date = CalendarHelper().minusMonth(dateHolder.date)
-            }
+            viewModel.dragGestureonEnded()
             withAnimation(.linear(duration: 0.4)) {
-              currentOffsetX = .zero
+              viewModel.resetCurrentOffsetX()
             }
           }
       )
