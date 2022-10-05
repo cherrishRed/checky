@@ -34,8 +34,9 @@ class CalendarViewModel: ObservableObject {
 
   func fetchReminder() {
     eventManager.getAllReminderforThisMonth(date: dateHolder.date, completionHandler: { [weak self] reminderList in
+      DispatchQueue.main.async {
         self?.reminders = reminderList
-      
+      }
     })
   }
   
@@ -66,7 +67,4 @@ class CalendarViewModel: ObservableObject {
   func resetCurrentOffsetX() {
     currentOffsetX = .zero
   }
-  
-  
-  
 }
