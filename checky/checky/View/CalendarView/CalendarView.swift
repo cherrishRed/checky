@@ -65,7 +65,9 @@ struct CalendarView: View {
       GeometryReader { geo in
         LazyVGrid(columns: columns, spacing: 0) {
           ForEach(viewModel.allDatesForDisplay) { value in
-            CalendarCellView(dateValue: value, allEvnets: viewModel.filteredEvent(viewModel.dateHolder.date), allReminders: viewModel.filteredReminder(viewModel.dateHolder.date))
+            CalendarCellView(dateValue: value,
+                             allEvnets: viewModel.filteredEvent(value.date),
+                             allReminders: viewModel.filteredReminder(value.date))
             .frame(width: geo.size.width / 7, height: geo.size.height / columnsCount)
           }
         }
