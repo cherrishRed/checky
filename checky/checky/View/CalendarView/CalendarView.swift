@@ -9,11 +9,6 @@ import SwiftUI
 
 struct CalendarView: View {
   @ObservedObject var viewModel: CalendarViewModel
-//  @EnvironmentObject var dateHolder: DateHolder
-//  @State var currentOffsetX: CGSize = .zero
-//  let eventManager: EventManager = EventManager()
-//  @State var events: [Event] = []
-//  @State var reminders: [Reminder] = []
   
   var body: some View {
     VStack(spacing: 1) {
@@ -28,10 +23,6 @@ struct CalendarView: View {
     .onChange(of: viewModel.dateHolder.date) { newValue in
       viewModel.fetchEvents()
       viewModel.fetchReminder()
-//      events = eventManager.getAllEventforThisMonth(date: dateHolder.date)
-//      eventManager.getAllReminderforThisMonth(date: dateHolder.date) { reminderList in
-//        reminders = reminderList
-//        print(reminderList)
       }
     .onAppear {
       viewModel.getPermission()
@@ -65,6 +56,7 @@ struct CalendarView: View {
       GeometryReader { geo in
         LazyVGrid(columns: columns, spacing: 0) {
           ForEach(viewModel.allDatesForDisplay) { value in
+            CalendarCellView(dateValue: value, allEvnets: viewModel.filteredEvent(value.date), allReminders: viewModel.filteredReminder(value.date))
             CalendarCellView(dateValue: value,
                              allEvnets: viewModel.filteredEvent(value.date),
                              allReminders: viewModel.filteredReminder(value.date))
