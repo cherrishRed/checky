@@ -9,8 +9,17 @@ import Foundation
 import EventKit
 
 class EventManager {
-  let store = EKEventStore()
-  let calendar = Calendar.current
+  let store: EKEventStore
+  let calendar: Calendar
+  
+  init(
+    store: EKEventStore = EKEventStore(),
+    calendar: Calendar = Calendar.current
+  ) {
+    self.store = store
+    self.calendar = calendar
+  }
+  
   
   func getPermission() {
     store.requestAccess(to: .reminder) { granted, error in
@@ -79,21 +88,16 @@ class EventManager {
   }
   
   func filterReminder(_ reminders: [Reminder], _ date: Date) -> [Reminder] {
-    let filteredReminder = reminders.filter { reminder in
-      let dateComponent: DateComponents = Calendar.current.dateComponents([.day, .month], from: date)
-      let sameDay = reminder.ekreminder.dueDateComponents?.day == dateComponent.day
-      let sameMonth = reminder.ekreminder.dueDateComponents?.month == dateComponent.month
-      
-      return sameDay && sameMonth
-  }
+    let filteredReminder = reminders
+      .filter({
+        $0.ekreminder.dueDateComponents?.day == calendar.dateComponents([.day], from: date).day &&
+        $0.ekreminder.dueDateComponents?.month == calendar.dateComponents([.month], from: date).month })
     return filteredReminder
   }
   
   func filterEvent(_ data: [Event], _ date: Date) -> [Event] {
-    let filteredDatas = data.filter { event in
-      return event.ekevent.startDate.dateCompare(fromDate: date) == "Same"
-    }
-    
+    let filteredDatas = data.filter { $0.ekevent.startDate.dateCompare(fromDate: date) == "Same" }
+     
     return filteredDatas
   }
 }
