@@ -16,7 +16,6 @@ struct checkyApp: App {
       let calendarHelper = CalendarHelper()
       
       CalendarView(viewModel: CalendarViewModel(dateHolder: dataHolder, eventManager: eventManager, calendarHelper: calendarHelper))
-//        .environmentObject(dataHolder)
     }
   }
 }

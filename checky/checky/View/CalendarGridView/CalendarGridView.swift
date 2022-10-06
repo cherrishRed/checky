@@ -1,36 +1,16 @@
 //
-//  ContentView.swift
+//  dayOfWeekStackView.swift
 //  checky
 //
-//  Created by RED, Taeangel on 2022/09/30.
+//  Created by song on 2022/10/06.
 //
 
 import SwiftUI
 
-struct CalendarView: View {
-  @ObservedObject var viewModel: CalendarViewModel
+struct CalendarGridView: View {
+  @ObservedObject var viewModel: CalendarGridViewModel
   
   var body: some View {
-    VStack(spacing: 1) {
-      HeaderView(viewModel: HeaderViewModel(dateHolder: viewModel.dateHolder, calendarHelper: viewModel.calendarHelper))
-        .padding()
-      
-      DayOfWeekStackView()
-      
-      CalendarGrid
-    }
-    .onChange(of: viewModel.dateHolder.date) { newValue in
-      viewModel.fetchEvents()
-      viewModel.fetchReminder()
-      }
-    .onAppear {
-      viewModel.getPermission()
-      viewModel.fetchEvents()
-      viewModel.fetchReminder()
-    }
-  }
-  
-  var CalendarGrid: some View {
     let columns = Array(repeating: GridItem(.flexible(), spacing: 0, alignment: nil), count: 7)
     let columnsCount: CGFloat = viewModel.gridCloumnsCount
     
