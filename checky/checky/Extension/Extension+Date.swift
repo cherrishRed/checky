@@ -33,21 +33,21 @@ extension Date {
     return dateformmater.string(from: self)
   }
   
-  func dateCompare(fromDate: Date) -> String {
-    var strDateMessage:String = ""
+  func dateCompare(fromDate: Date) -> CompareDataState {
+    var strDateMessage: CompareDataState
     let result:ComparisonResult = self.compare(fromDate)
     switch result {
     case .orderedAscending:
-      strDateMessage = "Future"
+      strDateMessage = CompareDataState.orderedAscending
       break
     case .orderedDescending:
-      strDateMessage = "Past"
+      strDateMessage = CompareDataState.orderedDescending
       break
     case .orderedSame:
-      strDateMessage = "Same"
+      strDateMessage = CompareDataState.orderedSame
       break
     default:
-      strDateMessage = "Error"
+      strDateMessage = CompareDataState.error
       break
     }
     return strDateMessage
@@ -59,17 +59,4 @@ enum CompareDataState {
   case orderedDescending
   case orderedSame
   case error
-  
-  var discription: String {
-    switch self {
-    case .orderedAscending:
-      return "Future"
-    case .orderedDescending:
-      return "Past"
-    case .orderedSame:
-      return "Same"
-    case .error:
-      return "Error"
-    }
-  }
 }

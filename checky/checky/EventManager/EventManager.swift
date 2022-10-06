@@ -96,7 +96,7 @@ class EventManager {
   }
   
   func filterEvent(_ data: [Event], _ date: Date) -> [Event] {
-    let filteredDatas = data.filter { $0.ekevent.startDate.dateCompare(fromDate: date) == CompareDataState.orderedSame.discription }
+    let filteredDatas = data.filter { $0.ekevent.startDate.dateCompare(fromDate: date) == CompareDataState.orderedSame }
      
     return filteredDatas
   }
