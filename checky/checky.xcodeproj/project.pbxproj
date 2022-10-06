@@ -129,10 +129,10 @@
 		865BE52228EC475200305899 /* CalendarView */ = {
 			isa = PBXGroup;
 			children = (
-				86A5E5FC28EEA6200040DCFB /* DayOfWeekStackView */,
 				DA466EA128E685D70076AEE4 /* CalendarView.swift */,
 				DA91E81328EDF38F0091B6A3 /* CalendarViewModel.swift */,
 				DA91E7E428EC94170091B6A3 /* CalendarCellView.swift */,
+				86A5E5FC28EEA6200040DCFB /* DayOfWeekStackView */,
 			);
 			path = CalendarView;
 			sourceTree = "<group>";
@@ -146,10 +146,18 @@
 			path = DayOfWeekStackView;
 			sourceTree = "<group>";
 		};
+		86A5E60928EEB5AE0040DCFB /* WeekView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = WeekView;
+			sourceTree = "<group>";
+		};
 		DA2C792128EEB50500922C47 /* MainView */ = {
 			isa = PBXGroup;
 			children = (
 				865BE51D28EC464700305899 /* HeaderView */,
+				86A5E60928EEB5AE0040DCFB /* WeekView */,
 				865BE52228EC475200305899 /* CalendarView */,
 			);
 			path = MainView;

@@ -15,7 +15,7 @@ struct CalendarView: View {
       HeaderView(viewModel: HeaderViewModel(dateHolder: viewModel.dateHolder, calendarHelper: viewModel.calendarHelper))
         .padding()
       
-      DayOfWeekStackView()
+      DayOfWeekStackView(viewModel: DayOfWeekStackViewModel())
       
       CalendarGrid
     }

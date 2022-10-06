@@ -9,7 +9,7 @@ import Foundation
 
 class HeaderViewModel: ObservableObject {
   private let calendarHelper: CalendarHelper
-  @Published var dateHolder: DateHolder
+  private let dateHolder: DateHolder
   
   init(dateHolder: DateHolder, calendarHelper: CalendarHelper) {
     self.dateHolder = dateHolder
