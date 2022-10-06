@@ -7,15 +7,12 @@
 
 import SwiftUI
 
-@main
-struct checkyApp: App {
-  var body: some Scene {
-    WindowGroup {
+struct checkyApp: View {
+  var body: some View {
       let dataHolder = DateHolder()
       let eventManager = EventManager()
       let calendarHelper = CalendarHelper()
       
       CalendarView(viewModel: CalendarViewModel(dateHolder: dataHolder, eventManager: eventManager, calendarHelper: calendarHelper))
-    }
   }
 }
