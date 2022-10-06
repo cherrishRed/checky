@@ -9,19 +9,25 @@ import SwiftUI
 
 class CalendarViewModel: ObservableObject {
   @Published var dateHolder: DateHolder
-  @Published var events: [Event] = []
-  @Published var reminders: [Reminder] = []
-  @Published var currentOffsetX: CGSize = .zero
-  
+  @Published var events: [Event]
+  @Published var reminders: [Reminder]
+  @Published var currentOffsetX: CGSize
   let eventManager: EventManager
   let calendarHelper: CalendarHelper
   
   init(dateHolder: DateHolder,
        eventManager: EventManager,
-       calendarHelper: CalendarHelper) {
+       calendarHelper: CalendarHelper,
+       events: [Event] = [],
+       reminders: [Reminder] = [],
+       currentOffsetX: CGSize = .zero
+  ) {
     self.dateHolder = dateHolder
     self.eventManager = eventManager
     self.calendarHelper = calendarHelper
+    self.events = events
+    self.reminders = reminders
+    self.currentOffsetX = currentOffsetX
   }
   
   func getPermission() {
