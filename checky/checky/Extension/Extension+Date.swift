@@ -17,7 +17,7 @@ extension Date {
     guard let range = calendar.range(of: .day, in: .month, for: startDate) else {
       return []
     }
-
+    
     return range.compactMap { day -> Date in
       guard let day = calendar.date(byAdding: .day, value: day - 1, to: startDate) else {
         return Date()
@@ -51,5 +51,25 @@ extension Date {
       break
     }
     return strDateMessage
+  }
+}
+
+enum CompareDataState {
+  case orderedAscending
+  case orderedDescending
+  case orderedSame
+  case error
+  
+  var discription: String {
+    switch self {
+    case .orderedAscending:
+      return "Future"
+    case .orderedDescending:
+      return "Past"
+    case .orderedSame:
+      return "Same"
+    case .error:
+      return "Error"
+    }
   }
 }
