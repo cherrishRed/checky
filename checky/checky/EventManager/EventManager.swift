@@ -77,27 +77,27 @@ class EventManager {
       let predicate: NSPredicate = store.predicateForReminders(in: [category])
       
       store.fetchReminders(matching: predicate) { reminders in
-          for reminder in reminders ?? [] {
-            let re = Reminder(ekreminder: reminder, category: category)
-              list.append(re)
-          }
-        print("list start: \(list)")
-        completionHandler(list)
+        for ekreminder in reminders ?? [] {
+          let reminder = Reminder(ekreminder: ekreminder, category: category)
+          list.append(reminder)
         }
+        completionHandler(list)
+      }
     }
   }
   
   func filterReminder(_ reminders: [Reminder], _ date: Date) -> [Reminder] {
     let filteredReminder = reminders
-      .filter({
+      .filter {
         $0.ekreminder.dueDateComponents?.day == calendar.dateComponents([.day], from: date).day &&
-        $0.ekreminder.dueDateComponents?.month == calendar.dateComponents([.month], from: date).month })
+        $0.ekreminder.dueDateComponents?.month == calendar.dateComponents([.month], from: date).month }
     return filteredReminder
   }
   
   func filterEvent(_ data: [Event], _ date: Date) -> [Event] {
-    let filteredDatas = data.filter { $0.ekevent.startDate.dateCompare(fromDate: date) == CompareDataState.orderedSame }
-     
+    let filteredDatas = data
+      .filter { $0.ekevent.startDate.dateCompare(fromDate: date) == CompareDataState.orderedSame }
+    
     return filteredDatas
   }
 }
