@@ -12,17 +12,19 @@ struct CalendarView: View {
   
   var body: some View {
     VStack(spacing: 1) {
-      HeaderView(viewModel: HeaderViewModel(dateHolder: viewModel.dateHolder, calendarHelper: viewModel.calendarHelper)).padding(10)
+      HeaderView(viewModel: HeaderViewModel(dateHolder: viewModel.dateHolder, calendarHelper: viewModel.calendarHelper))
+            .padding(.vertical, 10)
       
-      VStack {
+        VStack(spacing: 0) {
         
         DayOfWeekStackView(viewModel: DayOfWeekStackViewModel())
         
         CalendarGrid
+
       }
-      .cornerRadius(20)
       .background(Color.white)
-      .padding(.horizontal, 2)
+      .cornerRadius(20)
+      .padding(.horizontal, 4)
       .padding(.vertical, 20)
     }
     .background(Color.gray.opacity(0.5))

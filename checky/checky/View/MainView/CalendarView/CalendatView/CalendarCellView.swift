@@ -15,7 +15,7 @@ struct CalendarCellView: View {
     var body: some View {
       ZStack(alignment: .top) {
         Rectangle()
-          .fill(.white)
+              .fill(dateValue.isCurrentMonth ? .white : .gray.opacity(0.2))
         VStack {
           Text(dateValue.date.day)
             .foregroundColor(dateValue.isCurrentMonth ? .black.opacity(0.5) : .gray.opacity(0.5))

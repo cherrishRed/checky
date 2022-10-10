@@ -8,18 +8,14 @@
 import SwiftUI
 
 struct HeaderView: View {
-  @StateObject var viewModel: HeaderViewModel
-  
-  var body: some View {
-    HStack {
-      Spacer()
-      Text(viewModel.displayMonth)
-        .font(.title)
-        .bold()
-        .animation(.none)
-        .frame(maxWidth: .infinity)
-      Spacer()
+    @StateObject var viewModel: HeaderViewModel
+    
+    var body: some View {
+        Text(viewModel.displayMonth)
+            .font(.title)
+            .bold()
+            .animation(.none)
+            .frame(maxWidth: .infinity)
+            .background(.white)
     }
-  }
 }
-
