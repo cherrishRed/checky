@@ -19,19 +19,19 @@ enum Week: Int, CaseIterable {
   var short: String {
     switch self {
     case .sunday:
-      return "sun"
+      return "S"
     case .monday:
-      return "mon"
+      return "M"
     case .tuesday:
-      return "tue"
+      return "T"
     case .wednessday:
-      return "wed"
+      return "W"
     case .thursday:
-      return "thu"
+      return "T"
     case .friday:
-      return "fri"
+      return "F"
     case .saturday:
-      return "sat"
+      return "S"
     }
   }
   
