@@ -14,12 +14,10 @@ struct CalendarCellView: View {
   
     var body: some View {
       ZStack(alignment: .top) {
-        Rectangle()
-          .fill(.white)
-          .border(.gray)
+
         VStack {
           Text(dateValue.date.day)
-            .foregroundColor(dateValue.isCurrentMonth ? .black : .gray)
+            .foregroundColor(dateValue.isCurrentMonth ? .black.opacity(0.5) : .gray.opacity(0.5))
           ForEach(allEvnets, id: \.self) { event in
             Text(event.ekevent.title)
               .lineLimit(1)

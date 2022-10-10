@@ -12,13 +12,20 @@ struct CalendarView: View {
   
   var body: some View {
     VStack(spacing: 1) {
-      HeaderView(viewModel: HeaderViewModel(dateHolder: viewModel.dateHolder, calendarHelper: viewModel.calendarHelper))
-        .padding()
+      HeaderView(viewModel: HeaderViewModel(dateHolder: viewModel.dateHolder, calendarHelper: viewModel.calendarHelper)).padding(10)
       
-      DayOfWeekStackView(viewModel: DayOfWeekStackViewModel())
-      
-      CalendarGrid
+      VStack {
+        
+        DayOfWeekStackView(viewModel: DayOfWeekStackViewModel())
+        
+        CalendarGrid
+      }
+      .cornerRadius(20)
+      .background(Color.white)
+      .padding(.horizontal, 2)
+      .padding(.vertical, 20)
     }
+    .background(Color.gray.opacity(0.5))
     .onChange(of: viewModel.dateHolder.date) { newValue in
       viewModel.fetchEvents()
       viewModel.fetchReminder()
