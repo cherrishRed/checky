@@ -8,7 +8,7 @@
 import Foundation
 import EventKit
 
-class EventManager {
+class EventManager1 {
   let store: EKEventStore
   let calendar: Calendar
   
@@ -19,7 +19,6 @@ class EventManager {
     self.store = store
     self.calendar = calendar
   }
-  
   
   func getPermission() {
     store.requestAccess(to: .reminder) { granted, error in
@@ -64,7 +63,6 @@ class EventManager {
       }
       list.append(contentsOf: eventList)
     }
-    
     return list
   }
   
@@ -87,17 +85,14 @@ class EventManager {
   }
   
   func filterReminder(_ reminders: [Reminder], _ date: Date) -> [Reminder] {
-    let filteredReminder = reminders
+    reminders
       .filter {
         $0.ekreminder.dueDateComponents?.day == calendar.dateComponents([.day], from: date).day &&
         $0.ekreminder.dueDateComponents?.month == calendar.dateComponents([.month], from: date).month }
-    return filteredReminder
   }
   
   func filterEvent(_ data: [Event], _ date: Date) -> [Event] {
-    let filteredDatas = data
+    data
       .filter { $0.ekevent.startDate.dateCompare(fromDate: date) == CompareDataState.orderedSame }
-    
-    return filteredDatas
   }
 }
