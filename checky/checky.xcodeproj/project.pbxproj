@@ -153,9 +153,7 @@
 			children = (
 				865BE51D28EC464700305899 /* HeaderView */,
 				86A5E60928EEB5AE0040DCFB /* WeekView */,
-				DA466EA128E685D70076AEE4 /* CalendarView.swift */,
-				DA91E81328EDF38F0091B6A3 /* CalendarViewModel.swift */,
-				DA91E7E428EC94170091B6A3 /* CalendarCellView.swift */,
+				868C544828F440F6006A9B38 /* CalendatView */,
 				86A5E5FC28EEA6200040DCFB /* DayOfWeekStackView */,
 			);
 			path = CalendarView;
@@ -170,6 +168,16 @@
 				868C544228F417F7006A9B38 /* TabBarItem.swift */,
 			);
 			path = CustomTabBar;
+			sourceTree = "<group>";
+		};
+		868C544828F440F6006A9B38 /* CalendatView */ = {
+			isa = PBXGroup;
+			children = (
+				DA466EA128E685D70076AEE4 /* CalendarView.swift */,
+				DA91E81328EDF38F0091B6A3 /* CalendarViewModel.swift */,
+				DA91E7E428EC94170091B6A3 /* CalendarCellView.swift */,
+			);
+			path = CalendatView;
 			sourceTree = "<group>";
 		};
 		86A5E5FC28EEA6200040DCFB /* DayOfWeekStackView */ = {
