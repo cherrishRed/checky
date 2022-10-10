@@ -8,7 +8,7 @@
 import Foundation
 import EventKit
 
-class EventManager1 {
+class EventManager {
   let store: EKEventStore
   let calendar: Calendar
   

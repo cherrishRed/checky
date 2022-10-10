@@ -12,11 +12,11 @@ class CalendarViewModel: ObservableObject {
   @Published var events: [Event]
   @Published var reminders: [Reminder]
   @Published var currentOffsetX: CGSize
-  let eventManager: EventManager1
+  let eventManager: EventManager
   let calendarHelper: CalendarHelper
   
   init(dateHolder: DateHolder,
-       eventManager: EventManager1,
+       eventManager: EventManager,
        calendarHelper: CalendarHelper,
        events: [Event] = [],
        reminders: [Reminder] = [],
