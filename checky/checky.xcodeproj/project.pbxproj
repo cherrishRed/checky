@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		865BE52428EC4B6200305899 /* Extension+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BE52328EC4B6200305899 /* Extension+Text.swift */; };
 		865BE52628EC867900305899 /* WeekOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BE52528EC867900305899 /* WeekOption.swift */; };
+		868C543D28F4178D006A9B38 /* TabBarItemsPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C543C28F4178D006A9B38 /* TabBarItemsPreferenceKey.swift */; };
+		868C543F28F417C0006A9B38 /* CustomTabBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C543E28F417C0006A9B38 /* CustomTabBarContainerView.swift */; };
+		868C544128F417D9006A9B38 /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C544028F417D9006A9B38 /* CustomTabBarView.swift */; };
+		868C544328F417F7006A9B38 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C544228F417F7006A9B38 /* TabBarItem.swift */; };
+		868C544528F4199D006A9B38 /* CheckyMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C544428F4199D006A9B38 /* CheckyMainView.swift */; };
+		868C544728F419B1006A9B38 /* CheckyMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C544628F419B1006A9B38 /* CheckyMainViewModel.swift */; };
 		86A5E60228EEA6A80040DCFB /* DayOfWeekStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5E60128EEA6A80040DCFB /* DayOfWeekStackView.swift */; };
 		86A5E60428EEA6B10040DCFB /* DayOfWeekStackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5E60328EEA6B10040DCFB /* DayOfWeekStackViewModel.swift */; };
 		86FC8CF528EAB3CF00B7752F /* DateHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FC8CF428EAB3CF00B7752F /* DateHolder.swift */; };
@@ -26,7 +32,7 @@
 		DA91E7D628EABDED0091B6A3 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91E7D528EABDED0091B6A3 /* Week.swift */; };
 		DA91E7D828EB57AF0091B6A3 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91E7D728EB57AF0091B6A3 /* DateValue.swift */; };
 		DA91E7DA28EB58310091B6A3 /* Extension+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91E7D928EB58310091B6A3 /* Extension+Date.swift */; };
-		DA91E7DC28EC1E880091B6A3 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91E7DB28EC1E880091B6A3 /* EventManager.swift */; };
+		DA91E7DC28EC1E880091B6A3 /* EventManager1.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91E7DB28EC1E880091B6A3 /* EventManager1.swift */; };
 		DA91E7E128EC8DFC0091B6A3 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91E7E028EC8DFC0091B6A3 /* Event.swift */; };
 		DA91E7E328EC8E580091B6A3 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91E7E228EC8E580091B6A3 /* Reminder.swift */; };
 		DA91E7E528EC94180091B6A3 /* CalendarCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91E7E428EC94170091B6A3 /* CalendarCellView.swift */; };
@@ -38,6 +44,12 @@
 		865BE51828EC2E6F00305899 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		865BE52328EC4B6200305899 /* Extension+Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Text.swift"; sourceTree = "<group>"; };
 		865BE52528EC867900305899 /* WeekOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekOption.swift; sourceTree = "<group>"; };
+		868C543C28F4178D006A9B38 /* TabBarItemsPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemsPreferenceKey.swift; sourceTree = "<group>"; };
+		868C543E28F417C0006A9B38 /* CustomTabBarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarContainerView.swift; sourceTree = "<group>"; };
+		868C544028F417D9006A9B38 /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
+		868C544228F417F7006A9B38 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
+		868C544428F4199D006A9B38 /* CheckyMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckyMainView.swift; sourceTree = "<group>"; };
+		868C544628F419B1006A9B38 /* CheckyMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckyMainViewModel.swift; sourceTree = "<group>"; };
 		86A5E60128EEA6A80040DCFB /* DayOfWeekStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekStackView.swift; sourceTree = "<group>"; };
 		86A5E60328EEA6B10040DCFB /* DayOfWeekStackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekStackViewModel.swift; sourceTree = "<group>"; };
 		86FC8CF428EAB3CF00B7752F /* DateHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHolder.swift; sourceTree = "<group>"; };
@@ -56,7 +68,7 @@
 		DA91E7D528EABDED0091B6A3 /* Week.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
 		DA91E7D728EB57AF0091B6A3 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
 		DA91E7D928EB58310091B6A3 /* Extension+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Date.swift"; sourceTree = "<group>"; };
-		DA91E7DB28EC1E880091B6A3 /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
+		DA91E7DB28EC1E880091B6A3 /* EventManager1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager1.swift; sourceTree = "<group>"; };
 		DA91E7E028EC8DFC0091B6A3 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		DA91E7E228EC8E580091B6A3 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		DA91E7E428EC94170091B6A3 /* CalendarCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCellView.swift; sourceTree = "<group>"; };
@@ -120,7 +132,7 @@
 		865BE52028EC46CB00305899 /* EventManager */ = {
 			isa = PBXGroup;
 			children = (
-				DA91E7DB28EC1E880091B6A3 /* EventManager.swift */,
+				DA91E7DB28EC1E880091B6A3 /* EventManager1.swift */,
 			);
 			path = EventManager;
 			sourceTree = "<group>";
@@ -139,12 +151,25 @@
 		865BE52228EC475200305899 /* CalendarView */ = {
 			isa = PBXGroup;
 			children = (
+				865BE51D28EC464700305899 /* HeaderView */,
+				86A5E60928EEB5AE0040DCFB /* WeekView */,
 				DA466EA128E685D70076AEE4 /* CalendarView.swift */,
 				DA91E81328EDF38F0091B6A3 /* CalendarViewModel.swift */,
 				DA91E7E428EC94170091B6A3 /* CalendarCellView.swift */,
 				86A5E5FC28EEA6200040DCFB /* DayOfWeekStackView */,
 			);
 			path = CalendarView;
+			sourceTree = "<group>";
+		};
+		868C543B28F41753006A9B38 /* CustomTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				868C543C28F4178D006A9B38 /* TabBarItemsPreferenceKey.swift */,
+				868C543E28F417C0006A9B38 /* CustomTabBarContainerView.swift */,
+				868C544028F417D9006A9B38 /* CustomTabBarView.swift */,
+				868C544228F417F7006A9B38 /* TabBarItem.swift */,
+			);
+			path = CustomTabBar;
 			sourceTree = "<group>";
 		};
 		86A5E5FC28EEA6200040DCFB /* DayOfWeekStackView */ = {
@@ -166,8 +191,8 @@
 		DA2C792128EEB50500922C47 /* MainView */ = {
 			isa = PBXGroup;
 			children = (
-				865BE51D28EC464700305899 /* HeaderView */,
-				86A5E60928EEB5AE0040DCFB /* WeekView */,
+				868C544628F419B1006A9B38 /* CheckyMainViewModel.swift */,
+				868C544428F4199D006A9B38 /* CheckyMainView.swift */,
 				865BE52228EC475200305899 /* CalendarView */,
 			);
 			path = MainView;
@@ -204,6 +229,7 @@
 			children = (
 				DA2C796028EEFF7700922C47 /* AppDelegate.swift */,
 				DA2C796228EEFFA300922C47 /* SceneDelegate.swift */,
+				868C543B28F41753006A9B38 /* CustomTabBar */,
 				DA2C796428EF004000922C47 /* Coordinator */,
 				DA91E7DF28EC8DDB0091B6A3 /* Model */,
 				865BE51E28EC468600305899 /* EnvironmentObject */,
@@ -310,20 +336,26 @@
 				DA91E7D628EABDED0091B6A3 /* Week.swift in Sources */,
 				DA2C796128EEFF7700922C47 /* AppDelegate.swift in Sources */,
 				DA466EA028E685D70076AEE4 /* checkyApp.swift in Sources */,
+				868C543F28F417C0006A9B38 /* CustomTabBarContainerView.swift in Sources */,
 				865BE52628EC867900305899 /* WeekOption.swift in Sources */,
 				DA91E7E528EC94180091B6A3 /* CalendarCellView.swift in Sources */,
 				DA91E81828EE01790091B6A3 /* HeaderViewModel.swift in Sources */,
 				DA91E7E128EC8DFC0091B6A3 /* Event.swift in Sources */,
+				868C544128F417D9006A9B38 /* CustomTabBarView.swift in Sources */,
 				DA2C796628EF005B00922C47 /* NavigationRouter.swift in Sources */,
 				86A5E60228EEA6A80040DCFB /* DayOfWeekStackView.swift in Sources */,
 				86FC8CFA28EAB49B00B7752F /* HeaderView.swift in Sources */,
-				DA91E7DC28EC1E880091B6A3 /* EventManager.swift in Sources */,
+				868C544728F419B1006A9B38 /* CheckyMainViewModel.swift in Sources */,
+				DA91E7DC28EC1E880091B6A3 /* EventManager1.swift in Sources */,
+				868C544528F4199D006A9B38 /* CheckyMainView.swift in Sources */,
 				DA2C796828EF007900922C47 /* NavigationTranisitionStyle.swift in Sources */,
 				DA91E7D828EB57AF0091B6A3 /* DateValue.swift in Sources */,
 				DA91E81428EDF3900091B6A3 /* CalendarViewModel.swift in Sources */,
+				868C543D28F4178D006A9B38 /* TabBarItemsPreferenceKey.swift in Sources */,
 				865BE52428EC4B6200305899 /* Extension+Text.swift in Sources */,
 				DA91E7E328EC8E580091B6A3 /* Reminder.swift in Sources */,
 				DA2C796A28EF009800922C47 /* Coordinator.swift in Sources */,
+				868C544328F417F7006A9B38 /* TabBarItem.swift in Sources */,
 				DA2C796328EEFFA300922C47 /* SceneDelegate.swift in Sources */,
 				86A5E60428EEA6B10040DCFB /* DayOfWeekStackViewModel.swift in Sources */,
 				86FC8CF528EAB3CF00B7752F /* DateHolder.swift in Sources */,
