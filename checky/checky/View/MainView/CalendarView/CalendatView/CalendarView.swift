@@ -22,12 +22,12 @@ struct CalendarView: View {
         CalendarGrid
 
       }
-      .background(Color.white)
+      .background(Color("basicWhite"))
       .cornerRadius(20)
       .padding(.horizontal, 4)
       .padding(.vertical, 20)
     }
-    .background(Color.gray.opacity(0.5))
+    .background(Color("backgroundGray"))
     .onChange(of: viewModel.dateHolder.date) { newValue in
       viewModel.fetchEvents()
       viewModel.fetchReminder()
