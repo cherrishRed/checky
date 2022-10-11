@@ -5,6 +5,10 @@
 //  Created by RED, Taeangel on 2022/09/30.
 //
 
+// 시간없는 이벤트 하루종일 이벤트
+// 시간순
+// 시간이 같으면 카테고리순
+
 import SwiftUI
 
 struct CalendarView: View {
@@ -14,8 +18,7 @@ struct CalendarView: View {
     VStack(spacing: 1) {
       HeaderView(viewModel: HeaderViewModel(dateHolder: viewModel.dateHolder, calendarHelper: viewModel.calendarHelper))
 
-      
-        VStack(spacing: 0) {
+      VStack(spacing: 0) {
         
         DayOfWeekStackView(viewModel: DayOfWeekStackViewModel())
         
@@ -28,7 +31,7 @@ struct CalendarView: View {
       .padding(.vertical, 25)
     }
     .background(Color("backgroundGray"))
-    .onChange(of: viewModel.dateHolder.date) { newValue in
+    .onChange(of: viewModel.dateHolder.date) { _ in
       viewModel.fetchEvents()
       viewModel.fetchReminder()
       }

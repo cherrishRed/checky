@@ -63,11 +63,11 @@ class CalendarViewModel: ObservableObject {
   }
 
   func dragGestureonEnded() {
-    if currentOffsetX.width < 0 {
-      dateHolder.date = calendarHelper.plusMonth(dateHolder.date)
-    } else {
+    guard currentOffsetX.width < 0 else {
       dateHolder.date = calendarHelper.minusMonth(dateHolder.date)
+      return
     }
+    dateHolder.date = calendarHelper.plusMonth(dateHolder.date)
   }
   
   func resetCurrentOffsetX() {
