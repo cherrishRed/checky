@@ -16,32 +16,19 @@ struct CalendarCellView: View {
       ZStack(alignment: .top) {
         Rectangle()
               .fill(dateValue.isCurrentMonth ? Color("basicWhite") : Color("backgroundLightGray"))
+//              .border(.gray)
           VStack(spacing: 0) {
-          Text(dateValue.date.day)
-            .foregroundColor(dateValue.isCurrentMonth ? Color("fontMediumGray") : Color("fontLightGray"))
-          ForEach(allEvnets, id: \.self) { event in
-              EventBlockView(event: event)
-                  .padding(1)
-        }
-          ForEach(allReminders, id: \.self) { reminder in
-            HStack(spacing: 1) {
-              if reminder.ekreminder.isCompleted == true {
-                Image(systemName: "circle.fill")
-                  .foregroundColor(Color(reminder.category.cgColor))
-                  .frame(width: 4, height: 4)
-              } else {
-                Image(systemName: "circle")
-                  .foregroundColor(Color(reminder.category.cgColor))
-                  .frame(width: 4, height: 4)
+              Text(dateValue.date.day)
+                  .foregroundColor(dateValue.isCurrentMonth ? Color("fontMediumGray") : Color("fontLightGray"))
+              ForEach(allEvnets, id: \.self) { event in
+                  EventBlockView(event: event)
+                      .padding(1)
               }
-              Text(reminder.ekreminder.title)
-                .lineLimit(1)
-                .font(.caption)
-                .frame(maxWidth: .infinity)
-            }
-
-        }
-        }
+              ForEach(allReminders, id: \.self) { reminder in
+                  ReminderBlockView(reminder: reminder)
+              }
+              
+          }
       }
     }
 }
@@ -64,5 +51,35 @@ struct EventBlockView: View {
             .fixedSize(horizontal: true, vertical: false)
         }
         .frame(height: 16)
+    }
+}
+
+struct ReminderBlockView: View {
+    let reminder: Reminder
+    
+    var body: some View {
+            HStack(spacing: 1) {
+                ZStack {
+                    Circle()
+                        .stroke(Color(reminder.category.cgColor))
+                        .frame(width: 10 , height: 10)
+                    Circle()
+                        .fill(Color(reminder.category.cgColor))
+                        .frame(width: 6 , height: 6)
+                        .opacity(reminder.ekreminder.isCompleted ? 1.0 : 0.0)
+                }
+                ZStack(alignment: .leading) {
+                    Rectangle()
+                        .fill(Color("basicWhite"))
+                        .frame(maxWidth: .infinity)
+                        .layoutPriority(1)
+                    Text(reminder.ekreminder.title)
+                        .font(.caption)
+                        .foregroundColor(Color("fontDarkBlack"))
+                        .fixedSize(horizontal: true, vertical: false)
+                }
+            }
+            .frame(height: 16)
+            .padding(.horizontal, 2)
     }
 }

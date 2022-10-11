@@ -152,7 +152,6 @@
 			isa = PBXGroup;
 			children = (
 				865BE51D28EC464700305899 /* HeaderView */,
-				86A5E60928EEB5AE0040DCFB /* WeekView */,
 				868C544828F440F6006A9B38 /* CalendatView */,
 				86A5E5FC28EEA6200040DCFB /* DayOfWeekStackView */,
 			);
@@ -187,13 +186,6 @@
 				86A5E60328EEA6B10040DCFB /* DayOfWeekStackViewModel.swift */,
 			);
 			path = DayOfWeekStackView;
-			sourceTree = "<group>";
-		};
-		86A5E60928EEB5AE0040DCFB /* WeekView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = WeekView;
 			sourceTree = "<group>";
 		};
 		DA2C792128EEB50500922C47 /* MainView */ = {
