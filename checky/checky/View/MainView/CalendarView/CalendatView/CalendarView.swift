@@ -13,7 +13,7 @@ struct CalendarView: View {
   var body: some View {
     VStack(spacing: 1) {
       HeaderView(viewModel: HeaderViewModel(dateHolder: viewModel.dateHolder, calendarHelper: viewModel.calendarHelper))
-            .padding(.vertical, 10)
+
       
         VStack(spacing: 0) {
         
