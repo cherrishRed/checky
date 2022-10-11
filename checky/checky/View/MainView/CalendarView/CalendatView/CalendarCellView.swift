@@ -16,17 +16,12 @@ struct CalendarCellView: View {
       ZStack(alignment: .top) {
         Rectangle()
               .fill(dateValue.isCurrentMonth ? Color("basicWhite") : Color("backgroundLightGray"))
-        VStack {
+          VStack(spacing: 0) {
           Text(dateValue.date.day)
             .foregroundColor(dateValue.isCurrentMonth ? Color("fontMediumGray") : Color("fontLightGray"))
           ForEach(allEvnets, id: \.self) { event in
-            Text(event.ekevent.title)
-              .lineLimit(1)
-              .font(.caption)
-              .foregroundColor(.white)
-              .background(Color(event.category.cgColor))
-              .cornerRadius(2)
-              .frame(maxWidth: .infinity)
+              EventBlockView(event: event)
+                  .padding(1)
         }
           ForEach(allReminders, id: \.self) { reminder in
             HStack(spacing: 1) {
@@ -48,5 +43,26 @@ struct CalendarCellView: View {
         }
         }
       }
+    }
+}
+
+struct EventBlockView: View {
+    let event: Event
+    
+    var body: some View {
+        ZStack(alignment: .leading) {
+            RoundedRectangle(cornerRadius: 2)
+                .fill(Color(event.category.cgColor))
+                .frame(maxWidth: .infinity)
+                .layoutPriority(1)
+            Text(event.ekevent.title)
+            .padding(1)
+            .lineLimit(1)
+            .font(.caption)
+            .fontWeight(.semibold)
+            .foregroundColor(Color("basicWhite"))
+            .fixedSize(horizontal: true, vertical: false)
+        }
+        .frame(height: 16)
     }
 }
