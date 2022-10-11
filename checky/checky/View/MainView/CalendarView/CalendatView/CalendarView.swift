@@ -25,7 +25,7 @@ struct CalendarView: View {
       .background(Color("basicWhite"))
       .cornerRadius(20)
       .padding(.horizontal, 4)
-      .padding(.vertical, 20)
+      .padding(.vertical, 25)
     }
     .background(Color("backgroundGray"))
     .onChange(of: viewModel.dateHolder.date) { newValue in
