@@ -34,18 +34,54 @@ class ReminderMenuViewModel: ObservableObject {
   }
   
   func toggleCategoriesPicker() {
-    isShowCategoriesPicker.toggle()
+    if isShowCategoriesPicker == true {
+      isShowCategoriesPicker = false
+    } else {
+      closeAllPickers()
+      isShowCategoriesPicker = true
+    }
   }
   
   func toggleDatePicker() {
-    isShowDatePicker.toggle()
+    if isShowDatePicker == true {
+      isShowDatePicker = false
+    } else {
+      closeAllPickers()
+      isShowDatePicker = true
+    }
   }
   
   func toggleTimePicker() {
-    isShowTimePicker.toggle()
+    if isShowTimePicker == true {
+      isShowTimePicker = false
+    } else {
+      closeAllPickers()
+      isShowTimePicker = true
+    }
   }
   
   func closeAllPickers() {
     isShowCategoriesPicker = false
+    isShowDatePicker = false
+    isShowTimePicker = false
+  }
+  
+  func tappedDateToggleButton() {
+    if isSetDate == false {
+      isSetDate = true
+    } else {
+      isSetDate = false
+      isSetTime = false
+      closeAllPickers()
+    }
+  }
+  
+  func tappedTimeToggleButton() {
+    if isSetTime == false {
+      isSetTime = true
+    } else {
+      isSetTime = false
+      closeAllPickers()
+    }
   }
 }

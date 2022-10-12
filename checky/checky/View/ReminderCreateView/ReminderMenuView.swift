@@ -21,6 +21,9 @@ struct ReminderMenuView: View {
       }
       .padding(.horizontal, 10)
     }
+    .onTapGesture {
+      viewModel.closeAllPickers()
+    }
   }
   
   var titleView: some View {
@@ -131,7 +134,7 @@ struct ReminderMenuView: View {
         }
         
         Button {
-          viewModel.isSetDate.toggle()
+          viewModel.tappedDateToggleButton()
           hideKeyboard()
         } label: {
           HStack {
@@ -175,7 +178,7 @@ struct ReminderMenuView: View {
         }
         
         Button {
-          viewModel.isSetTime.toggle()
+          viewModel.tappedTimeToggleButton()
           hideKeyboard()
         } label: {
           HStack {
