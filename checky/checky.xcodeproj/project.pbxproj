@@ -37,6 +37,8 @@
 		DA2C798328F7268F00922C47 /* ReminderMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C798228F7268F00922C47 /* ReminderMenuViewModel.swift */; };
 		DA2C798728F7364200922C47 /* ReminderCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C798628F7364200922C47 /* ReminderCreateView.swift */; };
 		DA2C798928F7365100922C47 /* ReminderCreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C798828F7365100922C47 /* ReminderCreateViewModel.swift */; };
+		DA2C798B28F740EB00922C47 /* ReminderEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C798A28F740EB00922C47 /* ReminderEditView.swift */; };
+		DA2C798D28F740FF00922C47 /* ReminderEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C798C28F740FF00922C47 /* ReminderEditViewModel.swift */; };
 		DA466EA028E685D70076AEE4 /* checkyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA466E9F28E685D70076AEE4 /* checkyApp.swift */; };
 		DA466EA228E685D70076AEE4 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA466EA128E685D70076AEE4 /* CalendarView.swift */; };
 		DA466EA428E685D90076AEE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA466EA328E685D90076AEE4 /* Assets.xcassets */; };
@@ -84,6 +86,8 @@
 		DA2C798228F7268F00922C47 /* ReminderMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderMenuViewModel.swift; sourceTree = "<group>"; };
 		DA2C798628F7364200922C47 /* ReminderCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCreateView.swift; sourceTree = "<group>"; };
 		DA2C798828F7365100922C47 /* ReminderCreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCreateViewModel.swift; sourceTree = "<group>"; };
+		DA2C798A28F740EB00922C47 /* ReminderEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderEditView.swift; sourceTree = "<group>"; };
+		DA2C798C28F740FF00922C47 /* ReminderEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderEditViewModel.swift; sourceTree = "<group>"; };
 		DA466E9C28E685D70076AEE4 /* checky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = checky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA466E9F28E685D70076AEE4 /* checkyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkyApp.swift; sourceTree = "<group>"; };
 		DA466EA128E685D70076AEE4 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -252,6 +256,8 @@
 		DA2C797F28F725E800922C47 /* ReminderCreateView */ = {
 			isa = PBXGroup;
 			children = (
+				DA2C798A28F740EB00922C47 /* ReminderEditView.swift */,
+				DA2C798C28F740FF00922C47 /* ReminderEditViewModel.swift */,
 				DA2C798628F7364200922C47 /* ReminderCreateView.swift */,
 				DA2C798828F7365100922C47 /* ReminderCreateViewModel.swift */,
 				DA2C798028F7265D00922C47 /* ReminderMenuView.swift */,
@@ -389,9 +395,11 @@
 				DA2C796128EEFF7700922C47 /* AppDelegate.swift in Sources */,
 				DA466EA028E685D70076AEE4 /* checkyApp.swift in Sources */,
 				868C543F28F417C0006A9B38 /* CustomTabBarContainerView.swift in Sources */,
+				DA2C798D28F740FF00922C47 /* ReminderEditViewModel.swift in Sources */,
 				DA2C797728F71BCF00922C47 /* EventCreateView.swift in Sources */,
 				865BE52628EC867900305899 /* WeekOption.swift in Sources */,
 				DA91E7E528EC94180091B6A3 /* CalendarCellView.swift in Sources */,
+				DA2C798B28F740EB00922C47 /* ReminderEditView.swift in Sources */,
 				DA91E81828EE01790091B6A3 /* HeaderViewModel.swift in Sources */,
 				DA2C798328F7268F00922C47 /* ReminderMenuViewModel.swift in Sources */,
 				DA2C797B28F7203700922C47 /* EventEditView.swift in Sources */,
