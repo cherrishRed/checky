@@ -109,7 +109,16 @@ class EventManager {
     do {
       try store.save(newEvent, span: EKSpan.futureEvents, commit: true)
     } catch {
-      print("저장 실패🥲")
+      print("event 저장 실패🥲")
+      print(error.localizedDescription)
+    }
+  }
+  
+  func createNewReminder(newReminder: EKReminder) {
+    do {
+      try store.save(newReminder, commit: true)
+    } catch {
+      print("reminder 저장 실패🥲")
       print(error.localizedDescription)
     }
   }

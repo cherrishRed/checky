@@ -35,6 +35,8 @@
 		DA2C797D28F7204C00922C47 /* EventEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C797C28F7204C00922C47 /* EventEditViewModel.swift */; };
 		DA2C798128F7265D00922C47 /* ReminderMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C798028F7265D00922C47 /* ReminderMenuView.swift */; };
 		DA2C798328F7268F00922C47 /* ReminderMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C798228F7268F00922C47 /* ReminderMenuViewModel.swift */; };
+		DA2C798728F7364200922C47 /* ReminderCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C798628F7364200922C47 /* ReminderCreateView.swift */; };
+		DA2C798928F7365100922C47 /* ReminderCreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C798828F7365100922C47 /* ReminderCreateViewModel.swift */; };
 		DA466EA028E685D70076AEE4 /* checkyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA466E9F28E685D70076AEE4 /* checkyApp.swift */; };
 		DA466EA228E685D70076AEE4 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA466EA128E685D70076AEE4 /* CalendarView.swift */; };
 		DA466EA428E685D90076AEE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA466EA328E685D90076AEE4 /* Assets.xcassets */; };
@@ -80,6 +82,8 @@
 		DA2C797C28F7204C00922C47 /* EventEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditViewModel.swift; sourceTree = "<group>"; };
 		DA2C798028F7265D00922C47 /* ReminderMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderMenuView.swift; sourceTree = "<group>"; };
 		DA2C798228F7268F00922C47 /* ReminderMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderMenuViewModel.swift; sourceTree = "<group>"; };
+		DA2C798628F7364200922C47 /* ReminderCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCreateView.swift; sourceTree = "<group>"; };
+		DA2C798828F7365100922C47 /* ReminderCreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCreateViewModel.swift; sourceTree = "<group>"; };
 		DA466E9C28E685D70076AEE4 /* checky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = checky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA466E9F28E685D70076AEE4 /* checkyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkyApp.swift; sourceTree = "<group>"; };
 		DA466EA128E685D70076AEE4 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -248,6 +252,8 @@
 		DA2C797F28F725E800922C47 /* ReminderCreateView */ = {
 			isa = PBXGroup;
 			children = (
+				DA2C798628F7364200922C47 /* ReminderCreateView.swift */,
+				DA2C798828F7365100922C47 /* ReminderCreateViewModel.swift */,
 				DA2C798028F7265D00922C47 /* ReminderMenuView.swift */,
 				DA2C798228F7268F00922C47 /* ReminderMenuViewModel.swift */,
 			);
@@ -389,6 +395,7 @@
 				DA91E81828EE01790091B6A3 /* HeaderViewModel.swift in Sources */,
 				DA2C798328F7268F00922C47 /* ReminderMenuViewModel.swift in Sources */,
 				DA2C797B28F7203700922C47 /* EventEditView.swift in Sources */,
+				DA2C798928F7365100922C47 /* ReminderCreateViewModel.swift in Sources */,
 				DA91E7E128EC8DFC0091B6A3 /* Event.swift in Sources */,
 				868C544128F417D9006A9B38 /* CustomTabBarView.swift in Sources */,
 				DA2C796628EF005B00922C47 /* NavigationRouter.swift in Sources */,
@@ -402,6 +409,7 @@
 				DA2C796828EF007900922C47 /* NavigationTranisitionStyle.swift in Sources */,
 				DA91E7D828EB57AF0091B6A3 /* DateValue.swift in Sources */,
 				DA2C797128F6E2C800922C47 /* Extension+View.swift in Sources */,
+				DA2C798728F7364200922C47 /* ReminderCreateView.swift in Sources */,
 				DA91E81428EDF3900091B6A3 /* CalendarViewModel.swift in Sources */,
 				868C543D28F4178D006A9B38 /* TabBarItemsPreferenceKey.swift in Sources */,
 				865BE52428EC4B6200305899 /* Extension+Text.swift in Sources */,

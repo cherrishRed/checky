@@ -84,4 +84,31 @@ class ReminderMenuViewModel: ObservableObject {
       closeAllPickers()
     }
   }
+  
+  func reset() {
+    title = ""
+    memo = ""
+    isSetTime = false
+    isSetTime = false
+    priority = 0
+    category = categories[0]
+  }
+  
+  func saveNewReminder() {
+    let newReminder = EKReminder(eventStore: eventManager.store)
+    newReminder.title = title
+    newReminder.priority = priority
+    newReminder.notes = memo
+    newReminder.calendar = category
+  
+    if isSetDate == true && isSetTime == false {
+      let dateComponents = Calendar.current.dateComponents([.year, .month, .day], from: date)
+      newReminder.dueDateComponents = dateComponents
+    } else if isSetDate == true && isSetTime == true {
+      let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .month], from: date)
+      newReminder.dueDateComponents = dateComponents
+    }
+    
+    eventManager.createNewReminder(newReminder: newReminder)
+  }
 }

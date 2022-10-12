@@ -86,8 +86,8 @@ struct ReminderMenuView: View {
         Picker("", selection: $viewModel.priority) {
           Text("없음").tag(0)
           Text("상").tag(1)
-          Text("중").tag(2)
-          Text("하").tag(3)
+          Text("중").tag(5)
+          Text("하").tag(9)
         }
         .pickerStyle(.segmented)
       }
