@@ -31,6 +31,8 @@
 		DA2C797328F6F25C00922C47 /* AlramTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C797228F6F25C00922C47 /* AlramTime.swift */; };
 		DA2C797728F71BCF00922C47 /* EventCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C797628F71BCF00922C47 /* EventCreateView.swift */; };
 		DA2C797928F71CE700922C47 /* EventCreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C797828F71CE700922C47 /* EventCreateViewModel.swift */; };
+		DA2C797B28F7203700922C47 /* EventEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C797A28F7203700922C47 /* EventEditView.swift */; };
+		DA2C797D28F7204C00922C47 /* EventEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C797C28F7204C00922C47 /* EventEditViewModel.swift */; };
 		DA466EA028E685D70076AEE4 /* checkyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA466E9F28E685D70076AEE4 /* checkyApp.swift */; };
 		DA466EA228E685D70076AEE4 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA466EA128E685D70076AEE4 /* CalendarView.swift */; };
 		DA466EA428E685D90076AEE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA466EA328E685D90076AEE4 /* Assets.xcassets */; };
@@ -72,6 +74,8 @@
 		DA2C797228F6F25C00922C47 /* AlramTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlramTime.swift; sourceTree = "<group>"; };
 		DA2C797628F71BCF00922C47 /* EventCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCreateView.swift; sourceTree = "<group>"; };
 		DA2C797828F71CE700922C47 /* EventCreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCreateViewModel.swift; sourceTree = "<group>"; };
+		DA2C797A28F7203700922C47 /* EventEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditView.swift; sourceTree = "<group>"; };
+		DA2C797C28F7204C00922C47 /* EventEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditViewModel.swift; sourceTree = "<group>"; };
 		DA466E9C28E685D70076AEE4 /* checky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = checky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA466E9F28E685D70076AEE4 /* checkyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkyApp.swift; sourceTree = "<group>"; };
 		DA466EA128E685D70076AEE4 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -225,6 +229,8 @@
 		DA2C796B28F5814F00922C47 /* CreateView */ = {
 			isa = PBXGroup;
 			children = (
+				DA2C797A28F7203700922C47 /* EventEditView.swift */,
+				DA2C797C28F7204C00922C47 /* EventEditViewModel.swift */,
 				DA2C797628F71BCF00922C47 /* EventCreateView.swift */,
 				DA2C797828F71CE700922C47 /* EventCreateViewModel.swift */,
 				DA2C796C28F5817600922C47 /* EventMenuView.swift */,
@@ -367,6 +373,7 @@
 				865BE52628EC867900305899 /* WeekOption.swift in Sources */,
 				DA91E7E528EC94180091B6A3 /* CalendarCellView.swift in Sources */,
 				DA91E81828EE01790091B6A3 /* HeaderViewModel.swift in Sources */,
+				DA2C797B28F7203700922C47 /* EventEditView.swift in Sources */,
 				DA91E7E128EC8DFC0091B6A3 /* Event.swift in Sources */,
 				868C544128F417D9006A9B38 /* CustomTabBarView.swift in Sources */,
 				DA2C796628EF005B00922C47 /* NavigationRouter.swift in Sources */,
@@ -375,6 +382,7 @@
 				DA2C797328F6F25C00922C47 /* AlramTime.swift in Sources */,
 				868C544728F419B1006A9B38 /* CheckyMainViewModel.swift in Sources */,
 				DA91E7DC28EC1E880091B6A3 /* EventManager.swift in Sources */,
+				DA2C797D28F7204C00922C47 /* EventEditViewModel.swift in Sources */,
 				868C544528F4199D006A9B38 /* CheckyMainView.swift in Sources */,
 				DA2C796828EF007900922C47 /* NavigationTranisitionStyle.swift in Sources */,
 				DA91E7D828EB57AF0091B6A3 /* DateValue.swift in Sources */,
