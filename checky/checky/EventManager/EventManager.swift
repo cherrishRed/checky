@@ -101,6 +101,10 @@ class EventManager {
     return store.calendars(for: .event)
   }
   
+  func getReminderCategories() -> [EKCalendar] {
+    return store.calendars(for: .reminder)
+  }
+  
   func createNewEvent(newEvent: EKEvent) {
     do {
       try store.save(newEvent, span: EKSpan.futureEvents, commit: true)
