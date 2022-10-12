@@ -9,6 +9,8 @@ import SwiftUI
 import EventKit
 
 struct EventCreateView: View {
+  @State var title: String = ""
+  
   @State var date: Date = .now
   @State var endDate: Date = .now
   @State var showDatePicker: Bool = false
@@ -21,16 +23,20 @@ struct EventCreateView: View {
   
   var eventManager = EventManager()
   
+  @State var memo: String = ""
+  
   init() {
     self.categories = eventManager.getEventCategories()
     self._category = State(wrappedValue: categories[0])
   }
     
     var body: some View {
-        VStack {
-            headerView
-            dayAndTimePicker
+      VStack {
+          headerView
+          titleView
+          dayAndTimePicker
           categoryView
+        memoView
         }
     }
     
@@ -56,6 +62,15 @@ struct EventCreateView: View {
                     .padding()
             }
         }
+    }
+    var titleView: some View {
+      TextField("제목", text: $title)
+        .foregroundColor(Color("fontDarkBlack"))
+        .font(.title3)
+        .padding(6)
+        .frame(maxWidth: .infinity)
+        .background(Color("backgroundGray"))
+        .cornerRadius(4)
     }
     
     var dayAndTimePicker: some View {
@@ -175,6 +190,20 @@ struct EventCreateView: View {
         }
         .pickerStyle(WheelPickerStyle())
       }
+    }
+  }
+  
+  var memoView: some View {
+    HStack(alignment: .top) {
+      Image(systemName: "note.text")
+        .foregroundColor(Color("fontMediumGray"))
+      TextField("메모", text: $memo, axis: .vertical)
+        .foregroundColor(Color("fontDarkBlack"))
+        .font(.title3)
+        .padding(6)
+        .frame(maxWidth: .infinity)
+        .background(Color("backgroundGray"))
+        .cornerRadius(4)
     }
   }
     
