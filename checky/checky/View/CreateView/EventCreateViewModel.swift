@@ -1,0 +1,70 @@
+//
+//  EventCreateViewModel.swift
+//  checky
+//
+//  Created by RED on 2022/10/12.
+//
+
+import Foundation
+import EventKit
+
+class EventCreateViewModel: ObservableObject {
+  let eventManager = EventManager()
+  let categories: [EKCalendar]
+  
+  // 제목
+  @Published var title: String = ""
+  
+  // 날짜
+  @Published var date: Date = .now
+  @Published var endDate: Date = .now
+  @Published var isShowDatePicker: Bool = false
+  @Published var isShowEndDatePicker: Bool = false
+  @Published var isAllDay: Bool = false
+  
+  // 카테고리
+  @Published var category: EKCalendar
+  @Published var isShowCategoriesPicker: Bool = false
+  
+  // 메모
+  @Published var memo: String = ""
+  
+  init() {
+    self.categories = eventManager.getEventCategories()
+    self.category = categories[0]
+  }
+  
+  func toggleDatePicker() {
+    if isShowDatePicker == true {
+      isShowDatePicker = false
+    } else {
+      isShowDatePicker = true
+      isShowEndDatePicker = false
+      isShowCategoriesPicker = false
+    }
+  }
+  
+  func toggleEndDatePicker() {
+    if isShowEndDatePicker == true {
+      isShowEndDatePicker = false
+    } else {
+      isShowEndDatePicker = true
+      isShowDatePicker = false
+      isShowCategoriesPicker = false
+    }
+  }
+  
+  func toggleCategoriesPicker() {
+    if isShowCategoriesPicker == true {
+      isShowCategoriesPicker = false
+    } else {
+      isShowCategoriesPicker = true
+      isShowDatePicker = false
+      isShowEndDatePicker = false
+    }
+  }
+  
+  func toggleIsAllDay() {
+    isAllDay.toggle()
+  }
+}

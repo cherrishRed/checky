@@ -9,37 +9,23 @@ import SwiftUI
 import EventKit
 
 struct EventCreateView: View {
-  @State var title: String = ""
+  @ObservedObject var viewModel = EventCreateViewModel()
   
-  @State var date: Date = .now
-  @State var endDate: Date = .now
-  @State var showDatePicker: Bool = false
-  @State var showEndDatePicker: Bool = false
-  @State var isAllDay: Bool = false
-  
-  @State var category: EKCalendar
-  let categories: [EKCalendar]
-  @State var showCategoriesPicker: Bool = false
-  
-  var eventManager = EventManager()
-  
-  @State var memo: String = ""
-  
-  init() {
-    self.categories = eventManager.getEventCategories()
-    self._category = State(wrappedValue: categories[0])
-  }
-    
-    var body: some View {
+  var body: some View {
+    VStack {
+      headerView
       VStack {
-          headerView
+        ScrollView(.vertical, showsIndicators: false) {
           titleView
           dayAndTimePicker
           categoryView
-        memoView
+          memoView
         }
+      }
+      .padding(.horizontal, 10)
     }
-    
+  }
+  
     var headerView: some View {
         HStack {
             Button {
@@ -64,7 +50,7 @@ struct EventCreateView: View {
         }
     }
     var titleView: some View {
-      TextField("제목", text: $title)
+      TextField("제목", text: $viewModel.title)
         .foregroundColor(Color("fontDarkBlack"))
         .font(.title3)
         .padding(6)
@@ -80,11 +66,11 @@ struct EventCreateView: View {
           Image(systemName: "clock.fill")
             .foregroundColor(Color("fontMediumGray"))
           
-          if isAllDay {
+          if viewModel.isAllDay {
             Button {
-              showDatePicker.toggle()
+              viewModel.toggleDatePicker()
             } label: {
-              Text(date.dateKoreanWithYear)
+              Text(viewModel.date.dateKoreanWithYear)
                 .foregroundColor(Color("fontDarkBlack"))
                 .font(.title3)
                 .padding(6)
@@ -97,12 +83,12 @@ struct EventCreateView: View {
             HStack {
               
               Button {
-                showDatePicker.toggle()
+                viewModel.toggleDatePicker()
               } label: {
                 VStack {
-                  Text(date.dateKorean)
+                  Text(viewModel.date.dateKorean)
                     .foregroundColor(Color("fontDarkBlack"))
-                  Text(date.time)
+                  Text(viewModel.date.time)
                     .foregroundColor(Color("fontDarkBlack"))
                     .font(.title3)
                 }
@@ -114,12 +100,12 @@ struct EventCreateView: View {
               Text("~")
               
               Button {
-                showEndDatePicker.toggle()
+                viewModel.toggleEndDatePicker()
               } label: {
                 VStack {
-                  Text(endDate.dateKorean)
+                  Text(viewModel.endDate.dateKorean)
                     .foregroundColor(Color("fontDarkBlack"))
-                  Text(date.time)
+                  Text(viewModel.endDate.time)
                     .foregroundColor(Color("fontDarkBlack"))
                     .font(.title3)
                 }
@@ -131,24 +117,24 @@ struct EventCreateView: View {
             }
           }
           Button {
-            isAllDay.toggle()
+            viewModel.toggleIsAllDay()
           } label: {
             HStack {
-              Image(systemName: isAllDay ? "checkmark.square.fill" : "square")
+              Image(systemName: viewModel.isAllDay ? "checkmark.square.fill" : "square")
               Text("하루종일")
             }
             .foregroundColor(Color("fontDarkBlack"))
           }
         }
         
-        if showDatePicker {
+        if viewModel.isShowDatePicker {
           
-          DatePicker("", selection: $date,
-                     displayedComponents: isAllDay ? [.date] : [.date, .hourAndMinute])
+          DatePicker("", selection: $viewModel.date,
+                     displayedComponents: viewModel.isAllDay ? [.date] : [.date, .hourAndMinute])
             .datePickerStyle(.wheel)
         }
-        if showEndDatePicker {
-          DatePicker("", selection: $endDate)
+        if viewModel.isShowEndDatePicker {
+          DatePicker("", selection: $viewModel.endDate)
             .datePickerStyle(.wheel)
         }
         }
@@ -160,13 +146,13 @@ struct EventCreateView: View {
         Image(systemName: "tag.fill")
           .foregroundColor(Color("fontMediumGray"))
         Button {
-          showCategoriesPicker.toggle()
+          viewModel.toggleCategoriesPicker()
         } label: {
           HStack {
             Circle()
-              .fill(Color(cgColor: category.cgColor))
+              .fill(Color(cgColor: viewModel.category.cgColor))
               .frame(width: 10, height: 10)
-            Text(category.title)
+            Text(viewModel.category.title)
               .foregroundColor(Color("fontDarkBlack"))
               .font(.title3)
           }
@@ -177,9 +163,9 @@ struct EventCreateView: View {
         }
       }
       
-      if showCategoriesPicker {
-        Picker("", selection: $category) {
-          ForEach(categories) { cate in
+      if viewModel.isShowCategoriesPicker {
+        Picker("", selection: $viewModel.category) {
+          ForEach(viewModel.categories) { cate in
             HStack {
               Circle()
                 .fill(Color(cgColor: cate.cgColor))
@@ -197,7 +183,7 @@ struct EventCreateView: View {
     HStack(alignment: .top) {
       Image(systemName: "note.text")
         .foregroundColor(Color("fontMediumGray"))
-      TextField("메모", text: $memo, axis: .vertical)
+      TextField("메모", text: $viewModel.memo, axis: .vertical)
         .foregroundColor(Color("fontDarkBlack"))
         .font(.title3)
         .padding(6)
@@ -214,3 +200,4 @@ struct EventCreateView_Previews: PreviewProvider {
         EventCreateView()
     }
 }
+
