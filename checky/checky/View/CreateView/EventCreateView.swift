@@ -14,8 +14,8 @@ struct EventCreateView: View {
   var body: some View {
     VStack {
       headerView
-      VStack {
         ScrollView(.vertical, showsIndicators: false) {
+          VStack(spacing: 10) {
           titleView
           dayAndTimePicker
           categoryView
@@ -63,6 +63,7 @@ struct EventCreateView: View {
       TextField("제목", text: $viewModel.title)
         .foregroundColor(Color("fontDarkBlack"))
         .font(.title3)
+        .fontWeight(.bold)
         .padding(6)
         .frame(maxWidth: .infinity)
         .background(Color("backgroundGray"))
@@ -71,11 +72,10 @@ struct EventCreateView: View {
     
     var dayAndTimePicker: some View {
       VStack {
-        
         HStack(alignment: .center) {
           Image(systemName: "clock.fill")
             .foregroundColor(Color("fontMediumGray"))
-          
+            .padding(.trailing, 3)
           if viewModel.isAllDay {
             Button {
               viewModel.toggleDatePicker()
@@ -92,7 +92,6 @@ struct EventCreateView: View {
             
           } else {
             HStack {
-              
               Button {
                 viewModel.toggleDatePicker()
                 hideKeyboard()
@@ -199,6 +198,7 @@ struct EventCreateView: View {
       HStack() {
         Image(systemName: "alarm.fill")
           .foregroundColor(Color("fontMediumGray"))
+          .padding(.trailing, 4)
         Button {
           viewModel.toggleAlramPicker()
           hideKeyboard()
@@ -227,6 +227,8 @@ struct EventCreateView: View {
     HStack(alignment: .top) {
       Image(systemName: "note.text")
         .foregroundColor(Color("fontMediumGray"))
+        .padding(.top, 10)
+        .padding(.trailing, 2)
       TextField("메모", text: $viewModel.memo, axis: .vertical)
         .foregroundColor(Color("fontDarkBlack"))
         .font(.title3)
@@ -236,12 +238,5 @@ struct EventCreateView: View {
         .cornerRadius(4)
     }
   }
-    
-}
-
-struct EventCreateView_Previews: PreviewProvider {
-    static var previews: some View {
-        EventCreateView()
-    }
 }
 
