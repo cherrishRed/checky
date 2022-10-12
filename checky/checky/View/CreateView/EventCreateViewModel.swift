@@ -77,6 +77,12 @@ class EventCreateViewModel: ObservableObject {
     isAllDay.toggle()
   }
   
+  func closeAllPickers() {
+    isShowCategoriesPicker = false
+    isShowDatePicker = false
+    isShowEndDatePicker = false
+  }
+  
   func createEvent() {
     let newEvnet = EKEvent(eventStore: eventManager.store)
     newEvnet.title = title

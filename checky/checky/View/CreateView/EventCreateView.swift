@@ -27,12 +27,17 @@ struct EventCreateView: View {
     .onChange(of: viewModel.date) { newValue in
       viewModel.changeMinimumEndDate()
     }
+    .onTapGesture {
+      hideKeyboard()
+      viewModel.closeAllPickers()
+    }
   }
   
     var headerView: some View {
         HStack {
             Button {
               viewModel.reset()
+              hideKeyboard()
             } label: {
                 Image(systemName: "xmark")
                     .foregroundColor(.red)
@@ -45,6 +50,7 @@ struct EventCreateView: View {
             
             Button {
               viewModel.createEvent()
+              hideKeyboard()
             } label: {
                 Image(systemName: "checkmark")
                     .foregroundColor(.green)
@@ -72,6 +78,7 @@ struct EventCreateView: View {
           if viewModel.isAllDay {
             Button {
               viewModel.toggleDatePicker()
+              hideKeyboard()
             } label: {
               Text(viewModel.date.dateKoreanWithYear)
                 .foregroundColor(Color("fontDarkBlack"))
@@ -87,6 +94,7 @@ struct EventCreateView: View {
               
               Button {
                 viewModel.toggleDatePicker()
+                hideKeyboard()
               } label: {
                 VStack {
                   Text(viewModel.date.dateKorean)
@@ -104,6 +112,7 @@ struct EventCreateView: View {
               
               Button {
                 viewModel.toggleEndDatePicker()
+                hideKeyboard()
               } label: {
                 VStack {
                   Text(viewModel.endDate.dateKorean)
@@ -121,6 +130,7 @@ struct EventCreateView: View {
           }
           Button {
             viewModel.toggleIsAllDay()
+            hideKeyboard()
           } label: {
             HStack {
               Image(systemName: viewModel.isAllDay ? "checkmark.square.fill" : "square")
@@ -150,6 +160,7 @@ struct EventCreateView: View {
           .foregroundColor(Color("fontMediumGray"))
         Button {
           viewModel.toggleCategoriesPicker()
+          hideKeyboard()
         } label: {
           HStack {
             Circle()
