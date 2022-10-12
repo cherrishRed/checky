@@ -29,6 +29,11 @@ class EventCreateViewModel: ObservableObject {
   // 메모
   @Published var memo: String = ""
   
+  //
+  @Published var alram: AlramTime = .none
+  @Published var isShowAlramPicker: Bool = false
+  
+  
   init() {
     self.categories = eventManager.getEventCategories()
     self.category = categories[0]
@@ -47,9 +52,8 @@ class EventCreateViewModel: ObservableObject {
     if isShowDatePicker == true {
       isShowDatePicker = false
     } else {
+      closeAllPickers()
       isShowDatePicker = true
-      isShowEndDatePicker = false
-      isShowCategoriesPicker = false
     }
   }
   
@@ -57,9 +61,8 @@ class EventCreateViewModel: ObservableObject {
     if isShowEndDatePicker == true {
       isShowEndDatePicker = false
     } else {
+      closeAllPickers()
       isShowEndDatePicker = true
-      isShowDatePicker = false
-      isShowCategoriesPicker = false
     }
   }
   
@@ -67,9 +70,17 @@ class EventCreateViewModel: ObservableObject {
     if isShowCategoriesPicker == true {
       isShowCategoriesPicker = false
     } else {
+      closeAllPickers()
       isShowCategoriesPicker = true
-      isShowDatePicker = false
-      isShowEndDatePicker = false
+    }
+  }
+  
+  func toggleAlramPicker() {
+    if isShowAlramPicker == true {
+      isShowAlramPicker = false
+    } else {
+      closeAllPickers()
+      isShowAlramPicker = true
     }
   }
   
@@ -81,6 +92,7 @@ class EventCreateViewModel: ObservableObject {
     isShowCategoriesPicker = false
     isShowDatePicker = false
     isShowEndDatePicker = false
+    isShowAlramPicker = false
   }
   
   func createEvent() {
@@ -95,6 +107,10 @@ class EventCreateViewModel: ObservableObject {
       newEvnet.endDate = endDate
     } else {
       newEvnet.endDate = date
+    }
+    
+    if alram != .none {
+      newEvnet.addAlarm(EKAlarm(relativeOffset: alram.second))
     }
     
     eventManager.createNewEvent(newEvent: newEvnet)

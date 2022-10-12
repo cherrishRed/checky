@@ -19,6 +19,7 @@ struct EventCreateView: View {
           titleView
           dayAndTimePicker
           categoryView
+          alramView
           memoView
         }
       }
@@ -186,6 +187,35 @@ struct EventCreateView: View {
                 .frame(width: 10, height: 10)
               Text(cate.title)
             }.tag(cate)
+          }
+        }
+        .pickerStyle(WheelPickerStyle())
+      }
+    }
+  }
+  
+  var alramView: some View {
+    VStack {
+      HStack() {
+        Image(systemName: "alarm.fill")
+          .foregroundColor(Color("fontMediumGray"))
+        Button {
+          viewModel.toggleAlramPicker()
+          hideKeyboard()
+        } label: {
+          Text(viewModel.alram.korean)
+            .foregroundColor(Color("fontDarkBlack"))
+            .font(.title3)
+            .padding(4)
+            .frame(maxWidth: .infinity)
+            .background(Color("backgroundGray"))
+            .cornerRadius(4)
+        }
+      }
+      if viewModel.isShowAlramPicker {
+        Picker("", selection: $viewModel.alram) {
+          ForEach(AlramTime.allCases, id: \.self) { alram in
+            Text(alram.korean).tag(alram)
           }
         }
         .pickerStyle(WheelPickerStyle())
