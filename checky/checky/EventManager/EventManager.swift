@@ -96,4 +96,12 @@ class EventManager {
       .filter { $0.ekevent.startDate.compare(date) != ComparisonResult.orderedDescending &&
        $0.ekevent.endDate.compare(date) != ComparisonResult.orderedAscending }
   }
+  
+  func getEventCategories() -> [EKCalendar] {
+    return store.calendars(for: .event)
+  }
+}
+
+extension EKCalendar: Identifiable {
+  
 }

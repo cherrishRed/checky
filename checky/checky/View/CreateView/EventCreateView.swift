@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import EventKit
 
 struct EventCreateView: View {
   @State var date: Date = .now
@@ -13,11 +14,23 @@ struct EventCreateView: View {
   @State var showDatePicker: Bool = false
   @State var showEndDatePicker: Bool = false
   @State var isAllDay: Bool = false
+  
+  @State var category: EKCalendar
+  let categories: [EKCalendar]
+  @State var showCategoriesPicker: Bool = false
+  
+  var eventManager = EventManager()
+  
+  init() {
+    self.categories = eventManager.getEventCategories()
+    self._category = State(wrappedValue: categories[0])
+  }
     
     var body: some View {
         VStack {
             headerView
             dayAndTimePicker
+          categoryView
         }
     }
     
@@ -125,7 +138,45 @@ struct EventCreateView: View {
         }
         }
     }
-    
+  
+  var categoryView: some View {
+    VStack {
+      HStack {
+        Image(systemName: "tag.fill")
+          .foregroundColor(Color("fontMediumGray"))
+        Button {
+          showCategoriesPicker.toggle()
+        } label: {
+          HStack {
+            Circle()
+              .fill(Color(cgColor: category.cgColor))
+              .frame(width: 10, height: 10)
+            Text(category.title)
+              .foregroundColor(Color("fontDarkBlack"))
+              .font(.title3)
+          }
+          .padding(4)
+          .frame(maxWidth: .infinity)
+          .background(Color("backgroundGray"))
+          .cornerRadius(4)
+        }
+      }
+      
+      if showCategoriesPicker {
+        Picker("", selection: $category) {
+          ForEach(categories) { cate in
+            HStack {
+              Circle()
+                .fill(Color(cgColor: cate.cgColor))
+                .frame(width: 10, height: 10)
+              Text(cate.title)
+            }.tag(cate)
+          }
+        }
+        .pickerStyle(WheelPickerStyle())
+      }
+    }
+  }
     
 }
 
