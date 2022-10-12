@@ -34,6 +34,15 @@ class EventCreateViewModel: ObservableObject {
     self.category = categories[0]
   }
   
+  var dateRange: ClosedRange<Date> {
+    let max = Calendar.current.date(
+         byAdding: .year,
+         value: 10,
+         to: date
+       ) ?? Date()
+    return date...max
+  }
+  
   func toggleDatePicker() {
     if isShowDatePicker == true {
       isShowDatePicker = false
@@ -93,5 +102,11 @@ class EventCreateViewModel: ObservableObject {
     endDate = .now
     memo = ""
     category = categories[0]
+  }
+  
+  func changeMinimumEndDate() {
+    if endDate < date {
+      endDate = date
+    }
   }
 }

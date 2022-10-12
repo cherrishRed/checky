@@ -24,12 +24,15 @@ struct EventCreateView: View {
       }
       .padding(.horizontal, 10)
     }
+    .onChange(of: viewModel.date) { newValue in
+      viewModel.changeMinimumEndDate()
+    }
   }
   
     var headerView: some View {
         HStack {
             Button {
-                
+              viewModel.reset()
             } label: {
                 Image(systemName: "xmark")
                     .foregroundColor(.red)
@@ -134,7 +137,7 @@ struct EventCreateView: View {
             .datePickerStyle(.wheel)
         }
         if viewModel.isShowEndDatePicker {
-          DatePicker("", selection: $viewModel.endDate)
+          DatePicker("", selection: $viewModel.endDate, in: viewModel.dateRange)
             .datePickerStyle(.wheel)
         }
         }
