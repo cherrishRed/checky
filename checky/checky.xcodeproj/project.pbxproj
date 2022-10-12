@@ -25,10 +25,12 @@
 		DA2C796628EF005B00922C47 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796528EF005B00922C47 /* NavigationRouter.swift */; };
 		DA2C796828EF007900922C47 /* NavigationTranisitionStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796728EF007900922C47 /* NavigationTranisitionStyle.swift */; };
 		DA2C796A28EF009800922C47 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796928EF009800922C47 /* Coordinator.swift */; };
-		DA2C796D28F5817600922C47 /* EventCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796C28F5817600922C47 /* EventCreateView.swift */; };
-		DA2C796F28F6CB1A00922C47 /* EventCreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796E28F6CB1A00922C47 /* EventCreateViewModel.swift */; };
+		DA2C796D28F5817600922C47 /* EventMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796C28F5817600922C47 /* EventMenuView.swift */; };
+		DA2C796F28F6CB1A00922C47 /* EventMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796E28F6CB1A00922C47 /* EventMenuViewModel.swift */; };
 		DA2C797128F6E2C800922C47 /* Extension+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C797028F6E2C800922C47 /* Extension+View.swift */; };
 		DA2C797328F6F25C00922C47 /* AlramTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C797228F6F25C00922C47 /* AlramTime.swift */; };
+		DA2C797728F71BCF00922C47 /* EventCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C797628F71BCF00922C47 /* EventCreateView.swift */; };
+		DA2C797928F71CE700922C47 /* EventCreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C797828F71CE700922C47 /* EventCreateViewModel.swift */; };
 		DA466EA028E685D70076AEE4 /* checkyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA466E9F28E685D70076AEE4 /* checkyApp.swift */; };
 		DA466EA228E685D70076AEE4 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA466EA128E685D70076AEE4 /* CalendarView.swift */; };
 		DA466EA428E685D90076AEE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA466EA328E685D90076AEE4 /* Assets.xcassets */; };
@@ -64,10 +66,12 @@
 		DA2C796528EF005B00922C47 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		DA2C796728EF007900922C47 /* NavigationTranisitionStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTranisitionStyle.swift; sourceTree = "<group>"; };
 		DA2C796928EF009800922C47 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		DA2C796C28F5817600922C47 /* EventCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCreateView.swift; sourceTree = "<group>"; };
-		DA2C796E28F6CB1A00922C47 /* EventCreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCreateViewModel.swift; sourceTree = "<group>"; };
+		DA2C796C28F5817600922C47 /* EventMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMenuView.swift; sourceTree = "<group>"; };
+		DA2C796E28F6CB1A00922C47 /* EventMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMenuViewModel.swift; sourceTree = "<group>"; };
 		DA2C797028F6E2C800922C47 /* Extension+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+View.swift"; sourceTree = "<group>"; };
 		DA2C797228F6F25C00922C47 /* AlramTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlramTime.swift; sourceTree = "<group>"; };
+		DA2C797628F71BCF00922C47 /* EventCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCreateView.swift; sourceTree = "<group>"; };
+		DA2C797828F71CE700922C47 /* EventCreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCreateViewModel.swift; sourceTree = "<group>"; };
 		DA466E9C28E685D70076AEE4 /* checky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = checky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA466E9F28E685D70076AEE4 /* checkyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkyApp.swift; sourceTree = "<group>"; };
 		DA466EA128E685D70076AEE4 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -221,8 +225,10 @@
 		DA2C796B28F5814F00922C47 /* CreateView */ = {
 			isa = PBXGroup;
 			children = (
-				DA2C796C28F5817600922C47 /* EventCreateView.swift */,
-				DA2C796E28F6CB1A00922C47 /* EventCreateViewModel.swift */,
+				DA2C797628F71BCF00922C47 /* EventCreateView.swift */,
+				DA2C797828F71CE700922C47 /* EventCreateViewModel.swift */,
+				DA2C796C28F5817600922C47 /* EventMenuView.swift */,
+				DA2C796E28F6CB1A00922C47 /* EventMenuViewModel.swift */,
 				DA2C797228F6F25C00922C47 /* AlramTime.swift */,
 			);
 			path = CreateView;
@@ -357,6 +363,7 @@
 				DA2C796128EEFF7700922C47 /* AppDelegate.swift in Sources */,
 				DA466EA028E685D70076AEE4 /* checkyApp.swift in Sources */,
 				868C543F28F417C0006A9B38 /* CustomTabBarContainerView.swift in Sources */,
+				DA2C797728F71BCF00922C47 /* EventCreateView.swift in Sources */,
 				865BE52628EC867900305899 /* WeekOption.swift in Sources */,
 				DA91E7E528EC94180091B6A3 /* CalendarCellView.swift in Sources */,
 				DA91E81828EE01790091B6A3 /* HeaderViewModel.swift in Sources */,
@@ -377,8 +384,9 @@
 				865BE52428EC4B6200305899 /* Extension+Text.swift in Sources */,
 				DA91E7E328EC8E580091B6A3 /* Reminder.swift in Sources */,
 				DA2C796A28EF009800922C47 /* Coordinator.swift in Sources */,
-				DA2C796F28F6CB1A00922C47 /* EventCreateViewModel.swift in Sources */,
-				DA2C796D28F5817600922C47 /* EventCreateView.swift in Sources */,
+				DA2C796F28F6CB1A00922C47 /* EventMenuViewModel.swift in Sources */,
+				DA2C797928F71CE700922C47 /* EventCreateViewModel.swift in Sources */,
+				DA2C796D28F5817600922C47 /* EventMenuView.swift in Sources */,
 				868C544328F417F7006A9B38 /* TabBarItem.swift in Sources */,
 				DA2C796328EEFFA300922C47 /* SceneDelegate.swift in Sources */,
 				86A5E60428EEA6B10040DCFB /* DayOfWeekStackViewModel.swift in Sources */,
