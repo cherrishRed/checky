@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct EventCreateView: View {
+  @State var date: Date = .now
+  @State var endDate: Date = .now
+  @State var showDatePicker: Bool = false
+  @State var showEndDatePicker: Bool = false
+  @State var isAllDay: Bool = false
+    
     var body: some View {
         VStack {
             headerView
+            dayAndTimePicker
         }
-        
     }
     
     var headerView: some View {
@@ -38,6 +44,89 @@ struct EventCreateView: View {
             }
         }
     }
+    
+    var dayAndTimePicker: some View {
+      VStack {
+        
+        HStack(alignment: .center) {
+          Image(systemName: "clock.fill")
+            .foregroundColor(Color("fontMediumGray"))
+          
+          if isAllDay {
+            Button {
+              showDatePicker.toggle()
+            } label: {
+              Text(date.dateKoreanWithYear)
+                .foregroundColor(Color("fontDarkBlack"))
+                .font(.title3)
+                .padding(6)
+                .frame(maxWidth: .infinity)
+                .background(Color("backgroundGray"))
+                .cornerRadius(4)
+            }
+            
+          } else {
+            HStack {
+              
+              Button {
+                showDatePicker.toggle()
+              } label: {
+                VStack {
+                  Text(date.dateKorean)
+                    .foregroundColor(Color("fontDarkBlack"))
+                  Text(date.time)
+                    .foregroundColor(Color("fontDarkBlack"))
+                    .font(.title3)
+                }
+                .padding(4)
+                .background(Color("backgroundGray"))
+                .cornerRadius(4)
+              }
+              
+              Text("~")
+              
+              Button {
+                showEndDatePicker.toggle()
+              } label: {
+                VStack {
+                  Text(endDate.dateKorean)
+                    .foregroundColor(Color("fontDarkBlack"))
+                  Text(date.time)
+                    .foregroundColor(Color("fontDarkBlack"))
+                    .font(.title3)
+                }
+                .padding(4)
+                .background(Color("backgroundGray"))
+                .cornerRadius(4)
+              }
+              
+            }
+          }
+          Button {
+            isAllDay.toggle()
+          } label: {
+            HStack {
+              Image(systemName: isAllDay ? "checkmark.square.fill" : "square")
+              Text("하루종일")
+            }
+            .foregroundColor(Color("fontDarkBlack"))
+          }
+        }
+        
+        if showDatePicker {
+          
+          DatePicker("", selection: $date,
+                     displayedComponents: isAllDay ? [.date] : [.date, .hourAndMinute])
+            .datePickerStyle(.wheel)
+        }
+        if showEndDatePicker {
+          DatePicker("", selection: $endDate)
+            .datePickerStyle(.wheel)
+        }
+        }
+    }
+    
+    
 }
 
 struct EventCreateView_Previews: PreviewProvider {
