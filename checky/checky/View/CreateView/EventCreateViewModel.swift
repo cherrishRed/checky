@@ -67,4 +67,31 @@ class EventCreateViewModel: ObservableObject {
   func toggleIsAllDay() {
     isAllDay.toggle()
   }
+  
+  func createEvent() {
+    let newEvnet = EKEvent(eventStore: eventManager.store)
+    newEvnet.title = title
+    newEvnet.isAllDay = isAllDay
+    newEvnet.startDate = date
+    newEvnet.calendar = category
+    newEvnet.notes = memo
+    
+    if isAllDay == false {
+      newEvnet.endDate = endDate
+    } else {
+      newEvnet.endDate = date
+    }
+    
+    eventManager.createNewEvent(newEvent: newEvnet)
+    reset()
+  }
+  
+  func reset() {
+    title = ""
+    isAllDay = false
+    date = .now
+    endDate = .now
+    memo = ""
+    category = categories[0]
+  }
 }

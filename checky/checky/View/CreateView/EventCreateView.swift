@@ -41,7 +41,7 @@ struct EventCreateView: View {
                 .frame(maxWidth: .infinity)
             
             Button {
-                
+              viewModel.createEvent()
             } label: {
                 Image(systemName: "checkmark")
                     .foregroundColor(.green)

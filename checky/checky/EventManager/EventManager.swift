@@ -100,6 +100,15 @@ class EventManager {
   func getEventCategories() -> [EKCalendar] {
     return store.calendars(for: .event)
   }
+  
+  func createNewEvent(newEvent: EKEvent) {
+    do {
+      try store.save(newEvent, span: EKSpan.futureEvents, commit: true)
+    } catch {
+      print("저장 실패🥲")
+      print(error.localizedDescription)
+    }
+  }
 }
 
 extension EKCalendar: Identifiable {
