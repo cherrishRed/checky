@@ -114,7 +114,7 @@
 		865BE51C28EC463C00305899 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				DA2C796B28F5814F00922C47 /* CreateView */,
+				DA2C796B28F5814F00922C47 /* EventCreateView */,
 				DA2C792128EEB50500922C47 /* MainView */,
 			);
 			path = View;
@@ -226,7 +226,7 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
-		DA2C796B28F5814F00922C47 /* CreateView */ = {
+		DA2C796B28F5814F00922C47 /* EventCreateView */ = {
 			isa = PBXGroup;
 			children = (
 				DA2C797A28F7203700922C47 /* EventEditView.swift */,
@@ -237,7 +237,7 @@
 				DA2C796E28F6CB1A00922C47 /* EventMenuViewModel.swift */,
 				DA2C797228F6F25C00922C47 /* AlramTime.swift */,
 			);
-			path = CreateView;
+			path = EventCreateView;
 			sourceTree = "<group>";
 		};
 		DA466E9328E685D70076AEE4 = {
