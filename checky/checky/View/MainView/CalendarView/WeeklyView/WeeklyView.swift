@@ -11,12 +11,15 @@ struct WeeklyView: View {
   @ObservedObject var viewModel: WeeklyViewModel
   
   var body: some View {
-    CalendarGrid
-      .onAppear {
-        viewModel.getPermission()
-        viewModel.fetchEvents()
-        viewModel.fetchReminder()
-      }
+    VStack {
+      HeaderView(viewModel: HeaderViewModel(dateHolder: viewModel.dateHolder, calendarHelper: viewModel.calendarHelper))
+      CalendarGrid
+    }
+    .onAppear {
+      viewModel.getPermission()
+      viewModel.fetchEvents()
+      viewModel.fetchReminder()
+    }
   }
   
   var CalendarGrid: some View {
