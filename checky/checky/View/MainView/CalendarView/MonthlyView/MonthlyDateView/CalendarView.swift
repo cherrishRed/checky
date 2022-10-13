@@ -17,9 +17,9 @@ struct CalendarView: View {
   var body: some View {
     VStack(spacing: 1) {
       HeaderView(viewModel: HeaderViewModel(dateHolder: viewModel.dateHolder, calendarHelper: viewModel.calendarHelper))
-      Button("Weekly") {
-        WeeklyView(viewModel: WeeklyViewModel(dateHolder: DateHolder(), eventManager: EventManager(), calendarHelper: CalendarHelper()))
-      }
+//      Button("Weekly") {
+//       
+//      }
 
       VStack(spacing: 0) {
         
