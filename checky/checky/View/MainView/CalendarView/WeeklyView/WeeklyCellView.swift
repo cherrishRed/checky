@@ -13,24 +13,26 @@ struct WeeklyCellView: View {
   @State var allReminders: [Reminder] = []
   
   var body: some View {
-    VStack(alignment: .trailing) {
-      HStack {
-        Text(dateValue.date.dayOfWeek)
-          .foregroundColor(.black.opacity(0.5))
-        Text(dateValue.date.day)
-      }
-      .frame(alignment: .trailing)
+    ZStack {
       
-      ForEach(allEvnets, id: \.self) { event in
-        WeeklyEventBlockView(event: event)
-      }
-      .padding(10)
-      .frame(maxWidth: .infinity)
+      RoundedRectangle(cornerRadius: 10)
+        .fill(Color("basicWhite"))
       
-      ForEach(allReminders, id: \.self) { reminder in
-        ReminderBlockView(reminder: reminder)
+      VStack(alignment: .leading) {
+        HStack {
+          Text(dateValue.date.dayOfWeek)
+            .foregroundColor(.black.opacity(0.5))
+          Text(dateValue.date.day)
+        }
+        
+        ForEach(allEvnets, id: \.self) { event in
+          WeeklyEventBlockView(event: event)
+        }
+        
+        ForEach(allReminders, id: \.self) { reminder in
+          ReminderBlockView(reminder: reminder)
+        }
       }
-      .frame(maxWidth: .infinity)
     }
   }
 }
