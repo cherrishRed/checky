@@ -43,7 +43,6 @@ class WeeklyViewModel: ObservableObject {
     })
   }
   
-  
   var allDatesForDisplay: [DateValue] {
     return calendarHelper.extractWeekDates(dateHolder.date)
   }
