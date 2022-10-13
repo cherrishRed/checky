@@ -43,7 +43,7 @@ struct CalendarView: View {
   }
   
   var CalendarGrid: some View {
-    let columns = Array(repeating: GridItem(.flexible(), spacing: 0, alignment: nil), count: 7)
+    let columns = Array(repeating: GridItem(.flexible(maximum: UIScreen.main.bounds.size.width / 7.3), spacing: 0, alignment: nil), count: 7)
     let columnsCount: CGFloat = viewModel.gridCloumnsCount
     
     var body: some View {

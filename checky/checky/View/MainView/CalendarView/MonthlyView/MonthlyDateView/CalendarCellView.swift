@@ -32,7 +32,7 @@ struct CalendarCellView: View {
         
         ForEach(allEvnets, id: \.self) { event in
           EventBlockView(event: event)
-            .padding(1)
+            
         }
         
         ForEach(allReminders, id: \.self) { reminder in
@@ -48,7 +48,7 @@ struct EventBlockView: View {
   
   var body: some View {
     ZStack(alignment: .leading) {
-      RoundedRectangle(cornerRadius: 2)
+      Rectangle()
         .fill(Color(event.category.cgColor))
         .frame(maxWidth: .infinity)
         .layoutPriority(1)
@@ -62,6 +62,7 @@ struct EventBlockView: View {
         .fixedSize(horizontal: true, vertical: false)
     }
     .frame(height: 16)
+    .padding(.vertical, 1.1)
   }
 }
 
