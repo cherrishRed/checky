@@ -13,8 +13,12 @@ struct WeeklyView: View {
   var body: some View {
     VStack {
       HeaderView(viewModel: HeaderViewModel(dateHolder: viewModel.dateHolder, calendarHelper: viewModel.calendarHelper))
+      
       CalendarGrid
+        
     }
+    .background(Color("backgroundGray"))
+    
     .onAppear {
       viewModel.getPermission()
       viewModel.fetchEvents()
@@ -31,7 +35,8 @@ struct WeeklyView: View {
         LazyVGrid(columns: columns, spacing: 0) {
           ForEach(viewModel.allDatesForDisplay) { value in
             WeeklyCellView(dateValue: value, allEvnets: viewModel.filteredEvent(value.date), allReminders: viewModel.filteredReminder(value.date))
-              .frame(width: geo.size.width / 2, height: geo.size.height / columnsCount * 2)
+              .padding(10)
+              .frame(width: geo.size.width / 2.5, height: geo.size.height / columnsCount * 2)
           }
         }
       }
