@@ -34,8 +34,7 @@ enum Week: Int, CaseIterable {
       return "S"
     }
   }
-  
-  var koreanShort: String {
+    var koreanShort: String {
     switch self {
     case .sunday:
       return "일"
