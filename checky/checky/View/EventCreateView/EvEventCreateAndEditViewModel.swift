@@ -12,28 +12,20 @@ class EventCreateAndEditViewModel: ObservableObject {
   let eventManager = EventManager()
   let categories: [EKCalendar]
   
-  @Published var mode: Mode = .edit
+  @Published var mode: Mode
   
-  // 제목
-  @Published var title: String = ""
-  
-  // 날짜
-  @Published var date: Date = .now
-  @Published var endDate: Date = .now
-  @Published var isShowDatePicker: Bool = false
-  @Published var isShowEndDatePicker: Bool = false
-  @Published var isAllDay: Bool = false
-  
-  // 카테고리
+  @Published var title: String
+  @Published var date: Date
+  @Published var endDate: Date
+  @Published var isAllDay: Bool
   @Published var category: EKCalendar
-  @Published var isShowCategoriesPicker: Bool = false
+  @Published var memo: String
+  @Published var alram: AlramTime
   
-  // 메모
-  @Published var memo: String = ""
-  
-  //
-  @Published var alram: AlramTime = .none
-  @Published var isShowAlramPicker: Bool = false
+  @Published var isShowDatePicker: Bool
+  @Published var isShowEndDatePicker: Bool
+  @Published var isShowCategoriesPicker: Bool
+  @Published var isShowAlramPicker: Bool
   
   enum Mode {
     case create
@@ -49,7 +41,29 @@ class EventCreateAndEditViewModel: ObservableObject {
     }
   }
   
-  init() {
+  init(mode: EventCreateAndEditViewModel.Mode,
+       title: String = "",
+       date: Date = .now,
+       endDate: Date = .now,
+       isAllDay: Bool = false,
+       memo: String = "",
+       alram: AlramTime = .none,
+       isShowDatePicker: Bool = false,
+       isShowEndDatePicker: Bool = false,
+       isShowCategoriesPicker: Bool = false,
+       isShowAlramPicker: Bool = false) {
+    self.mode = mode
+    self.title = title
+    self.date = date
+    self.endDate = endDate
+    self.isAllDay = isAllDay
+    self.memo = memo
+    self.alram = alram
+    self.isShowDatePicker = isShowDatePicker
+    self.isShowEndDatePicker = isShowEndDatePicker
+    self.isShowCategoriesPicker = isShowCategoriesPicker
+    self.isShowAlramPicker = isShowAlramPicker
+    
     self.categories = eventManager.getEventCategories()
     self.category = categories[0]
   }
