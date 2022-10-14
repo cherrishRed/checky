@@ -1,5 +1,5 @@
 //
-//  ReminderMenuViewModel.swift
+//  ReminderCreateAndEditViewModel.swift
 //  checky
 //
 //  Created by RED on 2022/10/13.
@@ -8,25 +8,38 @@
 import Foundation
 import EventKit
 
-class ReminderMenuViewModel: ObservableObject {
+class ReminderCreateAndEditViewModel: ObservableObject {
   let eventManager = EventManager()
   let categories: [EKCalendar]
   
+  @Published var mode: Mode = .create
+  
   @Published var title: String = ""
   @Published var memo: String = ""
-  
   @Published var category: EKCalendar
-  @Published var isShowCategoriesPicker: Bool = false
-  
   @Published var priority: Int = 0
-  
-  @Published var isSetDate: Bool = false
-  @Published var isShowDatePicker: Bool = false
   @Published var date: Date = .now
   
-  @Published var isShowTimePicker: Bool = false
+  @Published var isSetDate: Bool = false
   @Published var isSetTime: Bool = false
   
+  @Published var isShowCategoriesPicker: Bool = false
+  @Published var isShowDatePicker: Bool = false
+  @Published var isShowTimePicker: Bool = false
+  
+  enum Mode {
+    case create
+    case edit
+    
+    var title: String {
+      switch self {
+        case.create:
+          return "새로운 미리알림 추가"
+        case.edit:
+         return "미리알림 수정"
+      }
+    }
+  }
   
   init() {
     self.categories = eventManager.getReminderCategories()
@@ -60,11 +73,6 @@ class ReminderMenuViewModel: ObservableObject {
     }
   }
   
-  func closeAllPickers() {
-    isShowCategoriesPicker = false
-    isShowDatePicker = false
-    isShowTimePicker = false
-  }
   
   func tappedDateToggleButton() {
     if isSetDate == false {
@@ -85,7 +93,36 @@ class ReminderMenuViewModel: ObservableObject {
     }
   }
   
-  func reset() {
+  func tappedCheckButton() {
+    if mode == .create {
+      saveNewReminder()
+    } else {
+      // edit
+    }
+    closeAllPickers()
+    reset()
+  }
+  
+  func tappedCloseButton() {
+    closeAllPickers()
+    reset()
+  }
+  
+  func tappedOutOfRange() {
+    closeAllPickers()
+  }
+  
+  func tappedDeleteButton() {
+    
+  }
+  
+  private func closeAllPickers() {
+    isShowCategoriesPicker = false
+    isShowDatePicker = false
+    isShowTimePicker = false
+  }
+  
+  private func reset() {
     title = ""
     memo = ""
     isSetTime = false
@@ -94,7 +131,7 @@ class ReminderMenuViewModel: ObservableObject {
     category = categories[0]
   }
   
-  func saveNewReminder() {
+  private func saveNewReminder() {
     let newReminder = EKReminder(eventStore: eventManager.store)
     newReminder.title = title
     newReminder.priority = priority
