@@ -13,7 +13,7 @@ struct WeeklyCellView: View {
   @State var allReminders: [Reminder] = []
   
   var body: some View {
-    ZStack {
+    ZStack(alignment: .topLeading) {
       
       RoundedRectangle(cornerRadius: 10)
         .fill(Color("basicWhite"))
@@ -24,13 +24,21 @@ struct WeeklyCellView: View {
             .foregroundColor(.black.opacity(0.5))
           Text(dateValue.date.day)
         }
+        .padding(6)
         
-        ForEach(allEvnets, id: \.self) { event in
-          WeeklyEventBlockView(event: event)
-        }
-        
-        ForEach(allReminders, id: \.self) { reminder in
-          ReminderBlockView(reminder: reminder)
+        ScrollView {
+          VStack {
+            ForEach(allEvnets, id: \.self) { event in
+              WeeklyEventBlockView(event: event)
+                .frame(height: 20)
+            }
+            
+            ForEach(allReminders, id: \.self) { reminder in
+              ReminderBlockView(reminder: reminder)
+                .frame(height: 14)
+            }
+          }
+          .padding(.horizontal, 6)
         }
       }
     }
@@ -42,21 +50,18 @@ struct WeeklyEventBlockView: View {
   
   var body: some View {
     ZStack(alignment: .leading) {
-      Rectangle()
+      RoundedRectangle(cornerRadius: 4)
         .fill(Color(event.category.cgColor))
         .frame(maxWidth: .infinity)
         .layoutPriority(1)
       
       Text(event.ekevent.title)
-        .padding(1)
         .lineLimit(1)
         .font(.caption)
         .fontWeight(.semibold)
         .foregroundColor(Color("basicWhite"))
         .fixedSize(horizontal: true, vertical: false)
     }
-    .frame(height: 16)
-    .padding(.vertical, 1.1)
   }
 }
 
@@ -64,7 +69,7 @@ struct WeeklyReminderBlockView: View {
   let reminder: Reminder
   
   var body: some View {
-    HStack(spacing: 1) {
+    HStack() {
       ZStack {
         Circle()
           .stroke(Color(reminder.category.cgColor))
@@ -84,13 +89,11 @@ struct WeeklyReminderBlockView: View {
           .font(.caption)
           .foregroundColor(Color("fontDarkBlack"))
           .fixedSize(horizontal: true, vertical: false)
-        Text(reminder.ekreminder.description)
+        Text(reminder.ekreminder.notes ?? "")
           .font(.caption)
           .foregroundColor(Color("fontDarkBlack"))
           .fixedSize(horizontal: true, vertical: false)
       }
     }
-    .frame(height: 16)
-    .padding(.horizontal, 2)
   }
 }
