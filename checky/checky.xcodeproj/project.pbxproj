@@ -26,7 +26,7 @@
 		DA2C796828EF007900922C47 /* NavigationTranisitionStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796728EF007900922C47 /* NavigationTranisitionStyle.swift */; };
 		DA2C796A28EF009800922C47 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796928EF009800922C47 /* Coordinator.swift */; };
 		DA2C796D28F5817600922C47 /* EventCreateAndEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796C28F5817600922C47 /* EventCreateAndEditView.swift */; };
-		DA2C796F28F6CB1A00922C47 /* EvEventCreateAndEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796E28F6CB1A00922C47 /* EvEventCreateAndEditViewModel.swift */; };
+		DA2C796F28F6CB1A00922C47 /* EventCreateAndEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796E28F6CB1A00922C47 /* EventCreateAndEditViewModel.swift */; };
 		DA2C797128F6E2C800922C47 /* Extension+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C797028F6E2C800922C47 /* Extension+View.swift */; };
 		DA2C797328F6F25C00922C47 /* AlramTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C797228F6F25C00922C47 /* AlramTime.swift */; };
 		DA2C798128F7265D00922C47 /* ReminderCreateAndEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C798028F7265D00922C47 /* ReminderCreateAndEditView.swift */; };
@@ -67,7 +67,7 @@
 		DA2C796728EF007900922C47 /* NavigationTranisitionStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTranisitionStyle.swift; sourceTree = "<group>"; };
 		DA2C796928EF009800922C47 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		DA2C796C28F5817600922C47 /* EventCreateAndEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCreateAndEditView.swift; sourceTree = "<group>"; };
-		DA2C796E28F6CB1A00922C47 /* EvEventCreateAndEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvEventCreateAndEditViewModel.swift; sourceTree = "<group>"; };
+		DA2C796E28F6CB1A00922C47 /* EventCreateAndEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCreateAndEditViewModel.swift; sourceTree = "<group>"; };
 		DA2C797028F6E2C800922C47 /* Extension+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+View.swift"; sourceTree = "<group>"; };
 		DA2C797228F6F25C00922C47 /* AlramTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlramTime.swift; sourceTree = "<group>"; };
 		DA2C798028F7265D00922C47 /* ReminderCreateAndEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCreateAndEditView.swift; sourceTree = "<group>"; };
@@ -227,7 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				DA2C796C28F5817600922C47 /* EventCreateAndEditView.swift */,
-				DA2C796E28F6CB1A00922C47 /* EvEventCreateAndEditViewModel.swift */,
+				DA2C796E28F6CB1A00922C47 /* EventCreateAndEditViewModel.swift */,
 				DA2C797228F6F25C00922C47 /* AlramTime.swift */,
 			);
 			path = EventCreateView;
@@ -392,7 +392,7 @@
 				865BE52428EC4B6200305899 /* Extension+Text.swift in Sources */,
 				DA91E7E328EC8E580091B6A3 /* Reminder.swift in Sources */,
 				DA2C796A28EF009800922C47 /* Coordinator.swift in Sources */,
-				DA2C796F28F6CB1A00922C47 /* EvEventCreateAndEditViewModel.swift in Sources */,
+				DA2C796F28F6CB1A00922C47 /* EventCreateAndEditViewModel.swift in Sources */,
 				DA2C796D28F5817600922C47 /* EventCreateAndEditView.swift in Sources */,
 				DA2C798128F7265D00922C47 /* ReminderCreateAndEditView.swift in Sources */,
 				868C544328F417F7006A9B38 /* TabBarItem.swift in Sources */,
