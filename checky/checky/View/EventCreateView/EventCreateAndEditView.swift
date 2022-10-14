@@ -106,7 +106,7 @@ struct EventCreateAndEditView: View {
             .padding(.trailing, 3)
           if viewModel.isAllDay {
             Button {
-              viewModel.toggleDatePicker()
+              viewModel.togglePicker(selectedPicker: .datePicker)
               hideKeyboard()
             } label: {
               Text(viewModel.date.dateKoreanWithYear)
@@ -121,7 +121,7 @@ struct EventCreateAndEditView: View {
           } else {
             HStack {
               Button {
-                viewModel.toggleDatePicker()
+                viewModel.togglePicker(selectedPicker: .datePicker)
                 hideKeyboard()
               } label: {
                 VStack {
@@ -139,7 +139,7 @@ struct EventCreateAndEditView: View {
               Text("~")
               
               Button {
-                viewModel.toggleEndDatePicker()
+                viewModel.togglePicker(selectedPicker: .endDatePicker)
                 hideKeyboard()
               } label: {
                 VStack {
@@ -187,7 +187,7 @@ struct EventCreateAndEditView: View {
         Image(systemName: "tag.fill")
           .foregroundColor(Color("fontMediumGray"))
         Button {
-          viewModel.toggleCategoriesPicker()
+          viewModel.togglePicker(selectedPicker: .categoriesPicker)
           hideKeyboard()
         } label: {
           HStack {
@@ -228,7 +228,7 @@ struct EventCreateAndEditView: View {
           .foregroundColor(Color("fontMediumGray"))
           .padding(.trailing, 4)
         Button {
-          viewModel.toggleAlramPicker()
+          viewModel.togglePicker(selectedPicker: .alramPicker)
           hideKeyboard()
         } label: {
           Text(viewModel.alram.korean)

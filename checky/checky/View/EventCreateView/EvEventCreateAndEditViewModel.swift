@@ -77,39 +77,40 @@ class EventCreateAndEditViewModel: ObservableObject {
     return date...max
   }
   
-  func toggleDatePicker() {
-    if isShowDatePicker == true {
-      isShowDatePicker = false
-    } else {
-      closeAllPickers()
-      isShowDatePicker = true
-    }
+  enum Pickers {
+    case datePicker
+    case endDatePicker
+    case categoriesPicker
+    case alramPicker
   }
   
-  func toggleEndDatePicker() {
-    if isShowEndDatePicker == true {
-      isShowEndDatePicker = false
-    } else {
-      closeAllPickers()
-      isShowEndDatePicker = true
+  func togglePicker(selectedPicker: Pickers) {
+    var isShow: Bool
+    
+    switch selectedPicker {
+      case .datePicker:
+        isShow = isShowDatePicker
+      case .endDatePicker:
+        isShow = isShowEndDatePicker
+      case .categoriesPicker:
+        isShow = isShowCategoriesPicker
+      case .alramPicker:
+        isShow = isShowAlramPicker
     }
-  }
-  
-  func toggleCategoriesPicker() {
-    if isShowCategoriesPicker == true {
-      isShowCategoriesPicker = false
-    } else {
+    
+    if isShow == false {
       closeAllPickers()
-      isShowCategoriesPicker = true
     }
-  }
-  
-  func toggleAlramPicker() {
-    if isShowAlramPicker == true {
-      isShowAlramPicker = false
-    } else {
-      closeAllPickers()
-      isShowAlramPicker = true
+    
+    switch selectedPicker {
+      case .datePicker:
+        isShowDatePicker.toggle()
+      case .endDatePicker:
+        isShowEndDatePicker.toggle()
+      case .categoriesPicker:
+        isShowCategoriesPicker.toggle()
+      case .alramPicker:
+        isShowAlramPicker.toggle()
     }
   }
   
@@ -136,6 +137,8 @@ class EventCreateAndEditViewModel: ObservableObject {
   
   func toggleIsAllDay() {
     isAllDay.toggle()
+    isShowDatePicker = false
+    isShowEndDatePicker = false
   }
   
   func tappedOutOfRange() {
