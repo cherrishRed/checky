@@ -33,10 +33,12 @@ struct WeeklyView: View {
     var body: some View {
       GeometryReader { geo in
         LazyVGrid(columns: columns, spacing: 0) {
+          Text("달력 그릴 뷰")
           ForEach(viewModel.allDatesForDisplay) { value in
             WeeklyCellView(dateValue: value, allEvnets: viewModel.filteredEvent(value.date), allReminders: viewModel.filteredReminder(value.date))
-              .padding(10)
-              .frame(width: geo.size.width / 2.5, height: geo.size.height / columnsCount * 2)
+              .padding(.horizontal, 10)
+              .padding(.vertical, 6)
+              .frame(width: geo.size.width / 1.9, height: geo.size.height / columnsCount * 2)
           }
         }
       }
