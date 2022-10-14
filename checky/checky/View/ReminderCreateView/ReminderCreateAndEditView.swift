@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ReminderCreateAndEditView: View {
-  @ObservedObject var viewModel = ReminderCreateAndEditViewModel()
+  @ObservedObject var viewModel = ReminderCreateAndEditViewModel(mode: .create)
   
   var body: some View {
     VStack {

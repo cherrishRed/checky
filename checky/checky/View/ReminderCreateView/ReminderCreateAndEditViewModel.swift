@@ -12,20 +12,20 @@ class ReminderCreateAndEditViewModel: ObservableObject {
   let eventManager = EventManager()
   let categories: [EKCalendar]
   
-  @Published var mode: Mode = .create
+  @Published var mode: Mode
   
-  @Published var title: String = ""
-  @Published var memo: String = ""
+  @Published var title: String
+  @Published var memo: String
   @Published var category: EKCalendar
-  @Published var priority: Int = 0
-  @Published var date: Date = .now
+  @Published var priority: Int
+  @Published var date: Date
   
-  @Published var isSetDate: Bool = false
-  @Published var isSetTime: Bool = false
+  @Published var isSetDate: Bool
+  @Published var isSetTime: Bool
   
-  @Published var isShowCategoriesPicker: Bool = false
-  @Published var isShowDatePicker: Bool = false
-  @Published var isShowTimePicker: Bool = false
+  @Published var isShowCategoriesPicker: Bool
+  @Published var isShowDatePicker: Bool
+  @Published var isShowTimePicker: Bool
   
   enum Mode {
     case create
@@ -41,7 +41,27 @@ class ReminderCreateAndEditViewModel: ObservableObject {
     }
   }
   
-  init() {
+  init(mode: ReminderCreateAndEditViewModel.Mode,
+       title: String = "",
+       memo: String = "",
+       priority: Int = 0,
+       date: Date = .now,
+       isSetDate: Bool = false,
+       isSetTime: Bool = false,
+       isShowCategoriesPicker: Bool = false,
+       isShowDatePicker: Bool = false,
+       isShowTimePicker: Bool = false) {
+    self.mode = mode
+    self.title = title
+    self.memo = memo
+    self.priority = priority
+    self.date = date
+    self.isSetDate = isSetDate
+    self.isSetTime = isSetTime
+    self.isShowCategoriesPicker = isShowCategoriesPicker
+    self.isShowDatePicker = isShowDatePicker
+    self.isShowTimePicker = isShowTimePicker
+    
     self.categories = eventManager.getReminderCategories()
     self.category = categories[0]
   }
