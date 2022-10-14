@@ -66,33 +66,37 @@ class ReminderCreateAndEditViewModel: ObservableObject {
     self.category = categories[0]
   }
   
-  func toggleCategoriesPicker() {
-    if isShowCategoriesPicker == true {
-      isShowCategoriesPicker = false
-    } else {
-      closeAllPickers()
-      isShowCategoriesPicker = true
-    }
+  enum Pickers {
+    case datePicker
+    case timePicker
+    case categoriesPicker
   }
   
-  func toggleDatePicker() {
-    if isShowDatePicker == true {
-      isShowDatePicker = false
-    } else {
-      closeAllPickers()
-      isShowDatePicker = true
+  func togglePicker(selectedPicker: Pickers) {
+    var isShow: Bool
+    
+    switch selectedPicker {
+      case .datePicker:
+        isShow = isShowDatePicker
+      case .timePicker:
+        isShow = isShowTimePicker
+      case .categoriesPicker:
+        isShow = isShowCategoriesPicker
     }
-  }
-  
-  func toggleTimePicker() {
-    if isShowTimePicker == true {
-      isShowTimePicker = false
-    } else {
+    
+    if isShow == false {
       closeAllPickers()
-      isShowTimePicker = true
     }
-  }
-  
+    
+    switch selectedPicker {
+      case .datePicker:
+        isShowDatePicker.toggle()
+      case .timePicker:
+        isShowTimePicker.toggle()
+      case .categoriesPicker:
+        isShowCategoriesPicker.toggle()
+    }
+  }  
   
   func tappedDateToggleButton() {
     if isSetDate == false {

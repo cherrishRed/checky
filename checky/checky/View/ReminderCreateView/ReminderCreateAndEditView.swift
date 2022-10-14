@@ -99,7 +99,7 @@ struct ReminderCreateAndEditView: View {
         Image(systemName: "tag.fill")
           .foregroundColor(Color("fontMediumGray"))
         Button {
-          viewModel.toggleCategoriesPicker()
+          viewModel.togglePicker(selectedPicker: .categoriesPicker)
           hideKeyboard()
         } label: {
           HStack {
@@ -176,7 +176,7 @@ struct ReminderCreateAndEditView: View {
           .padding(.trailing, 2)
         if viewModel.isSetDate {
           Button {
-            viewModel.toggleDatePicker()
+            viewModel.togglePicker(selectedPicker: .datePicker)
             hideKeyboard()
           } label: {
             Text(viewModel.date.dateKoreanWithYear)
@@ -220,7 +220,7 @@ struct ReminderCreateAndEditView: View {
           .padding(.trailing, 3)
         if viewModel.isSetTime {
           Button {
-            viewModel.toggleTimePicker()
+            viewModel.togglePicker(selectedPicker: .timePicker)
             hideKeyboard()
           } label: {
             Text(viewModel.date.time)

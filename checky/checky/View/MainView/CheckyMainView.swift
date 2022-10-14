@@ -17,7 +17,7 @@ struct CheckyMainView: View {
         Color.red
           .tabBarItem(tab: .daily, selection: $checkyMainViewModel.tabSelection)
         
-        EventCreateAndEditView()
+        ReminderCreateAndEditView()
           .tabBarItem(tab: .add, selection: $checkyMainViewModel.tabSelection)
         Color.green
           .tabBarItem(tab: .setting, selection: $checkyMainViewModel.tabSelection)
