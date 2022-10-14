@@ -25,14 +25,10 @@
 		DA2C796628EF005B00922C47 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796528EF005B00922C47 /* NavigationRouter.swift */; };
 		DA2C796828EF007900922C47 /* NavigationTranisitionStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796728EF007900922C47 /* NavigationTranisitionStyle.swift */; };
 		DA2C796A28EF009800922C47 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796928EF009800922C47 /* Coordinator.swift */; };
-		DA2C796D28F5817600922C47 /* EventMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796C28F5817600922C47 /* EventMenuView.swift */; };
-		DA2C796F28F6CB1A00922C47 /* EventMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796E28F6CB1A00922C47 /* EventMenuViewModel.swift */; };
+		DA2C796D28F5817600922C47 /* EventCreateAndEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796C28F5817600922C47 /* EventCreateAndEditView.swift */; };
+		DA2C796F28F6CB1A00922C47 /* EvEventCreateAndEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796E28F6CB1A00922C47 /* EvEventCreateAndEditViewModel.swift */; };
 		DA2C797128F6E2C800922C47 /* Extension+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C797028F6E2C800922C47 /* Extension+View.swift */; };
 		DA2C797328F6F25C00922C47 /* AlramTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C797228F6F25C00922C47 /* AlramTime.swift */; };
-		DA2C797728F71BCF00922C47 /* EventCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C797628F71BCF00922C47 /* EventCreateView.swift */; };
-		DA2C797928F71CE700922C47 /* EventCreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C797828F71CE700922C47 /* EventCreateViewModel.swift */; };
-		DA2C797B28F7203700922C47 /* EventEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C797A28F7203700922C47 /* EventEditView.swift */; };
-		DA2C797D28F7204C00922C47 /* EventEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C797C28F7204C00922C47 /* EventEditViewModel.swift */; };
 		DA2C798128F7265D00922C47 /* ReminderCreateAndEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C798028F7265D00922C47 /* ReminderCreateAndEditView.swift */; };
 		DA2C798328F7268F00922C47 /* ReminderCreateAndEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C798228F7268F00922C47 /* ReminderCreateAndEditViewModel.swift */; };
 		DA466EA028E685D70076AEE4 /* checkyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA466E9F28E685D70076AEE4 /* checkyApp.swift */; };
@@ -70,14 +66,10 @@
 		DA2C796528EF005B00922C47 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		DA2C796728EF007900922C47 /* NavigationTranisitionStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTranisitionStyle.swift; sourceTree = "<group>"; };
 		DA2C796928EF009800922C47 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		DA2C796C28F5817600922C47 /* EventMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMenuView.swift; sourceTree = "<group>"; };
-		DA2C796E28F6CB1A00922C47 /* EventMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMenuViewModel.swift; sourceTree = "<group>"; };
+		DA2C796C28F5817600922C47 /* EventCreateAndEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCreateAndEditView.swift; sourceTree = "<group>"; };
+		DA2C796E28F6CB1A00922C47 /* EvEventCreateAndEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvEventCreateAndEditViewModel.swift; sourceTree = "<group>"; };
 		DA2C797028F6E2C800922C47 /* Extension+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+View.swift"; sourceTree = "<group>"; };
 		DA2C797228F6F25C00922C47 /* AlramTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlramTime.swift; sourceTree = "<group>"; };
-		DA2C797628F71BCF00922C47 /* EventCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCreateView.swift; sourceTree = "<group>"; };
-		DA2C797828F71CE700922C47 /* EventCreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCreateViewModel.swift; sourceTree = "<group>"; };
-		DA2C797A28F7203700922C47 /* EventEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditView.swift; sourceTree = "<group>"; };
-		DA2C797C28F7204C00922C47 /* EventEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditViewModel.swift; sourceTree = "<group>"; };
 		DA2C798028F7265D00922C47 /* ReminderCreateAndEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCreateAndEditView.swift; sourceTree = "<group>"; };
 		DA2C798228F7268F00922C47 /* ReminderCreateAndEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCreateAndEditViewModel.swift; sourceTree = "<group>"; };
 		DA466E9C28E685D70076AEE4 /* checky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = checky.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -234,12 +226,8 @@
 		DA2C796B28F5814F00922C47 /* EventCreateView */ = {
 			isa = PBXGroup;
 			children = (
-				DA2C797A28F7203700922C47 /* EventEditView.swift */,
-				DA2C797C28F7204C00922C47 /* EventEditViewModel.swift */,
-				DA2C797628F71BCF00922C47 /* EventCreateView.swift */,
-				DA2C797828F71CE700922C47 /* EventCreateViewModel.swift */,
-				DA2C796C28F5817600922C47 /* EventMenuView.swift */,
-				DA2C796E28F6CB1A00922C47 /* EventMenuViewModel.swift */,
+				DA2C796C28F5817600922C47 /* EventCreateAndEditView.swift */,
+				DA2C796E28F6CB1A00922C47 /* EvEventCreateAndEditViewModel.swift */,
 				DA2C797228F6F25C00922C47 /* AlramTime.swift */,
 			);
 			path = EventCreateView;
@@ -383,12 +371,10 @@
 				DA2C796128EEFF7700922C47 /* AppDelegate.swift in Sources */,
 				DA466EA028E685D70076AEE4 /* checkyApp.swift in Sources */,
 				868C543F28F417C0006A9B38 /* CustomTabBarContainerView.swift in Sources */,
-				DA2C797728F71BCF00922C47 /* EventCreateView.swift in Sources */,
 				865BE52628EC867900305899 /* WeekOption.swift in Sources */,
 				DA91E7E528EC94180091B6A3 /* CalendarCellView.swift in Sources */,
 				DA91E81828EE01790091B6A3 /* HeaderViewModel.swift in Sources */,
 				DA2C798328F7268F00922C47 /* ReminderCreateAndEditViewModel.swift in Sources */,
-				DA2C797B28F7203700922C47 /* EventEditView.swift in Sources */,
 				DA91E7E128EC8DFC0091B6A3 /* Event.swift in Sources */,
 				868C544128F417D9006A9B38 /* CustomTabBarView.swift in Sources */,
 				DA2C796628EF005B00922C47 /* NavigationRouter.swift in Sources */,
@@ -397,7 +383,6 @@
 				DA2C797328F6F25C00922C47 /* AlramTime.swift in Sources */,
 				868C544728F419B1006A9B38 /* CheckyMainViewModel.swift in Sources */,
 				DA91E7DC28EC1E880091B6A3 /* EventManager.swift in Sources */,
-				DA2C797D28F7204C00922C47 /* EventEditViewModel.swift in Sources */,
 				868C544528F4199D006A9B38 /* CheckyMainView.swift in Sources */,
 				DA2C796828EF007900922C47 /* NavigationTranisitionStyle.swift in Sources */,
 				DA91E7D828EB57AF0091B6A3 /* DateValue.swift in Sources */,
@@ -407,9 +392,8 @@
 				865BE52428EC4B6200305899 /* Extension+Text.swift in Sources */,
 				DA91E7E328EC8E580091B6A3 /* Reminder.swift in Sources */,
 				DA2C796A28EF009800922C47 /* Coordinator.swift in Sources */,
-				DA2C796F28F6CB1A00922C47 /* EventMenuViewModel.swift in Sources */,
-				DA2C797928F71CE700922C47 /* EventCreateViewModel.swift in Sources */,
-				DA2C796D28F5817600922C47 /* EventMenuView.swift in Sources */,
+				DA2C796F28F6CB1A00922C47 /* EvEventCreateAndEditViewModel.swift in Sources */,
+				DA2C796D28F5817600922C47 /* EventCreateAndEditView.swift in Sources */,
 				DA2C798128F7265D00922C47 /* ReminderCreateAndEditView.swift in Sources */,
 				868C544328F417F7006A9B38 /* TabBarItem.swift in Sources */,
 				DA2C796328EEFFA300922C47 /* SceneDelegate.swift in Sources */,

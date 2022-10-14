@@ -1,5 +1,5 @@
 //
-//  EventMenuViewModel.swift
+//  EventCreateAndEditViewModel.swift
 //  checky
 //
 //  Created by RED on 2022/10/12.
@@ -8,9 +8,11 @@
 import Foundation
 import EventKit
 
-class EventMenuViewModel: ObservableObject {
+class EventCreateAndEditViewModel: ObservableObject {
   let eventManager = EventManager()
   let categories: [EKCalendar]
+  
+  @Published var mode: Mode = .edit
   
   // 제목
   @Published var title: String = ""
@@ -33,6 +35,19 @@ class EventMenuViewModel: ObservableObject {
   @Published var alram: AlramTime = .none
   @Published var isShowAlramPicker: Bool = false
   
+  enum Mode {
+    case create
+    case edit
+    
+    var title: String {
+      switch self {
+        case.create:
+          return "새로운 일정 추가"
+        case.edit:
+         return "일정 수정"
+      }
+    }
+  }
   
   init() {
     self.categories = eventManager.getEventCategories()
@@ -84,18 +99,48 @@ class EventMenuViewModel: ObservableObject {
     }
   }
   
+  func changeMinimumEndDate() {
+    if endDate < date {
+      endDate = date
+    }
+  }
+  
+  func tappedCloseButton() {
+    closeAllPickers()
+    reset()
+  }
+  
+  func tappedCheckButton() {
+    if mode == .create {
+      createEvent()
+    } else {
+      // edit
+    }
+    closeAllPickers()
+    reset()
+  }
+  
   func toggleIsAllDay() {
     isAllDay.toggle()
   }
   
-  func closeAllPickers() {
+  func tappedOutOfRange() {
+    closeAllPickers()
+  }
+  
+  func tappedDeleteButton() {
+    closeAllPickers()
+    reset()
+  }
+  
+  private func closeAllPickers() {
     isShowCategoriesPicker = false
     isShowDatePicker = false
     isShowEndDatePicker = false
     isShowAlramPicker = false
   }
   
-  func createEvent() {
+  private func createEvent() {
     let newEvnet = EKEvent(eventStore: eventManager.store)
     newEvnet.title = title
     newEvnet.isAllDay = isAllDay
@@ -117,18 +162,12 @@ class EventMenuViewModel: ObservableObject {
     reset()
   }
   
-  func reset() {
+  private func reset() {
     title = ""
     isAllDay = false
     date = .now
     endDate = .now
     memo = ""
     category = categories[0]
-  }
-  
-  func changeMinimumEndDate() {
-    if endDate < date {
-      endDate = date
-    }
   }
 }

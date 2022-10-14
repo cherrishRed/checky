@@ -1,5 +1,5 @@
 //
-//  EventMenuView.swift
+//  EventCreateAndEditView.swift
 //  checky
 //
 //  Created by RED on 2022/10/11.
@@ -8,10 +8,51 @@
 import SwiftUI
 import EventKit
 
-struct EventMenuView: View {
-  @ObservedObject var viewModel = EventMenuViewModel()
+struct EventCreateAndEditView: View {
+  @ObservedObject var viewModel = EventCreateAndEditViewModel()
   
   var body: some View {
+    VStack {
+      headerView
+      bodyView
+      
+      if viewModel.mode == .edit {
+        deleteButtonView
+      }
+    }
+    .onTapGesture {
+      hideKeyboard()
+      viewModel.tappedOutOfRange()
+    }
+  }
+  
+  var headerView: some View {
+    HStack {
+      Button {
+        viewModel.tappedCloseButton()
+        hideKeyboard()
+      } label: {
+        Image(systemName: "xmark")
+          .foregroundColor(.red)
+          .padding()
+      }
+      
+      Text(viewModel.mode.title)
+        .font(.title2)
+        .frame(maxWidth: .infinity)
+      
+      Button {
+        viewModel.tappedCheckButton()
+        hideKeyboard()
+      } label: {
+        Image(systemName: "checkmark")
+          .foregroundColor(.green)
+          .padding()
+      }
+    }
+  }
+  
+  var bodyView: some View {
     ScrollView(.vertical, showsIndicators: false) {
       VStack(spacing: 10) {
         titleView
@@ -25,11 +66,27 @@ struct EventMenuView: View {
     .onChange(of: viewModel.date) { newValue in
       viewModel.changeMinimumEndDate()
     }
-    .onTapGesture {
-      hideKeyboard()
-      viewModel.closeAllPickers()
-    }
   }
+  
+  var deleteButtonView: some View {
+    Button {
+      viewModel.tappedDeleteButton()
+    } label: {
+      HStack {
+        Image(systemName: "trash.fill")
+        Text("이벤트 삭제")
+          .fontWeight(.heavy)
+      }
+      .padding()
+      .frame(maxWidth: .infinity)
+      .background(Color("pointRed"))
+      .cornerRadius(4)
+      .foregroundColor(Color("basicWhite"))
+    }
+    .padding(.horizontal)
+  }
+  
+  //MARK: BodyView 안의 세부 View 들
     var titleView: some View {
       TextField("제목", text: $viewModel.title)
         .foregroundColor(Color("fontDarkBlack"))
