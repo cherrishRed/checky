@@ -32,4 +32,25 @@ extension Date {
     dateformmater.dateFormat = "d"
     return dateformmater.string(from: self)
   }
+    
+  var dateKoreanWithYear: String {
+    let dateformmater = DateFormatter()
+    dateformmater.locale = Locale(identifier: "ko_KR")
+    dateformmater.dateFormat = "yyyy년 M월 d일"
+    return dateformmater.string(from: self)
+  }
+  
+  var dateKorean: String {
+    let dateformmater = DateFormatter()
+    dateformmater.locale = Locale(identifier: "ko_KR")
+    dateformmater.dateFormat = "M월 d일"
+    return dateformmater.string(from: self)
+  }
+  
+  var time: String {
+    let dateformmater = DateFormatter()
+    dateformmater.locale = Locale(identifier: "ko_KR")
+    dateformmater.dateFormat = "a hh : mm "
+    return dateformmater.string(from: self)
+  }
 }
