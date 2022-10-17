@@ -18,19 +18,13 @@ struct MonthlyView: View {
     VStack(spacing: 1) {
       HeaderView(viewModel: HeaderViewModel(dateHolder: viewModel.dateHolder, calendarHelper: viewModel.calendarHelper))
       
-      Button {
-        viewModel.moveToWeek()
-      } label: {
-        Text("Week")
-      }
-
-      
+      Button("Week") { viewModel.moveToWeek() }
+    
       VStack(spacing: 0) {
         
         DayOfWeekStackView(viewModel: DayOfWeekStackViewModel())
         
         MonthlyGrid
-
       }
       .background(Color("basicWhite"))
       .cornerRadius(20)
@@ -48,7 +42,9 @@ struct MonthlyView: View {
       viewModel.fetchReminder()
     }
   }
-  
+}
+
+extension MonthlyView {
   var MonthlyGrid: some View {
     let columns = Array(repeating: GridItem(.flexible(), spacing: 0, alignment: nil), count: 7)
     
@@ -58,7 +54,10 @@ struct MonthlyView: View {
       GeometryReader { geo in
         LazyVGrid(columns: columns, spacing: 0) {
           ForEach(viewModel.allDatesForDisplay) { value in
-            MonthlyCellView(dateValue: value, allEvnets: viewModel.filteredEvent(value.date), allReminders: viewModel.filteredReminder(value.date))
+            MonthlyCellView(
+              dateValue: value,
+              allEvnets: viewModel.filteredEvent(value.date),
+              allReminders: viewModel.filteredReminder(value.date))
             .frame(width: geo.size.width / 7, height: geo.size.height / columnsCount)
           }
         }
