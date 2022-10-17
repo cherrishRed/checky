@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct WeeklyView: View {
-  @ObservedObject var viewModel: WeeklyViewModel
+  @StateObject var viewModel: WeeklyViewModel
   
   var body: some View {
     VStack {
       HeaderView(viewModel: HeaderViewModel(dateHolder: viewModel.dateHolder, calendarHelper: viewModel.calendarHelper))
+      
+      Button {
+        viewModel.moveToMonthly()
+      } label: {
+        Text("Monthly")
+      }
+      
       
       CalendarGrid
         

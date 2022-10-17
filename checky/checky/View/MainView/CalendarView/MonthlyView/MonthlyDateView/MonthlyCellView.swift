@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CalendarCellView: View {
+struct MonthlyCellView: View {
   @State var dateValue: DateValue
   @State var allEvnets: [Event] = []
   @State var allReminders: [Reminder] = []
@@ -22,6 +22,7 @@ struct CalendarCellView: View {
           if Calendar.current.isDateInToday(dateValue.date) {
             Circle()
               .fill(Color("fontBlack"))
+              .frame(width: 20, height: 20)
             Text(dateValue.date.day)
               .foregroundColor(Color("basicWhite"))
           } else {
@@ -32,7 +33,6 @@ struct CalendarCellView: View {
         
         ForEach(allEvnets, id: \.self) { event in
           EventBlockView(event: event)
-            
         }
         
         ForEach(allReminders, id: \.self) { reminder in

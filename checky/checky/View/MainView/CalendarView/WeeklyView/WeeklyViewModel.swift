@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 class WeeklyViewModel: ObservableObject {
   @Published var dateHolder: DateHolder
@@ -13,13 +14,17 @@ class WeeklyViewModel: ObservableObject {
   @Published var reminders: [Reminder]
   let eventManager: EventManager
   let calendarHelper: CalendarHelper
+  var moveToMonthly: () -> ()
   
-  init(dateHolder: DateHolder,
-       eventManager: EventManager,
-       calendarHelper: CalendarHelper,
-       events: [Event] = [],
-       reminders: [Reminder] = []
+  init(
+    dateHolder: DateHolder,
+    eventManager: EventManager,
+    calendarHelper: CalendarHelper,
+    events: [Event] = [],
+    reminders: [Reminder] = [],
+    moveToMonthly: @escaping () -> ()
   ) {
+    self.moveToMonthly = moveToMonthly
     self.dateHolder = dateHolder
     self.eventManager = eventManager
     self.calendarHelper = calendarHelper
@@ -34,7 +39,7 @@ class WeeklyViewModel: ObservableObject {
   func fetchEvents() {
     events = eventManager.getAllEventforThisMonth(date: dateHolder.date)
   }
-
+  
   func fetchReminder() {
     eventManager.getAllReminderforThisMonth(date: dateHolder.date, completionHandler: { [weak self] reminderList in
       DispatchQueue.main.async {
@@ -46,7 +51,7 @@ class WeeklyViewModel: ObservableObject {
   var allDatesForDisplay: [DateValue] {
     return calendarHelper.extractWeekDates(dateHolder.date)
   }
- 
+  
   
   func filteredEvent(_ date: Date) -> [Event] {
     eventManager.filterEvent(events, date)

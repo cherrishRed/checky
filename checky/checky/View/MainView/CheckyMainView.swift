@@ -12,8 +12,7 @@ struct CheckyMainView: View {
   
   var body: some View {
     CustomTabBarContainerView(selection: $checkyMainViewModel.tabSelection) {
-//      CalendarView(viewModel: CalendarViewModel(dateHolder: DateHolder(), eventManager: EventManager(), calendarHelper: CalendarHelper()))
-      WeeklyView(viewModel: WeeklyViewModel(dateHolder: DateHolder(), eventManager: EventManager(), calendarHelper: CalendarHelper()))
+      CalendarView()
         .tabBarItem(tab: .calendar, selection: $checkyMainViewModel.tabSelection)
       Color.red
         .tabBarItem(tab: .daily, selection: $checkyMainViewModel.tabSelection)

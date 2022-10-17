@@ -11,21 +11,25 @@
 
 import SwiftUI
 
-struct CalendarView: View {
-  @ObservedObject var viewModel: CalendarViewModel
+struct MonthlyView: View {
+  @StateObject var viewModel: MonthlyViewModel
   
   var body: some View {
     VStack(spacing: 1) {
       HeaderView(viewModel: HeaderViewModel(dateHolder: viewModel.dateHolder, calendarHelper: viewModel.calendarHelper))
-//      Button("Weekly") {
-//       
-//      }
+      
+      Button {
+        viewModel.moveToWeek()
+      } label: {
+        Text("Week")
+      }
 
+      
       VStack(spacing: 0) {
         
         DayOfWeekStackView(viewModel: DayOfWeekStackViewModel())
         
-        CalendarGrid
+        MonthlyGrid
 
       }
       .background(Color("basicWhite"))
@@ -45,15 +49,16 @@ struct CalendarView: View {
     }
   }
   
-  var CalendarGrid: some View {
-    let columns = Array(repeating: GridItem(.flexible(maximum: UIScreen.main.bounds.size.width / 7.3), spacing: 0, alignment: nil), count: 7)
+  var MonthlyGrid: some View {
+    let columns = Array(repeating: GridItem(.flexible(), spacing: 0, alignment: nil), count: 7)
+    
     let columnsCount: CGFloat = viewModel.gridCloumnsCount
     
     var body: some View {
       GeometryReader { geo in
         LazyVGrid(columns: columns, spacing: 0) {
           ForEach(viewModel.allDatesForDisplay) { value in
-            CalendarCellView(dateValue: value, allEvnets: viewModel.filteredEvent(value.date), allReminders: viewModel.filteredReminder(value.date))
+            MonthlyCellView(dateValue: value, allEvnets: viewModel.filteredEvent(value.date), allReminders: viewModel.filteredReminder(value.date))
             .frame(width: geo.size.width / 7, height: geo.size.height / columnsCount)
           }
         }

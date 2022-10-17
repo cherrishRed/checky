@@ -6,22 +6,28 @@
 //
 
 import SwiftUI
+import Combine
 
-class CalendarViewModel: ObservableObject {
+class MonthlyViewModel: ObservableObject {
   @Published var dateHolder: DateHolder
   @Published var events: [Event]
   @Published var reminders: [Reminder]
   @Published var currentOffsetX: CGSize
   let eventManager: EventManager
   let calendarHelper: CalendarHelper
+  var moveToWeek: () -> ()
   
-  init(dateHolder: DateHolder,
-       eventManager: EventManager,
-       calendarHelper: CalendarHelper,
-       events: [Event] = [],
-       reminders: [Reminder] = [],
-       currentOffsetX: CGSize = .zero
+  init(
+   
+    dateHolder: DateHolder,
+    eventManager: EventManager,
+    calendarHelper: CalendarHelper,
+    events: [Event] = [],
+    reminders: [Reminder] = [],
+    currentOffsetX: CGSize = .zero,
+    moveToWeek: @escaping () -> ()
   ) {
+    self.moveToWeek = moveToWeek
     self.dateHolder = dateHolder
     self.eventManager = eventManager
     self.calendarHelper = calendarHelper
@@ -37,7 +43,7 @@ class CalendarViewModel: ObservableObject {
   func fetchEvents() {
     events = eventManager.getAllEventforThisMonth(date: dateHolder.date)
   }
-
+  
   func fetchReminder() {
     eventManager.getAllReminderforThisMonth(date: dateHolder.date, completionHandler: { [weak self] reminderList in
       DispatchQueue.main.async {
@@ -61,7 +67,7 @@ class CalendarViewModel: ObservableObject {
   var gridCloumnsCount: CGFloat {
     return calendarHelper.extractDates(dateHolder.date).count > 35 ? CGFloat(6) : CGFloat(5)
   }
-
+  
   func dragGestureonEnded() {
     guard currentOffsetX.width < 0 else {
       dateHolder.date = calendarHelper.minusMonth(dateHolder.date)
