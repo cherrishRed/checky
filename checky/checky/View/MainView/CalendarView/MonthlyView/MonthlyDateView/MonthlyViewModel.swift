@@ -18,7 +18,6 @@ class MonthlyViewModel: ObservableObject {
   var moveToWeek: () -> ()
   
   init(
-   
     dateHolder: DateHolder,
     eventManager: EventManager,
     calendarHelper: CalendarHelper,

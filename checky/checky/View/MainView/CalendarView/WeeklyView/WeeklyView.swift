@@ -14,25 +14,20 @@ struct WeeklyView: View {
     VStack {
       HeaderView(viewModel: HeaderViewModel(dateHolder: viewModel.dateHolder, calendarHelper: viewModel.calendarHelper))
       
-      Button {
-        viewModel.moveToMonthly()
-      } label: {
-        Text("Monthly")
-      }
-      
-      
+      Button("Monthly") { viewModel.moveToMonthly() }
+   
       CalendarGrid
-        
     }
     .background(Color("backgroundGray"))
-    
     .onAppear {
       viewModel.getPermission()
       viewModel.fetchEvents()
       viewModel.fetchReminder()
     }
   }
-  
+}
+
+extension WeeklyView {
   var CalendarGrid: some View {
     let columns = Array(repeating: GridItem(.flexible(), spacing: 0, alignment: nil), count: 2)
     let columnsCount: CGFloat = 8
@@ -42,7 +37,10 @@ struct WeeklyView: View {
         LazyVGrid(columns: columns, spacing: 0) {
           Text("달력 그릴 뷰")
           ForEach(viewModel.allDatesForDisplay) { value in
-            WeeklyCellView(dateValue: value, allEvnets: viewModel.filteredEvent(value.date), allReminders: viewModel.filteredReminder(value.date))
+            WeeklyCellView(
+              dateValue: value,
+              allEvnets: viewModel.filteredEvent(value.date),
+              allReminders: viewModel.filteredReminder(value.date))
               .padding(.horizontal, 10)
               .padding(.vertical, 6)
               .frame(width: geo.size.width / 1.9, height: geo.size.height / columnsCount * 2)
@@ -53,6 +51,5 @@ struct WeeklyView: View {
     }
     return body
   }
+  
 }
-
-
