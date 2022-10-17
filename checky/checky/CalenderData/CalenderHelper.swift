@@ -59,10 +59,10 @@ struct CalendarHelper {
 
 extension CalendarHelper {
   func savePreviousWeekDayCount(targetDate: DateValue) -> Int {
-    guard startingWeek.rawValue - saveWeek(targetDate: targetDate).rawValue >= 0 else {
-      return startingWeek.rawValue - saveWeek(targetDate: targetDate).rawValue + 7
+    guard startingWeek.WeekDay - saveWeek(targetDate: targetDate).WeekDay >= 0 else {
+      return startingWeek.WeekDay - saveWeek(targetDate: targetDate).WeekDay + 7
     }
-    return startingWeek.rawValue - saveWeek(targetDate: targetDate).rawValue
+    return startingWeek.WeekDay - saveWeek(targetDate: targetDate).WeekDay
   }
   
   func saveNextWeekDayCount(targetDate: DateValue) -> Int {
@@ -70,10 +70,10 @@ extension CalendarHelper {
   }
   
   func getThisWeek(targetDate: DateValue) -> Int {
-    if startingWeek.rawValue - saveWeek(targetDate: targetDate).rawValue >= 0 {
-      return startingWeek.rawValue - saveWeek(targetDate: targetDate).rawValue
+    if startingWeek.WeekDay - saveWeek(targetDate: targetDate).WeekDay >= 0 {
+      return startingWeek.WeekDay - saveWeek(targetDate: targetDate).WeekDay
     } else {
-      return startingWeek.rawValue - saveWeek(targetDate: targetDate).rawValue + 7
+      return startingWeek.WeekDay - saveWeek(targetDate: targetDate).WeekDay + 7
     }
   }
   
@@ -129,7 +129,6 @@ extension CalendarHelper {
   }
 }
 
-
 // MARK: - Monthly
 
 extension CalendarHelper {
@@ -164,18 +163,18 @@ extension CalendarHelper {
   private func savepreviousMonthDayCount(targetDate: DateValue) -> Int {
     let firstWeekday = saveWeek(targetDate: targetDate)
     
-    guard startingWeek.rawValue > firstWeekday.rawValue else {
-      return firstWeekday.rawValue - startingWeek.rawValue
+    guard startingWeek.WeekDay > firstWeekday.WeekDay else {
+      return firstWeekday.WeekDay - startingWeek.WeekDay
     }
     
-    return 7 - startingWeek.rawValue + firstWeekday.rawValue
+    return 7 - startingWeek.WeekDay + firstWeekday.WeekDay
   }
   
   private func saveNextMonthDayCount(targetDate: DateValue) -> Int {
     let lastWeekday = saveWeek(targetDate: targetDate)
     
-    guard startingWeek.rawValue <= lastWeekday.rawValue else {
-      return startingWeek.rawValue - lastWeekday.rawValue - 1
+    guard startingWeek.WeekDay <= lastWeekday.WeekDay else {
+      return startingWeek.WeekDay - lastWeekday.WeekDay - 1
     }
     
     return 6 - lastWeekday.rawValue + startingWeek.rawValue
