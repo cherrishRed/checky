@@ -161,7 +161,6 @@ extension CalendarHelper {
     return currentCalendar
   }
   
-  
   private func savepreviousMonthDayCount(targetDate: DateValue) -> Int {
     let firstWeekday = saveWeek(targetDate: targetDate)
     
