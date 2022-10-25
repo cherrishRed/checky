@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-class MonthlyViewModel: ObservableObject {
+class MonthlyViewModel: ViewModelable {
   @Published var dateHolder: DateHolder
   @Published var events: [Event]
   @Published var reminders: [Reminder]
@@ -34,6 +34,33 @@ class MonthlyViewModel: ObservableObject {
     self.reminders = reminders
     self.currentOffsetX = currentOffsetX
   }
+  
+  enum Action {
+    case actionOnAppear
+    case onChangeDate
+    case dragGestur
+    case resetCurrentOffsetX
+    case moveToWeekly
+  }
+  
+  func action(_ action: Action) {
+    switch action {
+      case .actionOnAppear:
+        getPermission()
+        fetchEvents()
+        fetchReminder()
+      case .onChangeDate:
+        fetchEvents()
+        fetchReminder()
+      case .dragGestur:
+        dragGestureonEnded()
+      case .resetCurrentOffsetX:
+        resetCurrentOffsetX()
+      case .moveToWeekly:
+        moveToWeek()
+    }
+  }
+  
   
   func getPermission() {
     eventManager.getPermission()

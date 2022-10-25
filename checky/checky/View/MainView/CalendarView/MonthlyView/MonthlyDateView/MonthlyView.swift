@@ -16,7 +16,7 @@ struct MonthlyView: View {
       HStack {
         Spacer()
         
-        Button("Weekly") { viewModel.moveToWeek() }
+        Button("Weekly") { viewModel.action(.moveToWeekly) }
           .buttonStyle(ToggleButtonStyle())
           .padding(.top, 10)
           .padding(.horizontal, 10)
@@ -35,13 +35,10 @@ struct MonthlyView: View {
     }
     .background(Color.backgroundGray)
     .onChange(of: viewModel.dateHolder.date) { _ in
-      viewModel.fetchEvents()
-      viewModel.fetchReminder()
+      viewModel.action(.onChangeDate)
       }
     .onAppear {
-      viewModel.getPermission()
-      viewModel.fetchEvents()
-      viewModel.fetchReminder()
+      viewModel.action(.actionOnAppear)
     }
   }
 }
@@ -57,9 +54,12 @@ extension MonthlyView {
         LazyVGrid(columns: columns, spacing: 0) {
           ForEach(viewModel.allDatesForDisplay) { value in
             
+            let events = viewModel.filteredEvent(value.date)
+            let reminders = viewModel.filteredReminder(value.date)
+            
             MonthlyCellView(viewModel: MonthlyCellViewModel(dateValue: value,
-                                                            allEvnets: viewModel.filteredEvent(value.date),
-                                                            allReminders:  viewModel.filteredReminder(value.date)))
+                                                            allEvnets: events,
+                                                            allReminders: reminders))
       
             .frame(width: geo.size.width / 7, height: geo.size.height / columnsCount)
           }
@@ -72,9 +72,9 @@ extension MonthlyView {
             viewModel.currentOffsetX = value.translation
           }
           .onEnded { value in
-            viewModel.dragGestureonEnded()
+            viewModel.action(.dragGestur)
             withAnimation(.linear(duration: 0.4)) {
-              viewModel.resetCurrentOffsetX()
+              viewModel.action(.resetCurrentOffsetX)
             }
           }
       )
