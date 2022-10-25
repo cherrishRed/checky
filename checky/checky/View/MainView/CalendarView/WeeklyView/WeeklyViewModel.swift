@@ -14,13 +14,13 @@ class WeeklyViewModel: ObservableObject {
   @Published var reminders: [Reminder]
   @Published var currentOffsetY: CGSize
   let eventManager: EventManager
-  let calendarHelper: CalendarHelper
+  let calendarHelper: CalendarCanDo
   var moveToMonthly: () -> ()
   
   init(
     dateHolder: DateHolder,
     eventManager: EventManager,
-    calendarHelper: CalendarHelper,
+    calendarHelper: CalendarCanDo,
     currentOffsetY: CGSize = .zero,
     events: [Event] = [],
     reminders: [Reminder] = [],
@@ -52,7 +52,7 @@ class WeeklyViewModel: ObservableObject {
   }
   
   var allDatesForDisplay: [DateValue] {
-    return calendarHelper.extractWeekDates(dateHolder.date)
+    return calendarHelper.extractDates(dateHolder.date)
   }
   
   
@@ -65,15 +65,15 @@ class WeeklyViewModel: ObservableObject {
   }
   
   var gridCloumnsCount: CGFloat {
-    return CGFloat(calendarHelper.extractWeekDates(dateHolder.date).count + 1)
+    return CGFloat(calendarHelper.extractDates(dateHolder.date).count + 1)
   }
   
   func dragGestureonEnded() {
     guard currentOffsetY.height < 0 else {
-      dateHolder.date = calendarHelper.minusWeek(dateHolder.date)
+      dateHolder.date = calendarHelper.minusDate(dateHolder.date)
       return
     }
-    dateHolder.date = calendarHelper.plusWeek(dateHolder.date)
+    dateHolder.date = calendarHelper.plusDate(dateHolder.date)
   }
   
   func resetCurrentOffsetY() {

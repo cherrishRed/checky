@@ -14,13 +14,13 @@ class MonthlyViewModel: ObservableObject {
   @Published var reminders: [Reminder]
   @Published var currentOffsetX: CGSize
   let eventManager: EventManager
-  let calendarHelper: CalendarHelper
+  let calendarHelper: CalendarCanDo
   var moveToWeek: () -> ()
   
   init(
     dateHolder: DateHolder,
     eventManager: EventManager,
-    calendarHelper: CalendarHelper,
+    calendarHelper: CalendarCanDo,
     events: [Event] = [],
     reminders: [Reminder] = [],
     currentOffsetX: CGSize = .zero,
@@ -69,10 +69,10 @@ class MonthlyViewModel: ObservableObject {
   
   func dragGestureonEnded() {
     guard currentOffsetX.width < 0 else {
-      dateHolder.date = calendarHelper.minusMonth(dateHolder.date)
+      dateHolder.date = calendarHelper.minusDate(dateHolder.date)
       return
     }
-    dateHolder.date = calendarHelper.plusMonth(dateHolder.date)
+    dateHolder.date = calendarHelper.plusDate(dateHolder.date)
   }
   
   func resetCurrentOffsetX() {

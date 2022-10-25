@@ -14,11 +14,11 @@ struct CalendarView: View {
   var body: some View {
     
     if viewModel.mode {
-      WeeklyView(viewModel:  WeeklyViewModel(dateHolder: DateHolder(), eventManager: EventManager(), calendarHelper: CalendarHelper(), moveToMonthly: {
+      WeeklyView(viewModel:  WeeklyViewModel(dateHolder: DateHolder(), eventManager: EventManager(), calendarHelper: WeeklyCalendarHelper(), moveToMonthly: {
         viewModel.mode.toggle()
       }))
     } else {
-      MonthlyView(viewModel:  MonthlyViewModel(dateHolder: DateHolder(), eventManager: EventManager(), calendarHelper: CalendarHelper(), moveToWeek: {
+      MonthlyView(viewModel:  MonthlyViewModel(dateHolder: DateHolder(), eventManager: EventManager(), calendarHelper: MonthyCalendarHelper(), moveToWeek: {
         viewModel.mode.toggle()
       }))
     }

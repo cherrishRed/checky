@@ -8,9 +8,9 @@
 import Foundation
 
 class DayOfWeekStackViewModel: ObservableObject {
-  let calendarHelper: CalendarHelper
+  let calendarHelper: CalendarCanDo
   
-  init(calendarHelper: CalendarHelper = CalendarHelper()) {
+  init(calendarHelper: CalendarCanDo = MonthyCalendarHelper()) {
     self.calendarHelper = calendarHelper
   }
 }
