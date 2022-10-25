@@ -39,7 +39,8 @@ extension Date {
     formatter.locale = Locale(identifier:"en_US")
     let convertStr = formatter.string(from: self).uppercased()
     return convertStr
-    
+  }
+  
   var dateKoreanWithYear: String {
     let dateformmater = DateFormatter()
     dateformmater.locale = Locale(identifier: "ko_KR")
