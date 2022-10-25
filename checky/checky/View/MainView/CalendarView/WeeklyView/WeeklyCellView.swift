@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct WeeklyCellView: View {
-  @State var dateValue: DateValue
-  @State var allEvnets: [Event] = []
-  @State var allReminders: [Reminder] = []
+  
+  @StateObject var viewModel: WeeklyCellViewModel
   
   var body: some View {
     ZStack(alignment: .topLeading) {
@@ -20,20 +19,20 @@ struct WeeklyCellView: View {
       
       VStack(alignment: .leading) {
         HStack {
-          Text(dateValue.date.dayOfWeek)
+          Text(viewModel.dateValue.date.dayOfWeek)
             .foregroundColor(.black.opacity(0.5))
-          Text(dateValue.date.day)
+          Text(viewModel.dateValue.date.day)
         }
         .padding(6)
         
         ScrollView {
           VStack {
-            ForEach(allEvnets, id: \.self) { event in
+            ForEach(viewModel.allEvnets, id: \.self) { event in
               WeeklyEventBlockView(event: event)
                 .frame(height: 20)
             }
             
-            ForEach(allReminders, id: \.self) { reminder in
+            ForEach(viewModel.allReminders, id: \.self) { reminder in
               ReminderBlockView(reminder: reminder)
                 .frame(height: 14)
             }

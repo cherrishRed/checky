@@ -37,10 +37,7 @@ extension WeeklyView {
         LazyVGrid(columns: columns, spacing: 0) {
           Text("달력 그릴 뷰")
           ForEach(viewModel.allDatesForDisplay) { value in
-            WeeklyCellView(
-              dateValue: value,
-              allEvnets: viewModel.filteredEvent(value.date),
-              allReminders: viewModel.filteredReminder(value.date))
+            WeeklyCellView(viewModel: WeeklyCellViewModel(dateValue: value, allEvnets: viewModel.filteredEvent(value.date), allReminders: viewModel.filteredReminder(value.date)))
               .padding(.horizontal, 10)
               .padding(.vertical, 6)
               .frame(width: geo.size.width / 1.9, height: geo.size.height / columnsCount * 2)
@@ -51,5 +48,4 @@ extension WeeklyView {
     }
     return body
   }
-  
 }

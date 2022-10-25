@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		860F766428FCB97A00CB034B /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860F766328FCB97A00CB034B /* CalendarView.swift */; };
 		860F766628FCB98500CB034B /* CaledarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860F766528FCB98500CB034B /* CaledarViewModel.swift */; };
+		8647AFBA28FD637F00EE1DA8 /* MonthlyCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8647AFB928FD637F00EE1DA8 /* MonthlyCellViewModel.swift */; };
+		8647AFBC28FD639100EE1DA8 /* WeeklyCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8647AFBB28FD639100EE1DA8 /* WeeklyCellViewModel.swift */; };
 		865BE52428EC4B6200305899 /* Extension+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BE52328EC4B6200305899 /* Extension+Text.swift */; };
 		865BE52628EC867900305899 /* WeekOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BE52528EC867900305899 /* WeekOption.swift */; };
 		868C543D28F4178D006A9B38 /* TabBarItemsPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C543C28F4178D006A9B38 /* TabBarItemsPreferenceKey.swift */; };
@@ -48,6 +50,8 @@
 /* Begin PBXFileReference section */
 		860F766328FCB97A00CB034B /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		860F766528FCB98500CB034B /* CaledarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaledarViewModel.swift; sourceTree = "<group>"; };
+		8647AFB928FD637F00EE1DA8 /* MonthlyCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCellViewModel.swift; sourceTree = "<group>"; };
+		8647AFBB28FD639100EE1DA8 /* WeeklyCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyCellViewModel.swift; sourceTree = "<group>"; };
 		865BE51828EC2E6F00305899 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		865BE52328EC4B6200305899 /* Extension+Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Text.swift"; sourceTree = "<group>"; };
 		865BE52528EC867900305899 /* WeekOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekOption.swift; sourceTree = "<group>"; };
@@ -187,6 +191,7 @@
 				DA466EA128E685D70076AEE4 /* MonthlyView.swift */,
 				DA91E81328EDF38F0091B6A3 /* MonthlyViewModel.swift */,
 				DA91E7E428EC94170091B6A3 /* MonthlyCellView.swift */,
+				8647AFB928FD637F00EE1DA8 /* MonthlyCellViewModel.swift */,
 			);
 			path = MonthlyDateView;
 			sourceTree = "<group>";
@@ -213,8 +218,9 @@
 			isa = PBXGroup;
 			children = (
 				86F0B2C028F6B71A006E2536 /* WeeklyView.swift */,
-				86F0B2C428F6B969006E2536 /* WeeklyCellView.swift */,
 				86F0B2C228F6B726006E2536 /* WeeklyViewModel.swift */,
+				86F0B2C428F6B969006E2536 /* WeeklyCellView.swift */,
+				8647AFBB28FD639100EE1DA8 /* WeeklyCellViewModel.swift */,
 			);
 			path = WeeklyView;
 			sourceTree = "<group>";
@@ -384,12 +390,14 @@
 				DA2C796828EF007900922C47 /* NavigationTranisitionStyle.swift in Sources */,
 				86F0B2C128F6B71A006E2536 /* WeeklyView.swift in Sources */,
 				DA91E7D828EB57AF0091B6A3 /* DateValue.swift in Sources */,
+				8647AFBC28FD639100EE1DA8 /* WeeklyCellViewModel.swift in Sources */,
 				DA91E81428EDF3900091B6A3 /* MonthlyViewModel.swift in Sources */,
 				868C543D28F4178D006A9B38 /* TabBarItemsPreferenceKey.swift in Sources */,
 				865BE52428EC4B6200305899 /* Extension+Text.swift in Sources */,
 				DA91E7E328EC8E580091B6A3 /* Reminder.swift in Sources */,
 				DA2C796A28EF009800922C47 /* Coordinator.swift in Sources */,
 				868C544328F417F7006A9B38 /* TabBarItem.swift in Sources */,
+				8647AFBA28FD637F00EE1DA8 /* MonthlyCellViewModel.swift in Sources */,
 				DA2C796328EEFFA300922C47 /* SceneDelegate.swift in Sources */,
 				86F0B2C528F6B969006E2536 /* WeeklyCellView.swift in Sources */,
 				86A5E60428EEA6B10040DCFB /* DayOfWeekStackViewModel.swift in Sources */,

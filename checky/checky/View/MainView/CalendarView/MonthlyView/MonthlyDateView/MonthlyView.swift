@@ -54,10 +54,11 @@ extension MonthlyView {
       GeometryReader { geo in
         LazyVGrid(columns: columns, spacing: 0) {
           ForEach(viewModel.allDatesForDisplay) { value in
-            MonthlyCellView(
-              dateValue: value,
-              allEvnets: viewModel.filteredEvent(value.date),
-              allReminders: viewModel.filteredReminder(value.date))
+            
+            MonthlyCellView(viewModel: MonthlyCellViewModel(dateValue: value,
+                                                            allEvnets: viewModel.filteredEvent(value.date),
+                                                            allReminders:  viewModel.filteredReminder(value.date)))
+      
             .frame(width: geo.size.width / 7, height: geo.size.height / columnsCount)
           }
         }

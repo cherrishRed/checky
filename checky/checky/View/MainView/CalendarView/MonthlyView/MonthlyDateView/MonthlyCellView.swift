@@ -8,34 +8,33 @@
 import SwiftUI
 
 struct MonthlyCellView: View {
-  @State var dateValue: DateValue
-  @State var allEvnets: [Event] = []
-  @State var allReminders: [Reminder] = []
+  
+  @StateObject var viewModel: MonthlyCellViewModel
   
   var body: some View {
     ZStack(alignment: .top) {
       Rectangle()
-        .fill(dateValue.isCurrentMonth ? Color("basicWhite") : Color("backgroundLightGray"))
+        .fill(viewModel.dateValue.isCurrentMonth ? Color("basicWhite") : Color("backgroundLightGray"))
       
       VStack(spacing: 0) {
         ZStack {
-          if Calendar.current.isDateInToday(dateValue.date) {
+          if Calendar.current.isDateInToday(viewModel.dateValue.date) {
             Circle()
               .fill(Color("fontBlack"))
               .frame(width: 20, height: 20)
-            Text(dateValue.date.day)
+            Text(viewModel.dateValue.date.day)
               .foregroundColor(Color("basicWhite"))
           } else {
-            Text(dateValue.date.day)
-              .foregroundColor(dateValue.isCurrentMonth ? Color("fontMediumGray") : Color("fontLightGray"))
+            Text(viewModel.dateValue.date.day)
+              .foregroundColor(viewModel.dateValue.isCurrentMonth ? Color("fontMediumGray") : Color("fontLightGray"))
           }
         }
         
-        ForEach(allEvnets, id: \.self) { event in
+        ForEach(viewModel.allEvnets, id: \.self) { event in
           EventBlockView(event: event)
         }
         
-        ForEach(allReminders, id: \.self) { reminder in
+        ForEach(viewModel.allReminders, id: \.self) { reminder in
           ReminderBlockView(reminder: reminder)
         }
       }
