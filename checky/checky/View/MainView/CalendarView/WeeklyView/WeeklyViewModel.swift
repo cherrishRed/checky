@@ -60,4 +60,8 @@ class WeeklyViewModel: ObservableObject {
   func filteredReminder(_ date: Date) -> [Reminder] {
     eventManager.filterReminder(reminders, date)
   }
+  
+  var gridCloumnsCount: CGFloat {
+    return CGFloat(calendarHelper.extractDates(dateHolder.date).count + 1)
+  }
 }

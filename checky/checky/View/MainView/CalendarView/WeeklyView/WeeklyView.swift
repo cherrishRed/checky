@@ -38,7 +38,6 @@ struct WeeklyView: View {
 extension WeeklyView {
   var CalendarGrid: some View {
     let columns = Array(repeating: GridItem(.flexible(), spacing: 0, alignment: nil), count: 2)
-    let columnsCount: CGFloat = 8
     
     var body: some View {
       GeometryReader { geo in
@@ -48,7 +47,7 @@ extension WeeklyView {
             WeeklyCellView(viewModel: WeeklyCellViewModel(dateValue: value, allEvnets: viewModel.filteredEvent(value.date), allReminders: viewModel.filteredReminder(value.date)))
               .padding(.horizontal, 10)
               .padding(.vertical, 6)
-              .frame(width: geo.size.width / 1.9, height: geo.size.height / columnsCount * 2)
+              .frame(width: geo.size.width / 1.9, height: geo.size.height / viewModel.gridCloumnsCount * 2)
           }
         }
       }
