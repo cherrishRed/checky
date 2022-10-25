@@ -14,19 +14,19 @@ struct MonthlyCellView: View {
   var body: some View {
     ZStack(alignment: .top) {
       Rectangle()
-        .fill(viewModel.dateValue.isCurrentMonth ? Color("basicWhite") : Color("backgroundLightGray"))
+        .fill(viewModel.dateValue.isCurrentMonth ? Color.basicWhite : Color.backgroundLightGray)
       
       VStack(spacing: 0) {
         ZStack {
           if Calendar.current.isDateInToday(viewModel.dateValue.date) {
             Circle()
-              .fill(Color("fontBlack"))
+              .fill(Color.fontBlack)
               .frame(width: 20, height: 20)
             Text(viewModel.dateValue.date.day)
-              .foregroundColor(Color("basicWhite"))
+              .foregroundColor(Color.basicWhite)
           } else {
             Text(viewModel.dateValue.date.day)
-              .foregroundColor(viewModel.dateValue.isCurrentMonth ? Color("fontMediumGray") : Color("fontLightGray"))
+              .foregroundColor(viewModel.dateValue.isCurrentMonth ? Color.fontMediumGray : Color.fontLightGray)
           }
         }
         
@@ -57,7 +57,7 @@ struct EventBlockView: View {
         .lineLimit(1)
         .font(.caption)
         .fontWeight(.semibold)
-        .foregroundColor(Color("basicWhite"))
+        .foregroundColor(Color.basicWhite)
         .fixedSize(horizontal: true, vertical: false)
     }
     .frame(height: 16)
@@ -82,12 +82,12 @@ struct ReminderBlockView: View {
       
       ZStack(alignment: .leading) {
         Rectangle()
-          .fill(Color("basicWhite"))
+          .fill(Color.basicWhite)
           .frame(maxWidth: .infinity)
           .layoutPriority(1)
         Text(reminder.ekreminder.title)
           .font(.caption)
-          .foregroundColor(Color("fontDarkBlack"))
+          .foregroundColor(Color.fontDarkBlack)
           .fixedSize(horizontal: true, vertical: false)
       }
     }

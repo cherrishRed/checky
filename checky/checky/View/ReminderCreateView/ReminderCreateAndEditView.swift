@@ -74,9 +74,9 @@ struct ReminderCreateAndEditView: View {
       }
       .padding()
       .frame(maxWidth: .infinity)
-      .background(Color("pointRed"))
+      .background(Color.pointRed)
       .cornerRadius(4)
-      .foregroundColor(Color("basicWhite"))
+      .foregroundColor(.basicWhite)
     }
     .padding(.horizontal)
   }
@@ -97,7 +97,7 @@ struct ReminderCreateAndEditView: View {
     VStack {
       HStack {
         Image(systemName: "tag.fill")
-          .foregroundColor(Color("fontMediumGray"))
+          .foregroundColor(Color.fontMediumGray)
         Button {
           viewModel.togglePicker(selectedPicker: .categoriesPicker)
           hideKeyboard()
@@ -107,12 +107,12 @@ struct ReminderCreateAndEditView: View {
               .fill(Color(cgColor: viewModel.category.cgColor))
               .frame(width: 10, height: 10)
             Text(viewModel.category.title)
-              .foregroundColor(Color("fontDarkBlack"))
+              .foregroundColor(Color.fontDarkBlack)
               .font(.title3)
           }
           .padding(4)
           .frame(maxWidth: .infinity)
-          .background(Color("backgroundGray"))
+          .background(Color.backgroundGray)
           .cornerRadius(4)
         }
       }
@@ -137,7 +137,7 @@ struct ReminderCreateAndEditView: View {
     VStack {
       HStack {
         Image(systemName: "sparkles")
-          .foregroundColor(Color("fontMediumGray"))
+          .foregroundColor(Color.fontMediumGray)
           .padding(.trailing, 4)
         Picker("", selection: $viewModel.priority) {
           Text("없음").tag(0)
@@ -155,15 +155,15 @@ struct ReminderCreateAndEditView: View {
   var memoView: some View {
     HStack(alignment: .top) {
       Image(systemName: "magazine.fill")
-        .foregroundColor(Color("fontMediumGray"))
+        .foregroundColor(Color.fontMediumGray)
         .padding(.top, 10)
         .padding(.trailing, 4)
       TextField("메모", text: $viewModel.memo, axis: .vertical)
-        .foregroundColor(Color("fontDarkBlack"))
+        .foregroundColor(Color.fontDarkBlack)
         .font(.title3)
         .padding(6)
         .frame(maxWidth: .infinity)
-        .background(Color("backgroundGray"))
+        .background(Color.backgroundGray)
         .cornerRadius(4)
     }
   }
@@ -172,7 +172,7 @@ struct ReminderCreateAndEditView: View {
     VStack(alignment: .leading) {
       HStack() {
         Image(systemName: "calendar")
-          .foregroundColor(Color("fontMediumGray"))
+          .foregroundColor(Color.fontMediumGray)
           .padding(.trailing, 2)
         if viewModel.isSetDate {
           Button {
@@ -180,11 +180,11 @@ struct ReminderCreateAndEditView: View {
             hideKeyboard()
           } label: {
             Text(viewModel.date.dateKoreanWithYear)
-              .foregroundColor(Color("fontDarkBlack"))
+              .foregroundColor(Color.fontDarkBlack)
               .font(.title3)
               .padding(6)
               .frame(maxWidth: .infinity)
-              .background(Color("backgroundGray"))
+              .background(Color.backgroundGray)
               .cornerRadius(4)
           }
         }
@@ -196,7 +196,7 @@ struct ReminderCreateAndEditView: View {
           HStack {
             Image(systemName: viewModel.isSetDate ? "checkmark.square.fill" : "square")
           }
-          .foregroundColor(Color("fontDarkBlack"))
+          .foregroundColor(Color.fontDarkBlack)
         }
         
         if viewModel.isSetDate == false {
@@ -216,7 +216,7 @@ struct ReminderCreateAndEditView: View {
     VStack(alignment: .leading) {
       HStack() {
         Image(systemName: "clock.fill")
-          .foregroundColor(Color("fontMediumGray"))
+          .foregroundColor(Color.fontMediumGray)
           .padding(.trailing, 3)
         if viewModel.isSetTime {
           Button {
@@ -224,11 +224,11 @@ struct ReminderCreateAndEditView: View {
             hideKeyboard()
           } label: {
             Text(viewModel.date.time)
-              .foregroundColor(Color("fontDarkBlack"))
+              .foregroundColor(Color.fontDarkBlack)
               .font(.title3)
               .padding(6)
               .frame(maxWidth: .infinity)
-              .background(Color("backgroundGray"))
+              .background(Color.backgroundGray)
               .cornerRadius(4)
           }
         }
@@ -240,7 +240,7 @@ struct ReminderCreateAndEditView: View {
           HStack {
             Image(systemName: viewModel.isSetTime ? "checkmark.square.fill" : "square")
           }
-          .foregroundColor(Color("fontDarkBlack"))
+          .foregroundColor(Color.fontDarkBlack)
         }
         
         if viewModel.isSetTime == false {

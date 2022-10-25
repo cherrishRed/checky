@@ -39,6 +39,7 @@
 		DA2C798128F7265D00922C47 /* ReminderCreateAndEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C798028F7265D00922C47 /* ReminderCreateAndEditView.swift */; };
 		DA2C798328F7268F00922C47 /* ReminderCreateAndEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C798228F7268F00922C47 /* ReminderCreateAndEditViewModel.swift */; };
 		DA3E9DAA2907810E00E72E21 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3E9DA92907810E00E72E21 /* ButtonStyle.swift */; };
+		DA3E9DAC29078FE200E72E21 /* Extension+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3E9DAB29078FE200E72E21 /* Extension+Color.swift */; };
 		DA466EA028E685D70076AEE4 /* checkyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA466E9F28E685D70076AEE4 /* checkyApp.swift */; };
 		DA466EA228E685D70076AEE4 /* MonthlyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA466EA128E685D70076AEE4 /* MonthlyView.swift */; };
 		DA466EA428E685D90076AEE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA466EA328E685D90076AEE4 /* Assets.xcassets */; };
@@ -88,6 +89,7 @@
 		DA2C798028F7265D00922C47 /* ReminderCreateAndEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCreateAndEditView.swift; sourceTree = "<group>"; };
 		DA2C798228F7268F00922C47 /* ReminderCreateAndEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCreateAndEditViewModel.swift; sourceTree = "<group>"; };
 		DA3E9DA92907810E00E72E21 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
+		DA3E9DAB29078FE200E72E21 /* Extension+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Color.swift"; sourceTree = "<group>"; };
 		DA466E9C28E685D70076AEE4 /* checky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = checky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA466E9F28E685D70076AEE4 /* checkyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkyApp.swift; sourceTree = "<group>"; };
 		DA466EA128E685D70076AEE4 /* MonthlyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyView.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				DA91E7D928EB58310091B6A3 /* Extension+Date.swift */,
 				865BE52328EC4B6200305899 /* Extension+Text.swift */,
 				DA2C797028F6E2C800922C47 /* Extension+View.swift */,
+				DA3E9DAB29078FE200E72E21 /* Extension+Color.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				868C543F28F417C0006A9B38 /* CustomTabBarContainerView.swift in Sources */,
 				865BE52628EC867900305899 /* WeekOption.swift in Sources */,
 				DA91E7E528EC94180091B6A3 /* MonthlyCellView.swift in Sources */,
+				DA3E9DAC29078FE200E72E21 /* Extension+Color.swift in Sources */,
 				DA91E81828EE01790091B6A3 /* HeaderViewModel.swift in Sources */,
 				DA2C798328F7268F00922C47 /* ReminderCreateAndEditViewModel.swift in Sources */,
 				DA3E9DAA2907810E00E72E21 /* ButtonStyle.swift in Sources */,

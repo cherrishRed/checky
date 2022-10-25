@@ -14,9 +14,9 @@ struct HeaderView: View {
         Text(viewModel.displayMonth)
             .font(.title)
             .bold()
-            .foregroundColor(Color("fontBlack"))
+            .foregroundColor(Color.fontBlack)
             .animation(.none)
             .frame(maxWidth: .infinity)
-            .background(Color("basicWhite"))
+            .background(Color.basicWhite)
     }
 }

@@ -28,12 +28,12 @@ struct MonthlyView: View {
         
         MonthlyGrid
       }
-      .background(Color("basicWhite"))
+      .background(Color.basicWhite)
       .cornerRadius(20)
       .padding(.horizontal, 4)
       .padding(.vertical, 25)
     }
-    .background(Color("backgroundGray"))
+    .background(Color.backgroundGray)
     .onChange(of: viewModel.dateHolder.date) { _ in
       viewModel.fetchEvents()
       viewModel.fetchReminder()

@@ -26,7 +26,7 @@ struct WeeklyView: View {
       CalendarGrid
       Spacer()
     }
-    .background(Color("backgroundGray"))
+    .background(Color.backgroundGray)
     .onAppear {
       viewModel.getPermission()
       viewModel.fetchEvents()

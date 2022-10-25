@@ -69,7 +69,7 @@ struct WeeklyEventBlockView: View {
         .lineLimit(1)
         .font(.caption)
         .fontWeight(.semibold)
-        .foregroundColor(Color("basicWhite"))
+        .foregroundColor(Color.basicWhite)
         .fixedSize(horizontal: true, vertical: false)
     }
   }
@@ -93,16 +93,16 @@ struct WeeklyReminderBlockView: View {
       
       ZStack(alignment: .leading) {
         Rectangle()
-          .fill(Color("basicWhite"))
+          .fill(Color.basicWhite)
           .frame(maxWidth: .infinity)
           .layoutPriority(1)
         Text(reminder.ekreminder.title)
           .font(.caption)
-          .foregroundColor(Color("fontDarkBlack"))
+          .foregroundColor(Color.fontDarkBlack)
           .fixedSize(horizontal: true, vertical: false)
         Text(reminder.ekreminder.notes ?? "")
           .font(.caption)
-          .foregroundColor(Color("fontDarkBlack"))
+          .foregroundColor(Color.fontDarkBlack)
           .fixedSize(horizontal: true, vertical: false)
       }
     }
