@@ -15,13 +15,9 @@ struct CheckyMainView: View {
       CalendarView()
         .tabBarItem(tab: .calendar, selection: $checkyMainViewModel.tabSelection)
       Color.red
-        .tabBarItem(tab: .daily, selection: $checkyMainViewModel.tabSelection)
-      Color.orange
-        .tabBarItem(tab: .add, selection: $checkyMainViewModel.tabSelection)
+        .tabBarItem(tab: .reminder, selection: $checkyMainViewModel.tabSelection)
       Color.green
         .tabBarItem(tab: .setting, selection: $checkyMainViewModel.tabSelection)
-      Color.blue
-        .tabBarItem(tab: .market, selection: $checkyMainViewModel.tabSelection)
     }
   }
 }

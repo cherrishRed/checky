@@ -10,38 +10,39 @@ import SwiftUI
 
 enum TabBarItem: Hashable {
   case calendar
-  case daily
-  case add
+  case reminder
   case setting
-  case market
   
   var iconName: String {
     switch self {
     case .calendar:
-      return "calendar"
-    case .daily:
+      return "square.on.square"
+    case .reminder:
       return "circle"
-    case .add:
-      return "plus.circle"
     case .setting:
       return "gearshape"
-    case .market:
-      return "key"
+    }
+  }
+  
+  var selectedName: String {
+    switch self {
+    case .calendar:
+      return "square.filled.on.square"
+    case .reminder:
+      return "circle.fill"
+    case .setting:
+      return "gearshape.fill"
     }
   }
     
   var color: Color {
     switch self {
     case .calendar:
-      return Color.red
-    case .daily:
-      return Color.blue
-    case .add:
-      return Color.green
+      return Color.pointRed
+    case .reminder:
+      return Color.pointRed
     case .setting:
-      return Color.black
-    case .market:
-      return Color.yellow
+      return Color.pointRed
     }
   }
 }
