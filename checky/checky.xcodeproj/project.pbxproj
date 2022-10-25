@@ -121,6 +121,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8647B08A2907B4EE00EE1DA8 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				8647B0882907B13C00EE1DA8 /* CalendarCanDoProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		865BE51B28EC462E00305899 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,7 +188,6 @@
 			children = (
 				8647B0862907B11A00EE1DA8 /* MonthlyCalendarHelper.swift */,
 				86FC8CF728EAB42500B7752F /* WeeklyCalenderHelper.swift */,
-				8647B0882907B13C00EE1DA8 /* CalendarCanDoProtocol.swift */,
 				DA91E7D728EB57AF0091B6A3 /* DateValue.swift */,
 				DA91E7D528EABDED0091B6A3 /* Week.swift */,
 				865BE52528EC867900305899 /* WeekOption.swift */,
@@ -327,6 +334,7 @@
 				865BE51C28EC463C00305899 /* View */,
 				865BE52128EC46D600305899 /* CalenderData */,
 				865BE52028EC46CB00305899 /* EventManager */,
+				8647B08A2907B4EE00EE1DA8 /* Protocol */,
 				865BE51F28EC46BC00305899 /* Extension */,
 				DA3E9DA8290780F100E72E21 /* Utils */,
 				865BE51828EC2E6F00305899 /* Info.plist */,
