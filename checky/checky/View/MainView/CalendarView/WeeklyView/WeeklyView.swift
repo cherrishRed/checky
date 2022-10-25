@@ -29,9 +29,7 @@ struct WeeklyView: View {
     }
     .background(Color.backgroundGray)
     .onAppear {
-      viewModel.getPermission()
-      viewModel.fetchEvents()
-      viewModel.fetchReminder()
+      viewModel.action(.actionOnAppear)
     }
   }
 }
@@ -44,11 +42,19 @@ extension WeeklyView {
       GeometryReader { geo in
         LazyVGrid(columns: columns, spacing: 0) {
           Text("달력 그릴 뷰")
+          
           ForEach(viewModel.allDatesForDisplay) { value in
-            WeeklyCellView(viewModel: WeeklyCellViewModel(dateValue: value, allEvnets: viewModel.filteredEvent(value.date), allReminders: viewModel.filteredReminder(value.date)))
-              .padding(.horizontal, 10)
-              .padding(.vertical, 6)
-              .frame(width: geo.size.width / 1.9, height: geo.size.height / viewModel.gridCloumnsCount * 2)
+            
+            viewModel.action(.filteredEvent(date: value.date))
+            viewModel.action(.filteredReminder(date: value.date))
+            
+            WeeklyCellView(viewModel: WeeklyCellViewModel(
+              dateValue: value,
+              allEvnets: viewModel.events,
+              allReminders: viewModel.reminders))
+            .padding(.horizontal, 10)
+            .padding(.vertical, 6)
+            .frame(width: geo.size.width / 1.9, height: geo.size.height / viewModel.gridCloumnsCount * 2)
           }
         }
       }
@@ -60,7 +66,7 @@ extension WeeklyView {
           }
           .onEnded { value in
             viewModel.dragGestureonEnded()
-            withAnimation(.linear(duration: 0.4)) {
+            withAnimation(.none) {
               viewModel.resetCurrentOffsetY()
             }
           }
