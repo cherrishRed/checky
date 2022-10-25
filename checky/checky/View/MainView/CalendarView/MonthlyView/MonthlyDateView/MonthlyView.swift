@@ -13,8 +13,17 @@ struct MonthlyView: View {
   var body: some View {
     VStack(spacing: 1) {
       HeaderView(viewModel: HeaderViewModel(dateHolder: viewModel.dateHolder, calendarHelper: viewModel.calendarHelper))
-      
-      Button("Week") { viewModel.moveToWeek() }
+      HStack {
+        Spacer()
+        
+        ZStack {
+          RoundedRectangle(cornerRadius: 10)
+            .frame(width: 70, height: 30)
+            .foregroundColor(.gray)
+          Button("Week") { viewModel.moveToWeek() }
+            .foregroundColor(.white)
+        }
+      }
     
       VStack(spacing: 0) {
         
