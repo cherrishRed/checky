@@ -62,6 +62,6 @@ class WeeklyViewModel: ObservableObject {
   }
   
   var gridCloumnsCount: CGFloat {
-    return CGFloat(calendarHelper.extractDates(dateHolder.date).count + 1)
+    return CGFloat(calendarHelper.extractWeekDates(dateHolder.date).count + 1)
   }
 }
