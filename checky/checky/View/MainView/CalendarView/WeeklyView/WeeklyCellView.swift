@@ -21,7 +21,18 @@ struct WeeklyCellView: View {
         HStack {
           Text(viewModel.dateValue.date.dayOfWeek)
             .foregroundColor(.black.opacity(0.5))
-          Text(viewModel.dateValue.date.day)
+          if Calendar.current.isDateInToday(viewModel.dateValue.date) {
+            ZStack {
+              Circle()
+                .fill(Color("fontBlack"))
+                .frame(width: 30, height: 30)
+              Text(viewModel.dateValue.date.day)
+                .foregroundColor(Color("basicWhite"))
+            }
+            
+          } else {
+            Text(viewModel.dateValue.date.day)
+          }
         }
         .padding(6)
         
@@ -70,6 +81,7 @@ struct WeeklyReminderBlockView: View {
   var body: some View {
     HStack() {
       ZStack {
+        
         Circle()
           .stroke(Color(reminder.category.cgColor))
           .frame(width: 10 , height: 10)
