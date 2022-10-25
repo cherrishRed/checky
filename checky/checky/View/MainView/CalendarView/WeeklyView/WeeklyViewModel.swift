@@ -109,3 +109,9 @@ class WeeklyViewModel: ViewModelable {
     currentOffsetY = .zero
   }
 }
+
+protocol ViewModelable: ObservableObject {
+  associatedtype Action
+  
+  func action(_ action: Action)
+}
