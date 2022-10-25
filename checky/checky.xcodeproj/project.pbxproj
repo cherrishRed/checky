@@ -32,6 +32,12 @@
 		DA2C796628EF005B00922C47 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796528EF005B00922C47 /* NavigationRouter.swift */; };
 		DA2C796828EF007900922C47 /* NavigationTranisitionStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796728EF007900922C47 /* NavigationTranisitionStyle.swift */; };
 		DA2C796A28EF009800922C47 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796928EF009800922C47 /* Coordinator.swift */; };
+		DA2C796D28F5817600922C47 /* EventCreateAndEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796C28F5817600922C47 /* EventCreateAndEditView.swift */; };
+		DA2C796F28F6CB1A00922C47 /* EventCreateAndEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796E28F6CB1A00922C47 /* EventCreateAndEditViewModel.swift */; };
+		DA2C797128F6E2C800922C47 /* Extension+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C797028F6E2C800922C47 /* Extension+View.swift */; };
+		DA2C797328F6F25C00922C47 /* AlramTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C797228F6F25C00922C47 /* AlramTime.swift */; };
+		DA2C798128F7265D00922C47 /* ReminderCreateAndEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C798028F7265D00922C47 /* ReminderCreateAndEditView.swift */; };
+		DA2C798328F7268F00922C47 /* ReminderCreateAndEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C798228F7268F00922C47 /* ReminderCreateAndEditViewModel.swift */; };
 		DA466EA028E685D70076AEE4 /* checkyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA466E9F28E685D70076AEE4 /* checkyApp.swift */; };
 		DA466EA228E685D70076AEE4 /* MonthlyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA466EA128E685D70076AEE4 /* MonthlyView.swift */; };
 		DA466EA428E685D90076AEE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA466EA328E685D90076AEE4 /* Assets.xcassets */; };
@@ -74,6 +80,12 @@
 		DA2C796528EF005B00922C47 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		DA2C796728EF007900922C47 /* NavigationTranisitionStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTranisitionStyle.swift; sourceTree = "<group>"; };
 		DA2C796928EF009800922C47 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		DA2C796C28F5817600922C47 /* EventCreateAndEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCreateAndEditView.swift; sourceTree = "<group>"; };
+		DA2C796E28F6CB1A00922C47 /* EventCreateAndEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCreateAndEditViewModel.swift; sourceTree = "<group>"; };
+		DA2C797028F6E2C800922C47 /* Extension+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+View.swift"; sourceTree = "<group>"; };
+		DA2C797228F6F25C00922C47 /* AlramTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlramTime.swift; sourceTree = "<group>"; };
+		DA2C798028F7265D00922C47 /* ReminderCreateAndEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCreateAndEditView.swift; sourceTree = "<group>"; };
+		DA2C798228F7268F00922C47 /* ReminderCreateAndEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCreateAndEditViewModel.swift; sourceTree = "<group>"; };
 		DA466E9C28E685D70076AEE4 /* checky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = checky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA466E9F28E685D70076AEE4 /* checkyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkyApp.swift; sourceTree = "<group>"; };
 		DA466EA128E685D70076AEE4 /* MonthlyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyView.swift; sourceTree = "<group>"; };
@@ -112,6 +124,8 @@
 		865BE51C28EC463C00305899 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DA2C797F28F725E800922C47 /* ReminderCreateView */,
+				DA2C796B28F5814F00922C47 /* EventCreateView */,
 				DA2C792128EEB50500922C47 /* MainView */,
 			);
 			path = View;
@@ -139,6 +153,7 @@
 			children = (
 				DA91E7D928EB58310091B6A3 /* Extension+Date.swift */,
 				865BE52328EC4B6200305899 /* Extension+Text.swift */,
+				DA2C797028F6E2C800922C47 /* Extension+View.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -243,6 +258,25 @@
 				DA2C796928EF009800922C47 /* Coordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		DA2C796B28F5814F00922C47 /* EventCreateView */ = {
+			isa = PBXGroup;
+			children = (
+				DA2C796C28F5817600922C47 /* EventCreateAndEditView.swift */,
+				DA2C796E28F6CB1A00922C47 /* EventCreateAndEditViewModel.swift */,
+				DA2C797228F6F25C00922C47 /* AlramTime.swift */,
+			);
+			path = EventCreateView;
+			sourceTree = "<group>";
+		};
+		DA2C797F28F725E800922C47 /* ReminderCreateView */ = {
+			isa = PBXGroup;
+			children = (
+				DA2C798028F7265D00922C47 /* ReminderCreateAndEditView.swift */,
+				DA2C798228F7268F00922C47 /* ReminderCreateAndEditViewModel.swift */,
+			);
+			path = ReminderCreateView;
 			sourceTree = "<group>";
 		};
 		DA466E9328E685D70076AEE4 = {
@@ -377,11 +411,13 @@
 				865BE52628EC867900305899 /* WeekOption.swift in Sources */,
 				DA91E7E528EC94180091B6A3 /* MonthlyCellView.swift in Sources */,
 				DA91E81828EE01790091B6A3 /* HeaderViewModel.swift in Sources */,
+				DA2C798328F7268F00922C47 /* ReminderCreateAndEditViewModel.swift in Sources */,
 				DA91E7E128EC8DFC0091B6A3 /* Event.swift in Sources */,
 				868C544128F417D9006A9B38 /* CustomTabBarView.swift in Sources */,
 				DA2C796628EF005B00922C47 /* NavigationRouter.swift in Sources */,
 				86A5E60228EEA6A80040DCFB /* DayOfWeekStackView.swift in Sources */,
 				86FC8CFA28EAB49B00B7752F /* HeaderView.swift in Sources */,
+				DA2C797328F6F25C00922C47 /* AlramTime.swift in Sources */,
 				868C544728F419B1006A9B38 /* CheckyMainViewModel.swift in Sources */,
 				86F0B2C328F6B726006E2536 /* WeeklyViewModel.swift in Sources */,
 				DA91E7DC28EC1E880091B6A3 /* EventManager.swift in Sources */,
@@ -392,10 +428,15 @@
 				DA91E7D828EB57AF0091B6A3 /* DateValue.swift in Sources */,
 				8647AFBC28FD639100EE1DA8 /* WeeklyCellViewModel.swift in Sources */,
 				DA91E81428EDF3900091B6A3 /* MonthlyViewModel.swift in Sources */,
+				DA2C797128F6E2C800922C47 /* Extension+View.swift in Sources */,
+				DA91E81428EDF3900091B6A3 /* CalendarViewModel.swift in Sources */,
 				868C543D28F4178D006A9B38 /* TabBarItemsPreferenceKey.swift in Sources */,
 				865BE52428EC4B6200305899 /* Extension+Text.swift in Sources */,
 				DA91E7E328EC8E580091B6A3 /* Reminder.swift in Sources */,
 				DA2C796A28EF009800922C47 /* Coordinator.swift in Sources */,
+				DA2C796F28F6CB1A00922C47 /* EventCreateAndEditViewModel.swift in Sources */,
+				DA2C796D28F5817600922C47 /* EventCreateAndEditView.swift in Sources */,
+				DA2C798128F7265D00922C47 /* ReminderCreateAndEditView.swift in Sources */,
 				868C544328F417F7006A9B38 /* TabBarItem.swift in Sources */,
 				8647AFBA28FD637F00EE1DA8 /* MonthlyCellViewModel.swift in Sources */,
 				DA2C796328EEFFA300922C47 /* SceneDelegate.swift in Sources */,

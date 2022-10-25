@@ -209,10 +209,42 @@ class EventManager {
        $0.ekevent.endDate.compare(date) != ComparisonResult.orderedAscending }
   }
   
+
   func filterFirstDayEvent(_ data: [Event], _ date: Date) -> Event? {
 
     data
       .filter { $0.ekevent.startDate.compare(date) == ComparisonResult.orderedSame }
       .first
   }
+
+  func getEventCategories() -> [EKCalendar] {
+    return store.calendars(for: .event)
+  }
+  
+  func getReminderCategories() -> [EKCalendar] {
+    return store.calendars(for: .reminder)
+  }
+  
+  func createNewEvent(newEvent: EKEvent) {
+    do {
+      try store.save(newEvent, span: EKSpan.futureEvents, commit: true)
+    } catch {
+      print("event 저장 실패🥲")
+      print(error.localizedDescription)
+    }
+  }
+  
+  func createNewReminder(newReminder: EKReminder) {
+    do {
+      try store.save(newReminder, commit: true)
+    } catch {
+      print("reminder 저장 실패🥲")
+      print(error.localizedDescription)
+    }
+  }
+}
+
+extension EKCalendar: Identifiable {
+  
+
 }
