@@ -44,6 +44,20 @@ struct CalendarHelper {
     return frontMonth
   }
   
+  func minusWeek(_ date: Date) -> Date {
+    guard let frontWeek = calendar.date(byAdding: .day , value: -7, to: date) else {
+      return Date()
+    }
+    return frontWeek
+  }
+  
+  func plusWeek(_ date: Date) -> Date {
+    guard let nextWeek = calendar.date(byAdding: .day, value: 7, to: date) else {
+      return Date()
+    }
+    return nextWeek
+  }
+  
   private func saveWeek(targetDate: DateValue) -> Week {
     let firstDayOfWeekday = calendar.component(.weekday, from: targetDate.date)
     

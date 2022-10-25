@@ -12,6 +12,7 @@ class WeeklyViewModel: ObservableObject {
   @Published var dateHolder: DateHolder
   @Published var events: [Event]
   @Published var reminders: [Reminder]
+  @Published var currentOffsetY: CGSize
   let eventManager: EventManager
   let calendarHelper: CalendarHelper
   var moveToMonthly: () -> ()
@@ -20,6 +21,7 @@ class WeeklyViewModel: ObservableObject {
     dateHolder: DateHolder,
     eventManager: EventManager,
     calendarHelper: CalendarHelper,
+    currentOffsetY: CGSize = .zero,
     events: [Event] = [],
     reminders: [Reminder] = [],
     moveToMonthly: @escaping () -> ()
@@ -28,6 +30,7 @@ class WeeklyViewModel: ObservableObject {
     self.dateHolder = dateHolder
     self.eventManager = eventManager
     self.calendarHelper = calendarHelper
+    self.currentOffsetY = currentOffsetY
     self.events = events
     self.reminders = reminders
   }
@@ -63,5 +66,17 @@ class WeeklyViewModel: ObservableObject {
   
   var gridCloumnsCount: CGFloat {
     return CGFloat(calendarHelper.extractWeekDates(dateHolder.date).count + 1)
+  }
+  
+  func dragGestureonEnded() {
+    guard currentOffsetY.height < 0 else {
+      dateHolder.date = calendarHelper.minusWeek(dateHolder.date)
+      return
+    }
+    dateHolder.date = calendarHelper.plusWeek(dateHolder.date)
+  }
+  
+  func resetCurrentOffsetY() {
+    currentOffsetY = .zero
   }
 }

@@ -24,6 +24,7 @@ struct WeeklyView: View {
       }
       
       CalendarGrid
+      
       Spacer()
     }
     .background(Color.backgroundGray)
@@ -52,6 +53,18 @@ extension WeeklyView {
         }
       }
       .frame(maxHeight: .infinity)
+      .gesture(
+        DragGesture()
+          .onChanged { value in
+            viewModel.currentOffsetY = value.translation
+          }
+          .onEnded { value in
+            viewModel.dragGestureonEnded()
+            withAnimation(.linear(duration: 0.4)) {
+              viewModel.resetCurrentOffsetY()
+            }
+          }
+      )
     }
     return body
   }
