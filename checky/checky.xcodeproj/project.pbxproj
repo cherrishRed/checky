@@ -38,6 +38,7 @@
 		DA2C797328F6F25C00922C47 /* AlramTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C797228F6F25C00922C47 /* AlramTime.swift */; };
 		DA2C798128F7265D00922C47 /* ReminderCreateAndEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C798028F7265D00922C47 /* ReminderCreateAndEditView.swift */; };
 		DA2C798328F7268F00922C47 /* ReminderCreateAndEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C798228F7268F00922C47 /* ReminderCreateAndEditViewModel.swift */; };
+		DA3E9DAA2907810E00E72E21 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3E9DA92907810E00E72E21 /* ButtonStyle.swift */; };
 		DA466EA028E685D70076AEE4 /* checkyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA466E9F28E685D70076AEE4 /* checkyApp.swift */; };
 		DA466EA228E685D70076AEE4 /* MonthlyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA466EA128E685D70076AEE4 /* MonthlyView.swift */; };
 		DA466EA428E685D90076AEE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA466EA328E685D90076AEE4 /* Assets.xcassets */; };
@@ -86,6 +87,7 @@
 		DA2C797228F6F25C00922C47 /* AlramTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlramTime.swift; sourceTree = "<group>"; };
 		DA2C798028F7265D00922C47 /* ReminderCreateAndEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCreateAndEditView.swift; sourceTree = "<group>"; };
 		DA2C798228F7268F00922C47 /* ReminderCreateAndEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCreateAndEditViewModel.swift; sourceTree = "<group>"; };
+		DA3E9DA92907810E00E72E21 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		DA466E9C28E685D70076AEE4 /* checky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = checky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA466E9F28E685D70076AEE4 /* checkyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkyApp.swift; sourceTree = "<group>"; };
 		DA466EA128E685D70076AEE4 /* MonthlyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyView.swift; sourceTree = "<group>"; };
@@ -279,6 +281,14 @@
 			path = ReminderCreateView;
 			sourceTree = "<group>";
 		};
+		DA3E9DA8290780F100E72E21 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DA3E9DA92907810E00E72E21 /* ButtonStyle.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		DA466E9328E685D70076AEE4 = {
 			isa = PBXGroup;
 			children = (
@@ -309,6 +319,7 @@
 				865BE52128EC46D600305899 /* CalenderData */,
 				865BE52028EC46CB00305899 /* EventManager */,
 				865BE51F28EC46BC00305899 /* Extension */,
+				DA3E9DA8290780F100E72E21 /* Utils */,
 				865BE51828EC2E6F00305899 /* Info.plist */,
 				DA466EA328E685D90076AEE4 /* Assets.xcassets */,
 				DA466EA528E685D90076AEE4 /* Preview Content */,
@@ -412,6 +423,7 @@
 				DA91E7E528EC94180091B6A3 /* MonthlyCellView.swift in Sources */,
 				DA91E81828EE01790091B6A3 /* HeaderViewModel.swift in Sources */,
 				DA2C798328F7268F00922C47 /* ReminderCreateAndEditViewModel.swift in Sources */,
+				DA3E9DAA2907810E00E72E21 /* ButtonStyle.swift in Sources */,
 				DA91E7E128EC8DFC0091B6A3 /* Event.swift in Sources */,
 				868C544128F417D9006A9B38 /* CustomTabBarView.swift in Sources */,
 				DA2C796628EF005B00922C47 /* NavigationRouter.swift in Sources */,
@@ -429,7 +441,7 @@
 				8647AFBC28FD639100EE1DA8 /* WeeklyCellViewModel.swift in Sources */,
 				DA91E81428EDF3900091B6A3 /* MonthlyViewModel.swift in Sources */,
 				DA2C797128F6E2C800922C47 /* Extension+View.swift in Sources */,
-				DA91E81428EDF3900091B6A3 /* CalendarViewModel.swift in Sources */,
+				DA91E81428EDF3900091B6A3 /* MonthlyViewModel.swift in Sources */,
 				868C543D28F4178D006A9B38 /* TabBarItemsPreferenceKey.swift in Sources */,
 				865BE52428EC4B6200305899 /* Extension+Text.swift in Sources */,
 				DA91E7E328EC8E580091B6A3 /* Reminder.swift in Sources */,

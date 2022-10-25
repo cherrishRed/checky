@@ -16,15 +16,12 @@ struct MonthlyView: View {
       HStack {
         Spacer()
         
-        ZStack {
-          RoundedRectangle(cornerRadius: 10)
-            .frame(width: 70, height: 30)
-            .foregroundColor(.gray)
-          Button("Week") { viewModel.moveToWeek() }
-            .foregroundColor(.white)
-        }
+        Button("Weekly") { viewModel.moveToWeek() }
+          .buttonStyle(ToggleButtonStyle())
+          .padding(.top, 10)
+          .padding(.horizontal, 10)
       }
-    
+      
       VStack(spacing: 0) {
         
         DayOfWeekStackView(viewModel: DayOfWeekStackViewModel())

@@ -11,22 +11,20 @@ struct WeeklyView: View {
   @StateObject var viewModel: WeeklyViewModel
   
   var body: some View {
-    VStack {
+    VStack(spacing: 1) {
       HeaderView(viewModel: HeaderViewModel(dateHolder: viewModel.dateHolder, calendarHelper: viewModel.calendarHelper))
       
       HStack {
         Spacer()
         
-        ZStack {
-          RoundedRectangle(cornerRadius: 10)
-            .frame(width: 70, height: 30)
-            .foregroundColor(.gray)
-          Button("Monthly") { viewModel.moveToMonthly() }
-            .foregroundColor(.white)
-        }
+        Button("Monthly") { viewModel.moveToMonthly() }
+          .buttonStyle(ToggleButtonStyle())
+          .padding(.top, 10)
+          .padding(.horizontal, 10)
       }
-     
+      
       CalendarGrid
+      Spacer()
     }
     .background(Color("backgroundGray"))
     .onAppear {
