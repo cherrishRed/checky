@@ -8,7 +8,8 @@
 import Foundation
 import Combine
 
-class WeeklyViewModel: ObservableObject {
+class WeeklyViewModel: ViewModelable {
+  
   @Published var dateHolder: DateHolder
   @Published var events: [Event]
   @Published var reminders: [Reminder]
@@ -35,15 +36,44 @@ class WeeklyViewModel: ObservableObject {
     self.reminders = reminders
   }
   
-  func getPermission() {
+  enum Action {
+    case actionOnAppear
+    case filteredEvent(date: Date)
+    case filteredReminder(date: Date)
+    case dragGestur
+    case resetCurrentOffsetY
+  }
+  
+  func action(_ action: Action) {
+    switch action {
+    case .actionOnAppear:
+      onAppear()
+    case .filteredEvent(let date):
+      events = filteredEvent(date)
+    case .filteredReminder(let date):
+      reminders = filteredReminder(date)
+    case .dragGestur:
+      dragGestureonEnded()
+    case .resetCurrentOffsetY:
+      resetCurrentOffsetY()
+    }
+  }
+  
+  func onAppear() {
+    self.getPermission()
+    self.fetchEvents()
+    self.fetchReminder()
+  }
+  
+  private func getPermission() {
     eventManager.getPermission()
   }
   
-  func fetchEvents() {
+  private func fetchEvents() {
     events = eventManager.getAllEventforThisMonth(date: dateHolder.date)
   }
   
-  func fetchReminder() {
+  private func fetchReminder() {
     eventManager.getAllReminderforThisMonth(date: dateHolder.date, completionHandler: { [weak self] reminderList in
       DispatchQueue.main.async {
         self?.reminders = reminderList
@@ -54,8 +84,7 @@ class WeeklyViewModel: ObservableObject {
   var allDatesForDisplay: [DateValue] {
     return calendarHelper.extractDates(dateHolder.date)
   }
-  
-  
+    
   func filteredEvent(_ date: Date) -> [Event] {
     eventManager.filterEvent(events, date)
   }
