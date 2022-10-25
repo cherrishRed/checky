@@ -23,14 +23,14 @@ struct WeeklyCalendarHelper: CalendarCanDo {
   }
   
   func plusDate(_ date: Date) -> Date {
-    guard let nextMonth = calendar.date(byAdding: .month, value: 1, to: date) else {
+    guard let nextMonth = calendar.date(byAdding: .day, value: 7, to: date) else {
       return Date()
     }
     return nextMonth
   }
   
   func minusDate(_ date: Date) -> Date {
-    guard let frontMonth = calendar.date(byAdding: .month, value: -1, to: date) else {
+    guard let frontMonth = calendar.date(byAdding: .day, value: -7, to: date) else {
       return Date()
     }
     return frontMonth
