@@ -38,24 +38,21 @@ class WeeklyViewModel: ViewModelable {
   
   enum Action {
     case actionOnAppear
-    case filteredEvent(date: Date)
-    case filteredReminder(date: Date)
     case dragGestur
     case resetCurrentOffsetY
+    case moveToMonthly
   }
   
   func action(_ action: Action) {
     switch action {
     case .actionOnAppear:
       onAppear()
-    case .filteredEvent(let date):
-      events = filteredEvent(date)
-    case .filteredReminder(let date):
-      reminders = filteredReminder(date)
     case .dragGestur:
       dragGestureonEnded()
     case .resetCurrentOffsetY:
       resetCurrentOffsetY()
+    case .moveToMonthly:
+      moveToMonthly()
     }
   }
   
