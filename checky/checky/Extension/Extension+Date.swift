@@ -32,6 +32,13 @@ extension Date {
     dateformmater.dateFormat = "d"
     return dateformmater.string(from: self)
   }
+  
+  var dayOfWeek: String {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "EEE"
+    formatter.locale = Locale(identifier:"en_US")
+    let convertStr = formatter.string(from: self).uppercased()
+    return convertStr
     
   var dateKoreanWithYear: String {
     let dateformmater = DateFormatter()

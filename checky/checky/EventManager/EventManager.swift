@@ -8,6 +8,118 @@
 import Foundation
 import EventKit
 
+protocol ManagerProtocol {
+  var store: EKEventStore { get set }
+  var calendar: Calendar { get set }
+  
+  associatedtype info
+  
+  func getPermission()
+  
+  func filterInfomation(_ reminders: [info], _ date: Date) -> [info]
+}
+
+struct EventManager1: ManagerProtocol {
+ 
+  var store: EKEventStore
+  var calendar: Calendar
+  
+  typealias info = Event
+  
+  func getPermission() {
+    store.requestAccess(to: .event) { granted, error in
+      guard error == nil else {
+        print("에러가 있습니다")
+        return
+      }
+      
+      guard granted == true else {
+        print("권한이 이상합니다")
+        return
+      }
+    }
+  }
+
+  func getAllEventforThisMonth(date: Date) -> [Event] {
+    let allDates = date.getAllDates()
+    guard let firstDate = allDates.first, let lastDate = allDates.last else {
+      return []
+    }
+    
+    let categories = store.calendars(for: .event)
+    
+    var list: [Event] = []
+    
+    for category in categories {
+      let predicate = store.predicateForEvents(withStart: firstDate, end: lastDate, calendars: [category])
+      let eventList = store.events(matching: predicate).map { ekevent -> Event in
+        return Event(ekevent: ekevent, category: category)
+      }
+      list.append(contentsOf: eventList)
+    }
+    return list
+  }
+  
+  func filterInfomation(_ data: [Event], _ date: Date) -> [Event] {
+    data
+      .filter { $0.ekevent.startDate.compare(date) != ComparisonResult.orderedDescending &&
+       $0.ekevent.endDate.compare(date) != ComparisonResult.orderedAscending }
+  }
+  
+  func filterFirstDayEvent(_ data: [Event], _ date: Date) -> Event? {
+    data
+      .filter { $0.ekevent.startDate.compare(date) == ComparisonResult.orderedSame }
+      .first
+  }
+}
+
+struct ReminderManager: ManagerProtocol {
+  
+  var store: EKEventStore
+  var calendar: Calendar
+  
+  typealias info = Reminder
+  
+  func getPermission() {
+    store.requestAccess(to: .reminder) { granted, error in
+      guard error == nil else {
+        print("에러가 있습니다")
+        return
+      }
+      
+      guard granted == true else {
+        print("권한이 이상합니다")
+        return
+      }
+    }
+  }
+  
+  func getAllReminderforThisMonth(date: Date, completionHandler: @escaping ([Reminder]) -> Void) {
+    let categories = store.calendars(for: .reminder)
+    
+    var list: [Reminder] = []
+    
+    for category in categories {
+      let predicate: NSPredicate = store.predicateForReminders(in: [category])
+      
+      store.fetchReminders(matching: predicate) { reminders in
+        for ekreminder in reminders ?? [] {
+          let reminder = Reminder(ekreminder: ekreminder, category: category)
+          list.append(reminder)
+        }
+        completionHandler(list)
+      }
+    }
+  }
+  
+  func filterInfomation(_ reminders: [Reminder], _ date: Date) -> [Reminder] {
+    reminders
+      .filter {
+        $0.ekreminder.dueDateComponents?.day == calendar.dateComponents([.day], from: date).day &&
+        $0.ekreminder.dueDateComponents?.month == calendar.dateComponents([.month], from: date).month }
+  }
+}
+
 class EventManager {
   let store: EKEventStore
   let calendar: Calendar
@@ -97,6 +209,14 @@ class EventManager {
        $0.ekevent.endDate.compare(date) != ComparisonResult.orderedAscending }
   }
   
+
+  func filterFirstDayEvent(_ data: [Event], _ date: Date) -> Event? {
+
+    data
+      .filter { $0.ekevent.startDate.compare(date) == ComparisonResult.orderedSame }
+      .first
+  }
+
   func getEventCategories() -> [EKCalendar] {
     return store.calendars(for: .event)
   }
@@ -126,4 +246,5 @@ class EventManager {
 
 extension EKCalendar: Identifiable {
   
+
 }

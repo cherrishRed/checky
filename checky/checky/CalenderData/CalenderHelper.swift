@@ -44,6 +44,95 @@ struct CalendarHelper {
     return frontMonth
   }
   
+  private func saveWeek(targetDate: DateValue) -> Week {
+    let firstDayOfWeekday = calendar.component(.weekday, from: targetDate.date)
+    
+    guard let firstWeekday = Week(rawValue: firstDayOfWeekday) else {
+      return Week.sunday
+    }
+    
+    return firstWeekday
+  }
+}
+
+// MARK: - Weekly
+
+extension CalendarHelper {
+  func savePreviousWeekDayCount(targetDate: DateValue) -> Int {
+    guard startingWeek.WeekDay - saveWeek(targetDate: targetDate).WeekDay >= 0 else {
+      return startingWeek.WeekDay - saveWeek(targetDate: targetDate).WeekDay + 7
+    }
+    return startingWeek.WeekDay - saveWeek(targetDate: targetDate).WeekDay
+  }
+  
+  func saveNextWeekDayCount(targetDate: DateValue) -> Int {
+   return 6 - savePreviousWeekDayCount(targetDate: targetDate)
+  }
+  
+  func getThisWeek(targetDate: DateValue) -> Int {
+    if startingWeek.WeekDay - saveWeek(targetDate: targetDate).WeekDay >= 0 {
+      return startingWeek.WeekDay - saveWeek(targetDate: targetDate).WeekDay
+    } else {
+      return startingWeek.WeekDay - saveWeek(targetDate: targetDate).WeekDay + 7
+    }
+  }
+  
+  func previousWeekDates(currentday: DateValue) -> [DateValue] {
+    var previousDays: [DateValue] = []
+    let previousMonthDayCount = savePreviousWeekDayCount(targetDate: currentday)
+    
+    guard previousMonthDayCount != 0 else {
+      return previousDays
+    }
+    
+    for number in 1...previousMonthDayCount {
+      let day = calendar.date(byAdding: .day, value: -number, to: currentday.date)
+      previousDays.insert(DateValue(date: day ?? Date(), isCurrentMonth: false), at: 0)
+    }
+    
+    return previousDays
+  }
+  
+  func nextWeekDates(currentday: DateValue) -> [DateValue] {
+    var nextDays: [DateValue] = []
+    let nextMonthDayCount = saveNextWeekDayCount(targetDate: currentday)
+    
+    guard nextMonthDayCount != 0 else {
+      return nextDays
+    }
+    
+    for number in 1...nextMonthDayCount {
+      let day = calendar.date(byAdding: .day, value: number, to: currentday.date)
+      nextDays.append(DateValue(date: day ?? Date(), isCurrentMonth: false))
+    }
+    
+    return nextDays
+  }
+  
+  func extractWeekDates(_ date: Date) -> [DateValue] {
+    var currentWeek: [DateValue] = []
+    
+    let today = [DateValue(date: date, isCurrentMonth: true)]
+    
+    guard let todays = today.first else {
+      return []
+    }
+    
+    let previousDays = previousDates(firstDayOfCurrentMonth: todays)
+    let nextDays = nextDates(lastDayOfCurrentMonth: todays)
+    
+    previousDays.forEach { currentWeek.append($0) }
+    today.forEach { currentWeek.append($0) }
+    nextDays.forEach{ currentWeek.append($0) }
+    
+    return currentWeek
+  }
+}
+
+// MARK: - Monthly
+
+extension CalendarHelper {
+  
   private func saveDaysOfCurrentMonth(_ date: Date) -> [DateValue] {
     guard let currentMonth = calendar.date(byAdding: .month, value: plusMinusMonth, to: date) else {
       return []
@@ -71,24 +160,40 @@ struct CalendarHelper {
     return currentCalendar
   }
   
-  private func saveWeek(targetDate: DateValue) -> Week {
-    let firstDayOfWeekday = calendar.component(.weekday, from: targetDate.date) // 요일 일요일1
-    
-    guard let firstWeekday = Week(rawValue: firstDayOfWeekday) else {
-      return Week.sunday
-    }
-    
-    return firstWeekday
-  }
-  
   private func savepreviousMonthDayCount(targetDate: DateValue) -> Int {
     let firstWeekday = saveWeek(targetDate: targetDate)
     
-    guard startingWeek.rawValue > firstWeekday.rawValue else {
-      return firstWeekday.rawValue - startingWeek.rawValue
+    guard startingWeek.WeekDay > firstWeekday.WeekDay else {
+      return firstWeekday.WeekDay - startingWeek.WeekDay
     }
     
-    return 7 - startingWeek.rawValue + firstWeekday.rawValue
+    return 7 - startingWeek.WeekDay + firstWeekday.WeekDay
+  }
+  
+  private func saveNextMonthDayCount(targetDate: DateValue) -> Int {
+    let lastWeekday = saveWeek(targetDate: targetDate)
+    
+    guard startingWeek.WeekDay <= lastWeekday.WeekDay else {
+      return startingWeek.WeekDay - lastWeekday.WeekDay - 1
+    }
+    
+    return 6 - lastWeekday.rawValue + startingWeek.rawValue
+  }
+  
+  private func nextDates(lastDayOfCurrentMonth: DateValue) -> [DateValue] {
+    var nextDays: [DateValue] = []
+    let nextMonthDayCount = saveNextMonthDayCount(targetDate: lastDayOfCurrentMonth)
+    
+    guard nextMonthDayCount != 0 else {
+      return nextDays
+    }
+    
+    for number in 1...nextMonthDayCount {
+      let day = calendar.date(byAdding: .day, value: number, to: lastDayOfCurrentMonth.date)
+      nextDays.append(DateValue(date: day ?? Date(), isCurrentMonth: false))
+    }
+    
+    return nextDays
   }
   
   private func previousDates(firstDayOfCurrentMonth: DateValue) -> [DateValue] {
@@ -105,31 +210,5 @@ struct CalendarHelper {
     }
     
     return previousDays
-  }
-  
-  private func saveNextMonthDayCount(targetDate: DateValue) -> Int {
-    let lastWeekday = saveWeek(targetDate: targetDate)
-    
-    guard startingWeek.rawValue <= lastWeekday.rawValue else {
-      return startingWeek.rawValue - lastWeekday.rawValue - 1
-    }
-    
-    return 6 - lastWeekday.rawValue + startingWeek.rawValue
-  }
-  
-  private func nextDates(lastDayOfCurrentMonth: DateValue) -> [DateValue] {
-    var nextDays: [DateValue] = []
-    let nextMonthDayCount = saveNextMonthDayCount(targetDate: lastDayOfCurrentMonth)
-    
-    guard nextMonthDayCount != 0 else {
-      return nextDays
-    }
-
-    for number in 1...nextMonthDayCount {
-      let day = calendar.date(byAdding: .day, value: number, to: lastDayOfCurrentMonth.date)
-      nextDays.append(DateValue(date: day ?? Date(), isCurrentMonth: false))
-    }
-    
-    return nextDays
   }
 }

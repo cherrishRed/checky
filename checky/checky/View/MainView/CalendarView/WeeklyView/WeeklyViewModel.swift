@@ -1,33 +1,35 @@
 //
-//  CalendarViewModel.swift
+//  WeeklyViewModel.swift
 //  checky
 //
-//  Created by RED, Taeangel on 2022/10/06.
+//  Created by song on 2022/10/12.
 //
 
-import SwiftUI
+import Foundation
+import Combine
 
-class CalendarViewModel: ObservableObject {
+class WeeklyViewModel: ObservableObject {
   @Published var dateHolder: DateHolder
   @Published var events: [Event]
   @Published var reminders: [Reminder]
-  @Published var currentOffsetX: CGSize
   let eventManager: EventManager
   let calendarHelper: CalendarHelper
+  var moveToMonthly: () -> ()
   
-  init(dateHolder: DateHolder,
-       eventManager: EventManager,
-       calendarHelper: CalendarHelper,
-       events: [Event] = [],
-       reminders: [Reminder] = [],
-       currentOffsetX: CGSize = .zero
+  init(
+    dateHolder: DateHolder,
+    eventManager: EventManager,
+    calendarHelper: CalendarHelper,
+    events: [Event] = [],
+    reminders: [Reminder] = [],
+    moveToMonthly: @escaping () -> ()
   ) {
+    self.moveToMonthly = moveToMonthly
     self.dateHolder = dateHolder
     self.eventManager = eventManager
     self.calendarHelper = calendarHelper
     self.events = events
     self.reminders = reminders
-    self.currentOffsetX = currentOffsetX
   }
   
   func getPermission() {
@@ -37,7 +39,7 @@ class CalendarViewModel: ObservableObject {
   func fetchEvents() {
     events = eventManager.getAllEventforThisMonth(date: dateHolder.date)
   }
-
+  
   func fetchReminder() {
     eventManager.getAllReminderforThisMonth(date: dateHolder.date, completionHandler: { [weak self] reminderList in
       DispatchQueue.main.async {
@@ -47,8 +49,9 @@ class CalendarViewModel: ObservableObject {
   }
   
   var allDatesForDisplay: [DateValue] {
-    return calendarHelper.extractDates(dateHolder.date)
+    return calendarHelper.extractWeekDates(dateHolder.date)
   }
+  
   
   func filteredEvent(_ date: Date) -> [Event] {
     eventManager.filterEvent(events, date)
@@ -56,21 +59,5 @@ class CalendarViewModel: ObservableObject {
   
   func filteredReminder(_ date: Date) -> [Reminder] {
     eventManager.filterReminder(reminders, date)
-  }
-  
-  var gridCloumnsCount: CGFloat {
-    return calendarHelper.extractDates(dateHolder.date).count > 35 ? CGFloat(6) : CGFloat(5)
-  }
-
-  func dragGestureonEnded() {
-    if currentOffsetX.width < 0 {
-      dateHolder.date = calendarHelper.plusMonth(dateHolder.date)
-    } else {
-      dateHolder.date = calendarHelper.minusMonth(dateHolder.date)
-    }
-  }
-  
-  func resetCurrentOffsetX() {
-    currentOffsetX = .zero
   }
 }
