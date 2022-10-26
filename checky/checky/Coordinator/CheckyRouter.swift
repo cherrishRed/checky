@@ -10,25 +10,36 @@ import SwiftUI
 enum checkyRouter: NavigationRouter {
   
   case main
-  case setting
+  case create
+  case createEvent
+  case createReminder
   
   var transition: NavigationTranisitionStyle {
     switch self {
-    case .main:
-      return .push
-    case .setting:
-      return .presentModally
+      case .main:
+        return .push
+      case .create:
+        return .presentHalfModally
+      case .createEvent:
+        return .presentModally
+      case .createReminder:
+        return .presentModally
     }
   }
   
   @ViewBuilder
   func view() -> some View {
     switch self {
-    case .main:
-      checkyApp()
-    case .setting:
+      case .main:
+        checkyApp()
+      case .create:
+        CreateSelectorView()
+        //        EventCreateAndEditView(viewModel: EventCreateAndEditViewModel(mode: .create))
+        //      ReminderCreateAndEditView(viewModel: ReminderCreateAndEditViewModel(mode: .create))
+      case .createEvent:
         EventCreateAndEditView(viewModel: EventCreateAndEditViewModel(mode: .create))
-//      ReminderCreateAndEditView(viewModel: ReminderCreateAndEditViewModel(mode: .create))
+      case .createReminder:
+        ReminderCreateAndEditView(viewModel: ReminderCreateAndEditViewModel(mode: .create))
     }
   }
 }

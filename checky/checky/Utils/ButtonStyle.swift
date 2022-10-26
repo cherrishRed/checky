@@ -19,3 +19,21 @@ struct ToggleButtonStyle: ButtonStyle {
       }
   }
 }
+
+struct CreateButtonStyle: ButtonStyle {
+  
+  func makeBody(configuration: Self.Configuration) -> some View {
+    ZStack {
+      RoundedRectangle(cornerRadius: 8)
+        .fill(Color.basicWhite)
+        .frame(maxWidth:.infinity)
+      
+      HStack {
+        configuration.label
+          .font(.title2)
+          .fontWeight(.semibold)
+          .foregroundColor(.fontBlack)
+      }
+    }
+  }
+}

@@ -43,7 +43,7 @@ extension CustomTabBarView {
       }
       
       Button {
-        coordinator.show(.setting)
+        coordinator.show(.create)
       } label: {
         Image(systemName: "plus.circle.fill")
           .resizable()
