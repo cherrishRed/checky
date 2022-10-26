@@ -18,8 +18,8 @@ struct CreateSelectorView: View {
         VStack(alignment: .leading, spacing: 20) {
           
           Button {
-            //
-//            coordinator.dismiss()
+            
+            coordinator.dismiss()
             coordinator.show(.createEvent)
           } label: {
             HStack {

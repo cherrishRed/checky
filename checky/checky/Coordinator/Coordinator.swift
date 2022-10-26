@@ -51,8 +51,6 @@ class Coordinator<Router: NavigationRouter>: ObservableObject {
   }
   
   func dismiss(animated: Bool = true) {
-    navigationController.dismiss(animated: true) { [weak self] in
-      self?.navigationController.viewControllers = []
-    }
+    navigationController.dismiss(animated: true)
   }
 }
