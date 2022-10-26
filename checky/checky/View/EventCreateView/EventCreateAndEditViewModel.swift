@@ -68,6 +68,35 @@ class EventCreateAndEditViewModel: ObservableObject {
     self.category = categories[0]
   }
   
+  enum Action {
+    case tappedOutOfRange
+    case tappedCloseButton
+    case tappedCheckButton
+    case changeMinimumEndDate
+    case tappedDeleteButton
+    case togglePicker(Pickers)
+    case toggleIsAllDay
+  }
+  
+  func action(_ action: Action) {
+    switch action {
+      case .tappedOutOfRange:
+        tappedOutOfRange()
+      case .tappedCloseButton:
+        tappedCloseButton()
+      case .tappedCheckButton:
+        tappedCheckButton()
+      case .changeMinimumEndDate:
+        changeMinimumEndDate()
+      case .tappedDeleteButton:
+        tappedDeleteButton()
+      case .togglePicker(let picker):
+        togglePicker(selectedPicker: picker)
+      case .toggleIsAllDay:
+        toggleIsAllDay()
+    }
+  }
+  
   var dateRange: ClosedRange<Date> {
     let max = Calendar.current.date(
          byAdding: .year,
@@ -114,18 +143,18 @@ class EventCreateAndEditViewModel: ObservableObject {
     }
   }
   
-  func changeMinimumEndDate() {
+  private func changeMinimumEndDate() {
     if endDate < date {
       endDate = date
     }
   }
   
-  func tappedCloseButton() {
+  private func tappedCloseButton() {
     closeAllPickers()
     reset()
   }
   
-  func tappedCheckButton() {
+  private func tappedCheckButton() {
     if mode == .create {
       createEvent()
     } else {
@@ -135,17 +164,17 @@ class EventCreateAndEditViewModel: ObservableObject {
     reset()
   }
   
-  func toggleIsAllDay() {
+  private func toggleIsAllDay() {
     isAllDay.toggle()
     isShowDatePicker = false
     isShowEndDatePicker = false
   }
   
-  func tappedOutOfRange() {
+  private func tappedOutOfRange() {
     closeAllPickers()
   }
   
-  func tappedDeleteButton() {
+  private func tappedDeleteButton() {
     closeAllPickers()
     reset()
   }

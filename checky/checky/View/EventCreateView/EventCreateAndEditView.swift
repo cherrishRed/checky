@@ -22,14 +22,14 @@ struct EventCreateAndEditView: View {
     }
     .onTapGesture {
       hideKeyboard()
-      viewModel.tappedOutOfRange()
+      viewModel.action(.tappedOutOfRange)
     }
   }
   
   var headerView: some View {
     HStack {
       Button {
-        viewModel.tappedCloseButton()
+        viewModel.action(.tappedCloseButton)
         hideKeyboard()
       } label: {
         Image(systemName: "xmark")
@@ -42,7 +42,7 @@ struct EventCreateAndEditView: View {
         .frame(maxWidth: .infinity)
       
       Button {
-        viewModel.tappedCheckButton()
+        viewModel.action(.tappedCheckButton)
         hideKeyboard()
       } label: {
         Image(systemName: "checkmark")
@@ -64,13 +64,13 @@ struct EventCreateAndEditView: View {
     }
     .padding(.horizontal, 10)
     .onChange(of: viewModel.date) { newValue in
-      viewModel.changeMinimumEndDate()
+      viewModel.action(.changeMinimumEndDate)
     }
   }
   
   var deleteButtonView: some View {
     Button {
-      viewModel.tappedDeleteButton()
+      viewModel.action(.tappedDeleteButton)
     } label: {
       HStack {
         Image(systemName: "trash.fill")
@@ -157,7 +157,7 @@ struct EventCreateAndEditView: View {
             }
           }
           Button {
-            viewModel.toggleIsAllDay()
+            viewModel.action(.toggleIsAllDay)
             hideKeyboard()
           } label: {
             HStack {

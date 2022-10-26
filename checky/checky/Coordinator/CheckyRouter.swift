@@ -27,7 +27,8 @@ enum checkyRouter: NavigationRouter {
     case .main:
       checkyApp()
     case .setting:
-      ReminderCreateAndEditView(viewModel: ReminderCreateAndEditViewModel(mode: .create))
+        EventCreateAndEditView(viewModel: EventCreateAndEditViewModel(mode: .create))
+//      ReminderCreateAndEditView(viewModel: ReminderCreateAndEditViewModel(mode: .create))
     }
   }
 }
