@@ -64,7 +64,7 @@ class EventCreateAndEditViewModel: ObservableObject {
     self.isShowCategoriesPicker = isShowCategoriesPicker
     self.isShowAlramPicker = isShowAlramPicker
     
-    self.categories = eventManager.getEventCategories()
+    self.categories = eventManager.getTaskCategories()
     self.category = categories[0]
   }
   
@@ -203,8 +203,7 @@ class EventCreateAndEditViewModel: ObservableObject {
     if alram != .none {
       newEvnet.addAlarm(EKAlarm(relativeOffset: alram.second))
     }
-    
-    eventManager.createNewEvent(newEvent: newEvnet)
+    eventManager.createNewTask(newTask: newEvnet)
     reset()
   }
   

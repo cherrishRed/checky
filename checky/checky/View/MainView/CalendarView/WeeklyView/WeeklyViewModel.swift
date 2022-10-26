@@ -15,12 +15,14 @@ class WeeklyViewModel: ViewModelable {
   @Published var reminders: [Reminder]
   @Published var currentOffsetY: CGSize
   let eventManager: EventManager
+  let reminderManager: ReminderManager
   let calendarHelper: CalendarCanDo
   var moveToMonthly: () -> ()
   
   init(
     dateHolder: DateHolder,
     eventManager: EventManager,
+    reminderManager: ReminderManager,
     calendarHelper: CalendarCanDo,
     currentOffsetY: CGSize = .zero,
     events: [Event] = [],
@@ -30,6 +32,7 @@ class WeeklyViewModel: ViewModelable {
     self.moveToMonthly = moveToMonthly
     self.dateHolder = dateHolder
     self.eventManager = eventManager
+    self.reminderManager = reminderManager
     self.calendarHelper = calendarHelper
     self.currentOffsetY = currentOffsetY
     self.events = events
@@ -67,7 +70,7 @@ class WeeklyViewModel: ViewModelable {
   }
   
   private func fetchEvents() {
-    eventManager.getAllEventforThisMonth(date: dateHolder.date, completionHandler: { [weak self] eventList in
+    eventManager.getAllTaskforThisMonth(date: dateHolder.date, completionHandler: { [weak self] eventList in
       DispatchQueue.main.async {
         self?.events = eventList
       }
@@ -75,7 +78,7 @@ class WeeklyViewModel: ViewModelable {
   }
   
   private func fetchReminder() {
-    eventManager.getAllReminderforThisMonth(date: dateHolder.date, completionHandler: { [weak self] reminderList in
+    reminderManager.getAllTaskforThisMonth(date: dateHolder.date, completionHandler: { [weak self] reminderList in
       DispatchQueue.main.async {
         self?.reminders = reminderList
       }
@@ -87,11 +90,11 @@ class WeeklyViewModel: ViewModelable {
   }
     
   func filteredEvent(_ date: Date) -> [Event] {
-    eventManager.filterEvent(events, date)
+    eventManager.filterTask(events, date)
   }
   
   func filteredReminder(_ date: Date) -> [Reminder] {
-    eventManager.filterReminder(reminders, date)
+    reminderManager.filterTask(reminders, date)
   }
   
   var gridCloumnsCount: CGFloat {

@@ -9,7 +9,7 @@ import Foundation
 import EventKit
 
 class ReminderCreateAndEditViewModel: ObservableObject {
-  let eventManager = EventManager()
+  let reminderManager: any ManagerProtocol
   let categories: [EKCalendar]
   
   @Published var mode: Mode
@@ -50,7 +50,12 @@ class ReminderCreateAndEditViewModel: ObservableObject {
        isSetTime: Bool = false,
        isShowCategoriesPicker: Bool = false,
        isShowDatePicker: Bool = false,
-       isShowTimePicker: Bool = false) {
+       isShowTimePicker: Bool = false,
+       reminderManager: any ManagerProtocol) {
+    let reminderManager = ReminderManager()
+    
+    self.reminderManager = reminderManager
+    
     self.mode = mode
     self.title = title
     self.memo = memo
@@ -62,7 +67,7 @@ class ReminderCreateAndEditViewModel: ObservableObject {
     self.isShowDatePicker = isShowDatePicker
     self.isShowTimePicker = isShowTimePicker
     
-    self.categories = eventManager.getReminderCategories()
+    self.categories = reminderManager.getTaskCategories()
     self.category = categories[0]
   }
   
@@ -185,14 +190,14 @@ class ReminderCreateAndEditViewModel: ObservableObject {
   }
   
   private func saveNewReminder() {
-    let newReminder = EKReminder(eventStore: eventManager.store)
+    let newReminder = EKReminder(eventStore: reminderManager.store)
     newReminder.title = title
     newReminder.priority = priority
     newReminder.notes = memo
     newReminder.calendar = category
     
     guard isSetDate == true else {
-      eventManager.createNewReminder(newReminder: newReminder)
+      reminderManager.createNewTask(newTask: newReminder)
       return
     }
 
@@ -204,6 +209,6 @@ class ReminderCreateAndEditViewModel: ObservableObject {
       newReminder.dueDateComponents = dateComponents
     }
     
-    eventManager.createNewReminder(newReminder: newReminder)
+    reminderManager.createNewTask(newTask: newReminder)
   }
 }

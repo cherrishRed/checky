@@ -39,7 +39,7 @@ enum checkyRouter: NavigationRouter {
       case .createEvent:
         EventCreateAndEditView(viewModel: EventCreateAndEditViewModel(mode: .create))
       case .createReminder:
-        ReminderCreateAndEditView(viewModel: ReminderCreateAndEditViewModel(mode: .create))
+        ReminderCreateAndEditView(viewModel: ReminderCreateAndEditViewModel(mode: .create, reminderManager: ReminderManager()))
     }
   }
 }

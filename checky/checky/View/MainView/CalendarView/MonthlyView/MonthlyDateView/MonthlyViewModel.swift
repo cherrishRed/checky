@@ -14,12 +14,14 @@ class MonthlyViewModel: ViewModelable {
   @Published var reminders: [Reminder]
   @Published var currentOffsetX: CGSize
   let eventManager: EventManager
+  let reminderManager: ReminderManager
   let calendarHelper: CalendarCanDo
   var moveToWeek: () -> ()
   
   init(
     dateHolder: DateHolder,
     eventManager: EventManager,
+    reminderManager: ReminderManager,
     calendarHelper: CalendarCanDo,
     events: [Event] = [],
     reminders: [Reminder] = [],
@@ -29,6 +31,7 @@ class MonthlyViewModel: ViewModelable {
     self.moveToWeek = moveToWeek
     self.dateHolder = dateHolder
     self.eventManager = eventManager
+    self.reminderManager = reminderManager
     self.calendarHelper = calendarHelper
     self.events = events
     self.reminders = reminders
@@ -68,8 +71,7 @@ class MonthlyViewModel: ViewModelable {
   
   func fetchEvents() {
 //    events = eventManager.getAllEventforThisMonth(date: dateHolder.date)
-    
-    eventManager.getAllEventforThisMonth(date: dateHolder.date, completionHandler: { [weak self] eventList in
+    eventManager.getAllTaskforThisMonth(date: dateHolder.date, completionHandler: { [weak self] eventList in
       DispatchQueue.main.async {
         self?.events = eventList
       }
@@ -77,11 +79,11 @@ class MonthlyViewModel: ViewModelable {
   }
   
   func fetchReminder() {
-    eventManager.getAllReminderforThisMonth(date: dateHolder.date, completionHandler: { [weak self] reminderList in
+    reminderManager.getAllTaskforThisMonth(date: dateHolder.date) { [weak self] reminderList in
       DispatchQueue.main.async {
         self?.reminders = reminderList
       }
-    })
+    }
   }
   
   var allDatesForDisplay: [DateValue] {
@@ -89,11 +91,11 @@ class MonthlyViewModel: ViewModelable {
   }
   
   func filteredEvent(_ date: Date) -> [Event] {
-    eventManager.filterEvent(events, date)
+    eventManager.filterTask(events, date)
   }
   
   func filteredReminder(_ date: Date) -> [Reminder] {
-    eventManager.filterReminder(reminders, date)
+    reminderManager.filterTask(reminders, date)
   }
   
   var gridCloumnsCount: CGFloat {
