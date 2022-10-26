@@ -21,14 +21,14 @@ struct ReminderCreateAndEditView: View {
       }
     }
     .onTapGesture {
-      viewModel.tappedOutOfRange()
+      viewModel.action(.tappedOutOfRange)
     }
   }
   
   var headerView: some View {
     HStack {
       Button {
-        viewModel.tappedCloseButton()
+        viewModel.action(.tappedCloseButton)
         hideKeyboard()
       } label: {
         Image(systemName: "xmark")
@@ -41,7 +41,7 @@ struct ReminderCreateAndEditView: View {
         .frame(maxWidth: .infinity)
       
       Button {
-        viewModel.tappedCheckButton()
+        viewModel.action(.tappedCheckButton)
         hideKeyboard()
       } label: {
         Image(systemName: "checkmark")
@@ -67,7 +67,7 @@ struct ReminderCreateAndEditView: View {
   
   var deleteButtonView: some View {
     Button {
-      viewModel.tappedDeleteButton()
+      viewModel.action(.tappedDeleteButton)
     } label: {
       HStack {
         Image(systemName: "trash.fill")
@@ -101,7 +101,7 @@ struct ReminderCreateAndEditView: View {
         Image(systemName: "tag.fill")
           .foregroundColor(Color.fontMediumGray)
         Button {
-          viewModel.togglePicker(selectedPicker: .categoriesPicker)
+          viewModel.action(.togglePicker(.categoriesPicker))
           hideKeyboard()
         } label: {
           HStack {
@@ -178,7 +178,7 @@ struct ReminderCreateAndEditView: View {
           .padding(.trailing, 2)
         if viewModel.isSetDate {
           Button {
-            viewModel.togglePicker(selectedPicker: .datePicker)
+            viewModel.action(.togglePicker(.datePicker))
             hideKeyboard()
           } label: {
             Text(viewModel.date.dateKoreanWithYear)
@@ -192,7 +192,7 @@ struct ReminderCreateAndEditView: View {
         }
         
         Button {
-          viewModel.tappedDateToggleButton()
+          viewModel.action(.tappedDateToggleButton)
           hideKeyboard()
         } label: {
           HStack {
@@ -222,7 +222,7 @@ struct ReminderCreateAndEditView: View {
           .padding(.trailing, 3)
         if viewModel.isSetTime {
           Button {
-            viewModel.togglePicker(selectedPicker: .timePicker)
+            viewModel.action(.togglePicker(.timePicker))
             hideKeyboard()
           } label: {
             Text(viewModel.date.time)
@@ -236,7 +236,7 @@ struct ReminderCreateAndEditView: View {
         }
         
         Button {
-          viewModel.tappedTimeToggleButton()
+          viewModel.action(.tappedTimeToggleButton)
           hideKeyboard()
         } label: {
           HStack {

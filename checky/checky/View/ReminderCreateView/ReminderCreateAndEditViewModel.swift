@@ -66,13 +66,42 @@ class ReminderCreateAndEditViewModel: ObservableObject {
     self.category = categories[0]
   }
   
+  enum Action {
+    case tappedOutOfRange
+    case tappedCloseButton
+    case tappedCheckButton
+    case tappedDeleteButton
+    case togglePicker(Pickers)
+    case tappedDateToggleButton
+    case tappedTimeToggleButton
+  }
+  
+  func action(_ action: Action) {
+    switch action {
+      case .tappedOutOfRange:
+        tappedOutOfRange()
+      case .tappedCloseButton:
+        tappedCloseButton()
+      case .tappedCheckButton:
+        tappedCheckButton()
+      case .tappedDeleteButton:
+        tappedDeleteButton()
+      case .togglePicker(let picker):
+        togglePicker(selectedPicker: picker)
+      case .tappedDateToggleButton:
+        tappedDateToggleButton()
+      case .tappedTimeToggleButton:
+        tappedTimeToggleButton()
+    }
+  }
+  
   enum Pickers {
     case datePicker
     case timePicker
     case categoriesPicker
   }
   
-  func togglePicker(selectedPicker: Pickers) {
+  private func togglePicker(selectedPicker: Pickers) {
     var isShow: Bool
     
     switch selectedPicker {
@@ -98,7 +127,7 @@ class ReminderCreateAndEditViewModel: ObservableObject {
     }
   }  
   
-  func tappedDateToggleButton() {
+  private func tappedDateToggleButton() {
     if isSetDate == false {
       isSetDate = true
     } else {
@@ -108,7 +137,7 @@ class ReminderCreateAndEditViewModel: ObservableObject {
     }
   }
   
-  func tappedTimeToggleButton() {
+  private func tappedTimeToggleButton() {
     if isSetTime == false {
       isSetTime = true
     } else {
@@ -117,7 +146,7 @@ class ReminderCreateAndEditViewModel: ObservableObject {
     }
   }
   
-  func tappedCheckButton() {
+  private func tappedCheckButton() {
     if mode == .create {
       saveNewReminder()
     } else {
@@ -127,16 +156,16 @@ class ReminderCreateAndEditViewModel: ObservableObject {
     reset()
   }
   
-  func tappedCloseButton() {
+  private func tappedCloseButton() {
     closeAllPickers()
     reset()
   }
   
-  func tappedOutOfRange() {
+  private func tappedOutOfRange() {
     closeAllPickers()
   }
   
-  func tappedDeleteButton() {
+  private func tappedDeleteButton() {
     
   }
   
