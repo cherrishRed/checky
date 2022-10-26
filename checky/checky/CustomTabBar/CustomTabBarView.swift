@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CustomTabBarView: View {
-  
+  @EnvironmentObject var coordinator: Coordinator<checkyRouter>
   let tabs: [TabBarItem]
   @Binding var selection: TabBarItem
   @Namespace private var namespace
@@ -43,7 +43,7 @@ extension CustomTabBarView {
       }
       
       Button {
-        //
+        coordinator.show(.setting)
       } label: {
         Image(systemName: "plus.circle.fill")
           .resizable()
