@@ -9,53 +9,34 @@ import Foundation
 import EventKit
 
 class ReminderCreateAndEditViewModel: ObservableObject {
-  let reminderManager: any ManagerProtocol
+  let reminderManager: ReminderManager
   let categories: [EKCalendar]
   
   @Published var mode: Mode
-  
   @Published var title: String
   @Published var memo: String
   @Published var category: EKCalendar
   @Published var priority: Int
   @Published var date: Date
-  
   @Published var isSetDate: Bool
   @Published var isSetTime: Bool
-  
   @Published var isShowCategoriesPicker: Bool
   @Published var isShowDatePicker: Bool
   @Published var isShowTimePicker: Bool
   
-  enum Mode {
-    case create
-    case edit
-    
-    var title: String {
-      switch self {
-        case.create:
-          return "새로운 미리알림 추가"
-        case.edit:
-         return "미리알림 수정"
-      }
-    }
-  }
-  
-  init(mode: ReminderCreateAndEditViewModel.Mode,
-       title: String = "",
-       memo: String = "",
-       priority: Int = 0,
-       date: Date = .now,
-       isSetDate: Bool = false,
-       isSetTime: Bool = false,
-       isShowCategoriesPicker: Bool = false,
-       isShowDatePicker: Bool = false,
-       isShowTimePicker: Bool = false,
-       reminderManager: any ManagerProtocol) {
-    let reminderManager = ReminderManager()
-    
-    self.reminderManager = reminderManager
-    
+  init(
+    mode: ReminderCreateAndEditViewModel.Mode,
+    title: String = "",
+    memo: String = "",
+    priority: Int = 0,
+    date: Date = .now,
+    isSetDate: Bool = false,
+    isSetTime: Bool = false,
+    isShowCategoriesPicker: Bool = false,
+    isShowDatePicker: Bool = false,
+    isShowTimePicker: Bool = false,
+    reminderManager: ReminderManager
+  ) {
     self.mode = mode
     self.title = title
     self.memo = memo
@@ -66,9 +47,23 @@ class ReminderCreateAndEditViewModel: ObservableObject {
     self.isShowCategoriesPicker = isShowCategoriesPicker
     self.isShowDatePicker = isShowDatePicker
     self.isShowTimePicker = isShowTimePicker
-    
+    self.reminderManager = reminderManager
     self.categories = reminderManager.getTaskCategories()
     self.category = categories[0]
+  }
+  
+  enum Mode {
+    case create
+    case edit
+    
+    var title: String {
+      switch self {
+      case.create:
+        return "새로운 미리알림 추가"
+      case.edit:
+        return "미리알림 수정"
+      }
+    }
   }
   
   enum Action {
@@ -83,20 +78,20 @@ class ReminderCreateAndEditViewModel: ObservableObject {
   
   func action(_ action: Action) {
     switch action {
-      case .tappedOutOfRange:
-        tappedOutOfRange()
-      case .tappedCloseButton:
-        tappedCloseButton()
-      case .tappedCheckButton:
-        tappedCheckButton()
-      case .tappedDeleteButton:
-        tappedDeleteButton()
-      case .togglePicker(let picker):
-        togglePicker(selectedPicker: picker)
-      case .tappedDateToggleButton:
-        tappedDateToggleButton()
-      case .tappedTimeToggleButton:
-        tappedTimeToggleButton()
+    case .tappedOutOfRange:
+      tappedOutOfRange()
+    case .tappedCloseButton:
+      tappedCloseButton()
+    case .tappedCheckButton:
+      tappedCheckButton()
+    case .tappedDeleteButton:
+      tappedDeleteButton()
+    case .togglePicker(let picker):
+      togglePicker(selectedPicker: picker)
+    case .tappedDateToggleButton:
+      tappedDateToggleButton()
+    case .tappedTimeToggleButton:
+      tappedTimeToggleButton()
     }
   }
   
@@ -110,12 +105,12 @@ class ReminderCreateAndEditViewModel: ObservableObject {
     var isShow: Bool
     
     switch selectedPicker {
-      case .datePicker:
-        isShow = isShowDatePicker
-      case .timePicker:
-        isShow = isShowTimePicker
-      case .categoriesPicker:
-        isShow = isShowCategoriesPicker
+    case .datePicker:
+      isShow = isShowDatePicker
+    case .timePicker:
+      isShow = isShowTimePicker
+    case .categoriesPicker:
+      isShow = isShowCategoriesPicker
     }
     
     if isShow == false {
@@ -123,14 +118,14 @@ class ReminderCreateAndEditViewModel: ObservableObject {
     }
     
     switch selectedPicker {
-      case .datePicker:
-        isShowDatePicker.toggle()
-      case .timePicker:
-        isShowTimePicker.toggle()
-      case .categoriesPicker:
-        isShowCategoriesPicker.toggle()
+    case .datePicker:
+      isShowDatePicker.toggle()
+    case .timePicker:
+      isShowTimePicker.toggle()
+    case .categoriesPicker:
+      isShowCategoriesPicker.toggle()
     }
-  }  
+  }
   
   private func tappedDateToggleButton() {
     if isSetDate == false {
@@ -200,7 +195,7 @@ class ReminderCreateAndEditViewModel: ObservableObject {
       reminderManager.createNewTask(newTask: newReminder)
       return
     }
-
+    
     if isSetTime == false {
       let dateComponents = Calendar.current.dateComponents([.year, .month, .day], from: date)
       newReminder.dueDateComponents = dateComponents

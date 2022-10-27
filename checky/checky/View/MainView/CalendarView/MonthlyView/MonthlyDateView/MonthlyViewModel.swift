@@ -9,15 +9,16 @@ import SwiftUI
 import Combine
 
 class MonthlyViewModel: ViewModelable {
-  @Published var dateHolder: DateHolder
-  @Published var events: [Event]
-  @Published var reminders: [Reminder]
-  @Published var currentOffsetX: CGSize
   let eventManager: EventManager
   let reminderManager: ReminderManager
   let calendarHelper: CalendarCanDo
   var moveToWeek: () -> ()
-  
+
+  @Published var dateHolder: DateHolder
+  @Published var events: [Event]
+  @Published var reminders: [Reminder]
+  @Published var currentOffsetX: CGSize
+    
   init(
     dateHolder: DateHolder,
     eventManager: EventManager,
@@ -70,7 +71,6 @@ class MonthlyViewModel: ViewModelable {
   }
   
   func fetchEvents() {
-//    events = eventManager.getAllEventforThisMonth(date: dateHolder.date)
     eventManager.getAllTaskforThisMonth(date: dateHolder.date, completionHandler: { [weak self] eventList in
       DispatchQueue.main.async {
         self?.events = eventList

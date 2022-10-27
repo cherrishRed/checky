@@ -272,8 +272,8 @@
 		DA2C792128EEB50500922C47 /* MainView */ = {
 			isa = PBXGroup;
 			children = (
-				868C544628F419B1006A9B38 /* CheckyMainViewModel.swift */,
 				868C544428F4199D006A9B38 /* CheckyMainView.swift */,
+				868C544628F419B1006A9B38 /* CheckyMainViewModel.swift */,
 				865BE52228EC475200305899 /* CalendarView */,
 			);
 			path = MainView;

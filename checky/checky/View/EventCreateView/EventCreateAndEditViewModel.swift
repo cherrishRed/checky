@@ -9,11 +9,10 @@ import Foundation
 import EventKit
 
 class EventCreateAndEditViewModel: ObservableObject {
-  let eventManager = EventManager()
+  let eventManager: EventManager
   let categories: [EKCalendar]
   
   @Published var mode: Mode
-  
   @Published var title: String
   @Published var date: Date
   @Published var endDate: Date
@@ -21,37 +20,26 @@ class EventCreateAndEditViewModel: ObservableObject {
   @Published var category: EKCalendar
   @Published var memo: String
   @Published var alram: AlramTime
-  
   @Published var isShowDatePicker: Bool
   @Published var isShowEndDatePicker: Bool
   @Published var isShowCategoriesPicker: Bool
   @Published var isShowAlramPicker: Bool
   
-  enum Mode {
-    case create
-    case edit
+  init(
+    mode: EventCreateAndEditViewModel.Mode,
+    title: String = "",
+    date: Date = .now,
+    endDate: Date = .now,
+    isAllDay: Bool = false,
+    memo: String = "",
+    alram: AlramTime = .none,
+    isShowDatePicker: Bool = false,
+    isShowEndDatePicker: Bool = false,
+    isShowCategoriesPicker: Bool = false,
+    isShowAlramPicker: Bool = false,
+    eventManager: EventManager
     
-    var title: String {
-      switch self {
-        case.create:
-          return "새로운 일정 추가"
-        case.edit:
-         return "일정 수정"
-      }
-    }
-  }
-  
-  init(mode: EventCreateAndEditViewModel.Mode,
-       title: String = "",
-       date: Date = .now,
-       endDate: Date = .now,
-       isAllDay: Bool = false,
-       memo: String = "",
-       alram: AlramTime = .none,
-       isShowDatePicker: Bool = false,
-       isShowEndDatePicker: Bool = false,
-       isShowCategoriesPicker: Bool = false,
-       isShowAlramPicker: Bool = false) {
+  ) {
     self.mode = mode
     self.title = title
     self.date = date
@@ -63,9 +51,23 @@ class EventCreateAndEditViewModel: ObservableObject {
     self.isShowEndDatePicker = isShowEndDatePicker
     self.isShowCategoriesPicker = isShowCategoriesPicker
     self.isShowAlramPicker = isShowAlramPicker
-    
     self.categories = eventManager.getTaskCategories()
     self.category = categories[0]
+    self.eventManager = eventManager
+  }
+  
+  enum Mode {
+    case create
+    case edit
+    
+    var title: String {
+      switch self {
+      case.create:
+        return "새로운 일정 추가"
+      case.edit:
+        return "일정 수정"
+      }
+    }
   }
   
   enum Action {
@@ -80,29 +82,29 @@ class EventCreateAndEditViewModel: ObservableObject {
   
   func action(_ action: Action) {
     switch action {
-      case .tappedOutOfRange:
-        tappedOutOfRange()
-      case .tappedCloseButton:
-        tappedCloseButton()
-      case .tappedCheckButton:
-        tappedCheckButton()
-      case .changeMinimumEndDate:
-        changeMinimumEndDate()
-      case .tappedDeleteButton:
-        tappedDeleteButton()
-      case .togglePicker(let picker):
-        togglePicker(selectedPicker: picker)
-      case .toggleIsAllDay:
-        toggleIsAllDay()
+    case .tappedOutOfRange:
+      tappedOutOfRange()
+    case .tappedCloseButton:
+      tappedCloseButton()
+    case .tappedCheckButton:
+      tappedCheckButton()
+    case .changeMinimumEndDate:
+      changeMinimumEndDate()
+    case .tappedDeleteButton:
+      tappedDeleteButton()
+    case .togglePicker(let picker):
+      togglePicker(selectedPicker: picker)
+    case .toggleIsAllDay:
+      toggleIsAllDay()
     }
   }
   
   var dateRange: ClosedRange<Date> {
     let max = Calendar.current.date(
-         byAdding: .year,
-         value: 10,
-         to: date
-       ) ?? Date()
+      byAdding: .year,
+      value: 10,
+      to: date
+    ) ?? Date()
     return date...max
   }
   
@@ -117,14 +119,14 @@ class EventCreateAndEditViewModel: ObservableObject {
     var isShow: Bool
     
     switch selectedPicker {
-      case .datePicker:
-        isShow = isShowDatePicker
-      case .endDatePicker:
-        isShow = isShowEndDatePicker
-      case .categoriesPicker:
-        isShow = isShowCategoriesPicker
-      case .alramPicker:
-        isShow = isShowAlramPicker
+    case .datePicker:
+      isShow = isShowDatePicker
+    case .endDatePicker:
+      isShow = isShowEndDatePicker
+    case .categoriesPicker:
+      isShow = isShowCategoriesPicker
+    case .alramPicker:
+      isShow = isShowAlramPicker
     }
     
     if isShow == false {
@@ -132,14 +134,14 @@ class EventCreateAndEditViewModel: ObservableObject {
     }
     
     switch selectedPicker {
-      case .datePicker:
-        isShowDatePicker.toggle()
-      case .endDatePicker:
-        isShowEndDatePicker.toggle()
-      case .categoriesPicker:
-        isShowCategoriesPicker.toggle()
-      case .alramPicker:
-        isShowAlramPicker.toggle()
+    case .datePicker:
+      isShowDatePicker.toggle()
+    case .endDatePicker:
+      isShowEndDatePicker.toggle()
+    case .categoriesPicker:
+      isShowCategoriesPicker.toggle()
+    case .alramPicker:
+      isShowAlramPicker.toggle()
     }
   }
   
