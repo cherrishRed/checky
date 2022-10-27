@@ -20,6 +20,7 @@ final class WeeklyCalendarHelperTest: XCTestCase {
     }
 
     func test_plusDate_10월10일로_호출시_10월17일을_반환하는지() {
+      // given
       let formatter = DateFormatter()
       let dateString = "2022년 10월 10일"
       formatter.dateFormat = "yyyy년 MM월 dd일"
@@ -27,12 +28,15 @@ final class WeeklyCalendarHelperTest: XCTestCase {
       
       let expectDateString = "2022년 10월 17일"
       let expectDate = formatter.date(from: expectDateString)!
-      let result = sut.plusDate(date)
       
+      // when
+      let result = sut.plusDate(date)
+      // then
       XCTAssertEqual(result, expectDate)
     }
   
   func test_minusDate_10월10일로_호출시_10월3일을_반환하는지() {
+    // given
     let formatter = DateFormatter()
     let dateString = "2022년 10월 10일"
     formatter.dateFormat = "yyyy년 MM월 dd일"
@@ -40,12 +44,15 @@ final class WeeklyCalendarHelperTest: XCTestCase {
     
     let expectDateString = "2022년 10월 3일"
     let expectDate = formatter.date(from: expectDateString)!
-    let result = sut.minusDate(date)
     
+    // when
+    let result = sut.minusDate(date)
+    // then
     XCTAssertEqual(result, expectDate)
   }
   
   func test_extractDates_2022년9월8일로_호출시_7일을_잘_반환하는지() {
+    // given
     let formatter = DateFormatter()
     formatter.dateFormat = "yyyy년 MM월 dd일"
     
@@ -77,11 +84,32 @@ final class WeeklyCalendarHelperTest: XCTestCase {
                                      DateValue(date: today),
                                      DateValue(date: nextDay1),
                                      DateValue(date: nextDay2)]
-    
+    //when
     let result = sut.extractDates(today)
-    
+    // then
     XCTAssertEqual(result.first?.date, expectResult.first?.date)
     XCTAssertEqual(result.last?.date, expectResult.last?.date)
+  }
+  
+  func test_saveDaysOfCurrentMonth에_2022년9월8일_호출시_9월을_다_리턴하는지() {
+    // given
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy년 MM월 dd일"
+    
+    let todayString = "2022년 9월 8일"
+    let today = formatter.date(from: todayString)!
+    
+    let firstdayString = "2022년 9월 1일"
+    let firstDay = formatter.date(from: firstdayString)!
+    
+    let lastdayString = "2022년 9월 30일"
+    let lastDay = formatter.date(from: lastdayString)!
+    
+    // when
+    let result = sut.saveDaysOfCurrentMonth(today)
+    // then
+    XCTAssertEqual(result.first?.date, firstDay)
+    XCTAssertEqual(result.last?.date, lastDay)
   }
 
 }
