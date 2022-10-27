@@ -45,6 +45,17 @@
                </Test>
             </SkippedTests>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "867958BB290A632B001D5C7F"
+               BuildableName = "MonthlyHelperUnitTest.xctest"
+               BlueprintName = "MonthlyHelperUnitTest"
+               ReferencedContainer = "container:checky.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
