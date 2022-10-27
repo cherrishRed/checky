@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct ReminderCreateAndEditView: View {
-  @ObservedObject var viewModel = ReminderCreateAndEditViewModel(mode: .create)
+  @EnvironmentObject var coordinator: Coordinator<checkyRouter>
+
+  @ObservedObject var viewModel = ReminderCreateAndEditViewModel(mode: .create, reminderManager: ReminderManager())
   
   var body: some View {
     VStack {
@@ -19,14 +21,14 @@ struct ReminderCreateAndEditView: View {
       }
     }
     .onTapGesture {
-      viewModel.tappedOutOfRange()
+      viewModel.action(.tappedOutOfRange)
     }
   }
   
   var headerView: some View {
     HStack {
       Button {
-        viewModel.tappedCloseButton()
+        viewModel.action(.tappedCloseButton)
         hideKeyboard()
       } label: {
         Image(systemName: "xmark")
@@ -39,7 +41,7 @@ struct ReminderCreateAndEditView: View {
         .frame(maxWidth: .infinity)
       
       Button {
-        viewModel.tappedCheckButton()
+        viewModel.action(.tappedCheckButton)
         hideKeyboard()
       } label: {
         Image(systemName: "checkmark")
@@ -65,7 +67,7 @@ struct ReminderCreateAndEditView: View {
   
   var deleteButtonView: some View {
     Button {
-      viewModel.tappedDeleteButton()
+      viewModel.action(.tappedDeleteButton)
     } label: {
       HStack {
         Image(systemName: "trash.fill")
@@ -74,9 +76,9 @@ struct ReminderCreateAndEditView: View {
       }
       .padding()
       .frame(maxWidth: .infinity)
-      .background(Color("pointRed"))
+      .background(Color.pointRed)
       .cornerRadius(4)
-      .foregroundColor(Color("basicWhite"))
+      .foregroundColor(.basicWhite)
     }
     .padding(.horizontal)
   }
@@ -97,9 +99,9 @@ struct ReminderCreateAndEditView: View {
     VStack {
       HStack {
         Image(systemName: "tag.fill")
-          .foregroundColor(Color("fontMediumGray"))
+          .foregroundColor(Color.fontMediumGray)
         Button {
-          viewModel.togglePicker(selectedPicker: .categoriesPicker)
+          viewModel.action(.togglePicker(.categoriesPicker))
           hideKeyboard()
         } label: {
           HStack {
@@ -107,12 +109,12 @@ struct ReminderCreateAndEditView: View {
               .fill(Color(cgColor: viewModel.category.cgColor))
               .frame(width: 10, height: 10)
             Text(viewModel.category.title)
-              .foregroundColor(Color("fontDarkBlack"))
+              .foregroundColor(Color.fontDarkBlack)
               .font(.title3)
           }
           .padding(4)
           .frame(maxWidth: .infinity)
-          .background(Color("backgroundGray"))
+          .background(Color.backgroundGray)
           .cornerRadius(4)
         }
       }
@@ -137,7 +139,7 @@ struct ReminderCreateAndEditView: View {
     VStack {
       HStack {
         Image(systemName: "sparkles")
-          .foregroundColor(Color("fontMediumGray"))
+          .foregroundColor(Color.fontMediumGray)
           .padding(.trailing, 4)
         Picker("", selection: $viewModel.priority) {
           Text("없음").tag(0)
@@ -155,15 +157,15 @@ struct ReminderCreateAndEditView: View {
   var memoView: some View {
     HStack(alignment: .top) {
       Image(systemName: "magazine.fill")
-        .foregroundColor(Color("fontMediumGray"))
+        .foregroundColor(Color.fontMediumGray)
         .padding(.top, 10)
         .padding(.trailing, 4)
       TextField("메모", text: $viewModel.memo, axis: .vertical)
-        .foregroundColor(Color("fontDarkBlack"))
+        .foregroundColor(Color.fontDarkBlack)
         .font(.title3)
         .padding(6)
         .frame(maxWidth: .infinity)
-        .background(Color("backgroundGray"))
+        .background(Color.backgroundGray)
         .cornerRadius(4)
     }
   }
@@ -172,31 +174,31 @@ struct ReminderCreateAndEditView: View {
     VStack(alignment: .leading) {
       HStack() {
         Image(systemName: "calendar")
-          .foregroundColor(Color("fontMediumGray"))
+          .foregroundColor(Color.fontMediumGray)
           .padding(.trailing, 2)
         if viewModel.isSetDate {
           Button {
-            viewModel.togglePicker(selectedPicker: .datePicker)
+            viewModel.action(.togglePicker(.datePicker))
             hideKeyboard()
           } label: {
             Text(viewModel.date.dateKoreanWithYear)
-              .foregroundColor(Color("fontDarkBlack"))
+              .foregroundColor(Color.fontDarkBlack)
               .font(.title3)
               .padding(6)
               .frame(maxWidth: .infinity)
-              .background(Color("backgroundGray"))
+              .background(Color.backgroundGray)
               .cornerRadius(4)
           }
         }
         
         Button {
-          viewModel.tappedDateToggleButton()
+          viewModel.action(.tappedDateToggleButton)
           hideKeyboard()
         } label: {
           HStack {
             Image(systemName: viewModel.isSetDate ? "checkmark.square.fill" : "square")
           }
-          .foregroundColor(Color("fontDarkBlack"))
+          .foregroundColor(Color.fontDarkBlack)
         }
         
         if viewModel.isSetDate == false {
@@ -216,31 +218,31 @@ struct ReminderCreateAndEditView: View {
     VStack(alignment: .leading) {
       HStack() {
         Image(systemName: "clock.fill")
-          .foregroundColor(Color("fontMediumGray"))
+          .foregroundColor(Color.fontMediumGray)
           .padding(.trailing, 3)
         if viewModel.isSetTime {
           Button {
-            viewModel.togglePicker(selectedPicker: .timePicker)
+            viewModel.action(.togglePicker(.timePicker))
             hideKeyboard()
           } label: {
             Text(viewModel.date.time)
-              .foregroundColor(Color("fontDarkBlack"))
+              .foregroundColor(Color.fontDarkBlack)
               .font(.title3)
               .padding(6)
               .frame(maxWidth: .infinity)
-              .background(Color("backgroundGray"))
+              .background(Color.backgroundGray)
               .cornerRadius(4)
           }
         }
         
         Button {
-          viewModel.tappedTimeToggleButton()
+          viewModel.action(.tappedTimeToggleButton)
           hideKeyboard()
         } label: {
           HStack {
             Image(systemName: viewModel.isSetTime ? "checkmark.square.fill" : "square")
           }
-          .foregroundColor(Color("fontDarkBlack"))
+          .foregroundColor(Color.fontDarkBlack)
         }
         
         if viewModel.isSetTime == false {

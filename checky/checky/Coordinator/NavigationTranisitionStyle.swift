@@ -8,7 +8,8 @@
 import Foundation
 
 enum NavigationTranisitionStyle {
-    case push
-    case presentModally
-    case presentFullscreen
+  case push
+  case presentModally
+  case presentFullscreen
+  case presentHalfModally
 }

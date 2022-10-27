@@ -11,28 +11,25 @@ struct WeeklyView: View {
   @StateObject var viewModel: WeeklyViewModel
   
   var body: some View {
-    VStack {
+    VStack(spacing: 1) {
       HeaderView(viewModel: HeaderViewModel(dateHolder: viewModel.dateHolder, calendarHelper: viewModel.calendarHelper))
       
       HStack {
         Spacer()
         
-        ZStack {
-          RoundedRectangle(cornerRadius: 10)
-            .frame(width: 70, height: 30)
-            .foregroundColor(.gray)
-          Button("Monthly") { viewModel.moveToMonthly() }
-            .foregroundColor(.white)
-        }
+        Button("Monthly") { viewModel.action(.moveToMonthly) }
+          .buttonStyle(ToggleButtonStyle())
+          .padding(.top, 10)
+          .padding(.horizontal, 10)
       }
-     
+      
       CalendarGrid
+      
+      Spacer()
     }
-    .background(Color("backgroundGray"))
+    .background(Color.backgroundGray)
     .onAppear {
-      viewModel.getPermission()
-      viewModel.fetchEvents()
-      viewModel.fetchReminder()
+      viewModel.action(.actionOnAppear)
     }
   }
 }
@@ -40,21 +37,40 @@ struct WeeklyView: View {
 extension WeeklyView {
   var CalendarGrid: some View {
     let columns = Array(repeating: GridItem(.flexible(), spacing: 0, alignment: nil), count: 2)
-    let columnsCount: CGFloat = 8
     
     var body: some View {
       GeometryReader { geo in
         LazyVGrid(columns: columns, spacing: 0) {
           Text("달력 그릴 뷰")
+          
           ForEach(viewModel.allDatesForDisplay) { value in
-            WeeklyCellView(viewModel: WeeklyCellViewModel(dateValue: value, allEvnets: viewModel.filteredEvent(value.date), allReminders: viewModel.filteredReminder(value.date)))
-              .padding(.horizontal, 10)
-              .padding(.vertical, 6)
-              .frame(width: geo.size.width / 1.9, height: geo.size.height / columnsCount * 2)
+            
+            let events = viewModel.filteredEvent(value.date)
+            let reminders = viewModel.filteredReminder(value.date)
+            
+            WeeklyCellView(viewModel: WeeklyCellViewModel(
+              dateValue: value,
+              allEvnets: events,
+              allReminders: reminders))
+            .padding(.horizontal, 10)
+            .padding(.vertical, 6)
+            .frame(width: geo.size.width / 1.9, height: geo.size.height / viewModel.gridCloumnsCount * 2)
           }
         }
       }
       .frame(maxHeight: .infinity)
+      .gesture(
+        DragGesture()
+          .onChanged { value in
+            viewModel.currentOffsetY = value.translation
+          }
+          .onEnded { value in
+            viewModel.action(.dragGestur)
+            withAnimation(.none) {
+              viewModel.action(.resetCurrentOffsetY)
+            }
+          }
+      )
     }
     return body
   }
