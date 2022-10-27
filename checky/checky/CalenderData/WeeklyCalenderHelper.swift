@@ -23,17 +23,17 @@ struct WeeklyCalendarHelper: CalendarCanDo {
   }
   
   func plusDate(_ date: Date) -> Date {
-    guard let nextMonth = calendar.date(byAdding: .day, value: 7, to: date) else {
+    guard let nextWeek = calendar.date(byAdding: .day, value: 7, to: date) else {
       return Date()
     }
-    return nextMonth
+    return nextWeek
   }
   
   func minusDate(_ date: Date) -> Date {
-    guard let frontMonth = calendar.date(byAdding: .day, value: -7, to: date) else {
+    guard let frontWeek = calendar.date(byAdding: .day, value: -7, to: date) else {
       return Date()
     }
-    return frontMonth
+    return frontWeek
   }
   
   func extractDates(_ date: Date) -> [DateValue] {
