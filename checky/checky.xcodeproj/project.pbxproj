@@ -15,6 +15,8 @@
 		8647B0892907B13C00EE1DA8 /* CalendarCanDoProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8647B0882907B13C00EE1DA8 /* CalendarCanDoProtocol.swift */; };
 		865BE52428EC4B6200305899 /* Extension+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BE52328EC4B6200305899 /* Extension+Text.swift */; };
 		865BE52628EC867900305899 /* WeekOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BE52528EC867900305899 /* WeekOption.swift */; };
+		86795899290A3C2D001D5C7F /* ManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86795898290A3C2D001D5C7F /* ManagerProtocol.swift */; };
+		8679589B290A3C64001D5C7F /* ReminderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8679589A290A3C64001D5C7F /* ReminderManager.swift */; };
 		868C543D28F4178D006A9B38 /* TabBarItemsPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C543C28F4178D006A9B38 /* TabBarItemsPreferenceKey.swift */; };
 		868C543F28F417C0006A9B38 /* CustomTabBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C543E28F417C0006A9B38 /* CustomTabBarContainerView.swift */; };
 		868C544128F417D9006A9B38 /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C544028F417D9006A9B38 /* CustomTabBarView.swift */; };
@@ -69,6 +71,8 @@
 		865BE51828EC2E6F00305899 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		865BE52328EC4B6200305899 /* Extension+Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Text.swift"; sourceTree = "<group>"; };
 		865BE52528EC867900305899 /* WeekOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekOption.swift; sourceTree = "<group>"; };
+		86795898290A3C2D001D5C7F /* ManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerProtocol.swift; sourceTree = "<group>"; };
+		8679589A290A3C64001D5C7F /* ReminderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderManager.swift; sourceTree = "<group>"; };
 		868C543C28F4178D006A9B38 /* TabBarItemsPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemsPreferenceKey.swift; sourceTree = "<group>"; };
 		868C543E28F417C0006A9B38 /* CustomTabBarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarContainerView.swift; sourceTree = "<group>"; };
 		868C544028F417D9006A9B38 /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
@@ -129,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				8647B0882907B13C00EE1DA8 /* CalendarCanDoProtocol.swift */,
+				86795898290A3C2D001D5C7F /* ManagerProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -180,12 +185,13 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		865BE52028EC46CB00305899 /* EventManager */ = {
+		865BE52028EC46CB00305899 /* EventKitManager */ = {
 			isa = PBXGroup;
 			children = (
 				DA91E7DB28EC1E880091B6A3 /* EventManager.swift */,
+				8679589A290A3C64001D5C7F /* ReminderManager.swift */,
 			);
-			path = EventManager;
+			path = EventKitManager;
 			sourceTree = "<group>";
 		};
 		865BE52128EC46D600305899 /* CalenderData */ = {
@@ -339,7 +345,7 @@
 				865BE51B28EC462E00305899 /* App */,
 				865BE51C28EC463C00305899 /* View */,
 				865BE52128EC46D600305899 /* CalenderData */,
-				865BE52028EC46CB00305899 /* EventManager */,
+				865BE52028EC46CB00305899 /* EventKitManager */,
 				8647B08A2907B4EE00EE1DA8 /* Protocol */,
 				865BE51F28EC46BC00305899 /* Extension */,
 				DA3E9DA8290780F100E72E21 /* Utils */,
@@ -440,6 +446,7 @@
 				DA466EA228E685D70076AEE4 /* MonthlyView.swift in Sources */,
 				DA91E7D628EABDED0091B6A3 /* Week.swift in Sources */,
 				DA2C796128EEFF7700922C47 /* AppDelegate.swift in Sources */,
+				8679589B290A3C64001D5C7F /* ReminderManager.swift in Sources */,
 				DA466EA028E685D70076AEE4 /* checkyApp.swift in Sources */,
 				868C543F28F417C0006A9B38 /* CustomTabBarContainerView.swift in Sources */,
 				865BE52628EC867900305899 /* WeekOption.swift in Sources */,
@@ -462,6 +469,7 @@
 				DA2C796828EF007900922C47 /* NavigationTranisitionStyle.swift in Sources */,
 				86F0B2C128F6B71A006E2536 /* WeeklyView.swift in Sources */,
 				DA91E7D828EB57AF0091B6A3 /* DateValue.swift in Sources */,
+				86795899290A3C2D001D5C7F /* ManagerProtocol.swift in Sources */,
 				8647B0892907B13C00EE1DA8 /* CalendarCanDoProtocol.swift in Sources */,
 				8647B0872907B11A00EE1DA8 /* MonthlyCalendarHelper.swift in Sources */,
 				8647AFBC28FD639100EE1DA8 /* WeeklyCellViewModel.swift in Sources */,
