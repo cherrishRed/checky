@@ -90,26 +90,4 @@ final class WeeklyCalendarHelperTest: XCTestCase {
     XCTAssertEqual(result.first?.date, expectResult.first?.date)
     XCTAssertEqual(result.last?.date, expectResult.last?.date)
   }
-  
-  func test_saveDaysOfCurrentMonth에_2022년9월8일_호출시_9월을_다_리턴하는지() {
-    // given
-    let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy년 MM월 dd일"
-    
-    let todayString = "2022년 9월 8일"
-    let today = formatter.date(from: todayString)!
-    
-    let firstdayString = "2022년 9월 1일"
-    let firstDay = formatter.date(from: firstdayString)!
-    
-    let lastdayString = "2022년 9월 30일"
-    let lastDay = formatter.date(from: lastdayString)!
-    
-    // when
-    let result = sut.saveDaysOfCurrentMonth(today)
-    // then
-    XCTAssertEqual(result.first?.date, firstDay)
-    XCTAssertEqual(result.last?.date, lastDay)
-  }
-
 }

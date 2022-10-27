@@ -53,4 +53,12 @@ struct MonthyCalendarHelper: CalendarCanDo {
     
     return currentCalendar
   }
+  
+  func saveDaysOfCurrentMonth(_ date: Date) -> [DateValue] {
+    guard let currentMonth = calendar.date(byAdding: .month, value: 0, to: date) else {
+      return []
+    }
+    
+    return currentMonth.getAllDates().map { DateValue(date: $0, isCurrentMonth: true) }
+  }
 }
