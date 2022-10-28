@@ -61,4 +61,11 @@ extension Date {
     dateformmater.dateFormat = "a hh : mm "
     return dateformmater.string(from: self)
   }
+  
+  func compareWithoutTime(_ date: Date) -> Bool {
+    let dateformmater = DateFormatter()
+    dateformmater.locale = Locale(identifier: "ko_KR")
+    dateformmater.dateFormat = "yyyy년 M월 d일"
+    return dateformmater.string(from: self) == dateformmater.string(from: date)
+  }
 }

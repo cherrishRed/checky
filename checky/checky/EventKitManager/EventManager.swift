@@ -35,9 +35,9 @@ struct EventManager: ManagerProtocol {
   }
   
   func filterTask(_ target: [Event], _ date: Date) -> [Event] {
-    target
-      .filter { $0.ekevent.startDate.compare(date) != ComparisonResult.orderedDescending &&
-        $0.ekevent.endDate.compare(date) != ComparisonResult.orderedAscending }
+    return target.filter { event in
+      return event.ekevent.startDate.compareWithoutTime(date) || event.ekevent.endDate.compareWithoutTime(date)
+    }
   }
   
   func getAllTaskforThisMonth(date: Date, completionHandler: @escaping ([Event]) -> Void) {
