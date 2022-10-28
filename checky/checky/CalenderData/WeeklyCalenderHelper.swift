@@ -55,4 +55,8 @@ struct WeeklyCalendarHelper: CalendarCanDo {
     
     return currentWeek
   }
+  
+  func extractPastCurrentFutureDates(_ date: Date) -> [Date] {
+    return []
+  }
 }

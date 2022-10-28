@@ -15,6 +15,7 @@ protocol CalendarCanDo {
   func plusDate(_ date: Date) -> Date
   func minusDate(_ date: Date) -> Date
   func extractDates(_ date: Date) -> [DateValue]
+  func extractPastCurrentFutureDates(_ date: Date) -> [Date]
 }
 
 extension CalendarCanDo {

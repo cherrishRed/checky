@@ -61,4 +61,28 @@ struct MonthyCalendarHelper: CalendarCanDo {
     
     return currentMonth.getAllDates().map { DateValue(date: $0, isCurrentMonth: true) }
   }
+  
+  func extractPastCurrentFutureDates(_ date: Date) -> [Date] {
+    var dates: [Date] = []
+    
+    guard let currentMonth = calendar.date(byAdding: .month, value: 0, to: date) else {
+      return []
+    }
+    
+    guard let preMonth = calendar.date(byAdding: .month, value: -1, to: date) else {
+      return []
+    }
+    
+    guard let nextMonth = calendar.date(byAdding: .month, value: 1, to: date) else {
+      return []
+    }
+    
+    dates.append(preMonth)
+    dates.append(currentMonth)
+    dates.append(nextMonth)
+    
+    print(dates)
+    
+    return dates
+  }
 }

@@ -18,7 +18,7 @@ struct CalendarView: View {
         viewModel.mode.toggle()
       }))
     } else {
-      MonthlyView(viewModel:  MonthlyViewModel(dateHolder: DateHolder(), eventManager: EventManager(), reminderManager: ReminderManager(), calendarHelper: MonthyCalendarHelper(), moveToWeek: {
+      MonthlyStackView(viewModel:  MonthlyStackViewModel(dateHolder: DateHolder(), eventManager: EventManager(), reminderManager: ReminderManager(), calendarHelper: MonthyCalendarHelper(), offsetWidth: UIScreen.main.bounds.width, moveToWeek: {
         viewModel.mode.toggle()
       }))
     }
