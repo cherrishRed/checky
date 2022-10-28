@@ -29,6 +29,7 @@ class Coordinator<Router: NavigationRouter>: ObservableObject {
     switch route.transition {
     case .push:
       navigationController.pushViewController(viewController, animated: animated)
+        navigationController.navigationBar.isHidden = true
     case .presentModally:
       viewController.modalPresentationStyle = .formSheet
       navigationController.present(viewController, animated: animated)
