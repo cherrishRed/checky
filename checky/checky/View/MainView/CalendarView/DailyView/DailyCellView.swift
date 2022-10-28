@@ -8,16 +8,22 @@
 import SwiftUI
 
 struct DailyCellView: View {
+  @State var event: Event
+  
+  init(event: Event) {
+    self.event = event
+  }
+  
     var body: some View {
       ZStack(alignment: .leading) {
         RoundedRectangle(cornerRadius: 6)
-          .stroke(Color.pointRed)
+          .stroke(Color(event.category.cgColor))
           .background(Color.basicWhite)
           
         HStack {
           ZStack {
             RoundedRectangle(cornerRadius: 4)
-              .fill(Color.pointRed)
+              .fill(Color(event.category.cgColor))
               .frame(width: 40)
             Circle()
               .fill(Color.basicWhite)
@@ -26,21 +32,15 @@ struct DailyCellView: View {
           }
           
           VStack(alignment: .leading) {
-            Text("태엔젤 생일")
+            Text(event.ekevent.title)
               .font(.title3)
               .fontWeight(.semibold)
-            Text("설명충 어쩌구 저쩌구 ")
+            Text(event.ekevent.notes ?? "")
           }
           .padding(.horizontal, 10)
           .padding(.vertical, 6)
         }
       }
       .fixedSize(horizontal: false, vertical: true)
-    }
-}
-
-struct DailyCellView_Previews: PreviewProvider {
-    static var previews: some View {
-        DailyCellView()
     }
 }

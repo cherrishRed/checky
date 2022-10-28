@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MonthlyStackView: View {
+  @EnvironmentObject var coordinator: Coordinator<checkyRouter>
   @StateObject var viewModel: MonthlyStackViewModel
   
   var body: some View {
@@ -30,6 +31,7 @@ struct MonthlyStackView: View {
                     DayOfWeekStackView(viewModel: DayOfWeekStackViewModel())
                       .frame(width: geo.size.width, height: 30)
                     MonthlyView(viewModel: MonthlyViewModel(date: date, eventManager: viewModel.eventManager, reminderManager: viewModel.reminderManager, calendarHelper: viewModel.calendarHelper))
+                      .environmentObject(coordinator)
                       .frame(width: geo.size.width, height: geo.size.height-30)
                   }
                 }

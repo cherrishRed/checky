@@ -10,6 +10,7 @@ import SwiftUI
 
 
 struct MonthlyView: View {
+  @EnvironmentObject var coordinator: Coordinator<checkyRouter>
   @StateObject var viewModel: MonthlyViewModel
   
   var body: some View {
@@ -26,6 +27,10 @@ struct MonthlyView: View {
           MonthlyCellView(viewModel: MonthlyCellViewModel(dateValue: value,
                                                           allEvnets: events,
                                                           allReminders: reminders))
+          .onTapGesture {
+            coordinator.show(.daily(events))
+            print("tabbed!!!chell")
+          }
           
           .frame(width: geo.size.width / 7, height: geo.size.height / columnsCount)
         }

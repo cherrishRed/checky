@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct WeeklyStackView: View {
+  @EnvironmentObject var coordinator: Coordinator<checkyRouter>
   @StateObject var viewModel: WeeklyStackViewModel
   
   var body: some View {

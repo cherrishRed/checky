@@ -8,6 +8,14 @@
 import SwiftUI
 
 struct DailyView: View {
+  @EnvironmentObject var coordinator: Coordinator<checkyRouter>
+  
+  @State var events: [Event]
+  
+  init(events: [Event]) {
+    self.events = events
+  }
+  
   var body: some View {
     VStack {
       HeaderView(viewModel: HeaderViewModel(dateHolder: DateHolder(), calendarHelper: WeeklyCalendarHelper()))
@@ -16,8 +24,10 @@ struct DailyView: View {
           RoundedRectangle(cornerRadius: 4)
             .fill(Color.basicWhite)
           VStack(spacing: 10) {
-            DailyCellView()
-            DailyCellView()
+          ForEach(events, id: \.self) { event in
+            let _ = print(event)
+              DailyCellView(event: event)
+            }
           }
           .padding()
         }
@@ -25,11 +35,5 @@ struct DailyView: View {
       }
     }
     .background(Color.backgroundGray)
-  }
-}
-
-struct DailyView_Previews: PreviewProvider {
-  static var previews: some View {
-    DailyView()
   }
 }

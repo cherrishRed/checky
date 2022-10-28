@@ -9,10 +9,12 @@ import SwiftUI
 
 enum checkyRouter: NavigationRouter {
   
+  
   case main
   case create
   case createEvent
   case createReminder
+  case daily([Event])
   
   var transition: NavigationTranisitionStyle {
     switch self {
@@ -24,6 +26,8 @@ enum checkyRouter: NavigationRouter {
         return .presentModally
       case .createReminder:
         return .presentModally
+      case .daily:
+        return .presentModally
     }
   }
   
@@ -34,12 +38,12 @@ enum checkyRouter: NavigationRouter {
         checkyApp()
       case .create:
         CreateSelectorView()
-        //        EventCreateAndEditView(viewModel: EventCreateAndEditViewModel(mode: .create))
-        //      ReminderCreateAndEditView(viewModel: ReminderCreateAndEditViewModel(mode: .create))
       case .createEvent:
         EventCreateAndEditView(viewModel: EventCreateAndEditViewModel(mode: .create, eventManager: EventManager()))
       case .createReminder:
         ReminderCreateAndEditView(viewModel: ReminderCreateAndEditViewModel(mode: .create, reminderManager: ReminderManager()))
+      case .daily(let events):
+        DailyView(events: events)
     }
   }
 }
