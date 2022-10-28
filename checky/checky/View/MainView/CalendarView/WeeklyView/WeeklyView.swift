@@ -15,7 +15,7 @@ struct WeeklyView: View {
     
     GeometryReader { geo in
       LazyVGrid(columns: columns, spacing: 0) {
-        Text("달력 그릴 뷰")
+        Text("")
         
         ForEach(viewModel.allDatesForDisplay) { value in
           

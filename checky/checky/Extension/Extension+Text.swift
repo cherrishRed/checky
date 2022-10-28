@@ -9,7 +9,8 @@ import SwiftUI
 
 extension Text {
   func weekStyle() -> some View {
-    self.frame(maxWidth: .infinity)
+    self
+      .frame(maxWidth: .infinity)
       .font(.caption2)
       .foregroundColor(Color.fontMediumGray)
       .padding(.top)

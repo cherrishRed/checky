@@ -86,4 +86,31 @@ extension CalendarCanDo {
     
     return 6 - lastWeekday.rawValue + startingWeek.rawValue
   }
+  
+  func extractMonthDates(_ date: Date) -> [DateValue] {
+    var currentCalendar: [DateValue] = []
+    
+    let days = saveDaysOfCurrentMonth(date)
+    
+    guard let firstDayOfMonth = days.first, let lastDayOfMonth = days.last else {
+      return []
+    }
+    
+    let previousDays = previousDates(currentday: firstDayOfMonth)
+    let nextDays = nextDates(currentday: lastDayOfMonth)
+    
+    previousDays.forEach { currentCalendar.append($0) }
+    days.forEach { currentCalendar.append($0) }
+    nextDays.forEach{ currentCalendar.append($0) }
+    
+    return currentCalendar
+  }
+  
+  private func saveDaysOfCurrentMonth(_ date: Date) -> [DateValue] {
+    guard let currentMonth = calendar.date(byAdding: .month, value: 0, to: date) else {
+      return []
+    }
+    
+    return currentMonth.getAllDates().map { DateValue(date: $0, isCurrentMonth: true) }
+  }
 }

@@ -36,25 +36,10 @@ struct MonthyCalendarHelper: CalendarCanDo {
   }
   
   func extractDates(_ date: Date) -> [DateValue] {
-    var currentCalendar: [DateValue] = []
-    
-    let days = saveDaysOfCurrentMonth(date)
-    
-    guard let firstDayOfMonth = days.first, let lastDayOfMonth = days.last else {
-      return []
-    }
-    
-    let previousDays = previousDates(currentday: firstDayOfMonth)
-    let nextDays = nextDates(currentday: lastDayOfMonth)
-    
-    previousDays.forEach { currentCalendar.append($0) }
-    days.forEach { currentCalendar.append($0) }
-    nextDays.forEach{ currentCalendar.append($0) }
-    
-    return currentCalendar
+    extractMonthDates(date)
   }
   
-  func saveDaysOfCurrentMonth(_ date: Date) -> [DateValue] {
+  private func saveDaysOfCurrentMonth(_ date: Date) -> [DateValue] {
     guard let currentMonth = calendar.date(byAdding: .month, value: 0, to: date) else {
       return []
     }

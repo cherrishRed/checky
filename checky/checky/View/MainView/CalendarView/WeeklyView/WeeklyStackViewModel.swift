@@ -15,8 +15,6 @@ class WeeklyStackViewModel: ViewModelable {
   var moveToMonthly: () -> ()
   
   @Published var dateHolder: DateHolder
-  @Published var events: [Event]
-  @Published var reminders: [Reminder]
   
   @Published var currentOffsetX: CGFloat
   @Published var currentIndex: Int
@@ -26,8 +24,6 @@ class WeeklyStackViewModel: ViewModelable {
     eventManager: EventManager,
     reminderManager: ReminderManager,
     calendarHelper: CalendarCanDo,
-    events: [Event] = [],
-    reminders: [Reminder] = [],
     offsetWidth: CGFloat,
     currentIndex: Int = 1,
     moveToMonthly: @escaping () -> ()
@@ -37,8 +33,6 @@ class WeeklyStackViewModel: ViewModelable {
     self.eventManager = eventManager
     self.reminderManager = reminderManager
     self.calendarHelper = calendarHelper
-    self.events = events
-    self.reminders = reminders
     self.offsetWidth = offsetWidth
     self.currentIndex = currentIndex
     
@@ -47,6 +41,23 @@ class WeeklyStackViewModel: ViewModelable {
   
   var pastCurrentFutureDates: [Date] {
     return calendarHelper.extractPastCurrentFutureDates(dateHolder.date)
+  }
+  
+  var minimunCalendarWeekheight: CGFloat {
+    let dates = calendarHelper.extractMonthDates(dateHolder.date)
+      .map { (dateValue) -> String in
+        let isThisMonth = dateValue.isCurrentMonth ? "ThisMonth" : ""
+        let dayString = dateValue.date.day
+        return isThisMonth + dayString
+      }
+
+    let date = "ThisMonth" + dateHolder.date.day
+    
+    guard let index = dates.firstIndex(of: date) else {
+      return CGFloat(0)
+    }
+    
+    return CGFloat(index / 7) * CGFloat(16)
   }
   
   enum Action {
@@ -74,40 +85,16 @@ class WeeklyStackViewModel: ViewModelable {
   
   func onAppear() {
     self.getPermission()
-    self.fetchEvents()
-    self.fetchReminder()
+//    self.fetchEvents()
+//    self.fetchReminder()
   }
   
   private func getPermission() {
     eventManager.getPermission()
   }
   
-  private func fetchEvents() {
-    eventManager.getAllTaskforThisMonth(date: dateHolder.date, completionHandler: { [weak self] eventList in
-      DispatchQueue.main.async {
-        self?.events = eventList
-      }
-    })
-  }
-  
-  private func fetchReminder() {
-    reminderManager.getAllTaskforThisMonth(date: dateHolder.date, completionHandler: { [weak self] reminderList in
-      DispatchQueue.main.async {
-        self?.reminders = reminderList
-      }
-    })
-  }
-  
   var allDatesForDisplay: [DateValue] {
     return calendarHelper.extractDates(dateHolder.date)
-  }
-    
-  func filteredEvent(_ date: Date) -> [Event] {
-    eventManager.filterTask(events, date)
-  }
-  
-  func filteredReminder(_ date: Date) -> [Reminder] {
-    reminderManager.filterTask(reminders, date)
   }
   
   var gridCloumnsCount: CGFloat {
@@ -137,4 +124,10 @@ class WeeklyStackViewModel: ViewModelable {
       currentIndex = 1
     }
   }
+  
+  func extractMonthDates() -> [DateValue] {
+    calendarHelper.extractMonthDates(dateHolder.date)
+  }
+  
+
 }

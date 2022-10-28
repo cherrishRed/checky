@@ -57,7 +57,6 @@ struct WeeklyCalendarHelper: CalendarCanDo {
   }
   
   func extractPastCurrentFutureDates(_ date: Date) -> [Date] {
-    // 앞주를 구하기...
     var dates: [Date] = []
     
     guard let currentMonth = calendar.date(byAdding: .day, value: 0, to: date) else {
