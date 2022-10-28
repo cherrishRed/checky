@@ -17,7 +17,6 @@ class WeeklyViewModel: ViewModelable {
   let eventManager: EventManager
   let reminderManager: ReminderManager
   let calendarHelper: CalendarCanDo
-  var moveToMonthly: () -> ()
   
   init(
     date: Date,
@@ -26,10 +25,8 @@ class WeeklyViewModel: ViewModelable {
     calendarHelper: CalendarCanDo,
     currentOffsetY: CGSize = .zero,
     events: [Event] = [],
-    reminders: [Reminder] = [],
-    moveToMonthly: @escaping () -> ()
+    reminders: [Reminder] = []
   ) {
-    self.moveToMonthly = moveToMonthly
     self.date = date
     self.eventManager = eventManager
     self.reminderManager = reminderManager
@@ -39,23 +36,19 @@ class WeeklyViewModel: ViewModelable {
     self.reminders = reminders
   }
   
+  var allDatesForDisplay: [DateValue] {
+    return calendarHelper.extractDates(date)
+  }
+  
   enum Action {
     case actionOnAppear
-    case dragGestur
-    case resetCurrentOffsetY
-    case moveToMonthly
+
   }
   
   func action(_ action: Action) {
     switch action {
     case .actionOnAppear:
       onAppear()
-    case .dragGestur:
-      dragGestureonEnded()
-    case .resetCurrentOffsetY:
-      resetCurrentOffsetY()
-    case .moveToMonthly:
-      moveToMonthly()
     }
   }
   
@@ -84,10 +77,6 @@ class WeeklyViewModel: ViewModelable {
       }
     })
   }
-  
-  var allDatesForDisplay: [DateValue] {
-    return calendarHelper.extractDates(date)
-  }
     
   func filteredEvent(_ date: Date) -> [Event] {
     eventManager.filterTask(events, date)
@@ -101,17 +90,6 @@ class WeeklyViewModel: ViewModelable {
     return CGFloat(calendarHelper.extractDates(date).count + 1)
   }
   
-  func dragGestureonEnded() {
-    guard currentOffsetY.height < 0 else {
-      date = calendarHelper.minusDate(date)
-      return
-    }
-    date = calendarHelper.plusDate(date)
-  }
-  
-  func resetCurrentOffsetY() {
-    currentOffsetY = .zero
-  }
 }
 
 protocol ViewModelable: ObservableObject {

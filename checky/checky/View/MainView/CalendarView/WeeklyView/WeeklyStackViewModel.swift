@@ -51,11 +51,9 @@ class WeeklyStackViewModel: ViewModelable {
   
   enum Action {
     case actionOnAppear
-    case dragGestur
-    case resetCurrentOffsetY
     case moveToMonthly
-    case moveToPreviousMonth
-    case moveToNextMonth
+    case moveToPreviousWeek
+    case moveToNextWeek
     case onChagnedIndex(Int)
   }
   
@@ -63,17 +61,12 @@ class WeeklyStackViewModel: ViewModelable {
     switch action {
     case .actionOnAppear:
       onAppear()
-    case .dragGestur:
-        print("drag")
-//      dragGestureonEnded()
-    case .resetCurrentOffsetY:
-        print("drag")
     case .moveToMonthly:
       moveToMonthly()
-      case .moveToPreviousMonth:
-        moveToPreviousMonth()
-      case .moveToNextMonth:
-        moveToNextMonth()
+      case .moveToPreviousWeek:
+        moveToPreviousWeek()
+      case .moveToNextWeek:
+        moveToNextWeek()
       case .onChagnedIndex(let index):
         onChagnedIndex(index)
     }
@@ -121,12 +114,12 @@ class WeeklyStackViewModel: ViewModelable {
     return CGFloat(calendarHelper.extractDates(dateHolder.date).count + 1)
   }
 
-  private func moveToPreviousMonth() {
+  private func moveToPreviousWeek() {
     currentOffsetX += offsetWidth
       currentIndex -= 1
   }
   
-  private func moveToNextMonth() {
+  private func moveToNextWeek() {
     currentOffsetX -= offsetWidth
     currentIndex += 1
   }

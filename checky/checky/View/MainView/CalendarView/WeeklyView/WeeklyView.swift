@@ -33,17 +33,8 @@ struct WeeklyView: View {
       }
     }
     .frame(maxHeight: .infinity)
-//    .gesture(
-//      DragGesture()
-//        .onChanged { value in
-//          viewModel.currentOffsetY = value.translation
-//        }
-//        .onEnded { value in
-//          viewModel.action(.dragGestur)
-//          withAnimation(.none) {
-//            viewModel.action(.resetCurrentOffsetY)
-//          }
-//        }
-//    )
+    .onAppear {
+      viewModel.action(.actionOnAppear)
+    }
   }
 }
