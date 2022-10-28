@@ -18,8 +18,7 @@ class MonthlyStackViewModel: ViewModelable {
   @Published var events: [Event]
   @Published var reminders: [Reminder]
   @Published var currentOffsetX: CGFloat
-  
-  @Published var currentIndex: Int = 1
+  @Published var currentIndex: Int
     
   init(
     dateHolder: DateHolder,
@@ -40,7 +39,7 @@ class MonthlyStackViewModel: ViewModelable {
     self.events = events
     self.reminders = reminders
     self.offsetWidth = offsetWidth
-    
+    self.currentIndex = currentIndex
     self.currentOffsetX = -CGFloat(currentIndex) * offsetWidth
   }
   

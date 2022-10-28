@@ -12,12 +12,10 @@ class MonthlyViewModel: ViewModelable {
   let eventManager: EventManager
   let reminderManager: ReminderManager
   let calendarHelper: CalendarCanDo
-  var moveToWeek: () -> ()
 
   @Published var date: Date
   @Published var events: [Event]
   @Published var reminders: [Reminder]
-  @Published var currentOffsetX: CGSize
     
   init(
     date: Date,
@@ -26,48 +24,30 @@ class MonthlyViewModel: ViewModelable {
     calendarHelper: CalendarCanDo,
     events: [Event] = [],
     reminders: [Reminder] = [],
-    currentOffsetX: CGSize = .zero,
-    moveToWeek: @escaping () -> ()
+    currentOffsetX: CGSize = .zero
   ) {
-    self.moveToWeek = moveToWeek
     self.date = date
     self.eventManager = eventManager
     self.reminderManager = reminderManager
     self.calendarHelper = calendarHelper
     self.events = events
     self.reminders = reminders
-    self.currentOffsetX = currentOffsetX
   }
   
   enum Action {
     case actionOnAppear
     case onChangeDate
-//    case dragGestur
-//    case resetCurrentOffsetX
-    case moveToWeekly
   }
   
   func action(_ action: Action) {
     switch action {
       case .actionOnAppear:
-        getPermission()
         fetchEvents()
         fetchReminder()
       case .onChangeDate:
         fetchEvents()
         fetchReminder()
-//      case .dragGestur:
-//        dragGestureonEnded()
-//      case .resetCurrentOffsetX:
-//        resetCurrentOffsetX()
-      case .moveToWeekly:
-        moveToWeek()
     }
-  }
-  
-  
-  func getPermission() {
-    eventManager.getPermission()
   }
   
   func fetchEvents() {
@@ -101,16 +81,5 @@ class MonthlyViewModel: ViewModelable {
   var gridCloumnsCount: CGFloat {
     return calendarHelper.extractDates(date).count > 35 ? CGFloat(6) : CGFloat(5)
   }
-  
-//  func dragGestureonEnded() {
-//    guard currentOffsetX.width < 0 else {
-//      date = calendarHelper.minusDate(date)
-//      return
-//    }
-//      date = calendarHelper.plusDate(date)
-//  }
-  
-//  func resetCurrentOffsetX() {
-//    currentOffsetX = .zero
-//  }
+
 }

@@ -30,7 +30,7 @@ struct MonthlyStackView: View {
                   VStack {
                     DayOfWeekStackView(viewModel: DayOfWeekStackViewModel())
                       .frame(width: geo.size.width, height: 30)
-                    MonthlyView(viewModel: MonthlyViewModel(date: date, eventManager: viewModel.eventManager, reminderManager: viewModel.reminderManager, calendarHelper: viewModel.calendarHelper, moveToWeek: viewModel.moveToWeek))
+                    MonthlyView(viewModel: MonthlyViewModel(date: date, eventManager: viewModel.eventManager, reminderManager: viewModel.reminderManager, calendarHelper: viewModel.calendarHelper))
                       .frame(width: geo.size.width, height: geo.size.height-30)
                   }
                 }
