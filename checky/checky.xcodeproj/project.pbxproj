@@ -56,6 +56,7 @@
 		DA4E4A44290AECE500CF45E2 /* MonthlyStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E4A43290AECE500CF45E2 /* MonthlyStackView.swift */; };
 		DA4E4A46290C288600CF45E2 /* WeeklyStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E4A45290C288600CF45E2 /* WeeklyStackView.swift */; };
 		DA4E4A48290C289600CF45E2 /* WeeklyStackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E4A47290C289600CF45E2 /* WeeklyStackViewModel.swift */; };
+		DA4E4A4B290C74F800CF45E2 /* DailyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E4A4A290C74F800CF45E2 /* DailyView.swift */; };
 		DA91E7D628EABDED0091B6A3 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91E7D528EABDED0091B6A3 /* Week.swift */; };
 		DA91E7D828EB57AF0091B6A3 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91E7D728EB57AF0091B6A3 /* DateValue.swift */; };
 		DA91E7DA28EB58310091B6A3 /* Extension+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91E7D928EB58310091B6A3 /* Extension+Date.swift */; };
@@ -138,6 +139,7 @@
 		DA4E4A43290AECE500CF45E2 /* MonthlyStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyStackView.swift; sourceTree = "<group>"; };
 		DA4E4A45290C288600CF45E2 /* WeeklyStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStackView.swift; sourceTree = "<group>"; };
 		DA4E4A47290C289600CF45E2 /* WeeklyStackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStackViewModel.swift; sourceTree = "<group>"; };
+		DA4E4A4A290C74F800CF45E2 /* DailyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyView.swift; sourceTree = "<group>"; };
 		DA91E7D528EABDED0091B6A3 /* Week.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
 		DA91E7D728EB57AF0091B6A3 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
 		DA91E7D928EB58310091B6A3 /* Extension+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Date.swift"; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 			children = (
 				860F766328FCB97A00CB034B /* CalendarView.swift */,
 				860F766528FCB98500CB034B /* CaledarViewModel.swift */,
+				DA4E4A49290C74E100CF45E2 /* DailyView */,
 				865BE51D28EC464700305899 /* HeaderView */,
 				86F0B2BE28F6B667006E2536 /* MonthlyView */,
 				86F0B2BF28F6B681006E2536 /* WeeklyView */,
@@ -431,6 +434,14 @@
 				DA4E4A38290A529200CF45E2 /* WeeklyCalendarHelperTest.swift */,
 			);
 			path = checkyTests;
+			sourceTree = "<group>";
+		};
+		DA4E4A49290C74E100CF45E2 /* DailyView */ = {
+			isa = PBXGroup;
+			children = (
+				DA4E4A4A290C74F800CF45E2 /* DailyView.swift */,
+			);
+			path = DailyView;
 			sourceTree = "<group>";
 		};
 		DA91E7DF28EC8DDB0091B6A3 /* Model */ = {
@@ -612,6 +623,7 @@
 				86795899290A3C2D001D5C7F /* ManagerProtocol.swift in Sources */,
 				8647B0892907B13C00EE1DA8 /* CalendarCanDoProtocol.swift in Sources */,
 				8647B0872907B11A00EE1DA8 /* MonthlyCalendarHelper.swift in Sources */,
+				DA4E4A4B290C74F800CF45E2 /* DailyView.swift in Sources */,
 				8647AFBC28FD639100EE1DA8 /* WeeklyCellViewModel.swift in Sources */,
 				DA91E81428EDF3900091B6A3 /* MonthlyViewModel.swift in Sources */,
 				DA2C797128F6E2C800922C47 /* Extension+View.swift in Sources */,
