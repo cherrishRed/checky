@@ -15,38 +15,49 @@ struct WeeklyCellView: View {
     ZStack(alignment: .topLeading) {
       
       RoundedRectangle(cornerRadius: 10)
-        .fill(Color("basicWhite"))
+        .fill(Color.basicWhite)
       
-      VStack(alignment: .leading) {
+      VStack(alignment: .leading, spacing: 4) {
         HStack {
           Text(viewModel.dateValue.date.dayOfWeek)
+            .font(.caption2)
             .foregroundColor(.black.opacity(0.5))
           if Calendar.current.isDateInToday(viewModel.dateValue.date) {
             ZStack {
               Circle()
-                .fill(Color("fontBlack"))
-                .frame(width: 30, height: 30)
+                .fill(Color.fontBlack)
+                .frame(width: 20, height: 20)
               Text(viewModel.dateValue.date.day)
-                .foregroundColor(Color("basicWhite"))
+                .font(.caption2)
+                .foregroundColor(Color.basicWhite)
             }
             
           } else {
             Text(viewModel.dateValue.date.day)
+              .font(.caption2)
+              .foregroundColor(Color.fontBlack)
           }
         }
-        .padding(6)
+        .padding(.top, 10)
+        .padding(.horizontal, 10)
         
         ScrollView {
-          VStack {
-            ForEach(viewModel.allEvnets, id: \.self) { event in
-              WeeklyEventBlockView(event: event)
-                .frame(height: 20)
+          VStack(alignment: .leading, spacing: 6) {
+            
+            VStack(alignment: .leading, spacing: 2) {
+              ForEach(viewModel.allEvnets, id: \.self) { event in
+                WeeklyEventBlockView(event: event)
+                  .frame(height: 20)
+              }
             }
             
-            ForEach(viewModel.allReminders, id: \.self) { reminder in
-              ReminderBlockView(reminder: reminder)
-                .frame(height: 14)
+            VStack(alignment: .leading, spacing: 2) {
+              ForEach(viewModel.allReminders, id: \.self) { reminder in
+                WeeklyReminderBlockView(reminder: reminder)
+                  .frame(height: 14)
+              }
             }
+            
           }
           .padding(.horizontal, 6)
         }
@@ -71,6 +82,7 @@ struct WeeklyEventBlockView: View {
         .fontWeight(.semibold)
         .foregroundColor(Color.basicWhite)
         .fixedSize(horizontal: true, vertical: false)
+        .padding(.horizontal, 4)
     }
   }
 }
@@ -79,7 +91,7 @@ struct WeeklyReminderBlockView: View {
   let reminder: Reminder
   
   var body: some View {
-    HStack() {
+    HStack(spacing: 4) {
       ZStack {
         
         Circle()
@@ -91,20 +103,11 @@ struct WeeklyReminderBlockView: View {
           .opacity(reminder.ekreminder.isCompleted ? 1.0 : 0.0)
       }
       
-      ZStack(alignment: .leading) {
-        Rectangle()
-          .fill(Color.basicWhite)
-          .frame(maxWidth: .infinity)
-          .layoutPriority(1)
-        Text(reminder.ekreminder.title)
-          .font(.caption)
-          .foregroundColor(Color.fontDarkBlack)
-          .fixedSize(horizontal: true, vertical: false)
-        Text(reminder.ekreminder.notes ?? "")
-          .font(.caption)
-          .foregroundColor(Color.fontDarkBlack)
-          .fixedSize(horizontal: true, vertical: false)
-      }
+      Text(reminder.ekreminder.title)
+        .font(.caption)
+        .foregroundColor(Color.fontDarkBlack)
+        .fixedSize(horizontal: true, vertical: false)
     }
+    .padding(.horizontal, 2)
   }
 }

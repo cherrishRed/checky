@@ -23,9 +23,11 @@ struct MonthlyCellView: View {
               .fill(Color.fontBlack)
               .frame(width: 20, height: 20)
             Text(viewModel.dateValue.date.day)
+              .font(.caption2)
               .foregroundColor(Color.basicWhite)
           } else {
             Text(viewModel.dateValue.date.day)
+              .font(.caption2)
               .foregroundColor(viewModel.dateValue.isCurrentMonth ? Color.fontMediumGray : Color.fontLightGray)
           }
         }
@@ -47,7 +49,7 @@ struct EventBlockView: View {
   
   var body: some View {
     ZStack(alignment: .leading) {
-      Rectangle()
+      RoundedRectangle(cornerRadius: 2)
         .fill(Color(event.category.cgColor))
         .frame(maxWidth: .infinity)
         .layoutPriority(1)
@@ -55,13 +57,14 @@ struct EventBlockView: View {
       Text(event.ekevent.title)
         .padding(1)
         .lineLimit(1)
-        .font(.caption)
+        .font(.caption2)
         .fontWeight(.semibold)
         .foregroundColor(Color.basicWhite)
         .fixedSize(horizontal: true, vertical: false)
     }
     .frame(height: 16)
     .padding(.vertical, 1.1)
+    .padding(.horizontal, 0.5)
   }
 }
 
@@ -86,7 +89,7 @@ struct ReminderBlockView: View {
           .frame(maxWidth: .infinity)
           .layoutPriority(1)
         Text(reminder.ekreminder.title)
-          .font(.caption)
+          .font(.caption2)
           .foregroundColor(Color.fontDarkBlack)
           .fixedSize(horizontal: true, vertical: false)
       }
