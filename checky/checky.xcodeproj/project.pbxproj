@@ -54,6 +54,8 @@
 		DA4E4A39290A529200CF45E2 /* WeeklyCalendarHelperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E4A38290A529200CF45E2 /* WeeklyCalendarHelperTest.swift */; };
 		DA4E4A42290AEC9800CF45E2 /* MonthlyStackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E4A41290AEC9800CF45E2 /* MonthlyStackViewModel.swift */; };
 		DA4E4A44290AECE500CF45E2 /* MonthlyStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E4A43290AECE500CF45E2 /* MonthlyStackView.swift */; };
+		DA4E4A46290C288600CF45E2 /* WeeklyStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E4A45290C288600CF45E2 /* WeeklyStackView.swift */; };
+		DA4E4A48290C289600CF45E2 /* WeeklyStackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E4A47290C289600CF45E2 /* WeeklyStackViewModel.swift */; };
 		DA91E7D628EABDED0091B6A3 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91E7D528EABDED0091B6A3 /* Week.swift */; };
 		DA91E7D828EB57AF0091B6A3 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91E7D728EB57AF0091B6A3 /* DateValue.swift */; };
 		DA91E7DA28EB58310091B6A3 /* Extension+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91E7D928EB58310091B6A3 /* Extension+Date.swift */; };
@@ -134,6 +136,8 @@
 		DA4E4A38290A529200CF45E2 /* WeeklyCalendarHelperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyCalendarHelperTest.swift; sourceTree = "<group>"; };
 		DA4E4A41290AEC9800CF45E2 /* MonthlyStackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyStackViewModel.swift; sourceTree = "<group>"; };
 		DA4E4A43290AECE500CF45E2 /* MonthlyStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyStackView.swift; sourceTree = "<group>"; };
+		DA4E4A45290C288600CF45E2 /* WeeklyStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStackView.swift; sourceTree = "<group>"; };
+		DA4E4A47290C289600CF45E2 /* WeeklyStackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStackViewModel.swift; sourceTree = "<group>"; };
 		DA91E7D528EABDED0091B6A3 /* Week.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
 		DA91E7D728EB57AF0091B6A3 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
 		DA91E7D928EB58310091B6A3 /* Extension+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Date.swift"; sourceTree = "<group>"; };
@@ -312,6 +316,8 @@
 		86F0B2BF28F6B681006E2536 /* WeeklyView */ = {
 			isa = PBXGroup;
 			children = (
+				DA4E4A45290C288600CF45E2 /* WeeklyStackView.swift */,
+				DA4E4A47290C289600CF45E2 /* WeeklyStackViewModel.swift */,
 				86F0B2C028F6B71A006E2536 /* WeeklyView.swift */,
 				86F0B2C228F6B726006E2536 /* WeeklyViewModel.swift */,
 				86F0B2C428F6B969006E2536 /* WeeklyCellView.swift */,
@@ -584,6 +590,7 @@
 				DA91E7E528EC94180091B6A3 /* MonthlyCellView.swift in Sources */,
 				DA3E9DAC29078FE200E72E21 /* Extension+Color.swift in Sources */,
 				DA91E81828EE01790091B6A3 /* HeaderViewModel.swift in Sources */,
+				DA4E4A46290C288600CF45E2 /* WeeklyStackView.swift in Sources */,
 				DA2C798328F7268F00922C47 /* ReminderCreateAndEditViewModel.swift in Sources */,
 				DA3E9DAA2907810E00E72E21 /* ButtonStyle.swift in Sources */,
 				DA4E4A44290AECE500CF45E2 /* MonthlyStackView.swift in Sources */,
@@ -599,6 +606,7 @@
 				868C544528F4199D006A9B38 /* CheckyMainView.swift in Sources */,
 				860F766428FCB97A00CB034B /* CalendarView.swift in Sources */,
 				DA2C796828EF007900922C47 /* NavigationTranisitionStyle.swift in Sources */,
+				DA4E4A48290C289600CF45E2 /* WeeklyStackViewModel.swift in Sources */,
 				86F0B2C128F6B71A006E2536 /* WeeklyView.swift in Sources */,
 				DA91E7D828EB57AF0091B6A3 /* DateValue.swift in Sources */,
 				86795899290A3C2D001D5C7F /* ManagerProtocol.swift in Sources */,

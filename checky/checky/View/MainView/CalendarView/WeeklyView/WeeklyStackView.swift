@@ -1,39 +1,35 @@
 //
-//  MonthlyStackView.swift
+//  WeeklyStackView.swift
 //  checky
 //
-//  Created by RED on 2022/10/28.
+//  Created by RED on 2022/10/29.
 //
 
 import SwiftUI
 
-struct MonthlyStackView: View {
-  @StateObject var viewModel: MonthlyStackViewModel
+struct WeeklyStackView: View {
+  @StateObject var viewModel: WeeklyStackViewModel
   
   var body: some View {
     VStack(spacing: 1) {
       HeaderView(viewModel: HeaderViewModel(dateHolder: viewModel.dateHolder, calendarHelper: viewModel.calendarHelper))
+      
       HStack {
         Spacer()
         
-        Button("Weekly") { viewModel.action(.moveToWeekly) }
+        Button("Monthly") { viewModel.action(.moveToMonthly) }
           .buttonStyle(ToggleButtonStyle())
           .padding(.top, 10)
           .padding(.horizontal, 10)
       }
       
       GeometryReader { geo in
-        VStack {
-            LazyHStack {
-                ForEach(viewModel.pastCurrentFutureDates, id: \.self) { date in
-                  VStack {
-                    DayOfWeekStackView(viewModel: DayOfWeekStackViewModel())
-                      .frame(width: geo.size.width, height: 30)
-                    MonthlyView(viewModel: MonthlyViewModel(date: date, eventManager: viewModel.eventManager, reminderManager: viewModel.reminderManager, calendarHelper: viewModel.calendarHelper))
-                      .frame(width: geo.size.width, height: geo.size.height-30)
-                  }
-                }
+          LazyHStack {
+            ForEach(viewModel.pastCurrentFutureDates, id: \.self) { date in
+              WeeklyView(viewModel: WeeklyViewModel(date: date, eventManager: viewModel.eventManager, reminderManager: viewModel.reminderManager, calendarHelper: viewModel.calendarHelper, moveToMonthly: viewModel.moveToMonthly))
+                .frame(width: geo.size.width, height: geo.size.height)
             }
+          }
           .animation(.easeInOut, value: viewModel.currentOffsetX)
           .offset(x: viewModel.currentOffsetX)
           .gesture(DragGesture().onEnded({ gesture in
@@ -49,14 +45,12 @@ struct MonthlyStackView: View {
           .onChange(of: viewModel.currentIndex) { index in
             viewModel.action(.onChagnedIndex(index))
           }
-        }
       }
-      .background(Color.basicWhite)
-      .cornerRadius(20)
-      .padding(.horizontal, 4)
-      .padding(.top, 10)
-      .padding(.bottom, 10)
+//      Spacer()
     }
     .background(Color.backgroundGray)
+    .onAppear {
+      viewModel.action(.actionOnAppear)
+    }
   }
 }

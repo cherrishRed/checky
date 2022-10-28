@@ -10,7 +10,7 @@ import Combine
 
 class WeeklyViewModel: ViewModelable {
   
-  @Published var dateHolder: DateHolder
+  @Published var date: Date
   @Published var events: [Event]
   @Published var reminders: [Reminder]
   @Published var currentOffsetY: CGSize
@@ -20,7 +20,7 @@ class WeeklyViewModel: ViewModelable {
   var moveToMonthly: () -> ()
   
   init(
-    dateHolder: DateHolder,
+    date: Date,
     eventManager: EventManager,
     reminderManager: ReminderManager,
     calendarHelper: CalendarCanDo,
@@ -30,7 +30,7 @@ class WeeklyViewModel: ViewModelable {
     moveToMonthly: @escaping () -> ()
   ) {
     self.moveToMonthly = moveToMonthly
-    self.dateHolder = dateHolder
+    self.date = date
     self.eventManager = eventManager
     self.reminderManager = reminderManager
     self.calendarHelper = calendarHelper
@@ -70,7 +70,7 @@ class WeeklyViewModel: ViewModelable {
   }
   
   private func fetchEvents() {
-    eventManager.getAllTaskforThisMonth(date: dateHolder.date, completionHandler: { [weak self] eventList in
+    eventManager.getAllTaskforThisMonth(date: date, completionHandler: { [weak self] eventList in
       DispatchQueue.main.async {
         self?.events = eventList
       }
@@ -78,7 +78,7 @@ class WeeklyViewModel: ViewModelable {
   }
   
   private func fetchReminder() {
-    reminderManager.getAllTaskforThisMonth(date: dateHolder.date, completionHandler: { [weak self] reminderList in
+    reminderManager.getAllTaskforThisMonth(date: date, completionHandler: { [weak self] reminderList in
       DispatchQueue.main.async {
         self?.reminders = reminderList
       }
@@ -86,7 +86,7 @@ class WeeklyViewModel: ViewModelable {
   }
   
   var allDatesForDisplay: [DateValue] {
-    return calendarHelper.extractDates(dateHolder.date)
+    return calendarHelper.extractDates(date)
   }
     
   func filteredEvent(_ date: Date) -> [Event] {
@@ -98,15 +98,15 @@ class WeeklyViewModel: ViewModelable {
   }
   
   var gridCloumnsCount: CGFloat {
-    return CGFloat(calendarHelper.extractDates(dateHolder.date).count + 1)
+    return CGFloat(calendarHelper.extractDates(date).count + 1)
   }
   
   func dragGestureonEnded() {
     guard currentOffsetY.height < 0 else {
-      dateHolder.date = calendarHelper.minusDate(dateHolder.date)
+      date = calendarHelper.minusDate(date)
       return
     }
-    dateHolder.date = calendarHelper.plusDate(dateHolder.date)
+    date = calendarHelper.plusDate(date)
   }
   
   func resetCurrentOffsetY() {
