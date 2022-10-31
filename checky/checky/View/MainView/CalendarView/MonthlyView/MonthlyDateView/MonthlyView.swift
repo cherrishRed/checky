@@ -28,7 +28,7 @@ struct MonthlyView: View {
                                                           allEvnets: events,
                                                           allReminders: reminders))
           .onTapGesture {
-            coordinator.show(.daily(events))
+            coordinator.show(.daily(events, reminders, viewModel.reminderManager))
             print("tabbed!!!chell")
           }
           

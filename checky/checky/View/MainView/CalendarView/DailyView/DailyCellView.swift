@@ -16,17 +16,17 @@ struct DailyCellView: View {
   
     var body: some View {
       HStack(spacing: 4) {
+        
         if event.ekevent.isAllDay == false {
           VStack {
             Text("\(event.ekevent.startDate.time)")
               .font(.caption2)
-            Rectangle()
-              .frame(width: 1)
-              .frame(maxHeight: .infinity)
+            Spacer()
             Text("\(event.ekevent.endDate.time)")
               .font(.caption2)
           }
         }
+        
         ZStack(alignment: .leading) {
           RoundedRectangle(cornerRadius: 6)
             .stroke(Color(event.category.cgColor))
@@ -47,8 +47,10 @@ struct DailyCellView: View {
               Text(event.ekevent.title)
                 .font(.title3)
                 .fontWeight(.semibold)
-              Text(event.ekevent.notes ?? "")
-                .padding(.leading, 2)
+              if event.ekevent.notes != "" {
+                Text(event.ekevent.notes ?? "")
+                  .padding(.leading, 2)
+              }
             }
             .padding(.horizontal, 4)
             .padding(.vertical, 6)

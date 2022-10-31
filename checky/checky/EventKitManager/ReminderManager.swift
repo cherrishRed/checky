@@ -74,6 +74,16 @@ struct ReminderManager: ManagerProtocol {
   func getTaskCategories() -> [EKCalendar] {
     return store.calendars(for: .reminder)
   }
+  
+  func editReminder(_ reminder: EKReminder) -> Result<Bool, Error> {
+    do {
+      try store.save(reminder, commit: true)
+      return .success(reminder.isCompleted)
+    } catch {
+      print("reminder 저장 실패🥲")
+      return .failure(error)
+    }
+  }
 }
 
 

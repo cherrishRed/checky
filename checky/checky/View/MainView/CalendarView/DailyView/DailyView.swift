@@ -10,18 +10,10 @@ import EventKit
 
 struct DailyView: View {
   @EnvironmentObject var coordinator: Coordinator<checkyRouter>
+  @ObservedObject var viewModel: DailyViewModel
   
-  @State var events: [Event]
-  @State var allDayEvents: [Event]
-  @State var timeEvents: [Event]
-  
-  init(events: [Event]) {
-    self.events = events
-    self.allDayEvents = events.filter { $0.ekevent.isAllDay == true }
-    self.timeEvents = events.filter { $0.ekevent.isAllDay == false }
-      .sorted { first, second in
-        return first.ekevent.startDate < second.ekevent.startDate
-      }
+  init(viewModel: DailyViewModel) {
+    self.viewModel = viewModel
   }
   
   var body: some View {
@@ -32,26 +24,17 @@ struct DailyView: View {
           RoundedRectangle(cornerRadius: 4)
             .fill(Color.basicWhite)
           VStack(spacing: 10) {
-            ForEach(allDayEvents, id: \.self) { event in
+            ForEach(viewModel.allDayEvents, id: \.self) { event in
               DailyCellView(event: event)
             }
-            ForEach(0..<timeEvents.count, id: \.self) { index in
+            
+            ForEach(viewModel.reminders, id: \.self) { reminder in
+              DailyReminderCell(viewModel: DailyReminderCellViewModel(reminder: reminder, reminderManager: viewModel.reminderManager))
+            }
+            
+            ForEach(0..<viewModel.timeEvents.count, id: \.self) { index in
               VStack(alignment: .leading) {
-                Button {
-                  //
-                } label: {
-                  if index == 0 {
-                    EmptyView()
-                  } else if timeEvents[index-1].ekevent.overlapTime(timeEvents[index].ekevent) {
-                    Image(systemName: "infinity")
-                      .padding(.leading, 20)
-                  } else {
-                    Image(systemName: "plus.circle")
-                      .padding(.leading, 20)
-                  }
-                }
-
-                DailyCellView(event: timeEvents[index])
+                DailyCellView(event: viewModel.timeEvents[index])
               }
             }
           }

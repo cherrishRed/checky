@@ -1,13 +1,13 @@
 //
-//  DailyViewModel.swift
+//  DailyCellViewModel.swift
 //  checky
 //
-//  Created by RED on 2022/10/29.
+//  Created by RED on 2022/10/31.
 //
 
 import Foundation
 
-class DailyViewModel: ViewModelable {
+class DailyCellViewModel: ViewModelable {
   @Published var events: [Event]
   @Published var allDayEvents: [Event]
   @Published var timeEvents: [Event]
