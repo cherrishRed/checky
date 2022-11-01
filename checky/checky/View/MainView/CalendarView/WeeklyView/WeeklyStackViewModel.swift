@@ -61,7 +61,6 @@ class WeeklyStackViewModel: ViewModelable {
   }
   
   enum Action {
-    case actionOnAppear
     case moveToMonthly
     case moveToPreviousWeek
     case moveToNextWeek
@@ -70,8 +69,6 @@ class WeeklyStackViewModel: ViewModelable {
   
   func action(_ action: Action) {
     switch action {
-    case .actionOnAppear:
-      onAppear()
     case .moveToMonthly:
       moveToMonthly()
       case .moveToPreviousWeek:
@@ -81,16 +78,6 @@ class WeeklyStackViewModel: ViewModelable {
       case .onChagnedIndex(let index):
         onChagnedIndex(index)
     }
-  }
-  
-  func onAppear() {
-    self.getPermission()
-//    self.fetchEvents()
-//    self.fetchReminder()
-  }
-  
-  private func getPermission() {
-    eventManager.getPermission()
   }
   
   var allDatesForDisplay: [DateValue] {

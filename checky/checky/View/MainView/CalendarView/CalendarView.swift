@@ -16,16 +16,21 @@ struct CalendarView: View {
   var reminderManager: ReminderManager = ReminderManager()
   
   var body: some View {
-    
-    if viewModel.mode {
-      WeeklyStackView(viewModel: WeeklyStackViewModel(dateHolder: DateHolder(), eventManager: eventManager, reminderManager: reminderManager, calendarHelper: WeeklyCalendarHelper(), offsetWidth: UIScreen.main.bounds.width, moveToMonthly: { viewModel.mode.toggle() } ))
+    Group {
+      if viewModel.mode {
+        WeeklyStackView(viewModel: WeeklyStackViewModel(dateHolder: DateHolder(), eventManager: eventManager, reminderManager: reminderManager, calendarHelper: WeeklyCalendarHelper(), offsetWidth: UIScreen.main.bounds.width, moveToMonthly: { viewModel.mode.toggle() } ))
+          .environmentObject(coordinator)
+        
+      } else {
+        MonthlyStackView(viewModel:  MonthlyStackViewModel(dateHolder: DateHolder(), eventManager: eventManager, reminderManager: reminderManager, calendarHelper: MonthyCalendarHelper(), offsetWidth: UIScreen.main.bounds.width, moveToWeek: {
+          viewModel.mode.toggle()
+        }))
         .environmentObject(coordinator)
-
-    } else {
-      MonthlyStackView(viewModel:  MonthlyStackViewModel(dateHolder: DateHolder(), eventManager: eventManager, reminderManager: reminderManager, calendarHelper: MonthyCalendarHelper(), offsetWidth: UIScreen.main.bounds.width, moveToWeek: {
-        viewModel.mode.toggle()
-      }))
-      .environmentObject(coordinator)
+      }
+    }
+    .onAppear {
+      eventManager.getPermission()
+      reminderManager.getPermission()
     }
   }
 }
