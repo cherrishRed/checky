@@ -30,6 +30,12 @@
 		86F0B2C128F6B71A006E2536 /* WeeklyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F0B2C028F6B71A006E2536 /* WeeklyView.swift */; };
 		86F0B2C328F6B726006E2536 /* WeeklyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F0B2C228F6B726006E2536 /* WeeklyViewModel.swift */; };
 		86F0B2C528F6B969006E2536 /* WeeklyCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F0B2C428F6B969006E2536 /* WeeklyCellView.swift */; };
+		86FBE20D2910F3A200961DE8 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FBE20C2910F3A200961DE8 /* SettingView.swift */; };
+		86FBE20F2910F3AD00961DE8 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FBE20E2910F3AD00961DE8 /* SettingViewModel.swift */; };
+		86FBE2142910F3F800961DE8 /* EventSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FBE2132910F3F800961DE8 /* EventSettingView.swift */; };
+		86FBE2162910F41000961DE8 /* EventSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FBE2152910F41000961DE8 /* EventSettingViewModel.swift */; };
+		86FBE2182910F42300961DE8 /* ReminderSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FBE2172910F42300961DE8 /* ReminderSettingViewModel.swift */; };
+		86FBE21A2910F44700961DE8 /* ReminderSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FBE2192910F44700961DE8 /* ReminderSettingView.swift */; };
 		86FC8CF528EAB3CF00B7752F /* DateHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FC8CF428EAB3CF00B7752F /* DateHolder.swift */; };
 		86FC8CF828EAB42500B7752F /* WeeklyCalenderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FC8CF728EAB42500B7752F /* WeeklyCalenderHelper.swift */; };
 		86FC8CFA28EAB49B00B7752F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FC8CF928EAB49B00B7752F /* HeaderView.swift */; };
@@ -106,6 +112,12 @@
 		86F0B2C028F6B71A006E2536 /* WeeklyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyView.swift; sourceTree = "<group>"; };
 		86F0B2C228F6B726006E2536 /* WeeklyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyViewModel.swift; sourceTree = "<group>"; };
 		86F0B2C428F6B969006E2536 /* WeeklyCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyCellView.swift; sourceTree = "<group>"; };
+		86FBE20C2910F3A200961DE8 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		86FBE20E2910F3AD00961DE8 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		86FBE2132910F3F800961DE8 /* EventSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSettingView.swift; sourceTree = "<group>"; };
+		86FBE2152910F41000961DE8 /* EventSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSettingViewModel.swift; sourceTree = "<group>"; };
+		86FBE2172910F42300961DE8 /* ReminderSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSettingViewModel.swift; sourceTree = "<group>"; };
+		86FBE2192910F44700961DE8 /* ReminderSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSettingView.swift; sourceTree = "<group>"; };
 		86FC8CF428EAB3CF00B7752F /* DateHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHolder.swift; sourceTree = "<group>"; };
 		86FC8CF728EAB42500B7752F /* WeeklyCalenderHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyCalenderHelper.swift; sourceTree = "<group>"; };
 		86FC8CF928EAB49B00B7752F /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -186,6 +198,7 @@
 		865BE51C28EC463C00305899 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				86FBE20B2910F39500961DE8 /* Setting */,
 				DA2C797F28F725E800922C47 /* ReminderCreateView */,
 				DA2C796B28F5814F00922C47 /* EventCreateView */,
 				DA2C792128EEB50500922C47 /* MainView */,
@@ -312,6 +325,35 @@
 				8647AFBB28FD639100EE1DA8 /* WeeklyCellViewModel.swift */,
 			);
 			path = WeeklyView;
+			sourceTree = "<group>";
+		};
+		86FBE20B2910F39500961DE8 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				86FBE20C2910F3A200961DE8 /* SettingView.swift */,
+				86FBE20E2910F3AD00961DE8 /* SettingViewModel.swift */,
+				86FBE2112910F3C100961DE8 /* Event */,
+				86FBE2102910F3B300961DE8 /* Reminder */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		86FBE2102910F3B300961DE8 /* Reminder */ = {
+			isa = PBXGroup;
+			children = (
+				86FBE2192910F44700961DE8 /* ReminderSettingView.swift */,
+				86FBE2172910F42300961DE8 /* ReminderSettingViewModel.swift */,
+			);
+			path = Reminder;
+			sourceTree = "<group>";
+		};
+		86FBE2112910F3C100961DE8 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				86FBE2132910F3F800961DE8 /* EventSettingView.swift */,
+				86FBE2152910F41000961DE8 /* EventSettingViewModel.swift */,
+			);
+			path = Event;
 			sourceTree = "<group>";
 		};
 		DA2C792128EEB50500922C47 /* MainView */ = {
@@ -572,11 +614,13 @@
 				DA91E7D628EABDED0091B6A3 /* Week.swift in Sources */,
 				DA2C796128EEFF7700922C47 /* AppDelegate.swift in Sources */,
 				8679589B290A3C64001D5C7F /* ReminderManager.swift in Sources */,
+				86FBE20F2910F3AD00961DE8 /* SettingViewModel.swift in Sources */,
 				DA466EA028E685D70076AEE4 /* checkyApp.swift in Sources */,
 				868C543F28F417C0006A9B38 /* CustomTabBarContainerView.swift in Sources */,
 				865BE52628EC867900305899 /* WeekOption.swift in Sources */,
 				DA91E7E528EC94180091B6A3 /* MonthlyCellView.swift in Sources */,
 				DA3E9DAC29078FE200E72E21 /* Extension+Color.swift in Sources */,
+				86FBE2142910F3F800961DE8 /* EventSettingView.swift in Sources */,
 				DA91E81828EE01790091B6A3 /* HeaderViewModel.swift in Sources */,
 				DA2C798328F7268F00922C47 /* ReminderCreateAndEditViewModel.swift in Sources */,
 				DA3E9DAA2907810E00E72E21 /* ButtonStyle.swift in Sources */,
@@ -589,6 +633,7 @@
 				868C544728F419B1006A9B38 /* CheckyMainViewModel.swift in Sources */,
 				86F0B2C328F6B726006E2536 /* WeeklyViewModel.swift in Sources */,
 				DA91E7DC28EC1E880091B6A3 /* EventManager.swift in Sources */,
+				86FBE20D2910F3A200961DE8 /* SettingView.swift in Sources */,
 				868C544528F4199D006A9B38 /* CheckyMainView.swift in Sources */,
 				860F766428FCB97A00CB034B /* CalendarView.swift in Sources */,
 				DA2C796828EF007900922C47 /* NavigationTranisitionStyle.swift in Sources */,
@@ -609,11 +654,14 @@
 				DA2C796D28F5817600922C47 /* EventCreateAndEditView.swift in Sources */,
 				869BAA942908A4A200D4D71D /* CheckyRouter.swift in Sources */,
 				DA4E4A052908F42100CF45E2 /* CreateSelectorView.swift in Sources */,
+				86FBE2182910F42300961DE8 /* ReminderSettingViewModel.swift in Sources */,
 				DA2C798128F7265D00922C47 /* ReminderCreateAndEditView.swift in Sources */,
 				868C544328F417F7006A9B38 /* TabBarItem.swift in Sources */,
 				8647AFBA28FD637F00EE1DA8 /* MonthlyCellViewModel.swift in Sources */,
+				86FBE21A2910F44700961DE8 /* ReminderSettingView.swift in Sources */,
 				DA2C796328EEFFA300922C47 /* SceneDelegate.swift in Sources */,
 				86F0B2C528F6B969006E2536 /* WeeklyCellView.swift in Sources */,
+				86FBE2162910F41000961DE8 /* EventSettingViewModel.swift in Sources */,
 				86A5E60428EEA6B10040DCFB /* DayOfWeekStackViewModel.swift in Sources */,
 				86FC8CF528EAB3CF00B7752F /* DateHolder.swift in Sources */,
 				860F766628FCB98500CB034B /* CaledarViewModel.swift in Sources */,
