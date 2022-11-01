@@ -21,11 +21,15 @@ struct WeeklyView: View {
           
           let events = viewModel.filteredEvent(value.date)
           let reminders = viewModel.filteredReminder(value.date)
+          let clearedReminders = viewModel.filteredClearedReminder(value.date)
           
-          WeeklyCellView(viewModel: WeeklyCellViewModel(
-            dateValue: value,
-            allEvnets: events,
-            allReminders: reminders))
+          WeeklyCellView(viewModel: WeeklyCellViewModel(dateValue: value,
+                                                        allEvnets: events,
+                                                        dueDateReminders: reminders,
+                                                        clearedReminders: clearedReminders,
+                                                          eventManager: viewModel.eventManager,
+                                                        reminderManager: viewModel.reminderManager))
+          
           .padding(.horizontal, 10)
           .padding(.vertical, 6)
           .frame(width: geo.size.width / 1.9, height: geo.size.height / viewModel.gridCloumnsCount * 2)

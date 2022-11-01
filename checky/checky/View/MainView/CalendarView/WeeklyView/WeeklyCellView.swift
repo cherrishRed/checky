@@ -52,12 +52,16 @@ struct WeeklyCellView: View {
             }
             
             VStack(alignment: .leading, spacing: 2) {
-              ForEach(viewModel.allReminders, id: \.self) { reminder in
+              ForEach(viewModel.filteredHightPriorityDuedateReminder(), id: \.self) { reminder in
+                WeeklyReminderBlockView(reminder: reminder)
+                  .frame(height: 14)
+              }
+              
+              ForEach(viewModel.filteredHightPriorityClearedReminder(), id: \.self) { reminder in
                 WeeklyReminderBlockView(reminder: reminder)
                   .frame(height: 14)
               }
             }
-            
           }
           .padding(.horizontal, 6)
         }

@@ -86,6 +86,10 @@ class WeeklyViewModel: ViewModelable {
     reminderManager.filterTask(reminders, date)
   }
   
+  func filteredClearedReminder(_ date: Date) -> [Reminder] {
+    reminderManager.filterClearTask(reminders, date)
+  }
+  
   var gridCloumnsCount: CGFloat {
     return CGFloat(calendarHelper.extractDates(date).count + 1)
   }
