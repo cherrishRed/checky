@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import EventKit
 
 enum checkyRouter: NavigationRouter {
   
@@ -15,6 +16,7 @@ enum checkyRouter: NavigationRouter {
   case createReminder
   case EventSetting
   case ReminderSetting
+  case EventSettingButton(category: EKCalendar, eventManager: EventManager)
   
   var transition: NavigationTranisitionStyle {
     switch self {
@@ -29,6 +31,8 @@ enum checkyRouter: NavigationRouter {
     case .EventSetting:
       return .push
     case .ReminderSetting:
+      return .push
+    case .EventSettingButton:
       return .push
     }
   }
@@ -51,6 +55,9 @@ enum checkyRouter: NavigationRouter {
       EventSettingView(viewModel: EventSettingViewModel(eventManager: eventManager))
     case .ReminderSetting:
       ReminderSettingView(viewModel: ReminderSettingViewModel(reminderManager: reminderManager))
+    case let .EventSettingButton(category, eventManager):
+      EventButtonView(viewModel: EventButtonViewModel(category: category, eventManager: eventManager))
+      
     }
   }
 }
