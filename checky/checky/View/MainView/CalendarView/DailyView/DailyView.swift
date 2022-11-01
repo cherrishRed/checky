@@ -72,13 +72,15 @@ struct DailyView: View {
       VStack(spacing: 10) {
         // 하루종일 일정
         ForEach(viewModel.allDayEvents, id: \.self) { event in
-          DailyCellView(event: event)
+          DailyCellView(viewModel: DailyCellViewModel(event: event, eventManager: viewModel.eventManager))
+            .environmentObject(coordinator)
         }
         
         // 시간이 정해져 있는 이벤트
         ForEach(0..<viewModel.timeEvents.count, id: \.self) { index in
           VStack(alignment: .leading) {
-            DailyCellView(event: viewModel.timeEvents[index])
+            DailyCellView(viewModel: DailyCellViewModel(event: viewModel.timeEvents[index], eventManager: viewModel.eventManager))
+              .environmentObject(coordinator)
           }
         }
       }
@@ -95,11 +97,13 @@ struct DailyView: View {
         // 하루종일 reminder
         ForEach(viewModel.dayReminders, id: \.self) { reminder in
           DailyReminderCell(viewModel: DailyReminderCellViewModel(reminder: reminder, reminderManager: viewModel.reminderManager))
+            .environmentObject(coordinator)
         }
         
         // 시간이 정해져 있는 리마인더
         ForEach(viewModel.timeReminders, id: \.self) { reminder in
           DailyReminderCell(viewModel: DailyReminderCellViewModel(reminder: reminder, reminderManager: viewModel.reminderManager))
+            .environmentObject(coordinator)
         }
       }
       .padding()

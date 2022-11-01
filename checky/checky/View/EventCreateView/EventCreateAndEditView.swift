@@ -9,7 +9,11 @@ import SwiftUI
 import EventKit
 
 struct EventCreateAndEditView: View {
-  @ObservedObject var viewModel = EventCreateAndEditViewModel(mode: .edit, eventManager: EventManager())
+  @ObservedObject var viewModel: EventCreateAndEditViewModel
+  
+  init(viewModel: EventCreateAndEditViewModel) {
+    self.viewModel = viewModel
+  }
   
   var body: some View {
     VStack {

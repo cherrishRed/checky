@@ -11,6 +11,7 @@ import EventKit
 class EventCreateAndEditViewModel: ObservableObject {
   let eventManager: EventManager
   let categories: [EKCalendar]
+  let event: Event?
   
   @Published var mode: Mode
   @Published var title: String
@@ -54,6 +55,37 @@ class EventCreateAndEditViewModel: ObservableObject {
     self.categories = eventManager.getTaskCategories()
     self.category = categories[0]
     self.eventManager = eventManager
+    self.event = nil
+  }
+  
+  init(
+    event: Event,
+    eventManager: EventManager
+  ) {
+    self.mode = .edit
+    
+    self.title = event.ekevent.title
+    self.date = event.ekevent.startDate
+    self.endDate = event.ekevent.endDate
+    self.isAllDay = event.ekevent.isAllDay
+    self.memo = event.ekevent.notes ?? ""
+
+    self.alram = .none
+    if event.ekevent.hasAlarms == false {
+      self.alram = .none
+    } else {
+      self.alram = AlramTime(rawValue: event.ekevent.alarms?[0].relativeOffset ?? -1) ?? AlramTime.onTime
+    }
+    
+    self.isShowDatePicker = false
+    self.isShowEndDatePicker = false
+    self.isShowCategoriesPicker = false
+    self.isShowAlramPicker = false
+    self.categories = eventManager.getTaskCategories()
+    self.category = event.category
+    self.eventManager = eventManager
+    
+    self.event = event
   }
   
   enum Mode {
@@ -160,7 +192,8 @@ class EventCreateAndEditViewModel: ObservableObject {
     if mode == .create {
       createEvent()
     } else {
-      // edit
+      // 이벤트 수정
+      editEvent()
     }
     closeAllPickers()
     reset()
@@ -206,6 +239,30 @@ class EventCreateAndEditViewModel: ObservableObject {
       newEvnet.addAlarm(EKAlarm(relativeOffset: alram.second))
     }
     eventManager.createNewTask(newTask: newEvnet)
+    reset()
+  }
+  
+  private func editEvent() {
+    guard var event = event else { return }
+    event.ekevent.title = title
+    event.ekevent.isAllDay = isAllDay
+    event.ekevent.startDate = date
+    event.ekevent.calendar = category
+    event.ekevent.notes = memo
+    
+    event.category = category
+    
+    if isAllDay == false {
+      event.ekevent.endDate = endDate
+    } else {
+      event.ekevent.endDate = date + 86400
+    }
+    
+    if alram != .none {
+      event.ekevent.alarms = [EKAlarm(relativeOffset: alram.second)]
+    }
+    
+    eventManager.editTask(task: event.ekevent)
     reset()
   }
   

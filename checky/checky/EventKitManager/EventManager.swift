@@ -71,6 +71,17 @@ struct EventManager: ManagerProtocol {
     }
   }
   
+  func editTask(task: EKCalendarItem) {
+    guard let task = task as? EKEvent else { return }
+    
+    do {
+      try store.save(task, span: EKSpan.futureEvents, commit: true)
+    } catch {
+      print("event 저장 실패🥲")
+      print(error.localizedDescription)
+    }
+  }
+  
   func getTaskCategories() -> [EKCalendar] {
     return store.calendars(for: .event)
   }
