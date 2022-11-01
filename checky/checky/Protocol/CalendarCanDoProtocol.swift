@@ -25,6 +25,12 @@ extension CalendarCanDo {
     return dataFormatter.string(from: date)
   }
   
+  func monthYearDayString(_ date: Date) -> String {
+    let dataFormatter = DateFormatter()
+    dataFormatter.dateFormat = "YYYY MM dd"
+    return dataFormatter.string(from: date)
+  }
+  
   func previousDates(currentday: DateValue) -> [DateValue] {
     var previousDays: [DateValue] = []
     let previousMonthDayCount = savePreviousDateCount(targetDate: currentday)

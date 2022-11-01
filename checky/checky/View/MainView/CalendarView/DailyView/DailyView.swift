@@ -18,7 +18,7 @@ struct DailyView: View {
   
   var body: some View {
     VStack {
-      HeaderView(viewModel: HeaderViewModel(dateHolder: DateHolder(), calendarHelper: WeeklyCalendarHelper()))
+      DailyHeaderView(date: viewModel.date)
       ScrollView(.vertical) {
         VStack(alignment: .leading) {
           if viewModel.events.count == 0 {

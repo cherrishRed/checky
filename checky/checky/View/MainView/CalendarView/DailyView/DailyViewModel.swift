@@ -8,6 +8,7 @@
 import Foundation
 
 class DailyViewModel: ViewModelable {
+  @Published var date: Date
   @Published var events: [Event]
   @Published var allDayEvents: [Event]
   @Published var timeEvents: [Event]
@@ -21,11 +22,13 @@ class DailyViewModel: ViewModelable {
   var eventManager: EventManager
   var reminderManager: ReminderManager
   
-  init(events: [Event],
+  init(date: Date,
+       events: [Event],
        reminders: [Reminder],
        clearedReminders: [Reminder],
        eventManager: EventManager,
        reminderManager: ReminderManager) {
+    self.date = date
     self.events = events
     self.allDayEvents = events.filter { $0.ekevent.isAllDay == true }
     

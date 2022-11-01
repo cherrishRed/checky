@@ -14,7 +14,7 @@ enum checkyRouter: NavigationRouter {
   case create
   case createEvent
   case createReminder
-  case daily([Event], [Reminder], [Reminder], EventManager, ReminderManager)
+  case daily(Date, [Event], [Reminder], [Reminder], EventManager, ReminderManager)
   case editEvent(Event, EventManager)
   
   var transition: NavigationTranisitionStyle {
@@ -45,8 +45,8 @@ enum checkyRouter: NavigationRouter {
         EventCreateAndEditView(viewModel: EventCreateAndEditViewModel(mode: .create, eventManager: EventManager()))
       case .createReminder:
         ReminderCreateAndEditView(viewModel: ReminderCreateAndEditViewModel(mode: .create, reminderManager: ReminderManager()))
-      case .daily(let events, let reminders, let clearedReminders, let eventManager, let reminderManager):
-        DailyView(viewModel: DailyViewModel(events: events, reminders: reminders, clearedReminders: clearedReminders, eventManager: eventManager, reminderManager: reminderManager))
+      case .daily(let date, let events, let reminders, let clearedReminders, let eventManager, let reminderManager):
+        DailyView(viewModel: DailyViewModel(date: date, events: events, reminders: reminders, clearedReminders: clearedReminders, eventManager: eventManager, reminderManager: reminderManager))
       case .editEvent(let event, let eventManager):
         EventCreateAndEditView(viewModel: EventCreateAndEditViewModel(event: event, eventManager: eventManager))
         
