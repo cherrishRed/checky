@@ -78,6 +78,10 @@ class MonthlyViewModel: ViewModelable {
     reminderManager.filterTask(reminders, date)
   }
   
+  func filteredClearedReminder(_ date: Date) -> [Reminder] {
+    reminderManager.filterClearTask(reminders, date)
+  }
+  
   var gridCloumnsCount: CGFloat {
     return calendarHelper.extractDates(date).count > 35 ? CGFloat(6) : CGFloat(5)
   }

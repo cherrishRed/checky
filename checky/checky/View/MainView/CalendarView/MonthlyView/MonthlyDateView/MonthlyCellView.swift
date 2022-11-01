@@ -36,7 +36,7 @@ struct MonthlyCellView: View {
           EventBlockView(event: event)
         }
         
-        ForEach(viewModel.allReminders, id: \.self) { reminder in
+        ForEach(viewModel.dueDateReminders, id: \.self) { reminder in
           ReminderBlockView(reminder: reminder)
         }
       }

@@ -42,6 +42,12 @@ struct ReminderManager: ManagerProtocol {
         $0.ekreminder.dueDateComponents?.month == calendar.dateComponents([.month], from: date).month }
   }
   
+  func filterClearTask(_ taget: [Reminder], _ date: Date) -> [Reminder] {
+    taget
+      .filter { $0.ekreminder.completionDate != nil }
+      .filter { $0.ekreminder.completionDate?.day == date.day }
+  }
+    
   func getAllTaskforThisMonth(date: Date, completionHandler: @escaping ([Reminder]) -> Void) {
     let categories = store.calendars(for: .reminder)
     
@@ -59,22 +65,22 @@ struct ReminderManager: ManagerProtocol {
       }
     }
   }
-
-  func createNewTask(newTask: EKCalendarItem) {
-    guard let newTask = newTask as? EKReminder else { return }
     
-    do {
-      try store.save(newTask, commit: true)
-    } catch {
-      print("reminder 저장 실패🥲")
-      print(error.localizedDescription)
+  func createNewTask(newTask: EKCalendarItem) {
+      guard let newTask = newTask as? EKReminder else { return }
+      
+      do {
+        try store.save(newTask, commit: true)
+      } catch {
+        print("reminder 저장 실패🥲")
+        print(error.localizedDescription)
+      }
     }
-  }
-  
+    
   func getTaskCategories() -> [EKCalendar] {
-    return store.calendars(for: .reminder)
-  }
-  
+      return store.calendars(for: .reminder)
+    }
+    
   func editReminder(_ reminder: EKReminder) -> Result<Bool, Error> {
     do {
       try store.save(reminder, commit: true)
@@ -84,7 +90,7 @@ struct ReminderManager: ManagerProtocol {
       return .failure(error)
     }
   }
-}
+  }
 
 
 extension EKCalendar: Identifiable {}

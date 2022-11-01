@@ -23,12 +23,14 @@ struct MonthlyView: View {
           
           let events = viewModel.filteredEvent(value.date)
           let reminders = viewModel.filteredReminder(value.date)
+          let clearedReminders = viewModel.filteredClearedReminder(value.date)
           
           MonthlyCellView(viewModel: MonthlyCellViewModel(dateValue: value,
                                                           allEvnets: events,
-                                                          allReminders: reminders))
+                                                          dueDateReminders: reminders,
+                                                          clearedReminders: clearedReminders))
           .onTapGesture {
-            coordinator.show(.daily(events, reminders, viewModel.reminderManager))
+            coordinator.show(.daily(events, reminders, clearedReminders, viewModel.reminderManager))
             print("tabbed!!!chell")
           }
           

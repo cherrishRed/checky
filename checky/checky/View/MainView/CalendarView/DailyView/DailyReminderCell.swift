@@ -14,13 +14,6 @@ struct DailyReminderCell: View {
   var body: some View {
     HStack(spacing: 4) {
       
-      if viewModel.reminder.ekreminder.dueDateComponents?.minute != nil {
-        VStack {
-          Text("\(Calendar(identifier: .gregorian).date(from: viewModel.reminder.ekreminder.dueDateComponents!)?.time ?? Date().time)")
-            .font(.caption2)
-        }
-      }
-      
       ZStack(alignment: .leading) {
         RoundedRectangle(cornerRadius: 6)
           .stroke(Color(viewModel.reminder.category.cgColor))

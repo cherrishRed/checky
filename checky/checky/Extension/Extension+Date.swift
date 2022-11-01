@@ -33,6 +33,13 @@ extension Date {
     return dateformmater.string(from: self)
   }
   
+  var month: String {
+    let dateformmater = DateFormatter()
+    dateformmater.locale = Locale(identifier: "ko_KR")
+    dateformmater.dateFormat = "M"
+    return dateformmater.string(from: self)
+  }
+  
   var dayOfWeek: String {
     let formatter = DateFormatter()
     formatter.dateFormat = "EEE"

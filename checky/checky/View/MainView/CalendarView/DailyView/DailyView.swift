@@ -20,15 +20,45 @@ struct DailyView: View {
     VStack {
       HeaderView(viewModel: HeaderViewModel(dateHolder: DateHolder(), calendarHelper: WeeklyCalendarHelper()))
       ScrollView(.vertical) {
-        VStack {
-          eventView
+        VStack(alignment: .leading) {
+          if viewModel.events.count == 0 {
+            VStack(alignment: .center) {
+              Text("오늘은 일정이 없어요!")
+                .padding(.top)
+                .frame(maxWidth: .infinity)
+            }
+          } else {
+            VStack(alignment: .leading, spacing: 4) {
+              Text("오늘 일정")
+                .padding(.leading, 4)
+              eventView
+            }
             .padding()
-          Text("마감 임박 일정")
-          reminderView
+          }
+          
+          if viewModel.dayReminders.count == 0 && viewModel.timeReminders.count == 0 {
+  
+          } else {
+            VStack(alignment: .leading, spacing: 4) {
+              Text("오늘이 마감인 미리알림")
+                .padding(.leading, 4)
+              reminderView
+            }
             .padding()
-          Text("오늘 완료한 일정")
-          clearReminderView
+          }
+          
+          if viewModel.clearedReminders.count == 0 {
+  
+          } else {
+            VStack(alignment: .leading, spacing: 4) {
+              Text("오늘 완료한 미리알림")
+                .padding(.leading, 4)
+              clearReminderView
+            }
             .padding()
+          }
+          
+          
         }
       }
       .background(Color.backgroundGray)
@@ -83,12 +113,7 @@ struct DailyView: View {
       VStack(spacing: 10) {
         
         // 하루종일 reminder
-        ForEach(viewModel.dayReminders, id: \.self) { reminder in
-          DailyReminderCell(viewModel: DailyReminderCellViewModel(reminder: reminder, reminderManager: viewModel.reminderManager))
-        }
-        
-        // 시간이 정해져 있는 리마인더
-        ForEach(viewModel.timeReminders, id: \.self) { reminder in
+        ForEach(viewModel.clearedReminders, id: \.self) { reminder in
           DailyReminderCell(viewModel: DailyReminderCellViewModel(reminder: reminder, reminderManager: viewModel.reminderManager))
         }
       }
