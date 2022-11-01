@@ -13,8 +13,11 @@ class DailyViewModel: ViewModelable {
   @Published var timeEvents: [Event]
   
   @Published var reminders: [Reminder]
-//  @State var dayReminders: [Event]
-//  @State var timeReminders: [Event]
+  @Published var dayReminders: [Reminder]
+  @Published var timeReminders: [Reminder]
+  
+//  @Published var compeletedReminders: [Reminder]
+  
   var eventManager: EventManager
   var reminderManager: ReminderManager
   
@@ -24,8 +27,12 @@ class DailyViewModel: ViewModelable {
        reminderManager: ReminderManager) {
     self.events = events
     self.allDayEvents = events.filter { $0.ekevent.isAllDay == true }
-    self.timeEvents = events.filter { $0.ekevent.isAllDay == false }
+    
     self.reminders = reminders
+    self.dayReminders = reminders.filter { $0.ekreminder.dueDateComponents?.day != nil && $0.ekreminder.dueDateComponents?.hour == nil }
+    self.timeEvents = events.filter { $0.ekevent.isAllDay == false }
+    self.timeReminders = reminders.filter { $0.ekreminder.dueDateComponents?.hour != nil }
+    
     self.eventManager = eventManager
     self.reminderManager = reminderManager
   }
