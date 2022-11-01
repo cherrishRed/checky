@@ -39,13 +39,18 @@ struct ReminderManager: ManagerProtocol {
     taget
       .filter {
         $0.ekreminder.dueDateComponents?.day == calendar.dateComponents([.day], from: date).day &&
-        $0.ekreminder.dueDateComponents?.month == calendar.dateComponents([.month], from: date).month }
+        $0.ekreminder.dueDateComponents?.month == calendar.dateComponents([.month], from: date).month && $0.ekreminder.dueDateComponents?.year == calendar.dateComponents([.year], from: date).year}
+  }
+  
+  func filterHighPriorityTask(_ taget: [Reminder], _ date: Date) -> [Reminder] {
+    taget
+      .filter { $0.ekreminder.priority == 1 }
   }
   
   func filterClearTask(_ taget: [Reminder], _ date: Date) -> [Reminder] {
     taget
       .filter { $0.ekreminder.completionDate != nil }
-      .filter { $0.ekreminder.completionDate?.day == date.day }
+      .filter { $0.ekreminder.completionDate?.day == date.day && $0.ekreminder.completionDate?.month == date.month && $0.ekreminder.completionDate?.year == date.year }
   }
     
   func getAllTaskforThisMonth(date: Date, completionHandler: @escaping ([Reminder]) -> Void) {
