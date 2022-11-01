@@ -96,13 +96,13 @@ struct DailyView: View {
         
         // 하루종일 reminder
         ForEach(viewModel.dayReminders, id: \.self) { reminder in
-          DailyReminderCell(viewModel: DailyReminderCellViewModel(reminder: reminder, reminderManager: viewModel.reminderManager))
+          DailyReminderCellView(viewModel: DailyReminderCellViewModel(reminder: reminder, reminderManager: viewModel.reminderManager))
             .environmentObject(coordinator)
         }
         
         // 시간이 정해져 있는 리마인더
         ForEach(viewModel.timeReminders, id: \.self) { reminder in
-          DailyReminderCell(viewModel: DailyReminderCellViewModel(reminder: reminder, reminderManager: viewModel.reminderManager))
+          DailyReminderCellView(viewModel: DailyReminderCellViewModel(reminder: reminder, reminderManager: viewModel.reminderManager))
             .environmentObject(coordinator)
         }
       }
@@ -118,7 +118,7 @@ struct DailyView: View {
         
         // 하루종일 reminder
         ForEach(viewModel.clearedReminders, id: \.self) { reminder in
-          DailyReminderCell(viewModel: DailyReminderCellViewModel(reminder: reminder, reminderManager: viewModel.reminderManager))
+          DailyReminderCellView(viewModel: DailyReminderCellViewModel(reminder: reminder, reminderManager: viewModel.reminderManager))
         }
       }
       .padding()

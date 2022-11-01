@@ -11,6 +11,7 @@ import EventKit
 class ReminderCreateAndEditViewModel: ObservableObject {
   let reminderManager: ReminderManager
   let categories: [EKCalendar]
+  let reminder: Reminder?
   
   @Published var mode: Mode
   @Published var title: String
@@ -50,6 +51,44 @@ class ReminderCreateAndEditViewModel: ObservableObject {
     self.reminderManager = reminderManager
     self.categories = reminderManager.getTaskCategories()
     self.category = categories[0]
+    
+    self.reminder = nil
+  }
+  
+  init(
+    reminder: Reminder,
+    reminderManager: ReminderManager
+  ) {
+    self.mode = .edit
+    
+    self.reminder = reminder
+    
+    self.title = reminder.ekreminder.title
+    self.memo = reminder.ekreminder.notes ?? ""
+    self.priority = reminder.ekreminder.priority
+
+    self.isShowCategoriesPicker = false
+    self.isShowDatePicker = false
+    self.isShowTimePicker = false
+    self.reminderManager = reminderManager
+    self.categories = reminderManager.getTaskCategories()
+    self.category = reminder.ekreminder.calendar
+    
+    self.date = .now
+    self.isSetDate = false
+    self.isSetTime = false
+    
+    if reminder.ekreminder.dueDateComponents?.minute != nil{
+      guard let date = reminder.ekreminder.dueDateComponents?.date else { return }
+      self.date = date
+      self.isSetDate = true
+      self.isSetTime = true
+    } else if reminder.ekreminder.dueDateComponents?.day != nil {
+      guard let date = reminder.ekreminder.dueDateComponents?.date else { return }
+      self.date = date
+      self.isSetDate = true
+      self.isSetTime = false
+    }
   }
   
   enum Mode {
@@ -150,7 +189,7 @@ class ReminderCreateAndEditViewModel: ObservableObject {
     if mode == .create {
       saveNewReminder()
     } else {
-      // edit
+      editReminder()
     }
     closeAllPickers()
     reset()
@@ -205,5 +244,30 @@ class ReminderCreateAndEditViewModel: ObservableObject {
     }
     
     reminderManager.createNewTask(newTask: newReminder)
+  }
+  
+  private func editReminder() {
+    guard var reminder = reminder else { return }
+    reminder.ekreminder.title = title
+    reminder.ekreminder.priority = priority
+    reminder.ekreminder.notes = memo
+    reminder.ekreminder.calendar = category
+    
+    reminder.category = category
+    
+    guard isSetDate == true else {
+      reminderManager.createNewTask(newTask: reminder.ekreminder)
+      return
+    }
+    
+    if isSetTime == false {
+      let dateComponents = Calendar.current.dateComponents([.year, .month, .day], from: date)
+      reminder.ekreminder.dueDateComponents = dateComponents
+    } else {
+      let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .month], from: date)
+      reminder.ekreminder.dueDateComponents = dateComponents
+    }
+    
+    reminderManager.createNewTask(newTask: reminder.ekreminder)
   }
 }

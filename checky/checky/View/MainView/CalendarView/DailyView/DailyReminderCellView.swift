@@ -8,10 +8,12 @@
 import SwiftUI
 import EventKit
 
-struct DailyReminderCell: View {
+struct DailyReminderCellView: View {
+  @EnvironmentObject var coordinator: Coordinator<checkyRouter>
   @ObservedObject var viewModel: DailyReminderCellViewModel
   
   var body: some View {
+
     HStack(spacing: 4) {
       
       ZStack(alignment: .leading) {
@@ -40,17 +42,27 @@ struct DailyReminderCell: View {
           }
           .padding(.leading, 4)
           
-          VStack(alignment: .leading) {
-            Text(viewModel.reminder.ekreminder.title)
-              .font(.title3)
-              .fontWeight(.semibold)
-            if viewModel.reminder.ekreminder.hasNotes {
-              Text(viewModel.reminder.ekreminder.notes ?? "")
-                .padding(.leading, 2)
+          Button {
+            //
+            coordinator.dismiss()
+            coordinator.show(.editReminder(viewModel.reminder, viewModel.reminderManager))
+          } label: {
+            HStack {
+              VStack(alignment: .leading) {
+                Text(viewModel.reminder.ekreminder.title)
+                  .font(.title3)
+                  .fontWeight(.semibold)
+                if viewModel.reminder.ekreminder.hasNotes {
+                  Text(viewModel.reminder.ekreminder.notes ?? "")
+                    .padding(.leading, 2)
+                    .multilineTextAlignment(.leading)
+                }
+              }
+              .padding(.horizontal, 4)
+              .padding(.vertical, 6)
+              Spacer()
             }
           }
-          .padding(.horizontal, 4)
-          .padding(.vertical, 6)
         }
       }
       .fixedSize(horizontal: false, vertical: true)
