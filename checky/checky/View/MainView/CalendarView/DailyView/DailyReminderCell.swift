@@ -44,7 +44,7 @@ struct DailyReminderCell: View {
             Text(viewModel.reminder.ekreminder.title)
               .font(.title3)
               .fontWeight(.semibold)
-            if viewModel.reminder.ekreminder.notes != "" {
+            if viewModel.reminder.ekreminder.hasNotes {
               Text(viewModel.reminder.ekreminder.notes ?? "")
                 .padding(.leading, 2)
             }

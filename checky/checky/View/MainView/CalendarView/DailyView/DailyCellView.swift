@@ -48,7 +48,7 @@ struct DailyCellView: View {
                 Text(viewModel.event.ekevent.title)
                   .font(.title3)
                   .fontWeight(.semibold)
-                if viewModel.event.ekevent.notes != "" {
+                if viewModel.event.ekevent.hasNotes {
                   Text(viewModel.event.ekevent.notes ?? "")
                     .padding(.leading, 2)
                 }
@@ -60,7 +60,5 @@ struct DailyCellView: View {
           .fixedSize(horizontal: false, vertical: true)
         }
       }
-
-      
     }
 }
