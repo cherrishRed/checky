@@ -17,7 +17,7 @@ struct EventSettingView: View {
       ForEach(viewModel.categories) { category in
         
         Button(action: {
-          coordinator.show(.EventSettingButton(category: category, eventManager: viewModel.eventManager))
+          coordinator.show(.EventSettingButton(category: category))
         }, label: {
           Rectangle()
             .fill(Color(cgColor: category.cgColor))
