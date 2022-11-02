@@ -7,10 +7,13 @@
 
 import Foundation
 import EventKit
+import SwiftUI
 
 class ReminderButtonViewModel: ObservableObject {
   let category: EKCalendar
   let reminderManager: ReminderManager
+  @Published var imoji: String = ""
+  @Published var color: Color = .white
   
   init (
     category: EKCalendar,
@@ -18,6 +21,6 @@ class ReminderButtonViewModel: ObservableObject {
   ) {
     self.category = category
     self.reminderManager = reminderManager
+    self.imoji = imoji
   }
-   
 }
