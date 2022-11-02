@@ -34,7 +34,7 @@ struct ReminderSettingView: View {
                 Spacer()
                 
                 Rectangle()
-                  .fill(Color(cgColor: category.cgColor))
+                  .fill(fetchUserDefaultColor(calendarIdentifier: category.calendarIdentifier))
                   .frame(width: 10, height: 10)
                }
               .padding(.horizontal)
