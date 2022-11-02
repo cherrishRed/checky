@@ -35,7 +35,7 @@ struct ButtonView: View {
     Button(action: {
       buttonAction()
     }, label: {
-      ZStack {
+      ZStack(alignment: .leading) {
         Rectangle()
           .fill(Color.white)
           .padding(.horizontal)
@@ -43,15 +43,10 @@ struct ButtonView: View {
         
         Text(buttonTitle)
           .frame(alignment: .leading)
+          .padding(.horizontal, 20)
           .foregroundColor(Color.fontDarkBlack)
           .fontWeight(.semibold)
       }
     })
-  }
-}
-
-struct SettingView_Previews: PreviewProvider {
-  static var previews: some View {
-    SettingView()
   }
 }

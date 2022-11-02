@@ -9,17 +9,24 @@ import SwiftUI
 
 struct ReminderSettingView: View {
   @ObservedObject var viewModel: ReminderSettingViewModel
+  @EnvironmentObject var coordinator: Coordinator<checkyRouter>
+
     var body: some View {
       
       ForEach(viewModel.categories) { category in
-        HStack {
-          Circle()
-            .fill(Color(cgColor: category.cgColor))
-            .frame(width: 10, height: 10)
-          Text(category.title)
-            .foregroundColor(Color.fontDarkBlack)
-            .font(.title3)
-        }
+        Button(action: {
+          coordinator.show(.ReminderSettingButton(category: category))
+        }, label: {
+          HStack {
+            Circle()
+              .fill(Color(cgColor: category.cgColor))
+              .frame(width: 10, height: 10)
+            Text(category.title)
+              .foregroundColor(Color.fontDarkBlack)
+              .font(.title3)
+          }
+        })
       }
     }
 }
+   
