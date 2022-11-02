@@ -46,10 +46,10 @@ struct DailyCellView: View {
               
               VStack(alignment: .leading) {
                 Text(viewModel.event.ekevent.title)
-                  .font(.title3)
-                  .fontWeight(.semibold)
+                  .font(.headline)
                 if viewModel.event.ekevent.hasNotes {
                   Text(viewModel.event.ekevent.notes ?? "")
+                    .font(.footnote)
                     .padding(.leading, 2)
                 }
               }

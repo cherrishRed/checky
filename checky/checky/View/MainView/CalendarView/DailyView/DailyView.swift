@@ -74,6 +74,7 @@ struct DailyView: View {
         ForEach(viewModel.allDayEvents, id: \.self) { event in
           DailyCellView(viewModel: DailyCellViewModel(event: event, eventManager: viewModel.eventManager))
             .environmentObject(coordinator)
+            .foregroundColor(Color.fontBlack)
         }
         
         // 시간이 정해져 있는 이벤트
@@ -81,6 +82,7 @@ struct DailyView: View {
           VStack(alignment: .leading) {
             DailyCellView(viewModel: DailyCellViewModel(event: viewModel.timeEvents[index], eventManager: viewModel.eventManager))
               .environmentObject(coordinator)
+              .foregroundColor(Color.fontBlack)
           }
         }
       }
@@ -98,12 +100,14 @@ struct DailyView: View {
         ForEach(viewModel.dayReminders, id: \.self) { reminder in
           DailyReminderCellView(viewModel: DailyReminderCellViewModel(reminder: reminder, reminderManager: viewModel.reminderManager))
             .environmentObject(coordinator)
+            .foregroundColor(Color.fontBlack)
         }
         
         // 시간이 정해져 있는 리마인더
         ForEach(viewModel.timeReminders, id: \.self) { reminder in
           DailyReminderCellView(viewModel: DailyReminderCellViewModel(reminder: reminder, reminderManager: viewModel.reminderManager))
             .environmentObject(coordinator)
+            .foregroundColor(Color.fontBlack)
         }
       }
       .padding()
@@ -119,6 +123,7 @@ struct DailyView: View {
         // 하루종일 reminder
         ForEach(viewModel.clearedReminders, id: \.self) { reminder in
           DailyReminderCellView(viewModel: DailyReminderCellViewModel(reminder: reminder, reminderManager: viewModel.reminderManager))
+            .foregroundColor(Color.fontBlack)
         }
       }
       .padding()
