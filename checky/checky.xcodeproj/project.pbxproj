@@ -11,6 +11,8 @@
 		86057B23291129FF00CEC6AB /* EventButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86057B22291129FF00CEC6AB /* EventButtonViewModel.swift */; };
 		86057B272911EE7700CEC6AB /* ReminderButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86057B262911EE7700CEC6AB /* ReminderButtonViewModel.swift */; };
 		86057B292911EE8000CEC6AB /* ReminderButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86057B282911EE8000CEC6AB /* ReminderButtonView.swift */; };
+		86057B6229125F4A00CEC6AB /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86057B6129125F4A00CEC6AB /* ColorView.swift */; };
+		86057B6429125F7400CEC6AB /* EmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86057B6329125F7400CEC6AB /* EmojiView.swift */; };
 		860F766428FCB97A00CB034B /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860F766328FCB97A00CB034B /* CalendarView.swift */; };
 		860F766628FCB98500CB034B /* CaledarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860F766528FCB98500CB034B /* CaledarViewModel.swift */; };
 		8647AFBA28FD637F00EE1DA8 /* MonthlyCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8647AFB928FD637F00EE1DA8 /* MonthlyCellViewModel.swift */; };
@@ -95,6 +97,8 @@
 		86057B22291129FF00CEC6AB /* EventButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventButtonViewModel.swift; sourceTree = "<group>"; };
 		86057B262911EE7700CEC6AB /* ReminderButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderButtonViewModel.swift; sourceTree = "<group>"; };
 		86057B282911EE8000CEC6AB /* ReminderButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderButtonView.swift; sourceTree = "<group>"; };
+		86057B6129125F4A00CEC6AB /* ColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
+		86057B6329125F7400CEC6AB /* EmojiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiView.swift; sourceTree = "<group>"; };
 		860F766328FCB97A00CB034B /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		860F766528FCB98500CB034B /* CaledarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaledarViewModel.swift; sourceTree = "<group>"; };
 		8647AFB928FD637F00EE1DA8 /* MonthlyCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCellViewModel.swift; sourceTree = "<group>"; };
@@ -202,6 +206,15 @@
 				86057B262911EE7700CEC6AB /* ReminderButtonViewModel.swift */,
 			);
 			path = Button;
+			sourceTree = "<group>";
+		};
+		86057B6029125F3000CEC6AB /* SettingButtonView */ = {
+			isa = PBXGroup;
+			children = (
+				86057B6129125F4A00CEC6AB /* ColorView.swift */,
+				86057B6329125F7400CEC6AB /* EmojiView.swift */,
+			);
+			path = SettingButtonView;
 			sourceTree = "<group>";
 		};
 		8647B08A2907B4EE00EE1DA8 /* Protocol */ = {
@@ -356,6 +369,7 @@
 		86FBE20B2910F39500961DE8 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				86057B6029125F3000CEC6AB /* SettingButtonView */,
 				86FBE20C2910F3A200961DE8 /* SettingView.swift */,
 				86FBE20E2910F3AD00961DE8 /* SettingViewModel.swift */,
 				86FBE2112910F3C100961DE8 /* Event */,
@@ -676,12 +690,14 @@
 				DA91E81428EDF3900091B6A3 /* MonthlyViewModel.swift in Sources */,
 				DA2C797128F6E2C800922C47 /* Extension+View.swift in Sources */,
 				DA91E81428EDF3900091B6A3 /* MonthlyViewModel.swift in Sources */,
+				86057B6429125F7400CEC6AB /* EmojiView.swift in Sources */,
 				868C543D28F4178D006A9B38 /* TabBarItemsPreferenceKey.swift in Sources */,
 				865BE52428EC4B6200305899 /* Extension+Text.swift in Sources */,
 				DA91E7E328EC8E580091B6A3 /* Reminder.swift in Sources */,
 				DA2C796A28EF009800922C47 /* Coordinator.swift in Sources */,
 				86057B272911EE7700CEC6AB /* ReminderButtonViewModel.swift in Sources */,
 				DA2C796F28F6CB1A00922C47 /* EventCreateAndEditViewModel.swift in Sources */,
+				86057B6229125F4A00CEC6AB /* ColorView.swift in Sources */,
 				DA2C796D28F5817600922C47 /* EventCreateAndEditView.swift in Sources */,
 				869BAA942908A4A200D4D71D /* CheckyRouter.swift in Sources */,
 				DA4E4A052908F42100CF45E2 /* CreateSelectorView.swift in Sources */,
