@@ -82,4 +82,22 @@ extension Date {
     dateformmater.dateFormat = "yyyy년 M월 d일"
     return dateformmater.string(from: self) == dateformmater.string(from: date)
   }
+  
+  var minusSevenDates: Date {
+    let calendar = Calendar(identifier: .gregorian)
+    
+    guard let previousWeek = calendar.date(byAdding: .day, value: -7, to: self) else {
+      return Date()
+    }
+    return previousWeek
+  }
+  
+  var plusSevenDates: Date {
+    let calendar = Calendar(identifier: .gregorian)
+
+    guard let nextWeek = calendar.date(byAdding: .day, value: 7, to: self) else {
+      return Date()
+    }
+    return nextWeek
+  }
 }

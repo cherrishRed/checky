@@ -27,22 +27,26 @@ struct MonthlyCellView: View {
               .foregroundColor(Color.basicWhite)
           } else {
             Text(viewModel.dateValue.date.day)
+              .frame(height: 20)
               .font(.caption2)
               .foregroundColor(viewModel.dateValue.isCurrentMonth ? Color.fontMediumGray : Color.fontLightGray)
+              
           }
         }
-        
-        ForEach(viewModel.allEvnets, id: \.self) { event in
-          EventBlockView(event: event)
+        Group {
+          ForEach(viewModel.allEvnets, id: \.self) { event in
+            EventBlockView(event: event)
+          }
+          
+          ForEach(viewModel.filteredHightPriorityDuedateReminder(), id: \.self) { reminder in
+            ReminderBlockView(reminder: reminder)
+          }
+          
+          ForEach(viewModel.filteredHightPriorityClearedReminder(), id: \.self) { reminder in
+            ReminderBlockView(reminder: reminder)
+          }
         }
-        
-        ForEach(viewModel.filteredHightPriorityDuedateReminder(), id: \.self) { reminder in
-          ReminderBlockView(reminder: reminder)
-        }
-        
-        ForEach(viewModel.filteredHightPriorityClearedReminder(), id: \.self) { reminder in
-          ReminderBlockView(reminder: reminder)
-        }
+        .opacity(viewModel.dateValue.isCurrentMonth ? 1.0 : 0.3)
       }
     }
   }

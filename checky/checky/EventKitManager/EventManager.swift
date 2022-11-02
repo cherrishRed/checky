@@ -51,7 +51,7 @@ struct EventManager: ManagerProtocol {
     var list: [Event] = []
     
     for category in categories {
-      let predicate = store.predicateForEvents(withStart: firstDate, end: lastDate, calendars: [category])
+      let predicate = store.predicateForEvents(withStart: firstDate.minusSevenDates, end: lastDate.plusSevenDates, calendars: [category])
       let eventList = store.events(matching: predicate).map { ekevent -> Event in
         return Event(ekevent: ekevent, category: category)
       }
