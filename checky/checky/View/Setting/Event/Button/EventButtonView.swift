@@ -10,8 +10,8 @@ import EventKit
 
 struct EventButtonView: View {
   @ObservedObject var viewModel: EventButtonViewModel
- 
-    var body: some View {
-      Text(viewModel.category.calendarIdentifier)
-    }
+  
+  var body: some View {
+    Text(viewModel.category.calendarIdentifier)
+  }
 }
