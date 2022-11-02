@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct WeeklyView: View {
+  @EnvironmentObject var coordinator: Coordinator<checkyRouter>
   @StateObject var viewModel: WeeklyViewModel
   
   var body: some View {
@@ -29,10 +30,13 @@ struct WeeklyView: View {
                                                         clearedReminders: clearedReminders,
                                                           eventManager: viewModel.eventManager,
                                                         reminderManager: viewModel.reminderManager))
-          
           .padding(.horizontal, 10)
           .padding(.vertical, 6)
           .frame(width: geo.size.width / 1.9, height: geo.size.height / viewModel.gridCloumnsCount * 2)
+          .onTapGesture {
+            coordinator.show(.daily(value.date, events, reminders, clearedReminders, viewModel.eventManager, viewModel.reminderManager))
+            print("tabbed!!!")
+          }
         }
       }
     }
