@@ -56,11 +56,7 @@ struct EventButtonView: View {
     .onAppear {
       viewModel.imoji = UserDefaults.standard.string(forKey: ("\(viewModel.category.calendarIdentifier)_imoji")) ?? ""
       
-      guard let colorComponent = UserDefaults.standard.object(forKey: ("\(viewModel.category.calendarIdentifier)_color")) as? [CGFloat] else {
-        return
-      }
-      
-      viewModel.color = Color(.sRGB, red: colorComponent[0], green: colorComponent[1], blue: colorComponent[2], opacity: colorComponent[3])
+      viewModel.color = fetchUserDefaultColor(calendarIdentifier: viewModel.category.calendarIdentifier)
     }
     .background(Color.backgroundGray)
   }
