@@ -12,12 +12,14 @@ class EventButtonViewModel: ObservableObject {
   let category: EKCalendar
   let eventManager: EventManager
   
+  @Published var imoji: String?
+  
   init (
     category: EKCalendar,
     eventManager: EventManager
   ) {
     self.category = category
     self.eventManager = eventManager
+    self.imoji = imoji
   }
-   
 }
