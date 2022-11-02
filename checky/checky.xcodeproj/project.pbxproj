@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		86057B212911263B00CEC6AB /* EventButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86057B202911263B00CEC6AB /* EventButtonView.swift */; };
 		86057B23291129FF00CEC6AB /* EventButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86057B22291129FF00CEC6AB /* EventButtonViewModel.swift */; };
+		86057B272911EE7700CEC6AB /* ReminderButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86057B262911EE7700CEC6AB /* ReminderButtonViewModel.swift */; };
+		86057B292911EE8000CEC6AB /* ReminderButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86057B282911EE8000CEC6AB /* ReminderButtonView.swift */; };
 		860F766428FCB97A00CB034B /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860F766328FCB97A00CB034B /* CalendarView.swift */; };
 		860F766628FCB98500CB034B /* CaledarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860F766528FCB98500CB034B /* CaledarViewModel.swift */; };
 		8647AFBA28FD637F00EE1DA8 /* MonthlyCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8647AFB928FD637F00EE1DA8 /* MonthlyCellViewModel.swift */; };
@@ -91,6 +93,8 @@
 /* Begin PBXFileReference section */
 		86057B202911263B00CEC6AB /* EventButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventButtonView.swift; sourceTree = "<group>"; };
 		86057B22291129FF00CEC6AB /* EventButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventButtonViewModel.swift; sourceTree = "<group>"; };
+		86057B262911EE7700CEC6AB /* ReminderButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderButtonViewModel.swift; sourceTree = "<group>"; };
+		86057B282911EE8000CEC6AB /* ReminderButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderButtonView.swift; sourceTree = "<group>"; };
 		860F766328FCB97A00CB034B /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		860F766528FCB98500CB034B /* CaledarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaledarViewModel.swift; sourceTree = "<group>"; };
 		8647AFB928FD637F00EE1DA8 /* MonthlyCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCellViewModel.swift; sourceTree = "<group>"; };
@@ -182,6 +186,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		86057B242911EE4D00CEC6AB /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				86057B202911263B00CEC6AB /* EventButtonView.swift */,
+				86057B22291129FF00CEC6AB /* EventButtonViewModel.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		86057B252911EE5D00CEC6AB /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				86057B282911EE8000CEC6AB /* ReminderButtonView.swift */,
+				86057B262911EE7700CEC6AB /* ReminderButtonViewModel.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
 		8647B08A2907B4EE00EE1DA8 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
@@ -347,6 +369,7 @@
 			children = (
 				86FBE2192910F44700961DE8 /* ReminderSettingView.swift */,
 				86FBE2172910F42300961DE8 /* ReminderSettingViewModel.swift */,
+				86057B252911EE5D00CEC6AB /* Button */,
 			);
 			path = Reminder;
 			sourceTree = "<group>";
@@ -356,8 +379,7 @@
 			children = (
 				86FBE2132910F3F800961DE8 /* EventSettingView.swift */,
 				86FBE2152910F41000961DE8 /* EventSettingViewModel.swift */,
-				86057B202911263B00CEC6AB /* EventButtonView.swift */,
-				86057B22291129FF00CEC6AB /* EventButtonViewModel.swift */,
+				86057B242911EE4D00CEC6AB /* Button */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -658,6 +680,7 @@
 				865BE52428EC4B6200305899 /* Extension+Text.swift in Sources */,
 				DA91E7E328EC8E580091B6A3 /* Reminder.swift in Sources */,
 				DA2C796A28EF009800922C47 /* Coordinator.swift in Sources */,
+				86057B272911EE7700CEC6AB /* ReminderButtonViewModel.swift in Sources */,
 				DA2C796F28F6CB1A00922C47 /* EventCreateAndEditViewModel.swift in Sources */,
 				DA2C796D28F5817600922C47 /* EventCreateAndEditView.swift in Sources */,
 				869BAA942908A4A200D4D71D /* CheckyRouter.swift in Sources */,
@@ -670,6 +693,7 @@
 				DA2C796328EEFFA300922C47 /* SceneDelegate.swift in Sources */,
 				86F0B2C528F6B969006E2536 /* WeeklyCellView.swift in Sources */,
 				86FBE2162910F41000961DE8 /* EventSettingViewModel.swift in Sources */,
+				86057B292911EE8000CEC6AB /* ReminderButtonView.swift in Sources */,
 				86A5E60428EEA6B10040DCFB /* DayOfWeekStackViewModel.swift in Sources */,
 				86FC8CF528EAB3CF00B7752F /* DateHolder.swift in Sources */,
 				860F766628FCB98500CB034B /* CaledarViewModel.swift in Sources */,

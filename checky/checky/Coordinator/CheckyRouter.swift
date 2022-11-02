@@ -16,7 +16,8 @@ enum checkyRouter: NavigationRouter {
   case createReminder
   case EventSetting
   case ReminderSetting
-  case EventSettingButton(category: EKCalendar, eventManager: EventManager)
+  case EventSettingButton(category: EKCalendar)
+  case ReminderSettingButton(category: EKCalendar)
   
   var transition: NavigationTranisitionStyle {
     switch self {
@@ -33,6 +34,8 @@ enum checkyRouter: NavigationRouter {
     case .ReminderSetting:
       return .push
     case .EventSettingButton:
+      return .push
+    case .ReminderSettingButton:
       return .push
     }
   }
@@ -55,9 +58,10 @@ enum checkyRouter: NavigationRouter {
       EventSettingView(viewModel: EventSettingViewModel(eventManager: eventManager))
     case .ReminderSetting:
       ReminderSettingView(viewModel: ReminderSettingViewModel(reminderManager: reminderManager))
-    case let .EventSettingButton(category, eventManager):
+    case let .EventSettingButton(category):
       EventButtonView(viewModel: EventButtonViewModel(category: category, eventManager: eventManager))
-      
+    case let .ReminderSettingButton(category):
+      ReminderButtonView(viewModel: ReminderButtonViewModel(category: category, reminderManager: reminderManager))
     }
   }
 }
