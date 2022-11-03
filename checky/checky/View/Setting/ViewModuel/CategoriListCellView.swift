@@ -20,15 +20,13 @@ struct CategoriListCellView: View {
   let category: EKCalendar
   let buttonAction: () -> ()
   let mode: EventMode
-  var colorChangedNotification = NotificationCenter.default
+  var ChangedNotification = NotificationCenter.default
     .publisher(for: UserDefaults.didChangeNotification)
   
   init(category: EKCalendar,mode: EventMode ,buttonAction: @escaping () -> ()) {
     self.category = category
     self.buttonAction = buttonAction
     self.mode = mode
-    self.colorChangedNotification = NotificationCenter.default
-      .publisher(for: UserDefaults.didChangeNotification)
   }
   
   var body: some View {
@@ -65,12 +63,11 @@ struct CategoriListCellView: View {
         emoji = fetchUserDefaultEmoji(calendarIdentifier: category.calendarIdentifier)
       }
     }
-    .onReceive(colorChangedNotification) { _ in
+    .onReceive(ChangedNotification) { _ in
       color = fetchUserDefaultColor(calendarIdentifier: category.calendarIdentifier)
       if mode == .calendar {
         emoji = fetchUserDefaultEmoji(calendarIdentifier: category.calendarIdentifier)
       }
-
     }
   }
 }

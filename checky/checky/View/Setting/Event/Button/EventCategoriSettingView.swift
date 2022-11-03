@@ -42,7 +42,6 @@ struct EventCategoriSettingView: View {
             Rectangle()
               .fill(viewModel.color)
               .frame(width: 15, height: 15)
-            
           }
           .padding(.horizontal, 17)
         }
