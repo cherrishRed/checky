@@ -36,8 +36,8 @@
 		86F0B2C128F6B71A006E2536 /* WeeklyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F0B2C028F6B71A006E2536 /* WeeklyView.swift */; };
 		86F0B2C328F6B726006E2536 /* WeeklyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F0B2C228F6B726006E2536 /* WeeklyViewModel.swift */; };
 		86F0B2C528F6B969006E2536 /* WeeklyCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F0B2C428F6B969006E2536 /* WeeklyCellView.swift */; };
-		86FBE20D2910F3A200961DE8 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FBE20C2910F3A200961DE8 /* SettingView.swift */; };
-		86FBE20F2910F3AD00961DE8 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FBE20E2910F3AD00961DE8 /* SettingViewModel.swift */; };
+		86FBE20D2910F3A200961DE8 /* SettingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FBE20C2910F3A200961DE8 /* SettingListView.swift */; };
+		86FBE20F2910F3AD00961DE8 /* SettingViewModuel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FBE20E2910F3AD00961DE8 /* SettingViewModuel.swift */; };
 		86FBE2142910F3F800961DE8 /* EventSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FBE2132910F3F800961DE8 /* EventSettingView.swift */; };
 		86FBE2162910F41000961DE8 /* EventSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FBE2152910F41000961DE8 /* EventSettingViewModel.swift */; };
 		86FBE2182910F42300961DE8 /* ReminderSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FBE2172910F42300961DE8 /* ReminderSettingViewModel.swift */; };
@@ -124,8 +124,8 @@
 		86F0B2C028F6B71A006E2536 /* WeeklyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyView.swift; sourceTree = "<group>"; };
 		86F0B2C228F6B726006E2536 /* WeeklyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyViewModel.swift; sourceTree = "<group>"; };
 		86F0B2C428F6B969006E2536 /* WeeklyCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyCellView.swift; sourceTree = "<group>"; };
-		86FBE20C2910F3A200961DE8 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
-		86FBE20E2910F3AD00961DE8 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		86FBE20C2910F3A200961DE8 /* SettingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListView.swift; sourceTree = "<group>"; };
+		86FBE20E2910F3AD00961DE8 /* SettingViewModuel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModuel.swift; sourceTree = "<group>"; };
 		86FBE2132910F3F800961DE8 /* EventSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSettingView.swift; sourceTree = "<group>"; };
 		86FBE2152910F41000961DE8 /* EventSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSettingViewModel.swift; sourceTree = "<group>"; };
 		86FBE2172910F42300961DE8 /* ReminderSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSettingViewModel.swift; sourceTree = "<group>"; };
@@ -208,13 +208,13 @@
 			path = Button;
 			sourceTree = "<group>";
 		};
-		86057B6029125F3000CEC6AB /* SettingButtonView */ = {
+		86057B6029125F3000CEC6AB /* SelectorView */ = {
 			isa = PBXGroup;
 			children = (
 				86057B6129125F4A00CEC6AB /* ColorView.swift */,
 				86057B6329125F7400CEC6AB /* EmojiView.swift */,
 			);
-			path = SettingButtonView;
+			path = SelectorView;
 			sourceTree = "<group>";
 		};
 		8647B08A2907B4EE00EE1DA8 /* Protocol */ = {
@@ -337,6 +337,15 @@
 			path = MonthlyDateView;
 			sourceTree = "<group>";
 		};
+		86A1BC17291374BF006EF0CD /* ViewModuel */ = {
+			isa = PBXGroup;
+			children = (
+				86057B6029125F3000CEC6AB /* SelectorView */,
+				86FBE20E2910F3AD00961DE8 /* SettingViewModuel.swift */,
+			);
+			path = ViewModuel;
+			sourceTree = "<group>";
+		};
 		86A5E5FC28EEA6200040DCFB /* DayOfWeekStackView */ = {
 			isa = PBXGroup;
 			children = (
@@ -369,9 +378,8 @@
 		86FBE20B2910F39500961DE8 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				86057B6029125F3000CEC6AB /* SettingButtonView */,
-				86FBE20C2910F3A200961DE8 /* SettingView.swift */,
-				86FBE20E2910F3AD00961DE8 /* SettingViewModel.swift */,
+				86FBE20C2910F3A200961DE8 /* SettingListView.swift */,
+				86A1BC17291374BF006EF0CD /* ViewModuel */,
 				86FBE2112910F3C100961DE8 /* Event */,
 				86FBE2102910F3B300961DE8 /* Reminder */,
 			);
@@ -656,7 +664,7 @@
 				DA91E7D628EABDED0091B6A3 /* Week.swift in Sources */,
 				DA2C796128EEFF7700922C47 /* AppDelegate.swift in Sources */,
 				8679589B290A3C64001D5C7F /* ReminderManager.swift in Sources */,
-				86FBE20F2910F3AD00961DE8 /* SettingViewModel.swift in Sources */,
+				86FBE20F2910F3AD00961DE8 /* SettingViewModuel.swift in Sources */,
 				DA466EA028E685D70076AEE4 /* checkyApp.swift in Sources */,
 				868C543F28F417C0006A9B38 /* CustomTabBarContainerView.swift in Sources */,
 				865BE52628EC867900305899 /* WeekOption.swift in Sources */,
@@ -676,7 +684,7 @@
 				868C544728F419B1006A9B38 /* CheckyMainViewModel.swift in Sources */,
 				86F0B2C328F6B726006E2536 /* WeeklyViewModel.swift in Sources */,
 				DA91E7DC28EC1E880091B6A3 /* EventManager.swift in Sources */,
-				86FBE20D2910F3A200961DE8 /* SettingView.swift in Sources */,
+				86FBE20D2910F3A200961DE8 /* SettingListView.swift in Sources */,
 				868C544528F4199D006A9B38 /* CheckyMainView.swift in Sources */,
 				860F766428FCB97A00CB034B /* CalendarView.swift in Sources */,
 				DA2C796828EF007900922C47 /* NavigationTranisitionStyle.swift in Sources */,

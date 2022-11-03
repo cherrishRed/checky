@@ -29,33 +29,3 @@ struct EventSettingView: View {
   }
 }
 
-struct SettingButtonView: View {
-  let category: EKCalendar
-  let buttonAction: () -> ()
-  
-  var body: some View {
-    Button(action: {
-      buttonAction()
-    }, label: {
-      ZStack {
-        Rectangle()
-          .fill(Color.white)
-          .frame(height: 30)
-          .frame(maxWidth: .infinity)
-
-        HStack {
-          Text(category.title)
-            .foregroundColor(Color.fontDarkBlack)
-            .font(.title3)
-          
-          Spacer()
-          
-          Rectangle()
-            .fill(fetchUserDefaultColor(calendarIdentifier: category.calendarIdentifier))
-            .frame(width: 10, height: 10)
-        }
-        .padding(.horizontal)
-      }
-    })
-  }
-}

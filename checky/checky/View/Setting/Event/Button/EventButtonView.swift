@@ -7,52 +7,14 @@
 
 import SwiftUI
 import EventKit
+import Combine
 
 struct EventButtonView: View {
   @ObservedObject var viewModel: EventButtonViewModel
   
   var body: some View {
     
-    HStack {
-      VStack(spacing: 30) {
-        ZStack {
-          Rectangle()
-            .fill(Color.white)
-            .frame(height: 30)
-            .frame(maxWidth: .infinity)
-          
-          HStack {
-            Text("이모지")
-            Spacer()
-            Text(viewModel.imoji)
-          }
-          .padding(.horizontal, 15)
-        }
-        
-        ZStack {
-          Rectangle()
-            .fill(Color.white)
-            .frame(height: 30)
-            .frame(maxWidth: .infinity)
-          
-          HStack {
-            Text("색상")
-            Spacer()
-            
-            Rectangle()
-              .fill(viewModel.color)
-              .frame(width: 15, height: 15)
-            
-          }
-          .padding(.horizontal, 17)
-        }
-        Spacer()
-        ColorView(color: $viewModel.color, calendarIdentifier: viewModel.category.calendarIdentifier)
-        EmojiView(txt: $viewModel.imoji, calendarIdentifier: viewModel.category.calendarIdentifier)
-        Spacer()
-      }
-      .padding(.horizontal, 15)
-    }
+    SettingView(emoji: $viewModel.imoji, color: $viewModel.color, calendarIdentifier: viewModel.category.calendarIdentifier)
     .onAppear {
       viewModel.imoji = fetchUserDefaultEmoji(calendarIdentifier: viewModel.category.calendarIdentifier)
       viewModel.color = fetchUserDefaultColor(calendarIdentifier: viewModel.category.calendarIdentifier)

@@ -12,7 +12,6 @@ struct ReminderSettingView: View {
   @EnvironmentObject var coordinator: Coordinator<checkyRouter>
   
   var body: some View {
-    
     ScrollView {
       VStack(alignment: .leading) {
         ForEach(viewModel.categories) { category in

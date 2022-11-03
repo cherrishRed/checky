@@ -8,6 +8,7 @@
 import Foundation
 import EventKit
 import SwiftUI
+import Combine
 
 class EventButtonViewModel: ObservableObject {
   let category: EKCalendar
