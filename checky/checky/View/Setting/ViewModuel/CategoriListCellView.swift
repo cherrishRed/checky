@@ -9,17 +9,24 @@ import SwiftUI
 import EventKit
 import Combine
 
+enum EventMode {
+  case calendar
+  case reminder
+}
+
 struct CategoriListCellView: View {
   @State var color: Color = .white
   @State var emoji: String = ""
   let category: EKCalendar
   let buttonAction: () -> ()
+  let mode: EventMode
   var colorChangedNotification = NotificationCenter.default
     .publisher(for: UserDefaults.didChangeNotification)
   
-  init(category: EKCalendar, buttonAction: @escaping () -> ()) {
+  init(category: EKCalendar,mode: EventMode ,buttonAction: @escaping () -> ()) {
     self.category = category
     self.buttonAction = buttonAction
+    self.mode = mode
     self.colorChangedNotification = NotificationCenter.default
       .publisher(for: UserDefaults.didChangeNotification)
   }
@@ -41,7 +48,9 @@ struct CategoriListCellView: View {
           
           Spacer()
           
-          Text(emoji)
+          if mode == .calendar {
+            Text(emoji)
+          }
           
           Rectangle()
             .fill(color)

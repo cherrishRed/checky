@@ -18,8 +18,13 @@ class EventCategoriSettingViewModel: ObservableObject {
   
   init (
     category: EKCalendar,
-    eventManager: EventManager
+    eventManager: EventManager,
+    imoji: String = "",
+    color: Color = .white
+    
   ) {
+    self.imoji = imoji
+    self.color = color
     self.category = category
     self.eventManager = eventManager
   }

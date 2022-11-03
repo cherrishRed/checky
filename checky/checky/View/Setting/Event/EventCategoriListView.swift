@@ -18,7 +18,7 @@ struct EventCategoriListView: View {
     ScrollView {
       VStack(alignment: .leading) {
         ForEach(viewModel.categories) { category in
-          CategoriListCellView(category: category) {
+          CategoriListCellView(category: category,mode: .calendar) {
             coordinator.show(.EventSettingButton(category: category))
           }
         }
