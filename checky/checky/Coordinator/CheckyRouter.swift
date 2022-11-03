@@ -29,7 +29,7 @@ enum checkyRouter: NavigationRouter {
       case .createReminder:
         return .presentModally
       case .daily:
-        return .presentModally
+        return .push
       case .editEvent:
         return .presentModally
       case .editReminder:
