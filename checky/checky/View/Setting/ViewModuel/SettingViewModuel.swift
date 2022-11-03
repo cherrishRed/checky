@@ -11,7 +11,7 @@ import Combine
 
 struct SettingButtonView: View {
   @State var color: Color = .white
-  
+  @State var emoji: String = ""
   let category: EKCalendar
   let buttonAction: () -> ()
   var colorChangedNotification = NotificationCenter.default
@@ -41,6 +41,8 @@ struct SettingButtonView: View {
           
           Spacer()
           
+          Text(emoji)
+          
           Rectangle()
             .fill(color)
             .frame(width: 10, height: 10)
@@ -50,16 +52,18 @@ struct SettingButtonView: View {
     })
     .onAppear {
       color = fetchUserDefaultColor(calendarIdentifier: category.calendarIdentifier)
+      emoji = fetchUserDefaultEmoji(calendarIdentifier: category.calendarIdentifier)
     }
     .onReceive(colorChangedNotification) { _ in
       color = fetchUserDefaultColor(calendarIdentifier: category.calendarIdentifier)
+      emoji = fetchUserDefaultEmoji(calendarIdentifier: category.calendarIdentifier)
+
     }
   }
   
 }
 
 struct SettingView: View {
-  
   @Binding var emoji: String
   @Binding var color: Color
   let calendarIdentifier: String
@@ -100,7 +104,7 @@ struct SettingView: View {
         }
         Spacer()
         ColorView(color: $color, calendarIdentifier: calendarIdentifier)
-        EmojiView(txt: $emoji, calendarIdentifier: calendarIdentifier)
+        EmojiView(txt: $emoji, calendarIdentifier: calendarIdentifier, firstUnicode: 0x1F600, lastUnicode: 0x1F64F)
         Spacer()
       }
       .padding(.horizontal, 15)
