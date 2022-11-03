@@ -5,13 +5,24 @@
 //  Created by song on 2022/11/01.
 //
 
-import Foundation
 import SwiftUI
 import EventKit
+import Combine
 
 struct SettingButtonView: View {
+  @State var color: Color = .white
+  
   let category: EKCalendar
   let buttonAction: () -> ()
+  var colorChangedNotification = NotificationCenter.default
+    .publisher(for: UserDefaults.didChangeNotification)
+  
+  init(category: EKCalendar, buttonAction: @escaping () -> ()) {
+    self.category = category
+    self.buttonAction = buttonAction
+    self.colorChangedNotification = NotificationCenter.default
+      .publisher(for: UserDefaults.didChangeNotification)
+  }
   
   var body: some View {
     Button(action: {
@@ -31,13 +42,20 @@ struct SettingButtonView: View {
           Spacer()
           
           Rectangle()
-            .fill(fetchUserDefaultColor(calendarIdentifier: category.calendarIdentifier))
+            .fill(color)
             .frame(width: 10, height: 10)
         }
         .padding(.horizontal)
       }
     })
+    .onAppear {
+      color = fetchUserDefaultColor(calendarIdentifier: category.calendarIdentifier)
+    }
+    .onReceive(colorChangedNotification) { _ in
+      color = fetchUserDefaultColor(calendarIdentifier: category.calendarIdentifier)
+    }
   }
+  
 }
 
 struct SettingView: View {

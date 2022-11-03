@@ -17,6 +17,7 @@ extension View {
 // MARK: - Color
 extension View {
   func fetchUserDefaultColor(calendarIdentifier: String) -> Color {
+    print(calendarIdentifier)
     guard let colorComponent = UserDefaults.standard.object(forKey: ("\(calendarIdentifier)_color")) as? [CGFloat] else {
       return Color.white
     }
