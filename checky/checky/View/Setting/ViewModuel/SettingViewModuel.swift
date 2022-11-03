@@ -9,7 +9,7 @@ import SwiftUI
 import EventKit
 import Combine
 
-struct SettingButtonView: View {
+struct CategoriCellView: View {
   @State var color: Color = .white
   @State var emoji: String = ""
   let category: EKCalendar
@@ -63,7 +63,7 @@ struct SettingButtonView: View {
   
 }
 
-struct SettingView: View {
+struct CategoriSettingView: View {
   @Binding var emoji: String
   @Binding var color: Color
   let calendarIdentifier: String
@@ -113,7 +113,7 @@ struct SettingView: View {
   }
 }
 
-struct ButtonView: View {
+struct SettingListCell: View {
   let buttonTitle: String
   let geo: GeometryProxy
   var buttonAction: () -> ()

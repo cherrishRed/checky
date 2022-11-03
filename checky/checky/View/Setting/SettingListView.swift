@@ -13,11 +13,11 @@ struct SettingListView: View {
   var body: some View {
     GeometryReader { geo in
       VStack {
-        ButtonView(buttonTitle: "캘린더 카테고리 수정", geo: geo) {
+        SettingListCell(buttonTitle: "캘린더 카테고리 수정", geo: geo) {
           coordinator.show(.EventSetting)
         }
         
-        ButtonView(buttonTitle: "미리알림 카테고리 수정", geo: geo) {
+        SettingListCell(buttonTitle: "미리알림 카테고리 수정", geo: geo) {
           coordinator.show(.ReminderSetting)
         }
       }

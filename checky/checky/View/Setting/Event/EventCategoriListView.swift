@@ -9,8 +9,8 @@ import SwiftUI
 import Combine
 import EventKit
 
-struct EventSettingView: View {
-  @ObservedObject var viewModel: EventSettingViewModel
+struct EventCategoriListView: View {
+  @ObservedObject var viewModel: EventCategoriListViewModel
   @EnvironmentObject var coordinator: Coordinator<checkyRouter>
   
   var body: some View {
@@ -18,7 +18,7 @@ struct EventSettingView: View {
     ScrollView {
       VStack(alignment: .leading) {
         ForEach(viewModel.categories) { category in
-          SettingButtonView(category: category) {
+          CategoriCellView(category: category) {
             coordinator.show(.EventSettingButton(category: category))
           }
         }

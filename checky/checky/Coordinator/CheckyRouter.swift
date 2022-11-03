@@ -55,13 +55,13 @@ enum checkyRouter: NavigationRouter {
     case .createReminder:
       ReminderCreateAndEditView(viewModel: ReminderCreateAndEditViewModel(mode: .create, reminderManager: reminderManager))
     case .EventSetting:
-      EventSettingView(viewModel: EventSettingViewModel(eventManager: eventManager))
+      EventCategoriListView(viewModel: EventCategoriListViewModel(eventManager: eventManager))
     case .ReminderSetting:
-      ReminderSettingView(viewModel: ReminderSettingViewModel(reminderManager: reminderManager))
+      ReminderCategoriListView(viewModel: ReminderCategoriListViewModel(reminderManager: reminderManager))
     case let .EventSettingButton(category):
-      EventButtonView(viewModel: EventButtonViewModel(category: category, eventManager: eventManager))
+      EventCategoriSettingView(viewModel: EventCategoriSettingViewModel(category: category, eventManager: eventManager))
     case let .ReminderSettingButton(category):
-      ReminderButtonView(viewModel: ReminderButtonViewModel(category: category, reminderManager: reminderManager))
+      ReminderCategoriSettingView(viewModel: ReminderCategoriSettingViewModel(category: category, reminderManager: reminderManager))
     }
   }
 }

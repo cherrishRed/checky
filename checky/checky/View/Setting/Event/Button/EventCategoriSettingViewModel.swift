@@ -1,5 +1,5 @@
 //
-//  EventSettingViewModel.swift
+//  EventButtonViewModel.swift
 //  checky
 //
 //  Created by song on 2022/11/01.
@@ -10,15 +10,17 @@ import EventKit
 import SwiftUI
 import Combine
 
-class EventSettingViewModel: ObservableObject {
+class EventCategoriSettingViewModel: ObservableObject {
+  let category: EKCalendar
   let eventManager: EventManager
-  @Published var categories: [EKCalendar]
+  @Published var imoji: String = ""
   @Published var color: Color = .white
-
-  init(
+  
+  init (
+    category: EKCalendar,
     eventManager: EventManager
   ) {
+    self.category = category
     self.eventManager = eventManager
-    self.categories = eventManager.getTaskCategories()
   }
 }

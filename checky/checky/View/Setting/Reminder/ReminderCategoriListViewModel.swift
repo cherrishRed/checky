@@ -8,7 +8,7 @@
 import Foundation
 import EventKit
 
-class ReminderSettingViewModel: ObservableObject {
+class ReminderCategoriListViewModel: ObservableObject {
   let reminderManager: ReminderManager
   let categories: [EKCalendar]
   init (
