@@ -21,6 +21,5 @@ class EventButtonViewModel: ObservableObject {
   ) {
     self.category = category
     self.eventManager = eventManager
-    self.imoji = imoji
   }
 }

@@ -54,8 +54,7 @@ struct EventButtonView: View {
       .padding(.horizontal, 15)
     }
     .onAppear {
-      viewModel.imoji = UserDefaults.standard.string(forKey: ("\(viewModel.category.calendarIdentifier)_imoji")) ?? ""
-      
+      viewModel.imoji = fetchUserDefaultEmoji(calendarIdentifier: viewModel.category.calendarIdentifier)
       viewModel.color = fetchUserDefaultColor(calendarIdentifier: viewModel.category.calendarIdentifier)
     }
     .background(Color.backgroundGray)

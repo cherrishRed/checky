@@ -11,7 +11,7 @@ import EventKit
 class EventSettingViewModel: ObservableObject {
   let eventManager: EventManager
   @Published var categories: [EKCalendar]
-  
+
   init(
     eventManager: EventManager
   ) {
