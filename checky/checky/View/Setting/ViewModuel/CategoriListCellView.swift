@@ -61,13 +61,16 @@ struct CategoriListCellView: View {
     })
     .onAppear {
       color = fetchUserDefaultColor(calendarIdentifier: category.calendarIdentifier)
-      emoji = fetchUserDefaultEmoji(calendarIdentifier: category.calendarIdentifier)
+      if mode == .calendar {
+        emoji = fetchUserDefaultEmoji(calendarIdentifier: category.calendarIdentifier)
+      }
     }
     .onReceive(colorChangedNotification) { _ in
       color = fetchUserDefaultColor(calendarIdentifier: category.calendarIdentifier)
-      emoji = fetchUserDefaultEmoji(calendarIdentifier: category.calendarIdentifier)
+      if mode == .calendar {
+        emoji = fetchUserDefaultEmoji(calendarIdentifier: category.calendarIdentifier)
+      }
 
     }
   }
-  
 }
