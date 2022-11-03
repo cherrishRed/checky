@@ -30,6 +30,8 @@
 		868C544328F417F7006A9B38 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C544228F417F7006A9B38 /* TabBarItem.swift */; };
 		868C544528F4199D006A9B38 /* CheckyMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C544428F4199D006A9B38 /* CheckyMainView.swift */; };
 		868C544728F419B1006A9B38 /* CheckyMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C544628F419B1006A9B38 /* CheckyMainViewModel.swift */; };
+		868E024A2913AF8F0039B52E /* CategoriListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E02492913AF8F0039B52E /* CategoriListCellView.swift */; };
+		868E024C2913AFBB0039B52E /* CategoriSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E024B2913AFBB0039B52E /* CategoriSettingView.swift */; };
 		869BAA942908A4A200D4D71D /* CheckyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869BAA932908A4A200D4D71D /* CheckyRouter.swift */; };
 		86A5E60228EEA6A80040DCFB /* DayOfWeekStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5E60128EEA6A80040DCFB /* DayOfWeekStackView.swift */; };
 		86A5E60428EEA6B10040DCFB /* DayOfWeekStackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5E60328EEA6B10040DCFB /* DayOfWeekStackViewModel.swift */; };
@@ -118,6 +120,8 @@
 		868C544228F417F7006A9B38 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		868C544428F4199D006A9B38 /* CheckyMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckyMainView.swift; sourceTree = "<group>"; };
 		868C544628F419B1006A9B38 /* CheckyMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckyMainViewModel.swift; sourceTree = "<group>"; };
+		868E02492913AF8F0039B52E /* CategoriListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriListCellView.swift; sourceTree = "<group>"; };
+		868E024B2913AFBB0039B52E /* CategoriSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriSettingView.swift; sourceTree = "<group>"; };
 		869BAA932908A4A200D4D71D /* CheckyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckyRouter.swift; sourceTree = "<group>"; };
 		86A5E60128EEA6A80040DCFB /* DayOfWeekStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekStackView.swift; sourceTree = "<group>"; };
 		86A5E60328EEA6B10040DCFB /* DayOfWeekStackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekStackViewModel.swift; sourceTree = "<group>"; };
@@ -342,6 +346,8 @@
 			children = (
 				86057B6029125F3000CEC6AB /* SelectorView */,
 				86FBE20E2910F3AD00961DE8 /* SettingViewModuel.swift */,
+				868E02492913AF8F0039B52E /* CategoriListCellView.swift */,
+				868E024B2913AFBB0039B52E /* CategoriSettingView.swift */,
 			);
 			path = ViewModuel;
 			sourceTree = "<group>";
@@ -676,6 +682,7 @@
 				DA3E9DAA2907810E00E72E21 /* ButtonStyle.swift in Sources */,
 				DA91E7E128EC8DFC0091B6A3 /* Event.swift in Sources */,
 				868C544128F417D9006A9B38 /* CustomTabBarView.swift in Sources */,
+				868E024C2913AFBB0039B52E /* CategoriSettingView.swift in Sources */,
 				DA2C796628EF005B00922C47 /* NavigationRouter.swift in Sources */,
 				86A5E60228EEA6A80040DCFB /* DayOfWeekStackView.swift in Sources */,
 				86FC8CFA28EAB49B00B7752F /* HeaderView.swift in Sources */,
@@ -686,6 +693,7 @@
 				DA91E7DC28EC1E880091B6A3 /* EventManager.swift in Sources */,
 				86FBE20D2910F3A200961DE8 /* SettingListView.swift in Sources */,
 				868C544528F4199D006A9B38 /* CheckyMainView.swift in Sources */,
+				868E024A2913AF8F0039B52E /* CategoriListCellView.swift in Sources */,
 				860F766428FCB97A00CB034B /* CalendarView.swift in Sources */,
 				DA2C796828EF007900922C47 /* NavigationTranisitionStyle.swift in Sources */,
 				86F0B2C128F6B71A006E2536 /* WeeklyView.swift in Sources */,
