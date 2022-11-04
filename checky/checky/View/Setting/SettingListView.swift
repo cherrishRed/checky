@@ -21,6 +21,8 @@ struct SettingListView: View {
           coordinator.show(.reminderSetting)
         }
       }
+    }.onAppear{
+      coordinator.navigationController.navigationBar.isHidden = true
     }
     .background(Color.backgroundGray)
   }

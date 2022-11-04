@@ -22,6 +22,8 @@ struct CheckyMainView: View {
         SettingListView()
           .tabBarItem(tab: .setting, selection: $checkyMainViewModel.tabSelection)
       }
+    }.onAppear {
+      coordinator.navigationController.navigationBar.isHidden = false
     }
   }
 }
