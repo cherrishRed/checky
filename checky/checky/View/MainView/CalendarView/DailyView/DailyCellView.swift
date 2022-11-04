@@ -36,7 +36,7 @@ struct DailyCellView: View {
             HStack {
               ZStack {
                 RoundedRectangle(cornerRadius: 4)
-                  .fill(Color(viewModel.event.category.cgColor as! CGColor))
+                  .fill(Color(viewModel.event.category.cgColor))
                   .frame(width: 40)
                 Circle()
                   .fill(Color.basicWhite)
