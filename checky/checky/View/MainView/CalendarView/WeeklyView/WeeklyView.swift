@@ -8,70 +8,41 @@
 import SwiftUI
 
 struct WeeklyView: View {
+  @EnvironmentObject var coordinator: Coordinator<checkyRouter>
   @StateObject var viewModel: WeeklyViewModel
   
   var body: some View {
-    VStack(spacing: 1) {
-      HeaderView(viewModel: HeaderViewModel(dateHolder: viewModel.dateHolder, calendarHelper: viewModel.calendarHelper))
-      
-      HStack {
-        Spacer()
-        
-        Button("Monthly") { viewModel.action(.moveToMonthly) }
-          .buttonStyle(ToggleButtonStyle())
-          .padding(.top, 10)
-          .padding(.horizontal, 10)
-      }
-      
-      CalendarGrid
-      
-      Spacer()
-    }
-    .background(Color.backgroundGray)
-    .onAppear {
-      viewModel.action(.actionOnAppear)
-    }
-  }
-}
-
-extension WeeklyView {
-  var CalendarGrid: some View {
     let columns = Array(repeating: GridItem(.flexible(), spacing: 0, alignment: nil), count: 2)
     
-    var body: some View {
-      GeometryReader { geo in
-        LazyVGrid(columns: columns, spacing: 0) {
-          Text("달력 그릴 뷰")
+    GeometryReader { geo in
+      LazyVGrid(columns: columns, spacing: 0) {
+        Text("")
+        
+        ForEach(viewModel.allDatesForDisplay) { value in
           
-          ForEach(viewModel.allDatesForDisplay) { value in
-            
-            let events = viewModel.filteredEvent(value.date)
-            let reminders = viewModel.filteredReminder(value.date)
-            
-            WeeklyCellView(viewModel: WeeklyCellViewModel(
-              dateValue: value,
-              allEvnets: events,
-              allReminders: reminders))
-            .padding(.horizontal, 10)
-            .padding(.vertical, 6)
-            .frame(width: geo.size.width / 1.9, height: geo.size.height / viewModel.gridCloumnsCount * 2)
+          let events = viewModel.filteredEvent(value.date)
+          let reminders = viewModel.filteredReminder(value.date)
+          let clearedReminders = viewModel.filteredClearedReminder(value.date)
+          
+          WeeklyCellView(viewModel: WeeklyCellViewModel(dateValue: value,
+                                                        allEvnets: events,
+                                                        dueDateReminders: reminders,
+                                                        clearedReminders: clearedReminders,
+                                                          eventManager: viewModel.eventManager,
+                                                        reminderManager: viewModel.reminderManager))
+          .padding(.horizontal, 10)
+          .padding(.vertical, 6)
+          .frame(width: geo.size.width / 1.9, height: geo.size.height / viewModel.gridCloumnsCount * 2)
+          .onTapGesture {
+            coordinator.show(.daily(value.date, events, reminders, clearedReminders, viewModel.eventManager, viewModel.reminderManager))
+            print("tabbed!!!")
           }
         }
       }
-      .frame(maxHeight: .infinity)
-      .gesture(
-        DragGesture()
-          .onChanged { value in
-            viewModel.currentOffsetY = value.translation
-          }
-          .onEnded { value in
-            viewModel.action(.dragGestur)
-            withAnimation(.none) {
-              viewModel.action(.resetCurrentOffsetY)
-            }
-          }
-      )
     }
-    return body
+    .frame(maxHeight: .infinity)
+    .onAppear {
+      viewModel.action(.actionOnAppear)
+    }
   }
 }

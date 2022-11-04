@@ -39,9 +39,20 @@ struct ReminderManager: ManagerProtocol {
     taget
       .filter {
         $0.ekreminder.dueDateComponents?.day == calendar.dateComponents([.day], from: date).day &&
-        $0.ekreminder.dueDateComponents?.month == calendar.dateComponents([.month], from: date).month }
+        $0.ekreminder.dueDateComponents?.month == calendar.dateComponents([.month], from: date).month && $0.ekreminder.dueDateComponents?.year == calendar.dateComponents([.year], from: date).year}
   }
   
+  func filterHighPriorityTask(_ taget: [Reminder], _ date: Date) -> [Reminder] {
+    taget
+      .filter { $0.ekreminder.priority == 1 }
+  }
+  
+  func filterClearTask(_ taget: [Reminder], _ date: Date) -> [Reminder] {
+    taget
+      .filter { $0.ekreminder.completionDate != nil }
+      .filter { $0.ekreminder.completionDate?.day == date.day && $0.ekreminder.completionDate?.month == date.month && $0.ekreminder.completionDate?.year == date.year }
+  }
+    
   func getAllTaskforThisMonth(date: Date, completionHandler: @escaping ([Reminder]) -> Void) {
     let categories = store.calendars(for: .reminder)
     
@@ -59,22 +70,32 @@ struct ReminderManager: ManagerProtocol {
       }
     }
   }
-
-  func createNewTask(newTask: EKCalendarItem) {
-    guard let newTask = newTask as? EKReminder else { return }
     
+  func createNewTask(newTask: EKCalendarItem) {
+      guard let newTask = newTask as? EKReminder else { return }
+      
+      do {
+        try store.save(newTask, commit: true)
+      } catch {
+        print("reminder 저장 실패🥲")
+        print(error.localizedDescription)
+      }
+    }
+    
+  func getTaskCategories() -> [EKCalendar] {
+      return store.calendars(for: .reminder)
+    }
+    
+  func editReminder(_ reminder: EKReminder) -> Result<Bool, Error> {
     do {
-      try store.save(newTask, commit: true)
+      try store.save(reminder, commit: true)
+      return .success(reminder.isCompleted)
     } catch {
       print("reminder 저장 실패🥲")
-      print(error.localizedDescription)
+      return .failure(error)
     }
   }
-  
-  func getTaskCategories() -> [EKCalendar] {
-    return store.calendars(for: .reminder)
   }
-}
 
 
 extension EKCalendar: Identifiable {}

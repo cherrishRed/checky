@@ -7,18 +7,18 @@
 
 import Foundation
 
-enum AlramTime: CaseIterable {
-  case none
-  case onTime
-  case fiveMinute
-  case tenMinute
-  case fifteenMinute
-  case thirtyMinute
-  case oneHour
-  case twoHours
-  case oneDay
-  case twoDays
-  case oneWeek
+enum AlramTime: Double, CaseIterable {
+  case none = -1
+  case onTime = 0
+  case fiveMinute = -300
+  case tenMinute = -600
+  case fifteenMinute = -900
+  case thirtyMinute = -1800
+  case oneHour = -3600
+  case twoHours = -7200
+  case oneDay = -86400
+  case twoDays = -172800
+  case oneWeek = -604800
   
   var korean: String {
     switch self {

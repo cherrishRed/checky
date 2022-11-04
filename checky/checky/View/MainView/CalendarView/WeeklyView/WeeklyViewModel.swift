@@ -9,28 +9,25 @@ import Foundation
 import Combine
 
 class WeeklyViewModel: ViewModelable {
-  
-  @Published var dateHolder: DateHolder
+  @Published var date: Date
   @Published var events: [Event]
   @Published var reminders: [Reminder]
   @Published var currentOffsetY: CGSize
+  
   let eventManager: EventManager
   let reminderManager: ReminderManager
   let calendarHelper: CalendarCanDo
-  var moveToMonthly: () -> ()
   
   init(
-    dateHolder: DateHolder,
+    date: Date,
     eventManager: EventManager,
     reminderManager: ReminderManager,
     calendarHelper: CalendarCanDo,
     currentOffsetY: CGSize = .zero,
     events: [Event] = [],
-    reminders: [Reminder] = [],
-    moveToMonthly: @escaping () -> ()
+    reminders: [Reminder] = []
   ) {
-    self.moveToMonthly = moveToMonthly
-    self.dateHolder = dateHolder
+    self.date = date
     self.eventManager = eventManager
     self.reminderManager = reminderManager
     self.calendarHelper = calendarHelper
@@ -39,23 +36,19 @@ class WeeklyViewModel: ViewModelable {
     self.reminders = reminders
   }
   
+  var allDatesForDisplay: [DateValue] {
+    return calendarHelper.extractDates(date)
+  }
+  
   enum Action {
     case actionOnAppear
-    case dragGestur
-    case resetCurrentOffsetY
-    case moveToMonthly
+
   }
   
   func action(_ action: Action) {
     switch action {
     case .actionOnAppear:
       onAppear()
-    case .dragGestur:
-      dragGestureonEnded()
-    case .resetCurrentOffsetY:
-      resetCurrentOffsetY()
-    case .moveToMonthly:
-      moveToMonthly()
     }
   }
   
@@ -70,7 +63,7 @@ class WeeklyViewModel: ViewModelable {
   }
   
   private func fetchEvents() {
-    eventManager.getAllTaskforThisMonth(date: dateHolder.date, completionHandler: { [weak self] eventList in
+    eventManager.getAllTaskforThisMonth(date: date, completionHandler: { [weak self] eventList in
       DispatchQueue.main.async {
         self?.events = eventList
       }
@@ -78,15 +71,11 @@ class WeeklyViewModel: ViewModelable {
   }
   
   private func fetchReminder() {
-    reminderManager.getAllTaskforThisMonth(date: dateHolder.date, completionHandler: { [weak self] reminderList in
+    reminderManager.getAllTaskforThisMonth(date: date, completionHandler: { [weak self] reminderList in
       DispatchQueue.main.async {
         self?.reminders = reminderList
       }
     })
-  }
-  
-  var allDatesForDisplay: [DateValue] {
-    return calendarHelper.extractDates(dateHolder.date)
   }
     
   func filteredEvent(_ date: Date) -> [Event] {
@@ -97,21 +86,14 @@ class WeeklyViewModel: ViewModelable {
     reminderManager.filterTask(reminders, date)
   }
   
+  func filteredClearedReminder(_ date: Date) -> [Reminder] {
+    reminderManager.filterClearTask(reminders, date)
+  }
+  
   var gridCloumnsCount: CGFloat {
-    return CGFloat(calendarHelper.extractDates(dateHolder.date).count + 1)
+    return CGFloat(calendarHelper.extractDates(date).count + 1)
   }
   
-  func dragGestureonEnded() {
-    guard currentOffsetY.height < 0 else {
-      dateHolder.date = calendarHelper.minusDate(dateHolder.date)
-      return
-    }
-    dateHolder.date = calendarHelper.plusDate(dateHolder.date)
-  }
-  
-  func resetCurrentOffsetY() {
-    currentOffsetY = .zero
-  }
 }
 
 protocol ViewModelable: ObservableObject {

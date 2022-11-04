@@ -33,6 +33,20 @@ extension Date {
     return dateformmater.string(from: self)
   }
   
+  var month: String {
+    let dateformmater = DateFormatter()
+    dateformmater.locale = Locale(identifier: "ko_KR")
+    dateformmater.dateFormat = "M"
+    return dateformmater.string(from: self)
+  }
+  
+  var year: String {
+    let dateformmater = DateFormatter()
+    dateformmater.locale = Locale(identifier: "ko_KR")
+    dateformmater.dateFormat = "yyyy"
+    return dateformmater.string(from: self)
+  }
+  
   var dayOfWeek: String {
     let formatter = DateFormatter()
     formatter.dateFormat = "EEE"
@@ -60,5 +74,30 @@ extension Date {
     dateformmater.locale = Locale(identifier: "ko_KR")
     dateformmater.dateFormat = "a hh : mm "
     return dateformmater.string(from: self)
+  }
+  
+  func compareWithoutTime(_ date: Date) -> Bool {
+    let dateformmater = DateFormatter()
+    dateformmater.locale = Locale(identifier: "ko_KR")
+    dateformmater.dateFormat = "yyyy년 M월 d일"
+    return dateformmater.string(from: self) == dateformmater.string(from: date)
+  }
+  
+  var minusSevenDates: Date {
+    let calendar = Calendar(identifier: .gregorian)
+    
+    guard let previousWeek = calendar.date(byAdding: .day, value: -7, to: self) else {
+      return Date()
+    }
+    return previousWeek
+  }
+  
+  var plusSevenDates: Date {
+    let calendar = Calendar(identifier: .gregorian)
+
+    guard let nextWeek = calendar.date(byAdding: .day, value: 7, to: self) else {
+      return Date()
+    }
+    return nextWeek
   }
 }

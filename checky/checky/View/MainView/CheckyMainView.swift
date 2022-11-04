@@ -15,6 +15,7 @@ struct CheckyMainView: View {
     VStack {
       CustomTabBarContainerView(selection: $checkyMainViewModel.tabSelection) {
         CalendarView()
+          .environmentObject(coordinator)
           .tabBarItem(tab: .calendar, selection: $checkyMainViewModel.tabSelection)
         Color.red
           .tabBarItem(tab: .reminder, selection: $checkyMainViewModel.tabSelection)

@@ -21,7 +21,6 @@ struct ToggleButtonStyle: ButtonStyle {
 }
 
 struct CreateButtonStyle: ButtonStyle {
-  
   func makeBody(configuration: Self.Configuration) -> some View {
     ZStack {
       RoundedRectangle(cornerRadius: 8)

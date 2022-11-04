@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MonthlyCellView: View {
-  
   @StateObject var viewModel: MonthlyCellViewModel
   
   var body: some View {
@@ -23,20 +22,30 @@ struct MonthlyCellView: View {
               .fill(Color.fontBlack)
               .frame(width: 20, height: 20)
             Text(viewModel.dateValue.date.day)
+              .font(.caption2)
               .foregroundColor(Color.basicWhite)
           } else {
             Text(viewModel.dateValue.date.day)
+              .frame(height: 20)
+              .font(.caption2)
               .foregroundColor(viewModel.dateValue.isCurrentMonth ? Color.fontMediumGray : Color.fontLightGray)
+              
           }
         }
-        
-        ForEach(viewModel.allEvnets, id: \.self) { event in
-          EventBlockView(event: event)
+        Group {
+          ForEach(viewModel.allEvnets, id: \.self) { event in
+            EventBlockView(event: event)
+          }
+          
+          ForEach(viewModel.filteredHightPriorityDuedateReminder(), id: \.self) { reminder in
+            ReminderBlockView(reminder: reminder)
+          }
+          
+          ForEach(viewModel.filteredHightPriorityClearedReminder(), id: \.self) { reminder in
+            ReminderBlockView(reminder: reminder)
+          }
         }
-        
-        ForEach(viewModel.allReminders, id: \.self) { reminder in
-          ReminderBlockView(reminder: reminder)
-        }
+        .opacity(viewModel.dateValue.isCurrentMonth ? 1.0 : 0.3)
       }
     }
   }
@@ -47,7 +56,7 @@ struct EventBlockView: View {
   
   var body: some View {
     ZStack(alignment: .leading) {
-      Rectangle()
+      RoundedRectangle(cornerRadius: 2)
         .fill(Color(event.category.cgColor))
         .frame(maxWidth: .infinity)
         .layoutPriority(1)
@@ -55,13 +64,14 @@ struct EventBlockView: View {
       Text(event.ekevent.title)
         .padding(1)
         .lineLimit(1)
-        .font(.caption)
+        .font(.caption2)
         .fontWeight(.semibold)
         .foregroundColor(Color.basicWhite)
         .fixedSize(horizontal: true, vertical: false)
     }
     .frame(height: 16)
     .padding(.vertical, 1.1)
+    .padding(.horizontal, 0.5)
   }
 }
 
@@ -86,7 +96,7 @@ struct ReminderBlockView: View {
           .frame(maxWidth: .infinity)
           .layoutPriority(1)
         Text(reminder.ekreminder.title)
-          .font(.caption)
+          .font(.caption2)
           .foregroundColor(Color.fontDarkBlack)
           .fixedSize(horizontal: true, vertical: false)
       }

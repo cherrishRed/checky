@@ -35,9 +35,9 @@ struct EventManager: ManagerProtocol {
   }
   
   func filterTask(_ target: [Event], _ date: Date) -> [Event] {
-    target
-      .filter { $0.ekevent.startDate.compare(date) != ComparisonResult.orderedDescending &&
-        $0.ekevent.endDate.compare(date) != ComparisonResult.orderedAscending }
+    return target.filter { event in
+      return event.ekevent.startDate.compareWithoutTime(date) || event.ekevent.endDate.compareWithoutTime(date)
+    }
   }
   
   func getAllTaskforThisMonth(date: Date, completionHandler: @escaping ([Event]) -> Void) {
@@ -51,7 +51,7 @@ struct EventManager: ManagerProtocol {
     var list: [Event] = []
     
     for category in categories {
-      let predicate = store.predicateForEvents(withStart: firstDate, end: lastDate, calendars: [category])
+      let predicate = store.predicateForEvents(withStart: firstDate.minusSevenDates, end: lastDate.plusSevenDates, calendars: [category])
       let eventList = store.events(matching: predicate).map { ekevent -> Event in
         return Event(ekevent: ekevent, category: category)
       }
@@ -65,6 +65,17 @@ struct EventManager: ManagerProtocol {
     
     do {
       try store.save(newTask, span: EKSpan.futureEvents, commit: true)
+    } catch {
+      print("event 저장 실패🥲")
+      print(error.localizedDescription)
+    }
+  }
+  
+  func editTask(task: EKCalendarItem) {
+    guard let task = task as? EKEvent else { return }
+    
+    do {
+      try store.save(task, span: EKSpan.futureEvents, commit: true)
     } catch {
       print("event 저장 실패🥲")
       print(error.localizedDescription)

@@ -10,5 +10,4 @@ import Combine
 
 class CalendarViewModel: ObservableObject {
   @Published var mode: Bool = true
-  
 }
