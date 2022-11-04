@@ -48,11 +48,11 @@ enum checkyRouter: NavigationRouter {
         EventCreateAndEditView(viewModel: EventCreateAndEditViewModel(mode: .create, eventManager: EventManager()))
       case .createReminder:
         ReminderCreateAndEditView(viewModel: ReminderCreateAndEditViewModel(mode: .create, reminderManager: ReminderManager()))
-      case .daily(let date, let events, let reminders, let clearedReminders, let eventManager, let reminderManager):
+      case let .daily(date, events, reminders, clearedReminders, eventManager, reminderManager):
         DailyView(viewModel: DailyViewModel(date: date, events: events, reminders: reminders, clearedReminders: clearedReminders, eventManager: eventManager, reminderManager: reminderManager))
-      case .editEvent(let event, let eventManager):
+      case let .editEvent(event, eventManager):
         EventCreateAndEditView(viewModel: EventCreateAndEditViewModel(event: event, eventManager: eventManager))
-      case .editReminder(let reminder, let reminderManager):
+      case let .editReminder(reminder, reminderManager):
         ReminderCreateAndEditView(viewModel: ReminderCreateAndEditViewModel(reminder: reminder, reminderManager: reminderManager))
         
     }
