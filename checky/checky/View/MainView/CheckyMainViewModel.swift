@@ -8,7 +8,6 @@
 import Foundation
 
 class CheckyMainViewModel: ObservableObject {
-  
   @Published var selection: String = "home"
   @Published var tabSelection: TabBarItem = .calendar
   

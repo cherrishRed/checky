@@ -8,17 +8,17 @@
 import Foundation
 
 class MonthlyStackViewModel: ViewModelable {
-  let eventManager: EventManager
-  let reminderManager: ReminderManager
-  let calendarHelper: CalendarCanDo
-  let offsetWidth: CGFloat
-  var moveToWeek: () -> ()
-
   @Published var dateHolder: DateHolder
   @Published var events: [Event]
   @Published var reminders: [Reminder]
   @Published var currentOffsetX: CGFloat
   @Published var currentIndex: Int
+  
+  let eventManager: EventManager
+  let reminderManager: ReminderManager
+  let calendarHelper: CalendarCanDo
+  let offsetWidth: CGFloat
+  var moveToWeek: () -> ()
     
   init(
     dateHolder: DateHolder,

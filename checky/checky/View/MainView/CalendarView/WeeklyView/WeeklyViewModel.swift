@@ -9,11 +9,11 @@ import Foundation
 import Combine
 
 class WeeklyViewModel: ViewModelable {
-  
   @Published var date: Date
   @Published var events: [Event]
   @Published var reminders: [Reminder]
   @Published var currentOffsetY: CGSize
+  
   let eventManager: EventManager
   let reminderManager: ReminderManager
   let calendarHelper: CalendarCanDo

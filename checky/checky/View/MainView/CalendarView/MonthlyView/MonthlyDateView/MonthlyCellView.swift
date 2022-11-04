@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MonthlyCellView: View {
-  
   @StateObject var viewModel: MonthlyCellViewModel
   
   var body: some View {

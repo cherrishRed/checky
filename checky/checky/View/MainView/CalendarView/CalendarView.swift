@@ -12,6 +12,7 @@ import EventKit
 struct CalendarView: View {
   @EnvironmentObject var coordinator: Coordinator<checkyRouter>
   @StateObject var viewModel: CalendarViewModel = CalendarViewModel()
+  
   var eventManager: EventManager = EventManager()
   var reminderManager: ReminderManager = ReminderManager()
   

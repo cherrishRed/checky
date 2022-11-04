@@ -8,8 +8,6 @@
 import SwiftUI
 
 enum checkyRouter: NavigationRouter {
-  
-  
   case main
   case create
   case createEvent
@@ -54,7 +52,6 @@ enum checkyRouter: NavigationRouter {
         EventCreateAndEditView(viewModel: EventCreateAndEditViewModel(event: event, eventManager: eventManager))
       case let .editReminder(reminder, reminderManager):
         ReminderCreateAndEditView(viewModel: ReminderCreateAndEditViewModel(reminder: reminder, reminderManager: reminderManager))
-        
     }
   }
 }

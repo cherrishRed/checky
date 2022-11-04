@@ -8,16 +8,15 @@
 import SwiftUI
 
 class WeeklyStackViewModel: ViewModelable {
+  @Published var dateHolder: DateHolder
+  @Published var currentOffsetX: CGFloat
+  @Published var currentIndex: Int
+  
   let eventManager: EventManager
   let reminderManager: ReminderManager
   let calendarHelper: CalendarCanDo
   let offsetWidth: CGFloat
   var moveToMonthly: () -> ()
-  
-  @Published var dateHolder: DateHolder
-  
-  @Published var currentOffsetX: CGFloat
-  @Published var currentIndex: Int
   
   init(
     dateHolder: DateHolder,
@@ -115,6 +114,4 @@ class WeeklyStackViewModel: ViewModelable {
   func extractMonthDates() -> [DateValue] {
     calendarHelper.extractMonthDates(dateHolder.date)
   }
-  
-
 }

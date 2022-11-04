@@ -10,6 +10,7 @@ import Foundation
 class DailyReminderCellViewModel: ViewModelable {
   @Published var reminder: Reminder
   @Published var isCompletion: Bool
+  
   var reminderManager: ReminderManager
   
   init(reminder: Reminder,

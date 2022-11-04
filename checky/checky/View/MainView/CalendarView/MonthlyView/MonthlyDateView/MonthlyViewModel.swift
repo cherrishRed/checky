@@ -9,13 +9,13 @@ import SwiftUI
 import Combine
 
 class MonthlyViewModel: ViewModelable {
-  let eventManager: EventManager
-  let reminderManager: ReminderManager
-  let calendarHelper: CalendarCanDo
-
   @Published var date: Date
   @Published var events: [Event]
   @Published var reminders: [Reminder]
+  
+  let eventManager: EventManager
+  let reminderManager: ReminderManager
+  let calendarHelper: CalendarCanDo
     
   init(
     date: Date,

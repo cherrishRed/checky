@@ -58,9 +58,3 @@ struct CreateSelectorView: View {
     }
   }
 }
-
-struct CreateSelectorView_Previews: PreviewProvider {
-  static var previews: some View {
-    CreateSelectorView()
-  }
-}

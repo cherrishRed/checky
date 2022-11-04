@@ -9,15 +9,12 @@ import Foundation
 
 class DailyViewModel: ViewModelable {
   @Published var date: Date
-  
   @Published var events: [Event]
   @Published var allDayEvents: [Event]
   @Published var timeEvents: [Event]
-  
   @Published var reminders: [Reminder]
   @Published var dayReminders: [Reminder]
   @Published var timeReminders: [Reminder]
-  
   @Published var clearedReminders: [Reminder]
   
   var eventManager: EventManager
