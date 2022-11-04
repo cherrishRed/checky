@@ -63,13 +63,8 @@ struct WeeklyCalendarHelper: CalendarCanDo {
       return []
     }
     
-    guard let preMonth = calendar.date(byAdding: .day, value: -7, to: date) else {
-      return []
-    }
-    
-    guard let nextMonth = calendar.date(byAdding: .day, value: 7, to: date) else {
-      return []
-    }
+    let preMonth = plusDate(date)
+    let nextMonth = minusDate(date)
     
     dates.append(preMonth)
     dates.append(currentMonth)
