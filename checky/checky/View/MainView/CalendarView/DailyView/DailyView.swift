@@ -36,9 +36,7 @@ struct DailyView: View {
             .padding()
           }
           
-          if viewModel.dayReminders.count == 0 && viewModel.timeReminders.count == 0 {
-            
-          } else {
+          if viewModel.dayReminders.count != 0 || viewModel.timeReminders.count != 0 {
             VStack(alignment: .leading, spacing: 4) {
               Text("오늘이 마감인 미리알림")
                 .padding(.leading, 4)
