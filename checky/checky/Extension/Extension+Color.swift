@@ -30,5 +30,5 @@ extension Color {
   static let basicLightIndigo = Color("BasicLightIndigo")
   static let basicIndigo = Color("BasicIndigo")
   static let basicPink = Color("BasicPink")
-  static let basicPuple = Color("BasicPurple")
+  static let basicPurple = Color("BasicPurple")
 }

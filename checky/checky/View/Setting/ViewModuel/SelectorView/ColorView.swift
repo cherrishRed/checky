@@ -20,7 +20,7 @@ struct ColorView: View {
     Color.basicLightIndigo,
     Color.basicIndigo,
     Color.basicPink,
-    Color.basicPuple
+    Color.basicPurple
   ]
   
   let columns = Array(repeating: GridItem(.flexible(), spacing: 20, alignment: nil), count: 5)
