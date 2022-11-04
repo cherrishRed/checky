@@ -37,7 +37,7 @@ struct DailyView: View {
           }
           
           if viewModel.dayReminders.count == 0 && viewModel.timeReminders.count == 0 {
-  
+            
           } else {
             VStack(alignment: .leading, spacing: 4) {
               Text("오늘이 마감인 미리알림")
@@ -48,7 +48,7 @@ struct DailyView: View {
           }
           
           if viewModel.clearedReminders.count == 0 {
-  
+            
           } else {
             VStack(alignment: .leading, spacing: 4) {
               Text("오늘 완료한 미리알림")
@@ -57,8 +57,6 @@ struct DailyView: View {
             }
             .padding()
           }
-          
-          
         }
       }
       .background(Color.backgroundGray)
@@ -70,7 +68,7 @@ struct DailyView: View {
       RoundedRectangle(cornerRadius: 4)
         .fill(Color.basicWhite)
       VStack(spacing: 10) {
-  
+        
         ForEach(viewModel.allDayEvents, id: \.self) { event in
           DailyCellView(viewModel: DailyCellViewModel(event: event, eventManager: viewModel.eventManager))
             .environmentObject(coordinator)

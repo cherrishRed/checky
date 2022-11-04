@@ -9,6 +9,7 @@ import Foundation
 
 class DailyViewModel: ViewModelable {
   @Published var date: Date
+  
   @Published var events: [Event]
   @Published var allDayEvents: [Event]
   @Published var timeEvents: [Event]

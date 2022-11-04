@@ -452,8 +452,8 @@
 			isa = PBXGroup;
 			children = (
 				DA4E4A4A290C74F800CF45E2 /* DailyView.swift */,
-				DA2789942911C7F300E76B53 /* DailyHeaderView.swift */,
 				DA4E4A4E290C8ADA00CF45E2 /* DailyViewModel.swift */,
+				DA2789942911C7F300E76B53 /* DailyHeaderView.swift */,
 				DA4E4A4C290C78C700CF45E2 /* DailyCellView.swift */,
 				DA78BC76290FE5E900E2E2AD /* DailyCellViewModel.swift */,
 				DA78BC74290FC63F00E2E2AD /* DailyReminderCellView.swift */,
