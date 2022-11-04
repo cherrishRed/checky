@@ -70,14 +70,13 @@ struct DailyView: View {
       RoundedRectangle(cornerRadius: 4)
         .fill(Color.basicWhite)
       VStack(spacing: 10) {
-        // 하루종일 일정
+  
         ForEach(viewModel.allDayEvents, id: \.self) { event in
           DailyCellView(viewModel: DailyCellViewModel(event: event, eventManager: viewModel.eventManager))
             .environmentObject(coordinator)
             .foregroundColor(Color.fontBlack)
         }
         
-        // 시간이 정해져 있는 이벤트
         ForEach(0..<viewModel.timeEvents.count, id: \.self) { index in
           VStack(alignment: .leading) {
             DailyCellView(viewModel: DailyCellViewModel(event: viewModel.timeEvents[index], eventManager: viewModel.eventManager))
@@ -96,14 +95,12 @@ struct DailyView: View {
         .fill(Color.basicWhite)
       VStack(spacing: 10) {
         
-        // 하루종일 reminder
         ForEach(viewModel.dayReminders, id: \.self) { reminder in
           DailyReminderCellView(viewModel: DailyReminderCellViewModel(reminder: reminder, reminderManager: viewModel.reminderManager))
             .environmentObject(coordinator)
             .foregroundColor(Color.fontBlack)
         }
         
-        // 시간이 정해져 있는 리마인더
         ForEach(viewModel.timeReminders, id: \.self) { reminder in
           DailyReminderCellView(viewModel: DailyReminderCellViewModel(reminder: reminder, reminderManager: viewModel.reminderManager))
             .environmentObject(coordinator)
@@ -120,7 +117,6 @@ struct DailyView: View {
         .fill(Color.basicWhite)
       VStack(spacing: 10) {
         
-        // 하루종일 reminder
         ForEach(viewModel.clearedReminders, id: \.self) { reminder in
           DailyReminderCellView(viewModel: DailyReminderCellViewModel(reminder: reminder, reminderManager: viewModel.reminderManager))
             .foregroundColor(Color.fontBlack)
@@ -128,11 +124,5 @@ struct DailyView: View {
       }
       .padding()
     }
-  }
-}
-
-extension EKEvent {
-  func overlapTime(_ event: EKEvent) -> Bool {
-    return self.endDate > event.startDate
   }
 }

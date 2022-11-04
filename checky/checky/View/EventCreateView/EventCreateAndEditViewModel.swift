@@ -192,7 +192,6 @@ class EventCreateAndEditViewModel: ObservableObject {
     if mode == .create {
       createEvent()
     } else {
-      // 이벤트 수정
       editEvent()
     }
     closeAllPickers()
