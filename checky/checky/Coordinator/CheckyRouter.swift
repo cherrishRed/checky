@@ -14,10 +14,10 @@ enum checkyRouter: NavigationRouter {
   case create
   case createEvent
   case createReminder
-  case EventSetting
-  case ReminderSetting
-  case EventSettingButton(category: EKCalendar)
-  case ReminderSettingButton(category: EKCalendar)
+  case eventSetting
+  case reminderSetting
+  case eventSettingButton(category: EKCalendar)
+  case reminderSettingButton(category: EKCalendar)
   
   var transition: NavigationTranisitionStyle {
     switch self {
@@ -29,13 +29,13 @@ enum checkyRouter: NavigationRouter {
       return .presentModally
     case .createReminder:
       return .presentModally
-    case .EventSetting:
+    case .eventSetting:
       return .push
-    case .ReminderSetting:
+    case .reminderSetting:
       return .push
-    case .EventSettingButton:
+    case .eventSettingButton:
       return .push
-    case .ReminderSettingButton:
+    case .reminderSettingButton:
       return .push
     }
   }
@@ -54,13 +54,13 @@ enum checkyRouter: NavigationRouter {
       EventCreateAndEditView(viewModel: EventCreateAndEditViewModel(mode: .create, eventManager: eventManager))
     case .createReminder:
       ReminderCreateAndEditView(viewModel: ReminderCreateAndEditViewModel(mode: .create, reminderManager: reminderManager))
-    case .EventSetting:
+    case .eventSetting:
       EventCategoriListView(viewModel: EventCategoriListViewModel(eventManager: eventManager))
-    case .ReminderSetting:
+    case .reminderSetting:
       ReminderCategoriListView(viewModel: ReminderCategoriListViewModel(reminderManager: reminderManager))
-    case let .EventSettingButton(category):
+    case let .eventSettingButton(category):
       EventCategoriSettingView(viewModel: EventCategoriSettingViewModel(category: category, eventManager: eventManager))
-    case let .ReminderSettingButton(category):
+    case let .reminderSettingButton(category):
       ReminderCategoriSettingView(viewModel: ReminderCategoriSettingViewModel(category: category, reminderManager: reminderManager))
     }
   }

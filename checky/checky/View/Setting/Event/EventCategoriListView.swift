@@ -19,7 +19,7 @@ struct EventCategoriListView: View {
       VStack(alignment: .leading) {
         ForEach(viewModel.categories) { category in
           CategoriListCellView(category: category,mode: .calendar) {
-            coordinator.show(.EventSettingButton(category: category))
+            coordinator.show(.eventSettingButton(category: category))
           }
         }
       }

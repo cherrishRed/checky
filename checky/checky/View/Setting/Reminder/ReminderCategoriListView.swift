@@ -16,7 +16,7 @@ struct ReminderCategoriListView: View {
       VStack(alignment: .leading) {
         ForEach(viewModel.categories) { category in
           CategoriListCellView(category: category, mode: .reminder) {
-            coordinator.show(.ReminderSettingButton(category: category))
+            coordinator.show(.reminderSettingButton(category: category))
           }
         }
       }
