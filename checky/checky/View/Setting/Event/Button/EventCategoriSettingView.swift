@@ -7,7 +7,6 @@
 
 import SwiftUI
 import EventKit
-import Combine
 
 struct EventCategoriSettingView: View {
   @ObservedObject var viewModel: EventCategoriSettingViewModel

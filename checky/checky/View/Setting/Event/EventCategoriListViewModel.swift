@@ -5,10 +5,8 @@
 //  Created by song on 2022/11/01.
 //
 
-import Foundation
 import EventKit
 import SwiftUI
-import Combine
 
 class EventCategoriListViewModel: ObservableObject {
   let eventManager: EventManager
