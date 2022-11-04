@@ -29,6 +29,6 @@ extension View {
 
 extension View {
   func fetchUserDefaultEmoji(calendarIdentifier: String) -> String {
-   return UserDefaults.standard.string(forKey: ("\(calendarIdentifier)_imoji")) ?? ""
+   return UserDefaults.standard.string(forKey: ("\(calendarIdentifier)_emoji")) ?? ""
   }
 }

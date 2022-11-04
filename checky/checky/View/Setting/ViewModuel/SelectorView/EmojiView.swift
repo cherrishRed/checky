@@ -55,7 +55,7 @@ struct EmojiView: View {
                       return
                     }
                     self.txt = String(unicode)
-                    UserDefaults.standard.set(txt, forKey: "\(calendarIdentifier)_imoji")
+                    UserDefaults.standard.set(txt, forKey: "\(calendarIdentifier)_emoji")
                   },
                          label: {
                     if UnicodeScalar(j)?.properties.isEmoji != nil, let unicode = UnicodeScalar(j) {
