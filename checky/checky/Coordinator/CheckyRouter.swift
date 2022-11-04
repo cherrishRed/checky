@@ -24,7 +24,7 @@ enum checkyRouter: NavigationRouter {
   var transition: NavigationTranisitionStyle {
     switch self {
       case .main:
-        return .push
+        return .pushNavigationBarIsHidden
       case .create:
         return .presentHalfModally
       case .createEvent:
