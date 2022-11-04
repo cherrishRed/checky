@@ -21,20 +21,15 @@ struct WeeklyCellView: View {
           Text(viewModel.dateValue.date.dayOfWeek)
             .font(.caption2)
             .foregroundColor(.black.opacity(0.5))
-          if Calendar.current.isDateInToday(viewModel.dateValue.date) {
-            ZStack {
+          ZStack {
+            if Calendar.current.isDateInToday(viewModel.dateValue.date) {
               Circle()
                 .fill(Color.fontBlack)
                 .frame(width: 20, height: 20)
-              Text(viewModel.dateValue.date.day)
-                .font(.caption2)
-                .foregroundColor(Color.basicWhite)
             }
-            
-          } else {
             Text(viewModel.dateValue.date.day)
               .font(.caption2)
-              .foregroundColor(Color.fontBlack)
+              .foregroundColor(Calendar.current.isDateInToday(viewModel.dateValue.date) ? Color.fontBlack : Color.basicWhite)
           }
         }
         .padding(.top, 10)

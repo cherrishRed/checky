@@ -54,13 +54,10 @@ struct WeeklyStackView: View {
               .padding(.horizontal, 16)
             miniCalendarView
           }
-          .frame(width: geo.size.width/2, height: geo.size.height/4)
+          .frame(width: geo.size.width / 2, height: geo.size.height / 4)
           .background(Color.backgroundGray)
-          
         }
-        
       }
-      
     }
     .background(Color.backgroundGray)
   }

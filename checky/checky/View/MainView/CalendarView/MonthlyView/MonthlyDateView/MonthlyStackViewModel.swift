@@ -70,6 +70,7 @@ class MonthlyStackViewModel: ViewModelable {
   private func moveToPreviousMonth() {
     currentOffsetX += offsetWidth
       currentIndex -= 1
+    dateHolder.date = calendarHelper.minusDate(dateHolder.date)
   }
   
   private func moveToNextMonth() {
@@ -79,7 +80,7 @@ class MonthlyStackViewModel: ViewModelable {
   
   private func onChagnedIndex(_ changedIndex: Int) {
     if changedIndex == 0 {
-      dateHolder.date = calendarHelper.minusDate(dateHolder.date)
+//      dateHolder.date = calendarHelper.minusDate(dateHolder.date)
       currentOffsetX = -offsetWidth
       currentIndex = 1
     }

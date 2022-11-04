@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-
-
 struct MonthlyView: View {
   @EnvironmentObject var coordinator: Coordinator<checkyRouter>
   @StateObject var viewModel: MonthlyViewModel
