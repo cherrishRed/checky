@@ -21,5 +21,3 @@ final class SceneDelegate: NSObject, UIWindowSceneDelegate {
     coordinator.start()
   }
 }
-
-
