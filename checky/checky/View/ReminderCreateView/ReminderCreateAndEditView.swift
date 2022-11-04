@@ -9,12 +9,7 @@ import SwiftUI
 
 struct ReminderCreateAndEditView: View {
   @EnvironmentObject var coordinator: Coordinator<checkyRouter>
-
-  @ObservedObject var viewModel: ReminderCreateAndEditViewModel
-  
-  init(viewModel: ReminderCreateAndEditViewModel) {
-    self.viewModel = viewModel
-  }
+@ObservedObject var viewModel = ReminderCreateAndEditViewModel(mode: .create, reminderManager: ReminderManager())
   
   var body: some View {
     VStack {

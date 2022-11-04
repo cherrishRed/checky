@@ -87,7 +87,6 @@ struct EventManager: ManagerProtocol {
   }
   
   private func filterFirstDayEvent(_ data: [Event], _ date: Date) -> Event? {
-    
     data
       .filter { $0.ekevent.startDate.compare(date) == ComparisonResult.orderedSame }
       .first

@@ -34,10 +34,10 @@ class Coordinator<Router: NavigationRouter>: ObservableObject {
     case .presentFullscreen:
       viewController.modalPresentationStyle = .fullScreen
       navigationController.present(viewController, animated: animated)
-      case .presentHalfModally:
-        viewController.sheetPresentationController?.detents = [.medium(), .large()]
-        viewController.sheetPresentationController?.prefersGrabberVisible = true
-        navigationController.present(viewController, animated: animated)
+    case .presentHalfModally:
+      viewController.sheetPresentationController?.detents = [.medium(), .large()]
+      viewController.sheetPresentationController?.prefersGrabberVisible = true
+      navigationController.present(viewController, animated: animated)
     }
   }
   
