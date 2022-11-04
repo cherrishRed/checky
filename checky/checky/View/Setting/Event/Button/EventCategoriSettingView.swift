@@ -24,7 +24,7 @@ struct EventCategoriSettingView: View {
           HStack {
             Text("이모지")
             Spacer()
-            Text(viewModel.imoji)
+            Text(viewModel.emoji)
           }
           .padding(.horizontal, 15)
         }
@@ -47,13 +47,13 @@ struct EventCategoriSettingView: View {
         }
         Spacer()
         ColorView(color: $viewModel.color, calendarIdentifier: viewModel.category.calendarIdentifier)
-        EmojiView(txt: $viewModel.imoji, calendarIdentifier: viewModel.category.calendarIdentifier, firstUnicode: 0x1F600, lastUnicode: 0x1F64F)
+        EmojiView(txt: $viewModel.emoji, calendarIdentifier: viewModel.category.calendarIdentifier, firstUnicode: 0x1F600, lastUnicode: 0x1F64F)
         Spacer()
       }
       .padding(.horizontal, 15)
     }
     .onAppear {
-      viewModel.imoji = fetchUserDefaultEmoji(calendarIdentifier: viewModel.category.calendarIdentifier)
+      viewModel.emoji = fetchUserDefaultEmoji(calendarIdentifier: viewModel.category.calendarIdentifier)
       viewModel.color = fetchUserDefaultColor(calendarIdentifier: viewModel.category.calendarIdentifier)
     }
     .background(Color.backgroundGray)
