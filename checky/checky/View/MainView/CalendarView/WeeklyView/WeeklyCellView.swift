@@ -29,7 +29,7 @@ struct WeeklyCellView: View {
             }
             Text(viewModel.dateValue.date.day)
               .font(.caption2)
-              .foregroundColor(Calendar.current.isDateInToday(viewModel.dateValue.date) ? Color.fontBlack : Color.basicWhite)
+              .foregroundColor(Calendar.current.isDateInToday(viewModel.dateValue.date) ? Color.basicWhite : Color.fontBlack)
           }
         }
         .padding(.top, 10)

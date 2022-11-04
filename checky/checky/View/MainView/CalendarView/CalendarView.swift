@@ -19,7 +19,6 @@ struct CalendarView: View {
   var body: some View {
     Group {
       if viewModel.mode {
-// 여기서부터
         WeeklyStackView(viewModel: WeeklyStackViewModel(dateHolder: DateHolder(), eventManager: eventManager, reminderManager: reminderManager, calendarHelper: WeeklyCalendarHelper(), offsetWidth: UIScreen.main.bounds.width, moveToMonthly: { viewModel.mode.toggle() } ))
           .environmentObject(coordinator)
         
@@ -33,20 +32,6 @@ struct CalendarView: View {
     .onAppear {
       eventManager.getPermission()
       reminderManager.getPermission()
-      
-  //여길경계로    
-        WeeklyView(viewModel:  WeeklyViewModel(dateHolder: DateHolder(), eventManager: EventManager(), reminderManager: ReminderManager(), calendarHelper: WeeklyCalendarHelper(), moveToMonthly: {
-          viewModel.mode.toggle()
-        }))
-      } else {
-        MonthlyView(viewModel:  MonthlyViewModel(dateHolder: DateHolder(), eventManager: EventManager(), reminderManager: ReminderManager(), calendarHelper: MonthyCalendarHelper(), moveToWeek: {
-          viewModel.mode.toggle()
-        }))
-      }
-    }.onAppear {
-      EventManager().getPermission()
-      ReminderManager().getPermission()
-//여기서부터
     }
   }
 }
