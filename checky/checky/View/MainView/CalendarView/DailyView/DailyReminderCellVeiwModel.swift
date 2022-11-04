@@ -6,13 +6,11 @@
 //
 
 import Foundation
-import Combine
 
 class DailyReminderCellViewModel: ViewModelable {
   @Published var reminder: Reminder
   @Published var isCompletion: Bool
   var reminderManager: ReminderManager
-  var store =  Set<AnyCancellable>()
   
   init(reminder: Reminder,
        reminderManager: ReminderManager) {

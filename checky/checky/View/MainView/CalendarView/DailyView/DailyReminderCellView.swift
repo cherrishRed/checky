@@ -24,7 +24,6 @@ struct DailyReminderCellView: View {
         HStack {
           
           Button {
-            //
             viewModel.action(.tappedCompletion)
           } label: {
             ZStack {
@@ -43,7 +42,6 @@ struct DailyReminderCellView: View {
           .padding(.leading, 4)
           
           Button {
-            //
             coordinator.dismiss()
             coordinator.show(.editReminder(viewModel.reminder, viewModel.reminderManager))
           } label: {
