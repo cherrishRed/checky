@@ -15,32 +15,31 @@ struct EmojiView: View {
   
   var body: some View {
     VStack {
-      HStack {
-        Button("첫번쨰이모지") {
+      HStack(spacing: 30) {
+        Button("😀") {
           firstUnicode = 0x1F600
           lastUnicode = 0x1F64F
         }
-        Button("두번쨰이모지") {
+        Button("🌀") {
           firstUnicode = 0x1F300
           lastUnicode = 0x1F5FF
         }
-        Button("세번쨰이모지") {
+        Button("🚀") {
           firstUnicode = 0x1F680
           lastUnicode = 0x1F6FF
         }
-        Button("네번쨰이모지") {
+        Button("☀") {
           firstUnicode = 0x2600
           lastUnicode = 0x26FF
         }
-        Button("다섯번쨰이모지") {
+        Button("✂") {
           firstUnicode = 0x2700
           lastUnicode = 0x27BF
         }
-        Button("여섯번쨰이모지") {
+        Button("🤒") {
           firstUnicode = 0x1F912
           lastUnicode = 0x1F9FF
         }
-        
       }
       ZStack(alignment: .topLeading)   {
         ScrollView(.vertical, showsIndicators: false) {
@@ -55,6 +54,7 @@ struct EmojiView: View {
                       return
                     }
                     self.txt = String(unicode)
+
                     UserDefaults.standard.set(txt, forKey: "\(calendarIdentifier)_emoji")
                   },
                          label: {

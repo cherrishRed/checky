@@ -46,7 +46,7 @@ struct EventCategoriSettingView: View {
         }
         Spacer()
         ColorView(color: $viewModel.color, calendarIdentifier: viewModel.category.calendarIdentifier)
-        EmojiView(txt: $viewModel.emoji, calendarIdentifier: viewModel.category.calendarIdentifier)
+        EmojiView(txt: $viewModel.emoji, calendarIdentifier: viewModel.category.calendarIdentifier, firstUnicode: 0x1F600, lastUnicode: 0x1F64F)
         Spacer()
       }
       .padding(.horizontal, 15)
