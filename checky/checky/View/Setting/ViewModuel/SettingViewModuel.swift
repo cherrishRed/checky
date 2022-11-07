@@ -10,7 +10,6 @@ import EventKit
 
 struct SettingListCell: View {
   let buttonTitle: String
-  let geo: GeometryProxy
   var buttonAction: () -> ()
   
   var body: some View {
@@ -18,17 +17,17 @@ struct SettingListCell: View {
       buttonAction()
     }, label: {
       ZStack(alignment: .leading) {
-        Rectangle()
+        RoundedRectangle(cornerRadius: 4)
           .fill(Color.white)
-          .padding(.horizontal)
-          .frame(width: geo.size.width, height: geo.size.height / 20)
+          .cornerRadius(4)
         
         Text(buttonTitle)
-          .frame(alignment: .leading)
-          .padding(.horizontal, 20)
           .foregroundColor(Color.fontDarkBlack)
           .fontWeight(.semibold)
+          .padding(.horizontal, 20)
+          .padding(.vertical, 10)
       }
+      .fixedSize(horizontal: false, vertical: true)
     })
   }
 }

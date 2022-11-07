@@ -11,17 +11,20 @@ struct SettingListView: View {
   @EnvironmentObject var coordinator: Coordinator<checkyRouter>
   
   var body: some View {
-    GeometryReader { geo in
+    ScrollView(.vertical, showsIndicators: false) {
       VStack {
-        SettingListCell(buttonTitle: "캘린더 카테고리 수정", geo: geo) {
+        SettingListCell(buttonTitle: "캘린더 카테고리 수정") {
           coordinator.show(.eventSetting)
         }
         
-        SettingListCell(buttonTitle: "미리알림 카테고리 수정", geo: geo) {
+        SettingListCell(buttonTitle: "미리알림 카테고리 수정") {
           coordinator.show(.reminderSetting)
         }
       }
-    }.onAppear{
+      .frame(maxWidth: .infinity)
+      .padding(.horizontal, 10)
+    }
+    .onAppear{
       coordinator.navigationController.navigationBar.isHidden = true
     }
     .background(Color.backgroundGray)
