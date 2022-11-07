@@ -7,6 +7,10 @@
 
 import Foundation
 
-class DateHolder {
-   var date = Date()
+class DateHolder: ObservableObject {
+//  static func == (lhs: DateHolder, rhs: DateHolder) -> Bool {
+//    return lhs.date == rhs.date
+//  }
+  
+   @Published var date = Date()
 }

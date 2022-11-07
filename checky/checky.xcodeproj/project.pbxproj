@@ -66,8 +66,6 @@
 		DA466EA728E685D90076AEE4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA466EA628E685D90076AEE4 /* Preview Assets.xcassets */; };
 		DA4E4A052908F42100CF45E2 /* CreateSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E4A042908F42100CF45E2 /* CreateSelectorView.swift */; };
 		DA4E4A39290A529200CF45E2 /* WeeklyCalendarHelperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E4A38290A529200CF45E2 /* WeeklyCalendarHelperTest.swift */; };
-		DA4E4A42290AEC9800CF45E2 /* MonthlyStackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E4A41290AEC9800CF45E2 /* MonthlyStackViewModel.swift */; };
-		DA4E4A44290AECE500CF45E2 /* MonthlyStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E4A43290AECE500CF45E2 /* MonthlyStackView.swift */; };
 		DA4E4A46290C288600CF45E2 /* WeeklyStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E4A45290C288600CF45E2 /* WeeklyStackView.swift */; };
 		DA4E4A48290C289600CF45E2 /* WeeklyStackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E4A47290C289600CF45E2 /* WeeklyStackViewModel.swift */; };
 		DA4E4A4B290C74F800CF45E2 /* DailyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E4A4A290C74F800CF45E2 /* DailyView.swift */; };
@@ -168,8 +166,6 @@
 		DA4E4A042908F42100CF45E2 /* CreateSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSelectorView.swift; sourceTree = "<group>"; };
 		DA4E4A36290A529100CF45E2 /* checkyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = checkyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA4E4A38290A529200CF45E2 /* WeeklyCalendarHelperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyCalendarHelperTest.swift; sourceTree = "<group>"; };
-		DA4E4A41290AEC9800CF45E2 /* MonthlyStackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyStackViewModel.swift; sourceTree = "<group>"; };
-		DA4E4A43290AECE500CF45E2 /* MonthlyStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyStackView.swift; sourceTree = "<group>"; };
 		DA4E4A45290C288600CF45E2 /* WeeklyStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStackView.swift; sourceTree = "<group>"; };
 		DA4E4A47290C289600CF45E2 /* WeeklyStackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStackViewModel.swift; sourceTree = "<group>"; };
 		DA4E4A4A290C74F800CF45E2 /* DailyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyView.swift; sourceTree = "<group>"; };
@@ -355,8 +351,6 @@
 			isa = PBXGroup;
 			children = (
 				DA466EA128E685D70076AEE4 /* MonthlyView.swift */,
-				DA4E4A41290AEC9800CF45E2 /* MonthlyStackViewModel.swift */,
-				DA4E4A43290AECE500CF45E2 /* MonthlyStackView.swift */,
 				DA91E81328EDF38F0091B6A3 /* MonthlyViewModel.swift */,
 				DA91E7E428EC94170091B6A3 /* MonthlyCellView.swift */,
 				8647AFB928FD637F00EE1DA8 /* MonthlyCellViewModel.swift */,
@@ -722,7 +716,6 @@
 				DA2C798328F7268F00922C47 /* ReminderCreateAndEditViewModel.swift in Sources */,
 				DA3E9DAA2907810E00E72E21 /* ButtonStyle.swift in Sources */,
 				DA78BC75290FC63F00E2E2AD /* DailyReminderCellView.swift in Sources */,
-				DA4E4A44290AECE500CF45E2 /* MonthlyStackView.swift in Sources */,
 				DA91E7E128EC8DFC0091B6A3 /* Event.swift in Sources */,
 				868C544128F417D9006A9B38 /* CustomTabBarView.swift in Sources */,
 				DA2C796628EF005B00922C47 /* NavigationRouter.swift in Sources */,
@@ -773,7 +766,6 @@
 				86FBE2162910F41000961DE8 /* EventCategoriListViewModel.swift in Sources */,
 				86057B292911EE8000CEC6AB /* ReminderCategoriSettingView.swift in Sources */,
 				86A5E60428EEA6B10040DCFB /* DayOfWeekStackViewModel.swift in Sources */,
-				DA4E4A42290AEC9800CF45E2 /* MonthlyStackViewModel.swift in Sources */,
 				86FC8CF528EAB3CF00B7752F /* DateHolder.swift in Sources */,
 				860F766628FCB98500CB034B /* CaledarViewModel.swift in Sources */,
 				86FC8CF828EAB42500B7752F /* WeeklyCalenderHelper.swift in Sources */,
@@ -974,11 +966,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"checky/Preview Content\"";
-
-				DEVELOPMENT_TEAM = LZZV4V63N5;
-
 				DEVELOPMENT_TEAM = YB5KQCLMY6;
-
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = checky/Info.plist;
@@ -1010,13 +998,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"checky/Preview Content\"";
-
-				DEVELOPMENT_TEAM = LZZV4V63N5;
 				DEVELOPMENT_TEAM = YB5KQCLMY6;
-
-
-
-        ENABLE_PREVIEWS = YES;
+				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = checky/Info.plist;
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "\"캘린더 사용 디스크립션\"";

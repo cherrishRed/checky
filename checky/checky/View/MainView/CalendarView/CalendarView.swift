@@ -15,17 +15,15 @@ struct CalendarView: View {
   
   var eventManager: EventManager = EventManager()
   var reminderManager: ReminderManager = ReminderManager()
-  
+  var dateHolder = DateHolder()
   var body: some View {
     Group {
       if viewModel.mode {
-        WeeklyStackView(viewModel: WeeklyStackViewModel(dateHolder: DateHolder(), eventManager: eventManager, reminderManager: reminderManager, calendarHelper: WeeklyCalendarHelper(), offsetWidth: UIScreen.main.bounds.width, moveToMonthly: { viewModel.mode.toggle() } ))
+        WeeklyStackView(viewModel: WeeklyStackViewModel(dateHolder: dateHolder, eventManager: eventManager, reminderManager: reminderManager, calendarHelper: WeeklyCalendarHelper(), offsetWidth: UIScreen.main.bounds.width, moveToMonthly: { viewModel.mode.toggle() } ))
           .environmentObject(coordinator)
         
       } else {
-        MonthlyStackView(viewModel:  MonthlyStackViewModel(dateHolder: DateHolder(), eventManager: eventManager, reminderManager: reminderManager, calendarHelper: MonthyCalendarHelper(), offsetWidth: UIScreen.main.bounds.width, moveToWeek: {
-          viewModel.mode.toggle()
-        }))
+        MonthlyView(viewModel: MonthlyViewModel(dateHolder: dateHolder, eventManager: eventManager, reminderManager: reminderManager, calendarHelper: MonthyCalendarHelper(), moveToWeekly: { viewModel.mode.toggle() }))
         .environmentObject(coordinator)
       }
     }

@@ -9,34 +9,39 @@ import SwiftUI
 import Combine
 
 class MonthlyViewModel: ViewModelable {
-  @Published var date: Date
+  @Published var dateHolder: DateHolder
+//  @Published var date: Date
   @Published var events: [Event]
   @Published var reminders: [Reminder]
   
   let eventManager: EventManager
   let reminderManager: ReminderManager
   let calendarHelper: CalendarCanDo
+  let moveToWeekly: () -> ()
     
   init(
-    date: Date,
+    dateHolder: DateHolder,
     eventManager: EventManager,
     reminderManager: ReminderManager,
     calendarHelper: CalendarCanDo,
     events: [Event] = [],
     reminders: [Reminder] = [],
-    currentOffsetX: CGSize = .zero
+    currentOffsetX: CGSize = .zero,
+    moveToWeekly: @escaping () -> ()
   ) {
-    self.date = date
+    self.dateHolder = dateHolder
     self.eventManager = eventManager
     self.reminderManager = reminderManager
     self.calendarHelper = calendarHelper
     self.events = events
     self.reminders = reminders
+    self.moveToWeekly = moveToWeekly
   }
   
   enum Action {
     case actionOnAppear
     case onChangeDate
+    case moveToWeekly
   }
   
   func action(_ action: Action) {
@@ -47,11 +52,13 @@ class MonthlyViewModel: ViewModelable {
       case .onChangeDate:
         fetchEvents()
         fetchReminder()
+      case .moveToWeekly:
+        moveToWeekly()
     }
   }
   
   func fetchEvents() {
-    eventManager.getAllTaskforThisMonth(date: date, completionHandler: { [weak self] eventList in
+    eventManager.getAllTaskforThisMonth(date: dateHolder.date, completionHandler: { [weak self] eventList in
       DispatchQueue.main.async {
         self?.events = eventList
       }
@@ -59,7 +66,7 @@ class MonthlyViewModel: ViewModelable {
   }
   
   func fetchReminder() {
-    reminderManager.getAllTaskforThisMonth(date: date) { [weak self] reminderList in
+    reminderManager.getAllTaskforThisMonth(date: dateHolder.date) { [weak self] reminderList in
       DispatchQueue.main.async {
         self?.reminders = reminderList
       }
@@ -67,7 +74,7 @@ class MonthlyViewModel: ViewModelable {
   }
   
   var allDatesForDisplay: [DateValue] {
-    return calendarHelper.extractDates(date)
+    return calendarHelper.extractDates(dateHolder.date)
   }
   
   func filteredEvent(_ date: Date) -> [Event] {
@@ -83,7 +90,15 @@ class MonthlyViewModel: ViewModelable {
   }
   
   var gridCloumnsCount: CGFloat {
-    return calendarHelper.extractDates(date).count > 35 ? CGFloat(6) : CGFloat(5)
+    return calendarHelper.extractDates(dateHolder.date).count > 35 ? CGFloat(6) : CGFloat(5)
+  }
+  
+  func moveToPreviousMonth() {
+    dateHolder.date = calendarHelper.minusDate(dateHolder.date)
+  }
+  
+  func moveToNextMonth() {
+    dateHolder.date = calendarHelper.plusDate(dateHolder.date)
   }
 
 }
