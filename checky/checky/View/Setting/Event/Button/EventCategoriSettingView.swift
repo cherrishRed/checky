@@ -13,9 +13,9 @@ struct EventCategoriSettingView: View {
   
   var body: some View {
     HStack {
-      VStack(spacing: 30) {
+      VStack(spacing: 10) {
         ZStack {
-          Rectangle()
+          RoundedRectangle(cornerRadius: 4)
             .fill(Color.white)
             .frame(height: 30)
             .frame(maxWidth: .infinity)
@@ -29,7 +29,7 @@ struct EventCategoriSettingView: View {
         }
         
         ZStack {
-          Rectangle()
+          RoundedRectangle(cornerRadius: 4)
             .fill(Color.white)
             .frame(height: 30)
             .frame(maxWidth: .infinity)
@@ -38,15 +38,15 @@ struct EventCategoriSettingView: View {
             Text("색상")
             Spacer()
             
-            Rectangle()
+            RoundedRectangle(cornerRadius: 2)
               .fill(viewModel.color)
-              .frame(width: 15, height: 15)
+              .frame(width: 16, height: 16)
           }
           .padding(.horizontal, 17)
         }
         Spacer()
         ColorView(color: $viewModel.color, calendarIdentifier: viewModel.category.calendarIdentifier)
-        EmojiView(txt: $viewModel.emoji, calendarIdentifier: viewModel.category.calendarIdentifier, firstUnicode: 0x1F600, lastUnicode: 0x1F64F)
+        EmojiView(txt: $viewModel.emoji, calendarIdentifier: viewModel.category.calendarIdentifier)
         Spacer()
       }
       .padding(.horizontal, 15)
