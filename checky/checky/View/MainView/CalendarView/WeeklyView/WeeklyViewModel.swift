@@ -2,96 +2,101 @@
 //  WeeklyViewModel.swift
 //  checky
 //
-//  Created by song on 2022/10/12.
+//  Created by RED on 2022/10/29.
 //
 
-import Foundation
-import Combine
+import SwiftUI
 
 class WeeklyViewModel: ViewModelable {
   @Published var dateHolder: DateHolder
-  @Published var events: [Event]
-  @Published var reminders: [Reminder]
-  @Published var currentOffsetY: CGSize
+  @Published var minicarOffset: CGFloat
   
   let eventManager: EventManager
   let reminderManager: ReminderManager
   let calendarHelper: CalendarCanDo
+  var moveToMonthly: () -> ()
   
   init(
     dateHolder: DateHolder,
     eventManager: EventManager,
     reminderManager: ReminderManager,
     calendarHelper: CalendarCanDo,
-    currentOffsetY: CGSize = .zero,
-    events: [Event] = [],
-    reminders: [Reminder] = []
+    moveToMonthly: @escaping () -> ()
   ) {
+    self.moveToMonthly = moveToMonthly
     self.dateHolder = dateHolder
     self.eventManager = eventManager
     self.reminderManager = reminderManager
     self.calendarHelper = calendarHelper
-    self.currentOffsetY = currentOffsetY
-    self.events = events
-    self.reminders = reminders
+    
+    self.minicarOffset = .zero
+  }
+  
+  var pastCurrentFutureDates: [Date] {
+    return calendarHelper.extractPastCurrentFutureDates(dateHolder.date)
+  }
+  
+  func minimunCalendarWeekheight(_ date: Date) -> CGFloat {
+    let dates = calendarHelper.extractMonthDates(date)
+      .map { (dateValue) -> String in
+        let isThisMonth = dateValue.isCurrentMonth ? "ThisMonth" : ""
+        let dayString = dateValue.date.day
+        return isThisMonth + dayString
+      }
+
+    let date = "ThisMonth" + date.day
+    
+    guard let index = dates.firstIndex(of: date) else {
+      return CGFloat(0)
+    }
+    
+    return CGFloat(index / 7) * CGFloat(16)
+  }
+  
+  enum Action {
+    case moveToMonthly
+    case moveToPreviousWeek
+    case moveToNextWeek
+    case changeMinicarOffset
+  }
+  
+  func action(_ action: Action) {
+    switch action {
+    case .moveToMonthly:
+      moveToMonthly()
+      case .moveToPreviousWeek:
+        moveToPreviousWeek()
+      case .moveToNextWeek:
+        moveToNextWeek()
+      case .changeMinicarOffset:
+        minicarOffset = minimunCalendarWeekheight(dateHolder.date)
+    }
+  }
+  
+  var currentWeek: Bool {
+    let year = dateHolder.date.year == Date().year
+    let month = dateHolder.date.month == Date().month
+    let week = minimunCalendarWeekheight(dateHolder.date) == minimunCalendarWeekheight(Date())
+    return year && month && week
   }
   
   var allDatesForDisplay: [DateValue] {
     return calendarHelper.extractDates(dateHolder.date)
   }
   
-  enum Action {
-    case actionOnAppear
-  }
-  
-  func action(_ action: Action) {
-    switch action {
-    case .actionOnAppear:
-      onAppear()
-    }
-  }
-  
-  func onAppear() {
-    self.fetchEvents()
-    self.fetchReminder()
-  }
-  
-  private func fetchEvents() {
-    eventManager.getAllTaskforThisMonth(date: dateHolder.date, completionHandler: { [weak self] eventList in
-      DispatchQueue.main.async {
-        self?.events = eventList
-      }
-    })
-  }
-  
-  private func fetchReminder() {
-    reminderManager.getAllTaskforThisMonth(date: dateHolder.date, completionHandler: { [weak self] reminderList in
-      DispatchQueue.main.async {
-        self?.reminders = reminderList
-      }
-    })
-  }
-    
-  func filteredEvent(_ date: Date) -> [Event] {
-    eventManager.filterTask(events, date)
-  }
-  
-  func filteredReminder(_ date: Date) -> [Reminder] {
-    reminderManager.filterTask(reminders, date)
-  }
-  
-  func filteredClearedReminder(_ date: Date) -> [Reminder] {
-    reminderManager.filterClearTask(reminders, date)
-  }
-  
   var gridCloumnsCount: CGFloat {
     return CGFloat(calendarHelper.extractDates(dateHolder.date).count + 1)
   }
-  
-}
 
-protocol ViewModelable: ObservableObject {
-  associatedtype Action
+  private func moveToPreviousWeek() {
+    dateHolder.date = calendarHelper.minusDate(dateHolder.date)
+  }
   
-  func action(_ action: Action)
+  private func moveToNextWeek() {
+    dateHolder.date = calendarHelper.plusDate(dateHolder.date)
+  }
+  
+  func extractMonthDates() -> [DateValue] {
+    calendarHelper.extractMonthDates(dateHolder.date)
+  }
 }

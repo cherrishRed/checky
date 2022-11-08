@@ -1,5 +1,5 @@
 //
-//  DailyCellView.swift
+//  DailyEventCellView.swift
 //  checky
 //
 //  Created by RED on 2022/10/29.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct DailyCellView: View {
+struct DailyEventCellView: View {
   @EnvironmentObject var coordinator: Coordinator<checkyRouter>
-  @ObservedObject var viewModel: DailyCellViewModel
+  @ObservedObject var viewModel: DailyEventCellViewModel
   
     var body: some View {
       Button {

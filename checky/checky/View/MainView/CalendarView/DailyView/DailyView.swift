@@ -68,14 +68,14 @@ struct DailyView: View {
       VStack(spacing: 10) {
         
         ForEach(viewModel.allDayEvents, id: \.self) { event in
-          DailyCellView(viewModel: DailyCellViewModel(event: event, eventManager: viewModel.eventManager))
+          DailyEventCellView(viewModel: DailyEventCellViewModel(event: event, eventManager: viewModel.eventManager))
             .environmentObject(coordinator)
             .foregroundColor(Color.fontBlack)
         }
         
         ForEach(0..<viewModel.timeEvents.count, id: \.self) { index in
           VStack(alignment: .leading) {
-            DailyCellView(viewModel: DailyCellViewModel(event: viewModel.timeEvents[index], eventManager: viewModel.eventManager))
+            DailyEventCellView(viewModel: DailyEventCellViewModel(event: viewModel.timeEvents[index], eventManager: viewModel.eventManager))
               .environmentObject(coordinator)
               .foregroundColor(Color.fontBlack)
           }
