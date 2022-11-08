@@ -39,7 +39,6 @@
 		86F0B2C328F6B726006E2536 /* WeeklyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F0B2C228F6B726006E2536 /* WeeklyViewModel.swift */; };
 		86F0B2C528F6B969006E2536 /* WeeklyCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F0B2C428F6B969006E2536 /* WeeklyCellView.swift */; };
 		86FBE20D2910F3A200961DE8 /* SettingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FBE20C2910F3A200961DE8 /* SettingListView.swift */; };
-		86FBE20F2910F3AD00961DE8 /* SettingViewModuel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FBE20E2910F3AD00961DE8 /* SettingViewModuel.swift */; };
 		86FC8CF528EAB3CF00B7752F /* DateHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FC8CF428EAB3CF00B7752F /* DateHolder.swift */; };
 		86FC8CF828EAB42500B7752F /* WeeklyCalenderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FC8CF728EAB42500B7752F /* WeeklyCalenderHelper.swift */; };
 		86FC8CFA28EAB49B00B7752F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FC8CF928EAB49B00B7752F /* HeaderView.swift */; };
@@ -136,7 +135,6 @@
 		86F0B2C228F6B726006E2536 /* WeeklyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyViewModel.swift; sourceTree = "<group>"; };
 		86F0B2C428F6B969006E2536 /* WeeklyCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyCellView.swift; sourceTree = "<group>"; };
 		86FBE20C2910F3A200961DE8 /* SettingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListView.swift; sourceTree = "<group>"; };
-		86FBE20E2910F3AD00961DE8 /* SettingViewModuel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModuel.swift; sourceTree = "<group>"; };
 		86FC8CF428EAB3CF00B7752F /* DateHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHolder.swift; sourceTree = "<group>"; };
 		86FC8CF728EAB42500B7752F /* WeeklyCalenderHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyCalenderHelper.swift; sourceTree = "<group>"; };
 		86FC8CF928EAB49B00B7752F /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -344,7 +342,6 @@
 			isa = PBXGroup;
 			children = (
 				86057B6029125F3000CEC6AB /* SelectorView */,
-				86FBE20E2910F3AD00961DE8 /* SettingViewModuel.swift */,
 				868E02492913AF8F0039B52E /* CategoriListCellView.swift */,
 			);
 			path = ViewModuel;
@@ -684,7 +681,6 @@
 				DA91E7D628EABDED0091B6A3 /* Week.swift in Sources */,
 				DA2C796128EEFF7700922C47 /* AppDelegate.swift in Sources */,
 				8679589B290A3C64001D5C7F /* ReminderManager.swift in Sources */,
-				86FBE20F2910F3AD00961DE8 /* SettingViewModuel.swift in Sources */,
 				DA466EA028E685D70076AEE4 /* checkyApp.swift in Sources */,
 				868E02D32919F6120039B52E /* SettingListViewModel.swift in Sources */,
 				868C543F28F417C0006A9B38 /* CustomTabBarContainerView.swift in Sources */,
