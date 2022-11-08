@@ -18,7 +18,7 @@ struct DailyReminderCellView: View {
       
       ZStack(alignment: .leading) {
         RoundedRectangle(cornerRadius: 6)
-          .stroke(Color(viewModel.reminder.category.cgColor))
+          .stroke(viewModel.color)
           .background(Color.basicWhite)
         
         HStack {
@@ -28,13 +28,13 @@ struct DailyReminderCellView: View {
           } label: {
             ZStack {
               Circle()
-                .stroke(Color(viewModel.reminder.category.cgColor))
+                .stroke(viewModel.color)
                 .background(Color.basicWhite)
                 .frame(width: 30)
               
               if viewModel.isCompletion {
                 Circle()
-                  .fill(Color(viewModel.reminder.category.cgColor))
+                  .fill(viewModel.color)
                   .frame(width: 20)
               }
             }

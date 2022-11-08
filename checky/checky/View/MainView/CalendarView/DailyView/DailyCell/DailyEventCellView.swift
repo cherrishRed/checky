@@ -30,13 +30,13 @@ struct DailyEventCellView: View {
           
           ZStack(alignment: .leading) {
             RoundedRectangle(cornerRadius: 6)
-              .stroke(Color(viewModel.event.category.cgColor))
+              .stroke(viewModel.color)
               .background(Color.basicWhite)
               
             HStack {
               ZStack {
                 RoundedRectangle(cornerRadius: 4)
-                  .fill(Color(viewModel.event.category.cgColor))
+                  .fill(viewModel.color)
                   .frame(width: 40)
                 Circle()
                   .fill(Color.basicWhite)

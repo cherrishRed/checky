@@ -5,7 +5,7 @@
 //  Created by RED on 2022/10/31.
 //
 
-import Foundation
+import SwiftUI
 
 class DailyEventCellViewModel: ViewModelable {
   @Published var event: Event
@@ -15,6 +15,16 @@ class DailyEventCellViewModel: ViewModelable {
        eventManager: EventManager) {
     self.event = event
     self.eventManager = eventManager
+  }
+  
+  var color: Color {
+    let userColor = fetchUserDefaultColor(calendarIdentifier: event.category.calendarIdentifier)
+    
+    if userColor == Color.white {
+      return Color(event.category.cgColor)
+    } else {
+      return fetchUserDefaultColor(calendarIdentifier: event.category.calendarIdentifier)
+    }
   }
   
   var isAllday: Bool {

@@ -70,7 +70,7 @@ struct WeeklyEventBlockView: View {
   var body: some View {
     ZStack(alignment: .leading) {
       RoundedRectangle(cornerRadius: 4)
-        .fill(Color(event.category.cgColor))
+        .fill(color)
         .frame(maxWidth: .infinity)
         .layoutPriority(1)
       
@@ -83,6 +83,16 @@ struct WeeklyEventBlockView: View {
         .padding(.horizontal, 4)
     }
   }
+  
+  var color: Color {
+    let userColor = fetchUserDefaultColor(calendarIdentifier: event.category.calendarIdentifier)
+    
+    if userColor == Color.white {
+      return Color(event.category.cgColor)
+    } else {
+      return fetchUserDefaultColor(calendarIdentifier: event.category.calendarIdentifier)
+    }
+  }
 }
 
 struct WeeklyReminderBlockView: View {
@@ -93,10 +103,10 @@ struct WeeklyReminderBlockView: View {
       ZStack {
         
         Circle()
-          .stroke(Color(reminder.category.cgColor))
+          .stroke(color)
           .frame(width: 10 , height: 10)
         Circle()
-          .fill(Color(reminder.category.cgColor))
+          .fill(color)
           .frame(width: 6 , height: 6)
           .opacity(reminder.ekreminder.isCompleted ? 1.0 : 0.0)
       }
@@ -107,5 +117,15 @@ struct WeeklyReminderBlockView: View {
         .fixedSize(horizontal: true, vertical: false)
     }
     .padding(.horizontal, 2)
+  }
+  
+  var color: Color {
+    let userColor = fetchUserDefaultColor(calendarIdentifier: reminder.category.calendarIdentifier)
+    
+    if userColor == Color.white {
+      return Color(reminder.category.cgColor)
+    } else {
+      return fetchUserDefaultColor(calendarIdentifier: reminder.category.calendarIdentifier)
+    }
   }
 }

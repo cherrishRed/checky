@@ -5,7 +5,7 @@
 //  Created by RED on 2022/10/31.
 //
 
-import Foundation
+import SwiftUI
 
 class DailyReminderCellViewModel: ViewModelable {
   @Published var reminder: Reminder
@@ -18,6 +18,16 @@ class DailyReminderCellViewModel: ViewModelable {
     self.reminder = reminder
     self.isCompletion = reminder.ekreminder.isCompleted
     self.reminderManager = reminderManager
+  }
+  
+  var color: Color {
+    let userColor = fetchUserDefaultColor(calendarIdentifier: reminder.category.calendarIdentifier)
+    
+    if userColor == Color.white {
+      return Color(reminder.category.cgColor)
+    } else {
+      return fetchUserDefaultColor(calendarIdentifier: reminder.category.calendarIdentifier)
+    }
   }
   
   enum Action {
