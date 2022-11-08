@@ -39,6 +39,7 @@ struct ColorView: View {
         })
       }
     }
+    .padding(.horizontal, 20)
     .frame(height: UIScreen.main.bounds.height / 5)
     .background(Color.basicWhite)
     .cornerRadius(25)

@@ -34,9 +34,8 @@ struct CategoriListCellView: View {
       buttonAction()
     }, label: {
       ZStack {
-        Rectangle()
+        RoundedRectangle(cornerRadius: 4)
           .fill(Color.white)
-          .frame(height: 30)
           .frame(maxWidth: .infinity)
 
         HStack {
@@ -50,10 +49,11 @@ struct CategoriListCellView: View {
             Text(emoji)
           }
           
-          Rectangle()
+          RoundedRectangle(cornerRadius: 2)
             .fill(color)
-            .frame(width: 10, height: 10)
+            .frame(width: 16, height: 16)
         }
+        .padding(.vertical, 8)
         .padding(.horizontal)
       }
     })
