@@ -32,6 +32,13 @@
 		868C544728F419B1006A9B38 /* CheckyMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C544628F419B1006A9B38 /* CheckyMainViewModel.swift */; };
 		868E024A2913AF8F0039B52E /* CategoriListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E02492913AF8F0039B52E /* CategoriListCellView.swift */; };
 		868E02D32919F6120039B52E /* SettingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E02D22919F6120039B52E /* SettingListViewModel.swift */; };
+		868E030F291A9E220039B52E /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 868E030E291A9E220039B52E /* WidgetKit.framework */; };
+		868E0311291A9E220039B52E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 868E0310291A9E220039B52E /* SwiftUI.framework */; };
+		868E0314291A9E220039B52E /* calendarWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E0313291A9E220039B52E /* calendarWidget.swift */; };
+		868E0317291A9E230039B52E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 868E0316291A9E230039B52E /* Assets.xcassets */; };
+		868E0319291A9E230039B52E /* calendarWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 868E0315291A9E220039B52E /* calendarWidget.intentdefinition */; };
+		868E031A291A9E230039B52E /* calendarWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 868E0315291A9E220039B52E /* calendarWidget.intentdefinition */; };
+		868E031D291A9E230039B52E /* calendarWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 868E030C291A9E220039B52E /* calendarWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		869BAA942908A4A200D4D71D /* CheckyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869BAA932908A4A200D4D71D /* CheckyRouter.swift */; };
 		86A5E60228EEA6A80040DCFB /* DayOfWeekStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5E60128EEA6A80040DCFB /* DayOfWeekStackView.swift */; };
 		86A5E60428EEA6B10040DCFB /* DayOfWeekStackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5E60328EEA6B10040DCFB /* DayOfWeekStackViewModel.swift */; };
@@ -91,6 +98,13 @@
 			remoteGlobalIDString = DA466E9B28E685D70076AEE4;
 			remoteInfo = checky;
 		};
+		868E031B291A9E230039B52E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA466E9428E685D70076AEE4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 868E030B291A9E220039B52E;
+			remoteInfo = calendarWidgetExtension;
+		};
 		DA4E4A3A290A529200CF45E2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DA466E9428E685D70076AEE4 /* Project object */;
@@ -99,6 +113,20 @@
 			remoteInfo = checky;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		868E031E291A9E230039B52E /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				868E031D291A9E230039B52E /* calendarWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		86057B202911263B00CEC6AB /* EventCategoriSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCategoriSettingView.swift; sourceTree = "<group>"; };
@@ -128,6 +156,13 @@
 		868C544628F419B1006A9B38 /* CheckyMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckyMainViewModel.swift; sourceTree = "<group>"; };
 		868E02492913AF8F0039B52E /* CategoriListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriListCellView.swift; sourceTree = "<group>"; };
 		868E02D22919F6120039B52E /* SettingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListViewModel.swift; sourceTree = "<group>"; };
+		868E030C291A9E220039B52E /* calendarWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = calendarWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		868E030E291A9E220039B52E /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		868E0310291A9E220039B52E /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		868E0313291A9E220039B52E /* calendarWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendarWidget.swift; sourceTree = "<group>"; };
+		868E0315291A9E220039B52E /* calendarWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = calendarWidget.intentdefinition; sourceTree = "<group>"; };
+		868E0316291A9E230039B52E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		868E0318291A9E230039B52E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		869BAA932908A4A200D4D71D /* CheckyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckyRouter.swift; sourceTree = "<group>"; };
 		86A5E60128EEA6A80040DCFB /* DayOfWeekStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekStackView.swift; sourceTree = "<group>"; };
 		86A5E60328EEA6B10040DCFB /* DayOfWeekStackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekStackViewModel.swift; sourceTree = "<group>"; };
@@ -186,6 +221,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		868E0309291A9E220039B52E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				868E0311291A9E220039B52E /* SwiftUI.framework in Frameworks */,
+				868E030F291A9E220039B52E /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +382,26 @@
 			path = MonthlyDateView;
 			sourceTree = "<group>";
 		};
+		868E030D291A9E220039B52E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				868E030E291A9E220039B52E /* WidgetKit.framework */,
+				868E0310291A9E220039B52E /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		868E0312291A9E220039B52E /* calendarWidget */ = {
+			isa = PBXGroup;
+			children = (
+				868E0313291A9E220039B52E /* calendarWidget.swift */,
+				868E0315291A9E220039B52E /* calendarWidget.intentdefinition */,
+				868E0316291A9E230039B52E /* Assets.xcassets */,
+				868E0318291A9E230039B52E /* Info.plist */,
+			);
+			path = calendarWidget;
+			sourceTree = "<group>";
+		};
 		86A1BC17291374BF006EF0CD /* ViewModuel */ = {
 			isa = PBXGroup;
 			children = (
@@ -462,6 +526,8 @@
 				DA466E9E28E685D70076AEE4 /* checky */,
 				DA4E4A37290A529200CF45E2 /* checkyTests */,
 				867958BD290A632B001D5C7F /* MonthlyHelperUnitTest */,
+				868E0312291A9E220039B52E /* calendarWidget */,
+				868E030D291A9E220039B52E /* Frameworks */,
 				DA466E9D28E685D70076AEE4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -472,6 +538,7 @@
 				DA466E9C28E685D70076AEE4 /* checky.app */,
 				DA4E4A36290A529100CF45E2 /* checkyTests.xctest */,
 				867958BC290A632B001D5C7F /* MonthlyHelperUnitTest.xctest */,
+				868E030C291A9E220039B52E /* calendarWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -559,6 +626,23 @@
 			productReference = 867958BC290A632B001D5C7F /* MonthlyHelperUnitTest.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		868E030B291A9E220039B52E /* calendarWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 868E0321291A9E230039B52E /* Build configuration list for PBXNativeTarget "calendarWidgetExtension" */;
+			buildPhases = (
+				868E0308291A9E220039B52E /* Sources */,
+				868E0309291A9E220039B52E /* Frameworks */,
+				868E030A291A9E220039B52E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = calendarWidgetExtension;
+			productName = calendarWidgetExtension;
+			productReference = 868E030C291A9E220039B52E /* calendarWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		DA466E9B28E685D70076AEE4 /* checky */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DA466EAA28E685D90076AEE4 /* Build configuration list for PBXNativeTarget "checky" */;
@@ -566,10 +650,12 @@
 				DA466E9828E685D70076AEE4 /* Sources */,
 				DA466E9928E685D70076AEE4 /* Frameworks */,
 				DA466E9A28E685D70076AEE4 /* Resources */,
+				868E031E291A9E230039B52E /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				868E031C291A9E230039B52E /* PBXTargetDependency */,
 			);
 			name = checky;
 			productName = checky;
@@ -608,6 +694,9 @@
 						CreatedOnToolsVersion = 14.0.1;
 						TestTargetID = DA466E9B28E685D70076AEE4;
 					};
+					868E030B291A9E220039B52E = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
 					DA466E9B28E685D70076AEE4 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
@@ -633,6 +722,7 @@
 				DA466E9B28E685D70076AEE4 /* checky */,
 				DA4E4A35290A529100CF45E2 /* checkyTests */,
 				867958BB290A632B001D5C7F /* MonthlyHelperUnitTest */,
+				868E030B291A9E220039B52E /* calendarWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -642,6 +732,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		868E030A291A9E220039B52E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				868E0317291A9E230039B52E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -669,6 +767,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				867958BF290A632B001D5C7F /* MonthlyHelperUnitTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		868E0308291A9E220039B52E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				868E0319291A9E230039B52E /* calendarWidget.intentdefinition in Sources */,
+				868E0314291A9E220039B52E /* calendarWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -722,6 +829,7 @@
 				DA2C797128F6E2C800922C47 /* Extension+View.swift in Sources */,
 				DA91E81428EDF3900091B6A3 /* MonthlyViewModel.swift in Sources */,
 				86057B6429125F7400CEC6AB /* EmojiView.swift in Sources */,
+				868E031A291A9E230039B52E /* calendarWidget.intentdefinition in Sources */,
 				868C543D28F4178D006A9B38 /* TabBarItemsPreferenceKey.swift in Sources */,
 				DA78BC79290FE64800E2E2AD /* DailyReminderCellVeiwModel.swift in Sources */,
 				865BE52428EC4B6200305899 /* Extension+Text.swift in Sources */,
@@ -765,6 +873,11 @@
 			isa = PBXTargetDependency;
 			target = DA466E9B28E685D70076AEE4 /* checky */;
 			targetProxy = 867958C0290A632B001D5C7F /* PBXContainerItemProxy */;
+		};
+		868E031C291A9E230039B52E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 868E030B291A9E220039B52E /* calendarWidgetExtension */;
+			targetProxy = 868E031B291A9E230039B52E /* PBXContainerItemProxy */;
 		};
 		DA4E4A3B290A529200CF45E2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -817,6 +930,62 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/checky.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/checky";
+			};
+			name = Release;
+		};
+		868E031F291A9E230039B52E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YB5KQCLMY6;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = calendarWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = calendarWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.cherrishRed.checky.calendarWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		868E0320291A9E230039B52E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YB5KQCLMY6;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = calendarWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = calendarWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.cherrishRed.checky.calendarWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -937,6 +1106,7 @@
 		DA466EAB28E685D90076AEE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -969,6 +1139,7 @@
 		DA466EAC28E685D90076AEE4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -1050,6 +1221,15 @@
 			buildConfigurations = (
 				867958C2290A632B001D5C7F /* Debug */,
 				867958C3290A632B001D5C7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		868E0321291A9E230039B52E /* Build configuration list for PBXNativeTarget "calendarWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				868E031F291A9E230039B52E /* Debug */,
+				868E0320291A9E230039B52E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
