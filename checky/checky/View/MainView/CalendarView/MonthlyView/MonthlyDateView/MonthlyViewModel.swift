@@ -10,7 +10,6 @@ import Combine
 
 class MonthlyViewModel: ViewModelable {
   @Published var dateHolder: DateHolder
-//  @Published var date: Date
   @Published var events: [Event]
   @Published var reminders: [Reminder]
   
@@ -42,6 +41,8 @@ class MonthlyViewModel: ViewModelable {
     case actionOnAppear
     case onChangeDate
     case moveToWeekly
+    case moveToPreviousMonth
+    case moveToNextMonth
   }
   
   func action(_ action: Action) {
@@ -54,6 +55,10 @@ class MonthlyViewModel: ViewModelable {
         fetchReminder()
       case .moveToWeekly:
         moveToWeekly()
+      case .moveToPreviousMonth:
+        moveToPreviousMonth()
+      case .moveToNextMonth:
+        moveToNextMonth()
     }
   }
   
@@ -91,6 +96,10 @@ class MonthlyViewModel: ViewModelable {
   
   var gridCloumnsCount: CGFloat {
     return calendarHelper.extractDates(dateHolder.date).count > 35 ? CGFloat(6) : CGFloat(5)
+  }
+  
+  var currentMonth: Bool {
+    return dateHolder.date.month == Date().month && dateHolder.date.year == Date().year
   }
   
   func moveToPreviousMonth() {

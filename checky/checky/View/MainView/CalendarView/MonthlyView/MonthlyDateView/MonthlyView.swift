@@ -17,6 +17,14 @@ struct MonthlyView: View {
       
       HStack {
         Spacer()
+        if viewModel.currentMonth == false {
+          Button("Today") {
+            viewModel.dateHolder.date = Date()
+          }
+          .buttonStyle(ToggleButtonStyle())
+          .padding(.top, 10)
+        }
+        
         Button("Weekly") { viewModel.action(.moveToWeekly) }
           .buttonStyle(ToggleButtonStyle())
           .padding(.top, 10)
@@ -67,7 +75,7 @@ struct MonthlyView: View {
       
       HStack(spacing: 10) {
         Button {
-          viewModel.moveToPreviousMonth()
+          viewModel.action(.moveToPreviousMonth)
         } label: {
           ZStack {
             RoundedRectangle(cornerRadius: 4)
@@ -78,7 +86,7 @@ struct MonthlyView: View {
         }
         
         Button {
-          viewModel.moveToNextMonth()
+          viewModel.action(.moveToNextMonth)
         } label: {
           ZStack {
             RoundedRectangle(cornerRadius: 4)

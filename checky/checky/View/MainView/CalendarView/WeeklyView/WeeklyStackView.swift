@@ -17,6 +17,13 @@ struct WeeklyStackView: View {
       
       HStack {
         Spacer()
+        if viewModel.currentWeek == false {
+          Button("Today") {
+            viewModel.dateHolder.date = Date()
+          }
+          .buttonStyle(ToggleButtonStyle())
+          .padding(.top, 10)
+        }
         
         Button("Monthly") { viewModel.action(.moveToMonthly) }
           .buttonStyle(ToggleButtonStyle())
@@ -27,37 +34,47 @@ struct WeeklyStackView: View {
       ZStack(alignment: .topLeading) {
         
         GeometryReader { geo in
-          LazyHStack {
-            ForEach(viewModel.pastCurrentFutureDates, id: \.self) { date in
-              WeeklyView(viewModel: WeeklyViewModel(date: date, eventManager: viewModel.eventManager, reminderManager: viewModel.reminderManager, calendarHelper: viewModel.calendarHelper))
-                .frame(width: geo.size.width, height: geo.size.height)
-            }
-          }
-          .animation(.easeInOut, value: viewModel.currentOffsetX)
-          .offset(x: viewModel.currentOffsetX-8)
-          .gesture(DragGesture().onEnded({ gesture in
-            
-            if gesture.translation.width > 0 {
-              viewModel.action(.moveToPreviousWeek)
-            }
-            
-            if gesture.translation.width < 0 {
-              viewModel.action(.moveToNextWeek)
-            }
-          }))
-          .onChange(of: viewModel.currentIndex) { index in
-            viewModel.action(.onChagnedIndex(index))
-          }
+          let weeklyViewModel = WeeklyViewModel(dateHolder: viewModel.dateHolder, eventManager: viewModel.eventManager, reminderManager: viewModel.reminderManager, calendarHelper: viewModel.calendarHelper)
+          
+          WeeklyView(viewModel: weeklyViewModel)
           
           VStack(spacing: 0) {
             DayOfWeekStackView(viewModel: DayOfWeekStackViewModel())
               .padding(.horizontal, 16)
+            
             miniCalendarView
           }
           .frame(width: geo.size.width / 2, height: geo.size.height / 4)
           .background(Color.backgroundGray)
         }
       }
+      
+      HStack(spacing: 10) {
+        Button {
+          viewModel.action(.moveToPreviousWeek)
+        } label: {
+          ZStack {
+            RoundedRectangle(cornerRadius: 4)
+              .fill(Color.basicWhite)
+            Image(systemName: "arrow.left")
+              .foregroundColor(Color.fontBlack)
+          }
+        }
+        
+        Button {
+          viewModel.action(.moveToNextWeek)
+        } label: {
+          ZStack {
+            RoundedRectangle(cornerRadius: 4)
+              .fill(Color.basicWhite)
+            Image(systemName: "arrow.right")
+              .foregroundColor(Color.fontBlack)
+          }
+        }
+      }
+      .frame(height: 20)
+      .padding(.bottom, 10)
+      .padding(.horizontal, 4)
     }
     .background(Color.backgroundGray)
   }
@@ -73,8 +90,8 @@ extension WeeklyStackView {
           .padding(.horizontal, 10)
           .frame(height: 16, alignment: .center)
           .frame(maxWidth: .infinity)
-          .offset(y: viewModel.minimunCalendarWeekheight)
-          .animation(.easeInOut, value: viewModel.minimunCalendarWeekheight)
+          .offset(y: viewModel.minicarOffset)
+          .animation(.easeInOut, value: viewModel.minicarOffset)
         
         LazyVGrid(columns: columns, spacing: 0) {
           ForEach(viewModel.extractMonthDates()) { value in
@@ -87,6 +104,9 @@ extension WeeklyStackView {
         }
         .padding(.horizontal)
       }
+    }
+    .onReceive(viewModel.dateHolder.$date) { changed in
+      viewModel.action(.changeMinicarOffset)
     }
   }
 }

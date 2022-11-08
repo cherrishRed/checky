@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class WeeklyViewModel: ViewModelable {
-  @Published var date: Date
+  @Published var dateHolder: DateHolder
   @Published var events: [Event]
   @Published var reminders: [Reminder]
   @Published var currentOffsetY: CGSize
@@ -19,7 +19,7 @@ class WeeklyViewModel: ViewModelable {
   let calendarHelper: CalendarCanDo
   
   init(
-    date: Date,
+    dateHolder: DateHolder,
     eventManager: EventManager,
     reminderManager: ReminderManager,
     calendarHelper: CalendarCanDo,
@@ -27,7 +27,7 @@ class WeeklyViewModel: ViewModelable {
     events: [Event] = [],
     reminders: [Reminder] = []
   ) {
-    self.date = date
+    self.dateHolder = dateHolder
     self.eventManager = eventManager
     self.reminderManager = reminderManager
     self.calendarHelper = calendarHelper
@@ -37,12 +37,11 @@ class WeeklyViewModel: ViewModelable {
   }
   
   var allDatesForDisplay: [DateValue] {
-    return calendarHelper.extractDates(date)
+    return calendarHelper.extractDates(dateHolder.date)
   }
   
   enum Action {
     case actionOnAppear
-
   }
   
   func action(_ action: Action) {
@@ -53,17 +52,12 @@ class WeeklyViewModel: ViewModelable {
   }
   
   func onAppear() {
-    self.getPermission()
     self.fetchEvents()
     self.fetchReminder()
   }
   
-  private func getPermission() {
-    eventManager.getPermission()
-  }
-  
   private func fetchEvents() {
-    eventManager.getAllTaskforThisMonth(date: date, completionHandler: { [weak self] eventList in
+    eventManager.getAllTaskforThisMonth(date: dateHolder.date, completionHandler: { [weak self] eventList in
       DispatchQueue.main.async {
         self?.events = eventList
       }
@@ -71,7 +65,7 @@ class WeeklyViewModel: ViewModelable {
   }
   
   private func fetchReminder() {
-    reminderManager.getAllTaskforThisMonth(date: date, completionHandler: { [weak self] reminderList in
+    reminderManager.getAllTaskforThisMonth(date: dateHolder.date, completionHandler: { [weak self] reminderList in
       DispatchQueue.main.async {
         self?.reminders = reminderList
       }
@@ -91,7 +85,7 @@ class WeeklyViewModel: ViewModelable {
   }
   
   var gridCloumnsCount: CGFloat {
-    return CGFloat(calendarHelper.extractDates(date).count + 1)
+    return CGFloat(calendarHelper.extractDates(dateHolder.date).count + 1)
   }
   
 }

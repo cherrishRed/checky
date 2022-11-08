@@ -9,13 +9,12 @@ import SwiftUI
 
 class WeeklyStackViewModel: ViewModelable {
   @Published var dateHolder: DateHolder
-  @Published var currentOffsetX: CGFloat
-  @Published var currentIndex: Int
+  
+  @Published var minicarOffset: CGFloat
   
   let eventManager: EventManager
   let reminderManager: ReminderManager
   let calendarHelper: CalendarCanDo
-  let offsetWidth: CGFloat
   var moveToMonthly: () -> ()
   
   init(
@@ -23,8 +22,6 @@ class WeeklyStackViewModel: ViewModelable {
     eventManager: EventManager,
     reminderManager: ReminderManager,
     calendarHelper: CalendarCanDo,
-    offsetWidth: CGFloat,
-    currentIndex: Int = 1,
     moveToMonthly: @escaping () -> ()
   ) {
     self.moveToMonthly = moveToMonthly
@@ -32,25 +29,23 @@ class WeeklyStackViewModel: ViewModelable {
     self.eventManager = eventManager
     self.reminderManager = reminderManager
     self.calendarHelper = calendarHelper
-    self.offsetWidth = offsetWidth
-    self.currentIndex = currentIndex
     
-    self.currentOffsetX = -CGFloat(currentIndex) * offsetWidth
+    self.minicarOffset = .zero
   }
   
   var pastCurrentFutureDates: [Date] {
     return calendarHelper.extractPastCurrentFutureDates(dateHolder.date)
   }
   
-  var minimunCalendarWeekheight: CGFloat {
-    let dates = calendarHelper.extractMonthDates(dateHolder.date)
+  func minimunCalendarWeekheight(_ date: Date) -> CGFloat {
+    let dates = calendarHelper.extractMonthDates(date)
       .map { (dateValue) -> String in
         let isThisMonth = dateValue.isCurrentMonth ? "ThisMonth" : ""
         let dayString = dateValue.date.day
         return isThisMonth + dayString
       }
 
-    let date = "ThisMonth" + dateHolder.date.day
+    let date = "ThisMonth" + date.day
     
     guard let index = dates.firstIndex(of: date) else {
       return CGFloat(0)
@@ -63,7 +58,7 @@ class WeeklyStackViewModel: ViewModelable {
     case moveToMonthly
     case moveToPreviousWeek
     case moveToNextWeek
-    case onChagnedIndex(Int)
+    case changeMinicarOffset
   }
   
   func action(_ action: Action) {
@@ -74,9 +69,16 @@ class WeeklyStackViewModel: ViewModelable {
         moveToPreviousWeek()
       case .moveToNextWeek:
         moveToNextWeek()
-      case .onChagnedIndex(let index):
-        onChagnedIndex(index)
+      case .changeMinicarOffset:
+        minicarOffset = minimunCalendarWeekheight(dateHolder.date)
     }
+  }
+  
+  var currentWeek: Bool {
+    let year = dateHolder.date.year == Date().year
+    let month = dateHolder.date.month == Date().month
+    let week = minimunCalendarWeekheight(dateHolder.date) == minimunCalendarWeekheight(Date())
+    return year && month && week
   }
   
   var allDatesForDisplay: [DateValue] {
@@ -88,27 +90,11 @@ class WeeklyStackViewModel: ViewModelable {
   }
 
   private func moveToPreviousWeek() {
-    currentOffsetX += offsetWidth
-      currentIndex -= 1
+    dateHolder.date = calendarHelper.minusDate(dateHolder.date)
   }
   
   private func moveToNextWeek() {
-    currentOffsetX -= offsetWidth
-    currentIndex += 1
-  }
-  
-  private func onChagnedIndex(_ changedIndex: Int) {
-    if changedIndex == 0 {
-      dateHolder.date = calendarHelper.minusDate(dateHolder.date)
-      currentOffsetX = -offsetWidth
-      currentIndex = 1
-    }
-    
-    if changedIndex == 2 {
-      dateHolder.date = calendarHelper.plusDate(dateHolder.date)
-      currentOffsetX = -offsetWidth
-      currentIndex = 1
-    }
+    dateHolder.date = calendarHelper.plusDate(dateHolder.date)
   }
   
   func extractMonthDates() -> [DateValue] {

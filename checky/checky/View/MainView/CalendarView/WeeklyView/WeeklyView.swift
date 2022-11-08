@@ -28,7 +28,7 @@ struct WeeklyView: View {
                                                         allEvnets: events,
                                                         dueDateReminders: reminders,
                                                         clearedReminders: clearedReminders,
-                                                          eventManager: viewModel.eventManager,
+                                                        eventManager: viewModel.eventManager,
                                                         reminderManager: viewModel.reminderManager))
           .padding(.horizontal, 10)
           .padding(.vertical, 6)
@@ -41,6 +41,10 @@ struct WeeklyView: View {
       }
     }
     .frame(maxHeight: .infinity)
+    .onReceive(viewModel.dateHolder.$date) { output in
+      print("bbb")
+      viewModel.action(.actionOnAppear)
+    }
     .onAppear {
       viewModel.action(.actionOnAppear)
     }

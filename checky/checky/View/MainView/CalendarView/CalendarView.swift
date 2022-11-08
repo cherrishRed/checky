@@ -19,7 +19,7 @@ struct CalendarView: View {
   var body: some View {
     Group {
       if viewModel.mode {
-        WeeklyStackView(viewModel: WeeklyStackViewModel(dateHolder: dateHolder, eventManager: eventManager, reminderManager: reminderManager, calendarHelper: WeeklyCalendarHelper(), offsetWidth: UIScreen.main.bounds.width, moveToMonthly: { viewModel.mode.toggle() } ))
+        WeeklyStackView(viewModel: WeeklyStackViewModel(dateHolder: dateHolder, eventManager: eventManager, reminderManager: reminderManager, calendarHelper: WeeklyCalendarHelper(), moveToMonthly: { viewModel.mode.toggle() } ))
           .environmentObject(coordinator)
         
       } else {
