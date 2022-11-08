@@ -47,6 +47,7 @@
 		DA2789B2291A148500E76B53 /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2789B1291A148500E76B53 /* ReminderView.swift */; };
 		DA2789B4291A172F00E76B53 /* ReminderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2789B3291A172E00E76B53 /* ReminderViewModel.swift */; };
 		DA2789B6291A26E200E76B53 /* ReminderViewEventBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2789B5291A26E200E76B53 /* ReminderViewEventBlockView.swift */; };
+		DA2789B8291A2F2900E76B53 /* ReminderCategoryBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2789B7291A2F2900E76B53 /* ReminderCategoryBlockView.swift */; };
 		DA2C796128EEFF7700922C47 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796028EEFF7700922C47 /* AppDelegate.swift */; };
 		DA2C796328EEFFA300922C47 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796228EEFFA300922C47 /* SceneDelegate.swift */; };
 		DA2C796628EF005B00922C47 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796528EF005B00922C47 /* NavigationRouter.swift */; };
@@ -145,6 +146,7 @@
 		DA2789B1291A148500E76B53 /* ReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderView.swift; sourceTree = "<group>"; };
 		DA2789B3291A172E00E76B53 /* ReminderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewModel.swift; sourceTree = "<group>"; };
 		DA2789B5291A26E200E76B53 /* ReminderViewEventBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewEventBlockView.swift; sourceTree = "<group>"; };
+		DA2789B7291A2F2900E76B53 /* ReminderCategoryBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCategoryBlockView.swift; sourceTree = "<group>"; };
 		DA2C796028EEFF7700922C47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA2C796228EEFFA300922C47 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		DA2C796528EF005B00922C47 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
@@ -452,6 +454,7 @@
 			children = (
 				DA2789B1291A148500E76B53 /* ReminderView.swift */,
 				DA2789B3291A172E00E76B53 /* ReminderViewModel.swift */,
+				DA2789B7291A2F2900E76B53 /* ReminderCategoryBlockView.swift */,
 				DA2789B5291A26E200E76B53 /* ReminderViewEventBlockView.swift */,
 			);
 			path = Reminder;
@@ -770,6 +773,7 @@
 				DA2C797128F6E2C800922C47 /* Extension+View.swift in Sources */,
 				DA91E81428EDF3900091B6A3 /* MonthlyViewModel.swift in Sources */,
 				86057B6429125F7400CEC6AB /* EmojiView.swift in Sources */,
+				DA2789B8291A2F2900E76B53 /* ReminderCategoryBlockView.swift in Sources */,
 				868C543D28F4178D006A9B38 /* TabBarItemsPreferenceKey.swift in Sources */,
 				DA78BC79290FE64800E2E2AD /* DailyReminderCellVeiwModel.swift in Sources */,
 				865BE52428EC4B6200305899 /* Extension+Text.swift in Sources */,

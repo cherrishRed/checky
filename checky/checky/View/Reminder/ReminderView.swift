@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import EventKit
 
 struct ReminderView: View {
   @ObservedObject var viewModel: ReminderViewModel
+  let columns = Array(repeating: GridItem(.flexible(), spacing: 0, alignment: nil), count: 2)
   
   var body: some View {
     VStack {
@@ -20,7 +22,13 @@ struct ReminderView: View {
       }
       .buttonStyle(ToggleButtonStyle())
       
-      
+      ScrollView {
+        LazyVGrid(columns: columns, spacing: 0) {
+          ForEach(viewModel.categories) { category in
+            ReminderCategoryBlockView(category: category, reminderManager: viewModel.reminderManager)
+          }
+        }
+      }
 
     }
     .background(Color.backgroundGray)
@@ -44,7 +52,6 @@ extension ReminderView {
         .fill(.white)
       VStack {
         ForEach(viewModel.events, id: \.self) { event in
-          let _ = print(event)
           ReminderViewEventBlockView(event: event)
             .frame(height: 30)
         }
@@ -55,4 +62,5 @@ extension ReminderView {
     .fixedSize(horizontal: false, vertical: true)
   }
 }
-
+          
+          

@@ -70,6 +70,20 @@ struct ReminderManager: ManagerProtocol {
       }
     }
   }
+  
+  func  getAllreminder(by category: EKCalendar, completionHandler: @escaping ([Reminder]) -> Void) {
+    var list: [Reminder] = []
+    
+      let predicate: NSPredicate = store.predicateForReminders(in: [category])
+      
+      store.fetchReminders(matching: predicate) { reminders in
+        for ekreminder in reminders ?? [] {
+          let reminder = Reminder(ekreminder: ekreminder, category: category)
+          list.append(reminder)
+        }
+        completionHandler(list)
+      }
+  }
     
   func createNewTask(newTask: EKCalendarItem) {
       guard let newTask = newTask as? EKReminder else { return }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import EventKit
 
 class ReminderViewModel: ViewModelable {
   @Published var events: [Event]
@@ -27,10 +28,16 @@ class ReminderViewModel: ViewModelable {
     case onAppear
   }
   
+  var categories: [EKCalendar] {
+    return reminderManager.getTaskCategories()
+  }
+  
   func action(_ action:Action) {
     switch action {
       case .onAppear:
-       print("")
+        print("")
     }
   }
+  
+}
 
