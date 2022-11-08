@@ -29,9 +29,9 @@ struct MonthlyView: View {
                                                           clearedReminders: clearedReminders,
                                                           eventManager: viewModel.eventManager,
                                                           reminderManager: viewModel.reminderManager))
+          
           .onTapGesture {
             coordinator.show(.daily(value.date, events, reminders, clearedReminders, viewModel.eventManager, viewModel.reminderManager))
-            print("tabbed!!!chell")
           }
           .frame(width: geo.size.width / 7, height: geo.size.height / columnsCount, alignment: .top)
           .clipped()

@@ -19,7 +19,7 @@ struct CheckyMainView: View {
           .tabBarItem(tab: .calendar, selection: $checkyMainViewModel.tabSelection)
         Color.red
           .tabBarItem(tab: .reminder, selection: $checkyMainViewModel.tabSelection)
-        SettingListView()
+        SettingListView(viewModel: SettingViewModel(eventManager: EventManager(), reminderManager: ReminderManager()))
           .tabBarItem(tab: .setting, selection: $checkyMainViewModel.tabSelection)
       }
     }.onAppear {

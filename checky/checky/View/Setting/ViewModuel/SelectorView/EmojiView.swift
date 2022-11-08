@@ -20,31 +20,36 @@ struct EmojiView: View {
           firstUnicode = 0x1F600
           lastUnicode = 0x1F64F
         }
+        
         Button("🌀") {
           firstUnicode = 0x1F300
           lastUnicode = 0x1F5FF
         }
+        
         Button("🚀") {
           firstUnicode = 0x1F680
           lastUnicode = 0x1F6FF
         }
+        
         Button("☀") {
           firstUnicode = 0x2600
           lastUnicode = 0x26FF
         }
+        
         Button("✂") {
           firstUnicode = 0x2700
           lastUnicode = 0x27BF
         }
+        
         Button("🤒") {
           firstUnicode = 0x1F912
           lastUnicode = 0x1F9FF
         }
       }
-      ZStack(alignment: .topLeading)   {
+      
+      ZStack(alignment: .topLeading) {
         ScrollView(.vertical, showsIndicators: false) {
           VStack(spacing: 15) {
-            
             ForEach(self.getEmojiList(firstUnicode, lastUnicode), id: \.self) { i in
               
               HStack(spacing: 25) {
@@ -77,7 +82,6 @@ struct EmojiView: View {
         .cornerRadius(25)
       }
     }
-    
   }
   
   func getEmojiList(_ firstUnicode: UInt32, _ lastUnicode: UInt32) -> [[UInt32]] {

@@ -31,6 +31,7 @@
 		868C544528F4199D006A9B38 /* CheckyMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C544428F4199D006A9B38 /* CheckyMainView.swift */; };
 		868C544728F419B1006A9B38 /* CheckyMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C544628F419B1006A9B38 /* CheckyMainViewModel.swift */; };
 		868E024A2913AF8F0039B52E /* CategoriListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E02492913AF8F0039B52E /* CategoriListCellView.swift */; };
+		868E02D32919F6120039B52E /* SettingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E02D22919F6120039B52E /* SettingListViewModel.swift */; };
 		869BAA942908A4A200D4D71D /* CheckyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869BAA932908A4A200D4D71D /* CheckyRouter.swift */; };
 		86A5E60228EEA6A80040DCFB /* DayOfWeekStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5E60128EEA6A80040DCFB /* DayOfWeekStackView.swift */; };
 		86A5E60428EEA6B10040DCFB /* DayOfWeekStackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A5E60328EEA6B10040DCFB /* DayOfWeekStackViewModel.swift */; };
@@ -131,6 +132,7 @@
 		868C544428F4199D006A9B38 /* CheckyMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckyMainView.swift; sourceTree = "<group>"; };
 		868C544628F419B1006A9B38 /* CheckyMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckyMainViewModel.swift; sourceTree = "<group>"; };
 		868E02492913AF8F0039B52E /* CategoriListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriListCellView.swift; sourceTree = "<group>"; };
+		868E02D22919F6120039B52E /* SettingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListViewModel.swift; sourceTree = "<group>"; };
 		869BAA932908A4A200D4D71D /* CheckyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckyRouter.swift; sourceTree = "<group>"; };
 		86A5E60128EEA6A80040DCFB /* DayOfWeekStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekStackView.swift; sourceTree = "<group>"; };
 		86A5E60328EEA6B10040DCFB /* DayOfWeekStackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekStackViewModel.swift; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 			isa = PBXGroup;
 			children = (
 				86FBE20C2910F3A200961DE8 /* SettingListView.swift */,
+				868E02D22919F6120039B52E /* SettingListViewModel.swift */,
 				86A1BC17291374BF006EF0CD /* ViewModuel */,
 				86FBE2112910F3C100961DE8 /* Event */,
 				86FBE2102910F3B300961DE8 /* Reminder */,
@@ -711,6 +714,7 @@
 				8679589B290A3C64001D5C7F /* ReminderManager.swift in Sources */,
 				86FBE20F2910F3AD00961DE8 /* SettingViewModuel.swift in Sources */,
 				DA466EA028E685D70076AEE4 /* checkyApp.swift in Sources */,
+				868E02D32919F6120039B52E /* SettingListViewModel.swift in Sources */,
 				868C543F28F417C0006A9B38 /* CustomTabBarContainerView.swift in Sources */,
 				865BE52628EC867900305899 /* WeekOption.swift in Sources */,
 				DA91E7E528EC94180091B6A3 /* MonthlyCellView.swift in Sources */,
@@ -974,11 +978,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"checky/Preview Content\"";
-
-				DEVELOPMENT_TEAM = LZZV4V63N5;
-
 				DEVELOPMENT_TEAM = YB5KQCLMY6;
-
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = checky/Info.plist;
@@ -1010,13 +1010,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"checky/Preview Content\"";
-
-				DEVELOPMENT_TEAM = LZZV4V63N5;
 				DEVELOPMENT_TEAM = YB5KQCLMY6;
-
-
-
-        ENABLE_PREVIEWS = YES;
+				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = checky/Info.plist;
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "\"캘린더 사용 디스크립션\"";
