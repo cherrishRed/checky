@@ -9,7 +9,6 @@ import SwiftUI
 
 class WeeklyStackViewModel: ViewModelable {
   @Published var dateHolder: DateHolder
-  
   @Published var minicarOffset: CGFloat
   
   let eventManager: EventManager

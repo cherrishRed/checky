@@ -35,14 +35,12 @@ struct WeeklyView: View {
           .frame(width: geo.size.width / 1.9, height: geo.size.height / viewModel.gridCloumnsCount * 2)
           .onTapGesture {
             coordinator.show(.daily(value.date, events, reminders, clearedReminders, viewModel.eventManager, viewModel.reminderManager))
-            print("tabbed!!!")
           }
         }
       }
     }
     .frame(maxHeight: .infinity)
     .onReceive(viewModel.dateHolder.$date) { output in
-      print("bbb")
       viewModel.action(.actionOnAppear)
     }
     .onAppear {

@@ -66,8 +66,6 @@ struct MonthyCalendarHelper: CalendarCanDo {
     dates.append(currentMonth)
     dates.append(nextMonth)
     
-    print(dates)
-    
     return dates
   }
 }
