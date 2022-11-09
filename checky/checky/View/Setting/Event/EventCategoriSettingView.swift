@@ -9,51 +9,71 @@ import SwiftUI
 import EventKit
 
 struct EventCategoriSettingView: View {
+  @EnvironmentObject var coordinator: Coordinator<checkyRouter>
   @ObservedObject var viewModel: EventCategoriSettingViewModel
   
   var body: some View {
-    HStack {
-      VStack(spacing: 10) {
-        ZStack {
-          RoundedRectangle(cornerRadius: 4)
-            .fill(Color.white)
-            .frame(height: 30)
-            .frame(maxWidth: .infinity)
+    VStack(spacing: 10) {
+        ZStack(alignment: .leading) {
+          Text(viewModel.category.title)
+              .font(.title)
+              .bold()
+              .foregroundColor(Color.fontBlack)
+              .frame(maxWidth: .infinity)
           
-          HStack {
-            Text("이모지")
-            Spacer()
-            Text(viewModel.emoji)
+          Button {
+            coordinator.pop()
+          } label: {
+            Image(systemName: "chevron.backward")
+              .foregroundColor(Color.fontBlack)
+              .padding(.horizontal)
           }
-          .padding(.horizontal, 15)
         }
-        
-        ZStack {
-          RoundedRectangle(cornerRadius: 4)
-            .fill(Color.white)
-            .frame(height: 30)
-            .frame(maxWidth: .infinity)
-          
-          HStack {
-            Text("색상")
-            Spacer()
+        .background(Color.basicWhite)
+      
+        VStack(spacing: 10) {
+          ZStack {
+            RoundedRectangle(cornerRadius: 4)
+              .fill(Color.white)
+              .frame(height: 30)
+              .frame(maxWidth: .infinity)
             
-            RoundedRectangle(cornerRadius: 2)
-              .fill(viewModel.color)
-              .frame(width: 16, height: 16)
+            HStack {
+              Text("이모지")
+              Spacer()
+              Text(viewModel.emoji)
+            }
+            .padding(.horizontal, 15)
           }
-          .padding(.horizontal, 17)
+          
+          ZStack {
+            RoundedRectangle(cornerRadius: 4)
+              .fill(Color.white)
+              .frame(height: 30)
+              .frame(maxWidth: .infinity)
+            
+            HStack {
+              Text("색상")
+              Spacer()
+              
+              RoundedRectangle(cornerRadius: 2)
+                .fill(viewModel.color)
+                .frame(width: 16, height: 16)
+            }
+            .padding(.horizontal, 17)
+          }
+          Spacer()
+          ColorView(color: $viewModel.color, calendarIdentifier: viewModel.category.calendarIdentifier)
+          EmojiView(txt: $viewModel.emoji, calendarIdentifier: viewModel.category.calendarIdentifier, firstUnicode: 0x1F600, lastUnicode: 0x1F64F)
+          Spacer()
         }
-        Spacer()
-        ColorView(color: $viewModel.color, calendarIdentifier: viewModel.category.calendarIdentifier)
-        EmojiView(txt: $viewModel.emoji, calendarIdentifier: viewModel.category.calendarIdentifier, firstUnicode: 0x1F600, lastUnicode: 0x1F64F)
-        Spacer()
+        .padding(.horizontal, 15)
       }
-      .padding(.horizontal, 15)
-    }
     .onAppear {
       viewModel.emoji = fetchUserDefaultEmoji(calendarIdentifier: viewModel.category.calendarIdentifier)
       viewModel.color = fetchUserDefaultColor(calendarIdentifier: viewModel.category.calendarIdentifier)
+      
+      coordinator.navigationController.isNavigationBarHidden = true
     }
     .background(Color.backgroundGray)
   }
