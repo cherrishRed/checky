@@ -38,6 +38,7 @@ struct DailyReminderCellView: View {
                   .frame(width: 20)
               }
             }
+            .padding(.vertical, 2)
           }
           .padding(.leading, 4)
           

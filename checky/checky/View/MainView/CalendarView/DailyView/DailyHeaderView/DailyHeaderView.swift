@@ -8,18 +8,27 @@
 import SwiftUI
 
 struct DailyHeaderView: View {
+  @EnvironmentObject var coordinator: Coordinator<checkyRouter>
   @State var date: Date
   let calendarHelper = WeeklyCalendarHelper()
     
     var body: some View {
+      ZStack(alignment: .leading) {
         Text(displayMonth)
             .font(.title)
             .bold()
             .foregroundColor(Color.fontBlack)
-            .animation(.none)
             .frame(maxWidth: .infinity)
-            .background(Color.basicWhite)
-            .padding(.top)
+        
+        Button {
+          coordinator.pop()
+        } label: {
+          Image(systemName: "chevron.backward")
+            .foregroundColor(Color.fontBlack)
+            .padding(.horizontal)
+        }
+      }
+      .background(Color.basicWhite)
     }
   
   var displayMonth: String {

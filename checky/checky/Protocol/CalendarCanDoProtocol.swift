@@ -27,7 +27,7 @@ extension CalendarCanDo {
   
   func monthYearDayString(_ date: Date) -> String {
     let dataFormatter = DateFormatter()
-    dataFormatter.dateFormat = "YYYY MM dd"
+    dataFormatter.dateFormat = "YYYY년 M월 d일"
     return dataFormatter.string(from: date)
   }
   

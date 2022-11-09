@@ -17,13 +17,13 @@ struct DailyView: View {
   }
   
   var body: some View {
-    VStack {
+    VStack(spacing: 0) {
       DailyHeaderView(date: viewModel.date)
       ScrollView(.vertical) {
         VStack(alignment: .leading) {
           if viewModel.events.count == 0 {
             VStack(alignment: .center) {
-              Text("오늘은 일정이 없어요!")
+              Text("일정이 없는 날 입니다 🤗")
                 .padding(.top)
                 .frame(maxWidth: .infinity)
             }
@@ -58,6 +58,9 @@ struct DailyView: View {
         }
       }
       .background(Color.backgroundGray)
+    }
+    .onAppear {
+      coordinator.navigationController.isNavigationBarHidden = true
     }
   }
   
