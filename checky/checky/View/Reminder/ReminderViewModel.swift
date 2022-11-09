@@ -5,7 +5,7 @@
 //  Created by RED on 2022/11/08.
 //
 
-import Foundation
+import SwiftUI
 import EventKit
 
 class ReminderViewModel: ViewModelable {
@@ -30,6 +30,38 @@ class ReminderViewModel: ViewModelable {
   
   var categories: [EKCalendar] {
     return reminderManager.getTaskCategories()
+  }
+  
+  var categoriesFirstLine: [EKCalendar] {
+    var categoriesLine: [EKCalendar] = []
+    
+    let categoriesCount = categories.count
+    var mockCategoris = categories
+    let isEven = categoriesCount % 2 == 0 ? true : false
+    let count = isEven ? categoriesCount/2 : (categoriesCount/2)+1
+
+    
+    for i in stride(from: 0 , to: categoriesCount-1, by: 2) {
+      let category = mockCategoris[i]
+      categoriesLine.append(category)
+    }
+    
+    return categoriesLine
+  }
+  
+  var categoriesSecondLine: [EKCalendar] {
+    var categoriesLine: [EKCalendar] = []
+    
+    let categoriesCount = categories.count
+    let count = categoriesCount/2
+    var mockCategoris = categories
+    
+    for i in stride(from: 1 , to: categoriesCount-1, by: 2) {
+      let category = mockCategoris[i]
+      categoriesLine.append(category)
+    }
+    
+    return categoriesLine
   }
   
   func action(_ action:Action) {

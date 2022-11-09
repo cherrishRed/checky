@@ -10,7 +10,7 @@ import EventKit
 
 struct ReminderView: View {
   @ObservedObject var viewModel: ReminderViewModel
-  let columns = Array(repeating: GridItem(.flexible(), spacing: 0, alignment: nil), count: 2)
+  let columns = Array(repeating: GridItem(.flexible(), spacing: 0, alignment: .top), count: 2)
   
   var body: some View {
     VStack {
@@ -22,14 +22,28 @@ struct ReminderView: View {
       }
       .buttonStyle(ToggleButtonStyle())
       
-      ScrollView {
-        LazyVGrid(columns: columns, spacing: 0) {
-          ForEach(viewModel.categories) { category in
-            ReminderCategoryBlockView(category: category, reminderManager: viewModel.reminderManager)
+      GeometryReader { geo in
+        ScrollView {
+          LazyHStack(alignment: .top, spacing: 10) {
+            LazyVStack {
+              ForEach(viewModel.categoriesFirstLine, id: \.self) { category in
+                ReminderCategoryBlockView(category: category, reminderManager: viewModel.reminderManager)
+              }
+            }
+            
+            .frame(width: (geo.size.width/2)-15)
+            
+            LazyVStack {
+              ForEach(viewModel.categoriesSecondLine, id: \.self) { category in
+                ReminderCategoryBlockView(category: category, reminderManager: viewModel.reminderManager)
+              }
+            }
+            
+            .frame(width: (geo.size.width/2)-15)
           }
+          .padding(.horizontal, 10)
         }
       }
-
     }
     .background(Color.backgroundGray)
   }

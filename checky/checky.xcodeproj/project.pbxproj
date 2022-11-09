@@ -621,6 +621,8 @@
 			dependencies = (
 			);
 			name = checky;
+			packageProductDependencies = (
+			);
 			productName = checky;
 			productReference = DA466E9C28E685D70076AEE4 /* checky.app */;
 			productType = "com.apple.product-type.application";
@@ -675,6 +677,8 @@
 				Base,
 			);
 			mainGroup = DA466E9328E685D70076AEE4;
+			packageReferences = (
+			);
 			productRefGroup = DA466E9D28E685D70076AEE4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

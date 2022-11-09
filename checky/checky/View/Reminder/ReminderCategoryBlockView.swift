@@ -10,7 +10,7 @@ import EventKit
 
 struct ReminderCategoryBlockView: View {
   @ObservedObject var viewModel: ReminderCategoryBlockViewModel
-  
+
   init(category: EKCalendar, reminderManager: ReminderManager) {
     self._viewModel = ObservedObject(wrappedValue: ReminderCategoryBlockViewModel(category: category, reminderManager: reminderManager))
   }
@@ -41,16 +41,13 @@ struct ReminderCategoryBlockView: View {
       }
       .padding()
     }
-    .padding()
     .fixedSize(horizontal: false, vertical: true)
-    .onAppear {
-      viewModel.fetchReminder()
-    }
+
   }
 }
 
 class ReminderCategoryBlockViewModel: ViewModelable {
-  @Published var reminders: [Reminder] = []
+  @Published var reminders: [Reminder]
   
   let category: EKCalendar
   let reminderManager: ReminderManager
@@ -58,6 +55,14 @@ class ReminderCategoryBlockViewModel: ViewModelable {
   init(category: EKCalendar, reminderManager: ReminderManager) {
     self.category = category
     self.reminderManager = reminderManager
+    self.reminders = []
+    
+    
+    reminderManager.getAllreminder(by: category) { reminders in
+      DispatchQueue.main.async {
+        self.reminders = reminders
+      }
+    }
   }
   
   enum Action {
@@ -78,14 +83,6 @@ class ReminderCategoryBlockViewModel: ViewModelable {
       return Color(category.cgColor)
     } else {
       return fetchUserDefaultColor(calendarIdentifier: category.calendarIdentifier)
-    }
-  }
-  
-  func fetchReminder() {
-    reminderManager.getAllreminder(by: category) { reminders in
-      DispatchQueue.main.async {
-        self.reminders = reminders
-      }
     }
   }
 }
