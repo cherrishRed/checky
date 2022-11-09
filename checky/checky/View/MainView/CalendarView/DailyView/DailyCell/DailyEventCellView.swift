@@ -41,7 +41,7 @@ struct DailyEventCellView: View {
                 Circle()
                   .fill(Color.basicWhite)
                   .frame(width: 30)
-                Text("😗")
+                Text(viewModel.icon)
               }
               
               VStack(alignment: .leading) {

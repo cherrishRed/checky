@@ -27,6 +27,14 @@ class DailyEventCellViewModel: ViewModelable {
     }
   }
   
+  var icon: String {
+    let emoji = fetchUserDefaultEmoji(calendarIdentifier: event.category.calendarIdentifier)
+    if emoji.count == 0 {
+      return "😀"
+    }
+    return emoji
+  }
+  
   var isAllday: Bool {
     return event.ekevent.isAllDay
   }

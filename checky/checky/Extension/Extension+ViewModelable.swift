@@ -15,4 +15,8 @@ extension ViewModelable {
     
    return  Color(.sRGB, red: colorComponent[0], green: colorComponent[1], blue: colorComponent[2], opacity: colorComponent[3])
   }
+  
+  func fetchUserDefaultEmoji(calendarIdentifier: String) -> String {
+   return UserDefaults.standard.string(forKey: ("\(calendarIdentifier)_emoji")) ?? ""
+  }
 }
