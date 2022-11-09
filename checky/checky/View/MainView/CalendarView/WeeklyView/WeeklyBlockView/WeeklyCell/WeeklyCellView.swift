@@ -20,7 +20,7 @@ struct WeeklyCellView: View {
         HStack {
           Text(viewModel.dateValue.date.dayOfWeek)
             .font(.caption2)
-            .foregroundColor(.black.opacity(0.5))
+            .foregroundColor(Color.fontBlack.opacity(0.5))
           ZStack {
             if Calendar.current.isDateInToday(viewModel.dateValue.date) {
               Circle()
@@ -113,7 +113,7 @@ struct WeeklyReminderBlockView: View {
       
       Text(reminder.ekreminder.title)
         .font(.caption)
-        .foregroundColor(Color.fontDarkBlack)
+        .foregroundColor(Color.fontBlack)
         .fixedSize(horizontal: true, vertical: false)
     }
     .padding(.horizontal, 2)

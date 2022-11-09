@@ -78,7 +78,7 @@ struct EmojiView: View {
         }
         .frame(maxWidth: .infinity)
         .frame(height: UIScreen.main.bounds.height / 3)
-        .background(Color.white)
+        .background(Color.basicWhite)
         .cornerRadius(25)
       }
     }

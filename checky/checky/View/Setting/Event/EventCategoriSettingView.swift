@@ -34,7 +34,7 @@ struct EventCategoriSettingView: View {
         VStack(spacing: 10) {
           ZStack {
             RoundedRectangle(cornerRadius: 4)
-              .fill(Color.white)
+              .fill(Color.basicWhite)
               .frame(height: 30)
               .frame(maxWidth: .infinity)
             
@@ -48,7 +48,7 @@ struct EventCategoriSettingView: View {
           
           ZStack {
             RoundedRectangle(cornerRadius: 4)
-              .fill(Color.white)
+              .fill(Color.basicWhite)
               .frame(height: 30)
               .frame(maxWidth: .infinity)
             

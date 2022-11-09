@@ -15,7 +15,7 @@ enum EventMode {
 }
 
 struct CategoriListCellView: View {
-  @State var color: Color = .white
+  @State var color: Color = Color.basicWhite
   @State var emoji: String = ""
   let category: EKCalendar
   let buttonAction: () -> ()
@@ -35,12 +35,12 @@ struct CategoriListCellView: View {
     }, label: {
       ZStack {
         RoundedRectangle(cornerRadius: 4)
-          .fill(Color.white)
+          .fill(Color.basicWhite)
           .frame(maxWidth: .infinity)
 
         HStack {
           Text(category.title)
-            .foregroundColor(Color.fontDarkBlack)
+            .foregroundColor(Color.fontBlack)
             .font(.title3)
           
           Spacer()
