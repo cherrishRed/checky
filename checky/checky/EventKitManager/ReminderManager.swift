@@ -109,7 +109,7 @@ struct ReminderManager: ManagerProtocol {
       return .failure(error)
     }
   }
-  }
+}
 
 
 extension EKCalendar: Identifiable {}

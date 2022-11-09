@@ -26,14 +26,21 @@ struct ReminderCategoryBlockView: View {
           .frame(height: 2)
         ForEach(viewModel.reminders, id: \.self) { reminder in
           HStack {
-            ZStack {
-              Circle()
-                .stroke(viewModel.color)
-                .frame(width: 14 , height: 14)
-              Circle()
-                .fill(viewModel.color)
-                .frame(width: 8 , height: 8)
-                .opacity(reminder.ekreminder.isCompleted ? 1.0 : 0.0)
+            Button {
+              reminder.ekreminder.isCompleted.toggle()
+              let result = viewModel.reminderManager.editReminder(reminder.ekreminder)
+              print(result)
+              
+            } label: {
+              ZStack {
+                Circle()
+                  .stroke(viewModel.color)
+                  .frame(width: 14 , height: 14)
+                Circle()
+                  .fill(viewModel.color)
+                  .frame(width: 8 , height: 8)
+                  .opacity(reminder.ekreminder.isCompleted ? 1.0 : 0.0)
+              }
             }
             Text(reminder.ekreminder.title)
           }
