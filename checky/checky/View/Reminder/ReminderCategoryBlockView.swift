@@ -79,7 +79,7 @@ class ReminderCategoryBlockViewModel: ViewModelable {
   func action(_ action:Action) {
     switch action {
       case .onAppear:
-        print("")
+        break
     }
   }
   
