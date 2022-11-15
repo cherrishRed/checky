@@ -36,10 +36,9 @@ class ReminderViewModel: ViewModelable {
     var categoriesLine: [EKCalendar] = []
     
     let categoriesCount = categories.count
-    var mockCategoris = categories
+    let mockCategoris = categories
     
     for i in stride(from: 0 , to: categoriesCount-1, by: 2) {
-      print("first: \(i)")
       let category = mockCategoris[i]
       categoriesLine.append(category)
     }
@@ -51,10 +50,9 @@ class ReminderViewModel: ViewModelable {
     var categoriesLine: [EKCalendar] = []
     
     let categoriesCount = categories.count
-    var mockCategoris = categories
+    let mockCategoris = categories
     
     for i in stride(from: 1 , to: categoriesCount, by: 2) {
-      print("secound: \(i)")
       let category = mockCategoris[i]
       categoriesLine.append(category)
     }
@@ -65,7 +63,7 @@ class ReminderViewModel: ViewModelable {
   func action(_ action:Action) {
     switch action {
       case .onAppear:
-        print("")
+        break
     }
   }
   
