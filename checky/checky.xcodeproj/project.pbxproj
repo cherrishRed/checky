@@ -52,6 +52,8 @@
 		DA124ADD2923C55200C6ED6C /* checkyWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = DA124AD92923C55000C6ED6C /* checkyWidget.intentdefinition */; };
 		DA124ADE2923C55200C6ED6C /* checkyWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = DA124AD92923C55000C6ED6C /* checkyWidget.intentdefinition */; };
 		DA124AE22923C55200C6ED6C /* checkyWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = DA124AD02923C54F00C6ED6C /* checkyWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		DA124AE62923C6AC00C6ED6C /* Extension+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3E9DAB29078FE200E72E21 /* Extension+Color.swift */; };
+		DA124AE72923C6F900C6ED6C /* Extension+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91E7D928EB58310091B6A3 /* Extension+Date.swift */; };
 		DA2789952911C7F300E76B53 /* DailyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2789942911C7F300E76B53 /* DailyHeaderView.swift */; };
 		DA2789AF291A125E00E76B53 /* Extension+ViewModelable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2789AE291A125E00E76B53 /* Extension+ViewModelable.swift */; };
 		DA2789B2291A148500E76B53 /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2789B1291A148500E76B53 /* ReminderView.swift */; };
@@ -845,6 +847,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA124AD82923C55000C6ED6C /* checkyWidget.swift in Sources */,
+				DA124AE72923C6F900C6ED6C /* Extension+Date.swift in Sources */,
+				DA124AE62923C6AC00C6ED6C /* Extension+Color.swift in Sources */,
 				DA124ADD2923C55200C6ED6C /* checkyWidget.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
