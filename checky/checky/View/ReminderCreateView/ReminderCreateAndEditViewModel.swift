@@ -205,7 +205,8 @@ class ReminderCreateAndEditViewModel: ObservableObject {
   }
   
   private func tappedDeleteButton() {
-    
+    guard let task = reminder?.ekreminder else { return }
+    reminderManager.deleteTask(task: task)
   }
   
   private func closeAllPickers() {

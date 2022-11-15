@@ -97,6 +97,17 @@ struct EventManager: ManagerProtocol {
     }
   }
   
+  func deleteTask(task: EKCalendarItem) {
+    guard let task = task as? EKEvent else { return }
+    
+    do {
+      try store.remove(task, span:  EKSpan.futureEvents)
+    } catch {
+      print("event 삭제 실패🥲")
+      print(error.localizedDescription)
+    }
+  }
+  
   func getTaskCategories() -> [EKCalendar] {
     return store.calendars(for: .event)
   }

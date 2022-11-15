@@ -109,6 +109,17 @@ struct ReminderManager: ManagerProtocol {
       return .failure(error)
     }
   }
+  
+  func deleteTask(task: EKCalendarItem) {
+    guard let task = task as? EKReminder else { return }
+    
+    do {
+      try store.remove(task, commit: true)
+    } catch {
+      print("reminder 삭제 실패🥲")
+      print(error.localizedDescription)
+    }
+  }
 }
 
 

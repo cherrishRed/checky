@@ -69,6 +69,7 @@ struct ReminderCreateAndEditView: View {
   var deleteButtonView: some View {
     Button {
       viewModel.action(.tappedDeleteButton)
+      coordinator.dismiss()
     } label: {
       HStack {
         Image(systemName: "trash.fill")

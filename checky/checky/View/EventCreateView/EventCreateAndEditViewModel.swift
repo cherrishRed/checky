@@ -211,6 +211,8 @@ class EventCreateAndEditViewModel: ObservableObject {
   }
   
   private func tappedDeleteButton() {
+    guard let ekevent = event?.ekevent else { return }
+    eventManager.deleteTask(task: ekevent)
     closeAllPickers()
     reset()
   }
