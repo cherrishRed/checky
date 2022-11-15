@@ -44,6 +44,10 @@
 		86FC8CFA28EAB49B00B7752F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FC8CF928EAB49B00B7752F /* HeaderView.swift */; };
 		DA2789952911C7F300E76B53 /* DailyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2789942911C7F300E76B53 /* DailyHeaderView.swift */; };
 		DA2789AF291A125E00E76B53 /* Extension+ViewModelable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2789AE291A125E00E76B53 /* Extension+ViewModelable.swift */; };
+		DA2789B2291A148500E76B53 /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2789B1291A148500E76B53 /* ReminderView.swift */; };
+		DA2789B4291A172F00E76B53 /* ReminderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2789B3291A172E00E76B53 /* ReminderViewModel.swift */; };
+		DA2789B6291A26E200E76B53 /* ReminderViewEventBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2789B5291A26E200E76B53 /* ReminderViewEventBlockView.swift */; };
+		DA2789B8291A2F2900E76B53 /* ReminderCategoryBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2789B7291A2F2900E76B53 /* ReminderCategoryBlockView.swift */; };
 		DA2C796128EEFF7700922C47 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796028EEFF7700922C47 /* AppDelegate.swift */; };
 		DA2C796328EEFFA300922C47 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796228EEFFA300922C47 /* SceneDelegate.swift */; };
 		DA2C796628EF005B00922C47 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796528EF005B00922C47 /* NavigationRouter.swift */; };
@@ -139,6 +143,10 @@
 		86FC8CF928EAB49B00B7752F /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		DA2789942911C7F300E76B53 /* DailyHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyHeaderView.swift; sourceTree = "<group>"; };
 		DA2789AE291A125E00E76B53 /* Extension+ViewModelable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+ViewModelable.swift"; sourceTree = "<group>"; };
+		DA2789B1291A148500E76B53 /* ReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderView.swift; sourceTree = "<group>"; };
+		DA2789B3291A172E00E76B53 /* ReminderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewModel.swift; sourceTree = "<group>"; };
+		DA2789B5291A26E200E76B53 /* ReminderViewEventBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewEventBlockView.swift; sourceTree = "<group>"; };
+		DA2789B7291A2F2900E76B53 /* ReminderCategoryBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCategoryBlockView.swift; sourceTree = "<group>"; };
 		DA2C796028EEFF7700922C47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA2C796228EEFFA300922C47 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		DA2C796528EF005B00922C47 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
@@ -233,6 +241,7 @@
 		865BE51C28EC463C00305899 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DA2789B0291A145C00E76B53 /* Reminder */,
 				86FBE20B2910F39500961DE8 /* Setting */,
 				DA2C797F28F725E800922C47 /* ReminderCreateView */,
 				DA2C796B28F5814F00922C47 /* EventCreateView */,
@@ -440,6 +449,17 @@
 			path = WeeklyCell;
 			sourceTree = "<group>";
 		};
+		DA2789B0291A145C00E76B53 /* Reminder */ = {
+			isa = PBXGroup;
+			children = (
+				DA2789B1291A148500E76B53 /* ReminderView.swift */,
+				DA2789B3291A172E00E76B53 /* ReminderViewModel.swift */,
+				DA2789B7291A2F2900E76B53 /* ReminderCategoryBlockView.swift */,
+				DA2789B5291A26E200E76B53 /* ReminderViewEventBlockView.swift */,
+			);
+			path = Reminder;
+			sourceTree = "<group>";
+		};
 		DA2C792128EEB50500922C47 /* MainView */ = {
 			isa = PBXGroup;
 			children = (
@@ -601,6 +621,8 @@
 			dependencies = (
 			);
 			name = checky;
+			packageProductDependencies = (
+			);
 			productName = checky;
 			productReference = DA466E9C28E685D70076AEE4 /* checky.app */;
 			productType = "com.apple.product-type.application";
@@ -655,6 +677,8 @@
 				Base,
 			);
 			mainGroup = DA466E9328E685D70076AEE4;
+			packageReferences = (
+			);
 			productRefGroup = DA466E9D28E685D70076AEE4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -706,6 +730,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA466EA228E685D70076AEE4 /* MonthlyView.swift in Sources */,
+				DA2789B6291A26E200E76B53 /* ReminderViewEventBlockView.swift in Sources */,
 				DA2789952911C7F300E76B53 /* DailyHeaderView.swift in Sources */,
 				DA91E7D628EABDED0091B6A3 /* Week.swift in Sources */,
 				DA2C796128EEFF7700922C47 /* AppDelegate.swift in Sources */,
@@ -739,6 +764,7 @@
 				860F766428FCB97A00CB034B /* CalendarView.swift in Sources */,
 				DA2C796828EF007900922C47 /* NavigationTranisitionStyle.swift in Sources */,
 				DA4E4A48290C289600CF45E2 /* WeeklyViewModel.swift in Sources */,
+				DA2789B2291A148500E76B53 /* ReminderView.swift in Sources */,
 				86F0B2C128F6B71A006E2536 /* WeeklyBlockView.swift in Sources */,
 				DA91E7D828EB57AF0091B6A3 /* DateValue.swift in Sources */,
 				86795899290A3C2D001D5C7F /* ManagerProtocol.swift in Sources */,
@@ -751,6 +777,7 @@
 				DA2C797128F6E2C800922C47 /* Extension+View.swift in Sources */,
 				DA91E81428EDF3900091B6A3 /* MonthlyViewModel.swift in Sources */,
 				86057B6429125F7400CEC6AB /* EmojiView.swift in Sources */,
+				DA2789B8291A2F2900E76B53 /* ReminderCategoryBlockView.swift in Sources */,
 				868C543D28F4178D006A9B38 /* TabBarItemsPreferenceKey.swift in Sources */,
 				DA78BC79290FE64800E2E2AD /* DailyReminderCellVeiwModel.swift in Sources */,
 				865BE52428EC4B6200305899 /* Extension+Text.swift in Sources */,
@@ -764,6 +791,7 @@
 				DA4E4A052908F42100CF45E2 /* CreateSelectorView.swift in Sources */,
 				DA2C798128F7265D00922C47 /* ReminderCreateAndEditView.swift in Sources */,
 				868C544328F417F7006A9B38 /* TabBarItem.swift in Sources */,
+				DA2789B4291A172F00E76B53 /* ReminderViewModel.swift in Sources */,
 				8647AFBA28FD637F00EE1DA8 /* MonthlyCellViewModel.swift in Sources */,
 				DA2C796328EEFFA300922C47 /* SceneDelegate.swift in Sources */,
 				DA4E4A4D290C78C700CF45E2 /* DailyEventCellView.swift in Sources */,

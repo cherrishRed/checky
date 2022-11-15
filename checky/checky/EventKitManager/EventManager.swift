@@ -60,6 +60,21 @@ struct EventManager: ManagerProtocol {
     completionHandler(list)
   }
   
+  func getAllTaskforThisDay(date: Date, completionHandler: @escaping ([Event]) -> Void) {
+    let categories = store.calendars(for: .event)
+    
+    var list: [Event] = []
+    
+    for category in categories {
+      let predicate = store.predicateForEvents(withStart: date, end: date, calendars: [category])
+      let eventList = store.events(matching: predicate).map { ekevent -> Event in
+        return Event(ekevent: ekevent, category: category)
+      }
+      list.append(contentsOf: eventList)
+    }
+    completionHandler(list)
+  }
+  
   func createNewTask(newTask: EKCalendarItem) {
     guard let newTask = newTask as? EKEvent else { return }
     

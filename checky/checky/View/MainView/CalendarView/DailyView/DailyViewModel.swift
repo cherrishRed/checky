@@ -44,6 +44,5 @@ class DailyViewModel: ViewModelable {
   }
   
   func action(_ action: Action) {
-    
   }
 }
