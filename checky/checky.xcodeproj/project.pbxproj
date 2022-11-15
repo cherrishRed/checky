@@ -54,6 +54,7 @@
 		DA124AE22923C55200C6ED6C /* checkyWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = DA124AD02923C54F00C6ED6C /* checkyWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		DA124AE62923C6AC00C6ED6C /* Extension+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3E9DAB29078FE200E72E21 /* Extension+Color.swift */; };
 		DA124AE72923C6F900C6ED6C /* Extension+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91E7D928EB58310091B6A3 /* Extension+Date.swift */; };
+		DA124AEA2923CDCB00C6ED6C /* Extension+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA124AE92923CDCB00C6ED6C /* Extension+UserDefaults.swift */; };
 		DA2789952911C7F300E76B53 /* DailyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2789942911C7F300E76B53 /* DailyHeaderView.swift */; };
 		DA2789AF291A125E00E76B53 /* Extension+ViewModelable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2789AE291A125E00E76B53 /* Extension+ViewModelable.swift */; };
 		DA2789B2291A148500E76B53 /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2789B1291A148500E76B53 /* ReminderView.swift */; };
@@ -184,6 +185,9 @@
 		DA124AD92923C55000C6ED6C /* checkyWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = checkyWidget.intentdefinition; sourceTree = "<group>"; };
 		DA124ADA2923C55200C6ED6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA124ADC2923C55200C6ED6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA124AE82923CD5000C6ED6C /* checkyWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = checkyWidgetExtension.entitlements; sourceTree = "<group>"; };
+		DA124AE92923CDCB00C6ED6C /* Extension+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UserDefaults.swift"; sourceTree = "<group>"; };
+		DA124AEB2923D01200C6ED6C /* checky.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = checky.entitlements; sourceTree = "<group>"; };
 		DA2789942911C7F300E76B53 /* DailyHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyHeaderView.swift; sourceTree = "<group>"; };
 		DA2789AE291A125E00E76B53 /* Extension+ViewModelable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+ViewModelable.swift"; sourceTree = "<group>"; };
 		DA2789B1291A148500E76B53 /* ReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderView.swift; sourceTree = "<group>"; };
@@ -329,6 +333,7 @@
 				DA2C797028F6E2C800922C47 /* Extension+View.swift */,
 				DA2789AE291A125E00E76B53 /* Extension+ViewModelable.swift */,
 				DA3E9DAB29078FE200E72E21 /* Extension+Color.swift */,
+				DA124AE92923CDCB00C6ED6C /* Extension+UserDefaults.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -592,6 +597,7 @@
 		DA466E9328E685D70076AEE4 = {
 			isa = PBXGroup;
 			children = (
+				DA124AE82923CD5000C6ED6C /* checkyWidgetExtension.entitlements */,
 				DA466E9E28E685D70076AEE4 /* checky */,
 				DA4E4A37290A529200CF45E2 /* checkyTests */,
 				867958BD290A632B001D5C7F /* MonthlyHelperUnitTest */,
@@ -615,6 +621,7 @@
 		DA466E9E28E685D70076AEE4 /* checky */ = {
 			isa = PBXGroup;
 			children = (
+				DA124AEB2923D01200C6ED6C /* checky.entitlements */,
 				DA2C796028EEFF7700922C47 /* AppDelegate.swift */,
 				DA2C796228EEFFA300922C47 /* SceneDelegate.swift */,
 				868C543B28F41753006A9B38 /* CustomTabBar */,
@@ -873,6 +880,7 @@
 				DA3E9DAC29078FE200E72E21 /* Extension+Color.swift in Sources */,
 				DA91E81828EE01790091B6A3 /* HeaderViewModel.swift in Sources */,
 				DA4E4A46290C288600CF45E2 /* WeeklyView.swift in Sources */,
+				DA124AEA2923CDCB00C6ED6C /* Extension+UserDefaults.swift in Sources */,
 				DA2C798328F7268F00922C47 /* ReminderCreateAndEditViewModel.swift in Sources */,
 				DA3E9DAA2907810E00E72E21 /* ButtonStyle.swift in Sources */,
 				DA78BC75290FC63F00E2E2AD /* DailyReminderCellView.swift in Sources */,
@@ -1019,6 +1027,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = checkyWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LZZV4V63N5;
@@ -1047,6 +1056,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = checkyWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LZZV4V63N5;
@@ -1189,6 +1199,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = checky/checky.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"checky/Preview Content\"";
@@ -1222,6 +1233,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = checky/checky.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"checky/Preview Content\"";

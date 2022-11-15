@@ -47,14 +47,14 @@ struct calendarWidgetEntryView : View {
   
   var body: some View {
     VStack {
-      Text("오늘은 \(Date().month)월 \(Date().day)일")
+      Text("오늘은 \(entry.date.month)월 \(entry.date.day)일")
         .fontWeight(.bold)
         .foregroundColor(Color.fontBlack)
       VStack(spacing: 4) {
         ForEach(entry.events, id: \.eventIdentifier) { event in
           ZStack(alignment: .leading) {
             RoundedRectangle(cornerRadius: 4)
-              .fill(Color(cgColor: event.calendar.cgColor))
+              .fill(fetchUserDefaultColor(calendar: event.calendar))
             Text(event.title)
               .foregroundColor(Color.basicWhite)
               .fontWeight(.bold)
@@ -104,7 +104,6 @@ struct EventManagerForWidget  {
     self.calendar = calendar
   }
   
-  // 오늘 이벤트 받아 오는 메서드
   func getAllTaskforToday(date: Date = Date()) -> [EKEvent] {
     
     let categories = store.calendars(for: .event)
@@ -123,12 +122,21 @@ struct EventManagerForWidget  {
 }
 
 extension View {
-  func fetchUserDefaultColor(calendarIdentifier: String) -> Color {
-    guard let colorComponent = UserDefaults.standard.object(forKey: ("\(calendarIdentifier)_color")) as? [CGFloat] else {
-      return Color.white
+  func fetchUserDefaultColor(calendar: EKCalendar) -> Color {
+    
+    guard let colorComponent = UserDefaults.shared.object(forKey: ("\(calendar.calendarIdentifier)_color")) as? [CGFloat] else {
+      return Color(cgColor: calendar.cgColor)
     }
     
    return  Color(.sRGB, red: colorComponent[0], green: colorComponent[1], blue: colorComponent[2], opacity: colorComponent[3])
   }
 }
 
+extension UserDefaults {
+    static var shared: UserDefaults {
+        let combined = UserDefaults.standard
+        let appGroupId = "group.checky.red.taeangel"
+        combined.addSuite(named: appGroupId)
+        return combined
+    }
+}
