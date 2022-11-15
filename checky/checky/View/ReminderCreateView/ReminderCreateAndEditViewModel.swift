@@ -240,8 +240,14 @@ class ReminderCreateAndEditViewModel: ObservableObject {
     newReminder.calendar = category
     
     guard isSetDate == true else {
-      alertDiscription = reminderManager.createNewTask(newTask: newReminder)
       
+      switch reminderManager.createNewTask(newTask: newReminder) {
+      case .failure(let failure):
+        alertDiscription = failure.localizedDescription
+      case .success(let success):
+        alertDiscription = success
+      }
+
       isShowAlert = true
       return
     }
@@ -254,7 +260,13 @@ class ReminderCreateAndEditViewModel: ObservableObject {
       newReminder.dueDateComponents = dateComponents
     }
     
-    alertDiscription = reminderManager.createNewTask(newTask: newReminder)
+    switch reminderManager.createNewTask(newTask: newReminder) {
+    case .failure(let failure):
+      alertDiscription = failure.localizedDescription
+    case .success(let success):
+      alertDiscription = success
+    }
+
     
     isShowAlert = true
   }
@@ -269,7 +281,13 @@ class ReminderCreateAndEditViewModel: ObservableObject {
     reminder.category = category
     
     guard isSetDate == true else {
-      reminderManager.createNewTask(newTask: reminder.ekreminder)
+      switch reminderManager.createNewTask(newTask: reminder.ekreminder) {
+      case .failure(let failure):
+        alertDiscription = failure.localizedDescription
+      case .success(let success):
+        alertDiscription = success
+      }
+      
       return
     }
     
@@ -281,6 +299,11 @@ class ReminderCreateAndEditViewModel: ObservableObject {
       reminder.ekreminder.dueDateComponents = dateComponents
     }
     
-    reminderManager.createNewTask(newTask: reminder.ekreminder)
+    switch reminderManager.createNewTask(newTask: reminder.ekreminder) {
+    case .failure(let failure):
+      alertDiscription = failure.localizedDescription
+    case .success(let success):
+      alertDiscription = success
+    }
   }
 }

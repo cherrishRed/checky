@@ -41,6 +41,9 @@ struct DailyReminderCellView: View {
             .padding(.vertical, 2)
           }
           .padding(.leading, 4)
+          .alert(isPresented: $viewModel.isShowAlert) {
+            getAlert(alertDescription: viewModel.alertDescription)
+          }
           
           Button {
             coordinator.dismiss()
@@ -67,4 +70,9 @@ struct DailyReminderCellView: View {
       .fixedSize(horizontal: false, vertical: true)
     }
   }
+  
+  func getAlert(alertDescription: String) -> Alert {
+    Alert(title: Text(alertDescription), dismissButton: .default(Text("확인")))
+  }
+
 }

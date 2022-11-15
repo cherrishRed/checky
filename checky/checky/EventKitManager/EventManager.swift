@@ -75,36 +75,36 @@ struct EventManager: ManagerProtocol {
     completionHandler(list)
   }
   
-  func createNewTask(newTask: EKCalendarItem) -> String {
-    guard let newTask = newTask as? EKEvent else { return "" }
+  func createNewTask(newTask: EKCalendarItem) -> Result<String, EventManagerError> {
+    guard let newTask = newTask as? EKEvent else { return .failure(.EKEventTypeCastingError) }
     
     do {
       try store.save(newTask, span: EKSpan.futureEvents, commit: true)
-      return "event 저장에 성공했습니다."
+      return .success("event 저장에 성공했습니다.")
     } catch {
-      return "event 저장에 실패했어요 🥲"
+      return .failure(.createError)
     }
   }
   
-  func editTask(task: EKCalendarItem) {
-    guard let task = task as? EKEvent else { return }
+  func editTask(task: EKCalendarItem) -> Result<String, EventManagerError> {
+    guard let task = task as? EKEvent else { return .failure(.EKEventTypeCastingError) }
     
     do {
       try store.save(task, span: EKSpan.futureEvents, commit: true)
+      return .success("event 수정 성공😃")
     } catch {
-      print("event 저장 실패🥲")
-      print(error.localizedDescription)
+      return .failure(.editError)
     }
   }
   
-  func deleteTask(task: EKCalendarItem) {
-    guard let task = task as? EKEvent else { return }
+  func deleteTask(task: EKCalendarItem) -> Result<String, EventManagerError> {
+    guard let task = task as? EKEvent else { return .failure(.EKEventTypeCastingError) }
     
     do {
       try store.remove(task, span:  EKSpan.futureEvents)
+      return .success("event 삭제 성공😃")
     } catch {
-      print("event 삭제 실패🥲")
-      print(error.localizedDescription)
+      return .failure(.deleteError)
     }
   }
   

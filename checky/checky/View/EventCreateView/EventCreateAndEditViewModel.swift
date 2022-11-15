@@ -26,7 +26,7 @@ class EventCreateAndEditViewModel: ObservableObject {
   @Published var isShowCategoriesPicker: Bool
   @Published var isShowAlramPicker: Bool
   @Published var isShowAlert: Bool
-  @Published var alertDiscription: String
+  @Published var alertDescription: String
   
   
   init(
@@ -56,7 +56,7 @@ class EventCreateAndEditViewModel: ObservableObject {
     self.isShowCategoriesPicker = isShowCategoriesPicker
     self.isShowAlramPicker = isShowAlramPicker
     self.isShowAlert = false
-    self.alertDiscription = ""
+    self.alertDescription = ""
     
     let fetchedCategories = eventManager.getTaskCategories()
     self.categories = fetchedCategories.filter { $0.title != "Birthdays"}
@@ -89,7 +89,7 @@ class EventCreateAndEditViewModel: ObservableObject {
     self.isShowCategoriesPicker = false
     self.isShowAlramPicker = false
     self.isShowAlert = false
-    self.alertDiscription = ""
+    self.alertDescription = ""
     self.categories = eventManager.getTaskCategories()
     self.category = event.category
     self.eventManager = eventManager
@@ -219,7 +219,14 @@ class EventCreateAndEditViewModel: ObservableObject {
   
   private func tappedDeleteButton() {
     guard let ekevent = event?.ekevent else { return }
-    eventManager.deleteTask(task: ekevent)
+    
+    switch eventManager.deleteTask(task: ekevent) {
+    case .success(let success):
+      alertDescription = success
+    case .failure(let failure):
+      alertDescription = failure.localizedDescription
+    }
+    isShowAlert.toggle()
     closeAllPickers()
     reset()
   }
@@ -248,8 +255,15 @@ class EventCreateAndEditViewModel: ObservableObject {
     if alram != .none {
       newEvnet.addAlarm(EKAlarm(relativeOffset: alram.second))
     }
-    alertDiscription = eventManager.createNewTask(newTask: newEvnet)
-    isShowAlert = true
+    
+    switch eventManager.createNewTask(newTask: newEvnet) {
+    case .success(let success):
+      alertDescription = success
+    case .failure(let failure):
+      alertDescription = failure.localizedDescription
+    }
+
+    isShowAlert.toggle()
     reset()
   }
   
@@ -273,7 +287,14 @@ class EventCreateAndEditViewModel: ObservableObject {
       event.ekevent.alarms = [EKAlarm(relativeOffset: alram.second)]
     }
     
-    eventManager.editTask(task: event.ekevent)
+    switch eventManager.editTask(task: event.ekevent) {
+    case .success(let success):
+      alertDescription = success
+    case .failure(let failure):
+      alertDescription = failure.localizedDescription
+    }
+    isShowAlert.toggle()
+    
     reset()
   }
   

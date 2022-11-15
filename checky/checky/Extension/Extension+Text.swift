@@ -17,3 +17,4 @@ extension Text {
       .lineLimit(1)
   }
 }
+

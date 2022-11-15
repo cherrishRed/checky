@@ -30,9 +30,9 @@ struct EventCreateAndEditView: View {
       viewModel.action(.tappedOutOfRange)
     }
     .alert(isPresented: $viewModel.isShowAlert) {
-      Alert(title: Text(viewModel.alertDiscription), dismissButton: .default(Text("확인"), action: {
+      getAlert(alertDescription: viewModel.alertDescription) {
         coordinator.dismiss()
-      }))
+      }
     }
   }
   
@@ -95,102 +95,107 @@ struct EventCreateAndEditView: View {
       .foregroundColor(Color.basicWhite)
     }
     .padding(.horizontal)
+    .alert(isPresented: $viewModel.isShowAlert) {
+      getAlert(alertDescription: viewModel.alertDescription) {
+        coordinator.dismiss()
+      }
+    }
   }
   
   //MARK: BodyView 안의 세부 View 들
-    var titleView: some View {
-      TextField("제목", text: $viewModel.title)
-        .foregroundColor(Color.fontDarkBlack)
-        .font(.title3)
-        .fontWeight(.bold)
-        .padding(6)
-        .frame(maxWidth: .infinity)
-        .background(Color.backgroundGray)
-        .cornerRadius(4)
-    }
-    
-    var dayAndTimePicker: some View {
-      VStack {
-        HStack(alignment: .center) {
-          Image(systemName: "clock.fill")
-            .foregroundColor(Color.fontMediumGray)
-            .padding(.trailing, 3)
-          if viewModel.isAllDay {
+  var titleView: some View {
+    TextField("제목", text: $viewModel.title)
+      .foregroundColor(Color.fontDarkBlack)
+      .font(.title3)
+      .fontWeight(.bold)
+      .padding(6)
+      .frame(maxWidth: .infinity)
+      .background(Color.backgroundGray)
+      .cornerRadius(4)
+  }
+  
+  var dayAndTimePicker: some View {
+    VStack {
+      HStack(alignment: .center) {
+        Image(systemName: "clock.fill")
+          .foregroundColor(Color.fontMediumGray)
+          .padding(.trailing, 3)
+        if viewModel.isAllDay {
+          Button {
+            viewModel.togglePicker(selectedPicker: .datePicker)
+            hideKeyboard()
+          } label: {
+            Text(viewModel.date.dateKoreanWithYear)
+              .foregroundColor(Color.fontDarkBlack)
+              .font(.title3)
+              .padding(6)
+              .frame(maxWidth: .infinity)
+              .background(Color.backgroundGray)
+              .cornerRadius(4)
+          }
+          
+        } else {
+          HStack {
             Button {
               viewModel.togglePicker(selectedPicker: .datePicker)
               hideKeyboard()
             } label: {
-              Text(viewModel.date.dateKoreanWithYear)
-                .foregroundColor(Color.fontDarkBlack)
-                .font(.title3)
-                .padding(6)
-                .frame(maxWidth: .infinity)
-                .background(Color.backgroundGray)
-                .cornerRadius(4)
+              VStack {
+                Text(viewModel.date.dateKorean)
+                  .foregroundColor(Color.fontDarkBlack)
+                Text(viewModel.date.time)
+                  .foregroundColor(Color.fontDarkBlack)
+                  .font(.title3)
+              }
+              .padding(4)
+              .background(Color.backgroundGray)
+              .cornerRadius(4)
             }
             
-          } else {
-            HStack {
-              Button {
-                viewModel.togglePicker(selectedPicker: .datePicker)
-                hideKeyboard()
-              } label: {
-                VStack {
-                  Text(viewModel.date.dateKorean)
-                    .foregroundColor(Color.fontDarkBlack)
-                  Text(viewModel.date.time)
-                    .foregroundColor(Color.fontDarkBlack)
-                    .font(.title3)
-                }
-                .padding(4)
-                .background(Color.backgroundGray)
-                .cornerRadius(4)
+            Text("~")
+            
+            Button {
+              viewModel.togglePicker(selectedPicker: .endDatePicker)
+              hideKeyboard()
+            } label: {
+              VStack {
+                Text(viewModel.endDate.dateKorean)
+                  .foregroundColor(Color.fontDarkBlack)
+                Text(viewModel.endDate.time)
+                  .foregroundColor(Color.fontDarkBlack)
+                  .font(.title3)
               }
-              
-              Text("~")
-              
-              Button {
-                viewModel.togglePicker(selectedPicker: .endDatePicker)
-                hideKeyboard()
-              } label: {
-                VStack {
-                  Text(viewModel.endDate.dateKorean)
-                    .foregroundColor(Color.fontDarkBlack)
-                  Text(viewModel.endDate.time)
-                    .foregroundColor(Color.fontDarkBlack)
-                    .font(.title3)
-                }
-                .padding(4)
-                .background(Color.backgroundGray)
-                .cornerRadius(4)
-              }
-              
+              .padding(4)
+              .background(Color.backgroundGray)
+              .cornerRadius(4)
             }
-          }
-          Button {
-            viewModel.action(.toggleIsAllDay)
-            hideKeyboard()
-          } label: {
-            HStack {
-              Image(systemName: viewModel.isAllDay ? "checkmark.square.fill" : "square")
-              Text("하루종일")
-            }
-            .foregroundColor(Color.fontDarkBlack)
+            
           }
         }
+        Button {
+          viewModel.action(.toggleIsAllDay)
+          hideKeyboard()
+        } label: {
+          HStack {
+            Image(systemName: viewModel.isAllDay ? "checkmark.square.fill" : "square")
+            Text("하루종일")
+          }
+          .foregroundColor(Color.fontDarkBlack)
+        }
+      }
+      
+      if viewModel.isShowDatePicker {
         
-        if viewModel.isShowDatePicker {
-          
-          DatePicker("", selection: $viewModel.date,
-                     displayedComponents: viewModel.isAllDay ? [.date] : [.date, .hourAndMinute])
-            .datePickerStyle(.wheel)
-        }
-        if viewModel.isShowEndDatePicker {
-          DatePicker("", selection: $viewModel.endDate, in: viewModel.dateRange)
-            .datePickerStyle(.wheel)
-        }
-        }
+        DatePicker("", selection: $viewModel.date,
+                   displayedComponents: viewModel.isAllDay ? [.date] : [.date, .hourAndMinute])
+        .datePickerStyle(.wheel)
+      }
+      if viewModel.isShowEndDatePicker {
+        DatePicker("", selection: $viewModel.endDate, in: viewModel.dateRange)
+          .datePickerStyle(.wheel)
+      }
     }
+  }
   
   var categoryView: some View {
     VStack {
@@ -276,6 +281,12 @@ struct EventCreateAndEditView: View {
         .background(Color.backgroundGray)
         .cornerRadius(4)
     }
+  }
+  
+  func getAlert(alertDescription: String, ButtonAction: @escaping () -> ()) -> Alert {
+    Alert(title: Text(alertDescription), dismissButton: .default(Text("확인"), action: {
+      ButtonAction()
+    }))
   }
 }
 

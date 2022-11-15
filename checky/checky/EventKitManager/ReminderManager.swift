@@ -52,7 +52,7 @@ struct ReminderManager: ManagerProtocol {
       .filter { $0.ekreminder.completionDate != nil }
       .filter { $0.ekreminder.completionDate?.day == date.day && $0.ekreminder.completionDate?.month == date.month && $0.ekreminder.completionDate?.year == date.year }
   }
-    
+  
   func getAllTaskforThisMonth(date: Date, completionHandler: @escaping ([Reminder]) -> Void) {
     let categories = store.calendars(for: .reminder)
     
@@ -85,42 +85,40 @@ struct ReminderManager: ManagerProtocol {
     }
   }
   
-  func createNewTask(newTask: EKCalendarItem) -> String {
-      guard let newTask = newTask as? EKReminder else { return "" }
-      
-      do {
-        try store.save(newTask, commit: true)
-        return "reminder 저장에 성공했어요!"
-      } catch {
-        return "reminder 저장에 실패했어요 🥲"
-      }
-    }
+  func createNewTask(newTask: EKCalendarItem) -> Result<String, ReminderManagerError> {
+    guard let newTask = newTask as? EKReminder else { return .failure(.EKReminderTypeCastingError) }
     
+    do {
+      try store.save(newTask, commit: true)
+      return .success("reminder 저장에 성공했어요!")
+    } catch {
+      return .failure(.createError)
+    }
+  }
+  
   func getTaskCategories() -> [EKCalendar] {
-      return store.calendars(for: .reminder)
-    }
-    
-  func editReminder(_ reminder: EKReminder) -> Result<Bool, Error> {
+    return store.calendars(for: .reminder)
+  }
+  
+  func editReminder(_ reminder: EKReminder) -> Result<Bool, ReminderManagerError> {
     do {
       try store.save(reminder, commit: true)
       return .success(reminder.isCompleted)
     } catch {
-      print("reminder 저장 실패🥲")
-      return .failure(error)
+      return .failure(.editError)
     }
   }
   
-  func deleteTask(task: EKCalendarItem) {
-    guard let task = task as? EKReminder else { return }
-    
+  func deleteTask(task: EKCalendarItem) -> Result<String, ReminderManagerError> {
+    guard let task = task as? EKReminder else { return .failure(.EKReminderTypeCastingError)}
     do {
       try store.remove(task, commit: true)
+      return .success("reminder 삭제 성공🥲")
     } catch {
-      print("reminder 삭제 실패🥲")
-      print(error.localizedDescription)
+      return .failure(.deleteError)
     }
   }
 }
 
 
-extension EKCalendar: Identifiable {}
+
