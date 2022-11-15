@@ -45,6 +45,13 @@
 		86FC8CF528EAB3CF00B7752F /* DateHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FC8CF428EAB3CF00B7752F /* DateHolder.swift */; };
 		86FC8CF828EAB42500B7752F /* WeeklyCalenderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FC8CF728EAB42500B7752F /* WeeklyCalenderHelper.swift */; };
 		86FC8CFA28EAB49B00B7752F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FC8CF928EAB49B00B7752F /* HeaderView.swift */; };
+		DA124AD32923C55000C6ED6C /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA124AD22923C55000C6ED6C /* WidgetKit.framework */; };
+		DA124AD52923C55000C6ED6C /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA124AD42923C55000C6ED6C /* SwiftUI.framework */; };
+		DA124AD82923C55000C6ED6C /* checkyWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA124AD72923C55000C6ED6C /* checkyWidget.swift */; };
+		DA124ADB2923C55200C6ED6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA124ADA2923C55200C6ED6C /* Assets.xcassets */; };
+		DA124ADD2923C55200C6ED6C /* checkyWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = DA124AD92923C55000C6ED6C /* checkyWidget.intentdefinition */; };
+		DA124ADE2923C55200C6ED6C /* checkyWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = DA124AD92923C55000C6ED6C /* checkyWidget.intentdefinition */; };
+		DA124AE22923C55200C6ED6C /* checkyWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = DA124AD02923C54F00C6ED6C /* checkyWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		DA2789952911C7F300E76B53 /* DailyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2789942911C7F300E76B53 /* DailyHeaderView.swift */; };
 		DA2789AF291A125E00E76B53 /* Extension+ViewModelable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2789AE291A125E00E76B53 /* Extension+ViewModelable.swift */; };
 		DA2789B2291A148500E76B53 /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2789B1291A148500E76B53 /* ReminderView.swift */; };
@@ -97,6 +104,13 @@
 			remoteGlobalIDString = DA466E9B28E685D70076AEE4;
 			remoteInfo = checky;
 		};
+		DA124ADF2923C55200C6ED6C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA466E9428E685D70076AEE4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA124ACF2923C54F00C6ED6C;
+			remoteInfo = checkyWidgetExtension;
+		};
 		DA4E4A3A290A529200CF45E2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DA466E9428E685D70076AEE4 /* Project object */;
@@ -105,6 +119,20 @@
 			remoteInfo = checky;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DA124AE12923C55200C6ED6C /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				DA124AE22923C55200C6ED6C /* checkyWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		86057B202911263B00CEC6AB /* EventCategoriSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCategoriSettingView.swift; sourceTree = "<group>"; };
@@ -147,6 +175,13 @@
 		86FC8CF428EAB3CF00B7752F /* DateHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHolder.swift; sourceTree = "<group>"; };
 		86FC8CF728EAB42500B7752F /* WeeklyCalenderHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyCalenderHelper.swift; sourceTree = "<group>"; };
 		86FC8CF928EAB49B00B7752F /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		DA124AD02923C54F00C6ED6C /* checkyWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = checkyWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA124AD22923C55000C6ED6C /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		DA124AD42923C55000C6ED6C /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		DA124AD72923C55000C6ED6C /* checkyWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkyWidget.swift; sourceTree = "<group>"; };
+		DA124AD92923C55000C6ED6C /* checkyWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = checkyWidget.intentdefinition; sourceTree = "<group>"; };
+		DA124ADA2923C55200C6ED6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DA124ADC2923C55200C6ED6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA2789942911C7F300E76B53 /* DailyHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyHeaderView.swift; sourceTree = "<group>"; };
 		DA2789AE291A125E00E76B53 /* Extension+ViewModelable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+ViewModelable.swift"; sourceTree = "<group>"; };
 		DA2789B1291A148500E76B53 /* ReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderView.swift; sourceTree = "<group>"; };
@@ -198,6 +233,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA124ACD2923C54F00C6ED6C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA124AD52923C55000C6ED6C /* SwiftUI.framework in Frameworks */,
+				DA124AD32923C55000C6ED6C /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +471,26 @@
 			path = Event;
 			sourceTree = "<group>";
 		};
+		DA124AD12923C55000C6ED6C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DA124AD22923C55000C6ED6C /* WidgetKit.framework */,
+				DA124AD42923C55000C6ED6C /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DA124AD62923C55000C6ED6C /* checkyWidget */ = {
+			isa = PBXGroup;
+			children = (
+				DA124AD72923C55000C6ED6C /* checkyWidget.swift */,
+				DA124AD92923C55000C6ED6C /* checkyWidget.intentdefinition */,
+				DA124ADA2923C55200C6ED6C /* Assets.xcassets */,
+				DA124ADC2923C55200C6ED6C /* Info.plist */,
+			);
+			path = checkyWidget;
+			sourceTree = "<group>";
+		};
 		DA2789AA291A068800E76B53 /* DailyCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -529,6 +593,8 @@
 				DA466E9E28E685D70076AEE4 /* checky */,
 				DA4E4A37290A529200CF45E2 /* checkyTests */,
 				867958BD290A632B001D5C7F /* MonthlyHelperUnitTest */,
+				DA124AD62923C55000C6ED6C /* checkyWidget */,
+				DA124AD12923C55000C6ED6C /* Frameworks */,
 				DA466E9D28E685D70076AEE4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -539,6 +605,7 @@
 				DA466E9C28E685D70076AEE4 /* checky.app */,
 				DA4E4A36290A529100CF45E2 /* checkyTests.xctest */,
 				867958BC290A632B001D5C7F /* MonthlyHelperUnitTest.xctest */,
+				DA124AD02923C54F00C6ED6C /* checkyWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -625,6 +692,23 @@
 			productReference = 867958BC290A632B001D5C7F /* MonthlyHelperUnitTest.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		DA124ACF2923C54F00C6ED6C /* checkyWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA124AE52923C55200C6ED6C /* Build configuration list for PBXNativeTarget "checkyWidgetExtension" */;
+			buildPhases = (
+				DA124ACC2923C54F00C6ED6C /* Sources */,
+				DA124ACD2923C54F00C6ED6C /* Frameworks */,
+				DA124ACE2923C54F00C6ED6C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = checkyWidgetExtension;
+			productName = checkyWidgetExtension;
+			productReference = DA124AD02923C54F00C6ED6C /* checkyWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		DA466E9B28E685D70076AEE4 /* checky */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DA466EAA28E685D90076AEE4 /* Build configuration list for PBXNativeTarget "checky" */;
@@ -632,10 +716,12 @@
 				DA466E9828E685D70076AEE4 /* Sources */,
 				DA466E9928E685D70076AEE4 /* Frameworks */,
 				DA466E9A28E685D70076AEE4 /* Resources */,
+				DA124AE12923C55200C6ED6C /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				DA124AE02923C55200C6ED6C /* PBXTargetDependency */,
 			);
 			name = checky;
 			packageProductDependencies = (
@@ -676,6 +762,9 @@
 						CreatedOnToolsVersion = 14.0.1;
 						TestTargetID = DA466E9B28E685D70076AEE4;
 					};
+					DA124ACF2923C54F00C6ED6C = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
 					DA466E9B28E685D70076AEE4 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
@@ -703,6 +792,7 @@
 				DA466E9B28E685D70076AEE4 /* checky */,
 				DA4E4A35290A529100CF45E2 /* checkyTests */,
 				867958BB290A632B001D5C7F /* MonthlyHelperUnitTest */,
+				DA124ACF2923C54F00C6ED6C /* checkyWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -712,6 +802,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA124ACE2923C54F00C6ED6C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA124ADB2923C55200C6ED6C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -739,6 +837,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				867958BF290A632B001D5C7F /* MonthlyHelperUnitTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA124ACC2923C54F00C6ED6C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA124AD82923C55000C6ED6C /* checkyWidget.swift in Sources */,
+				DA124ADD2923C55200C6ED6C /* checkyWidget.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -803,6 +910,7 @@
 				DA91E7E328EC8E580091B6A3 /* Reminder.swift in Sources */,
 				DA2C796A28EF009800922C47 /* Coordinator.swift in Sources */,
 				86057B272911EE7700CEC6AB /* ReminderCategoriSettingViewModel.swift in Sources */,
+				DA124ADE2923C55200C6ED6C /* checkyWidget.intentdefinition in Sources */,
 				869A57102923A1C000988D27 /* ReminderManagerError.swift in Sources */,
 				DA2C796F28F6CB1A00922C47 /* EventCreateAndEditViewModel.swift in Sources */,
 				86057B6229125F4A00CEC6AB /* ColorView.swift in Sources */,
@@ -841,6 +949,11 @@
 			isa = PBXTargetDependency;
 			target = DA466E9B28E685D70076AEE4 /* checky */;
 			targetProxy = 867958C0290A632B001D5C7F /* PBXContainerItemProxy */;
+		};
+		DA124AE02923C55200C6ED6C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DA124ACF2923C54F00C6ED6C /* checkyWidgetExtension */;
+			targetProxy = DA124ADF2923C55200C6ED6C /* PBXContainerItemProxy */;
 		};
 		DA4E4A3B290A529200CF45E2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -893,6 +1006,62 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/checky.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/checky";
+			};
+			name = Release;
+		};
+		DA124AE32923C55200C6ED6C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LZZV4V63N5;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = checkyWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = checkyWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.cherrishRed.checky.checkyWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DA124AE42923C55200C6ED6C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LZZV4V63N5;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = checkyWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = checkyWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.cherrishRed.checky.checkyWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -1013,6 +1182,7 @@
 		DA466EAB28E685D90076AEE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -1045,6 +1215,7 @@
 		DA466EAC28E685D90076AEE4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -1126,6 +1297,15 @@
 			buildConfigurations = (
 				867958C2290A632B001D5C7F /* Debug */,
 				867958C3290A632B001D5C7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA124AE52923C55200C6ED6C /* Build configuration list for PBXNativeTarget "checkyWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA124AE32923C55200C6ED6C /* Debug */,
+				DA124AE42923C55200C6ED6C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
