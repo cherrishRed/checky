@@ -49,6 +49,8 @@
 		86FC8CF528EAB3CF00B7752F /* DateHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FC8CF428EAB3CF00B7752F /* DateHolder.swift */; };
 		86FC8CF828EAB42500B7752F /* WeeklyCalenderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FC8CF728EAB42500B7752F /* WeeklyCalenderHelper.swift */; };
 		86FC8CFA28EAB49B00B7752F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FC8CF928EAB49B00B7752F /* HeaderView.swift */; };
+		DA124A7F2923A6AF00C6ED6C /* Extension+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3E9DAB29078FE200E72E21 /* Extension+Color.swift */; };
+		DA124A802923AF6600C6ED6C /* Extension+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91E7D928EB58310091B6A3 /* Extension+Date.swift */; };
 		DA2789952911C7F300E76B53 /* DailyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2789942911C7F300E76B53 /* DailyHeaderView.swift */; };
 		DA2C796128EEFF7700922C47 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796028EEFF7700922C47 /* AppDelegate.swift */; };
 		DA2C796328EEFFA300922C47 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C796228EEFFA300922C47 /* SceneDelegate.swift */; };
@@ -775,6 +777,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				868E0319291A9E230039B52E /* calendarWidget.intentdefinition in Sources */,
+				DA124A802923AF6600C6ED6C /* Extension+Date.swift in Sources */,
+				DA124A7F2923A6AF00C6ED6C /* Extension+Color.swift in Sources */,
 				868E0314291A9E220039B52E /* calendarWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
