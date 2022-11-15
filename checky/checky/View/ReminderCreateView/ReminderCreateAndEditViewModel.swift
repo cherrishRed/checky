@@ -56,7 +56,7 @@ class ReminderCreateAndEditViewModel: ObservableObject {
     self.reminderManager = reminderManager
     self.categories = reminderManager.getTaskCategories()
     self.category = categories[0]
-
+    
     
     self.reminder = nil
   }
@@ -72,7 +72,7 @@ class ReminderCreateAndEditViewModel: ObservableObject {
     self.title = reminder.ekreminder.title
     self.memo = reminder.ekreminder.notes ?? ""
     self.priority = reminder.ekreminder.priority
-
+    
     self.isShowCategoriesPicker = false
     self.isShowDatePicker = false
     self.isShowTimePicker = false
@@ -105,10 +105,10 @@ class ReminderCreateAndEditViewModel: ObservableObject {
     
     var title: String {
       switch self {
-      case.create:
-        return "새로운 미리알림 추가"
-      case.edit:
-        return "미리알림 수정"
+        case.create:
+          return "새로운 미리알림 추가"
+        case.edit:
+          return "미리알림 수정"
       }
     }
   }
@@ -125,20 +125,20 @@ class ReminderCreateAndEditViewModel: ObservableObject {
   
   func action(_ action: Action) {
     switch action {
-    case .tappedOutOfRange:
-      tappedOutOfRange()
-    case .tappedCloseButton:
-      tappedCloseButton()
-    case .tappedCheckButton:
-      tappedCheckButton()
-    case .tappedDeleteButton:
-      tappedDeleteButton()
-    case .togglePicker(let picker):
-      togglePicker(selectedPicker: picker)
-    case .tappedDateToggleButton:
-      tappedDateToggleButton()
-    case .tappedTimeToggleButton:
-      tappedTimeToggleButton()
+      case .tappedOutOfRange:
+        tappedOutOfRange()
+      case .tappedCloseButton:
+        tappedCloseButton()
+      case .tappedCheckButton:
+        tappedCheckButton()
+      case .tappedDeleteButton:
+        tappedDeleteButton()
+      case .togglePicker(let picker):
+        togglePicker(selectedPicker: picker)
+      case .tappedDateToggleButton:
+        tappedDateToggleButton()
+      case .tappedTimeToggleButton:
+        tappedTimeToggleButton()
     }
   }
   
@@ -152,12 +152,12 @@ class ReminderCreateAndEditViewModel: ObservableObject {
     var isShow: Bool
     
     switch selectedPicker {
-    case .datePicker:
-      isShow = isShowDatePicker
-    case .timePicker:
-      isShow = isShowTimePicker
-    case .categoriesPicker:
-      isShow = isShowCategoriesPicker
+      case .datePicker:
+        isShow = isShowDatePicker
+      case .timePicker:
+        isShow = isShowTimePicker
+      case .categoriesPicker:
+        isShow = isShowCategoriesPicker
     }
     
     if isShow == false {
@@ -165,12 +165,12 @@ class ReminderCreateAndEditViewModel: ObservableObject {
     }
     
     switch selectedPicker {
-    case .datePicker:
-      isShowDatePicker.toggle()
-    case .timePicker:
-      isShowTimePicker.toggle()
-    case .categoriesPicker:
-      isShowCategoriesPicker.toggle()
+      case .datePicker:
+        isShowDatePicker.toggle()
+      case .timePicker:
+        isShowTimePicker.toggle()
+      case .categoriesPicker:
+        isShowCategoriesPicker.toggle()
     }
   }
   
@@ -242,12 +242,12 @@ class ReminderCreateAndEditViewModel: ObservableObject {
     guard isSetDate == true else {
       
       switch reminderManager.createNewTask(newTask: newReminder) {
-      case .failure(let failure):
-        alertDiscription = failure.localizedDescription
-      case .success(let success):
-        alertDiscription = success
+        case .failure(let failure):
+          alertDiscription = failure.localizedDescription
+        case .success(let success):
+          alertDiscription = success
       }
-
+      
       isShowAlert = true
       return
     }
@@ -261,12 +261,12 @@ class ReminderCreateAndEditViewModel: ObservableObject {
     }
     
     switch reminderManager.createNewTask(newTask: newReminder) {
-    case .failure(let failure):
-      alertDiscription = failure.localizedDescription
-    case .success(let success):
-      alertDiscription = success
+      case .failure(let failure):
+        alertDiscription = failure.localizedDescription
+      case .success(let success):
+        alertDiscription = success
     }
-
+    
     
     isShowAlert = true
   }
@@ -282,10 +282,10 @@ class ReminderCreateAndEditViewModel: ObservableObject {
     
     guard isSetDate == true else {
       switch reminderManager.createNewTask(newTask: reminder.ekreminder) {
-      case .failure(let failure):
-        alertDiscription = failure.localizedDescription
-      case .success(let success):
-        alertDiscription = success
+        case .failure(let failure):
+          alertDiscription = failure.localizedDescription
+        case .success(let success):
+          alertDiscription = success
       }
       
       return
@@ -300,10 +300,12 @@ class ReminderCreateAndEditViewModel: ObservableObject {
     }
     
     switch reminderManager.createNewTask(newTask: reminder.ekreminder) {
-    case .failure(let failure):
-      alertDiscription = failure.localizedDescription
-    case .success(let success):
-      alertDiscription = success
+      case .failure(let failure):
+        alertDiscription = failure.localizedDescription
+        isShowAlert.toggle()
+      case .success(let success):
+        alertDiscription = success
+        isShowAlert.toggle()
     }
   }
 }
