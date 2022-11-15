@@ -17,6 +17,6 @@ protocol ManagerProtocol {
   func getPermission()
   func filterTask(_ taget: [task], _ date: Date) -> [task]
   func getAllTaskforThisMonth(date: Date, completionHandler: @escaping ([task]) -> Void)
-  func createNewTask(newTask: EKCalendarItem)
+  func createNewTask(newTask: EKCalendarItem) -> String
   func getTaskCategories() -> [EKCalendar]
 }

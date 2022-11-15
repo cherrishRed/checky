@@ -25,6 +25,9 @@ class EventCreateAndEditViewModel: ObservableObject {
   @Published var isShowEndDatePicker: Bool
   @Published var isShowCategoriesPicker: Bool
   @Published var isShowAlramPicker: Bool
+  @Published var isShowAlert: Bool
+  @Published var alertDiscription: String
+  
   
   init(
     mode: EventCreateAndEditViewModel.Mode,
@@ -52,8 +55,10 @@ class EventCreateAndEditViewModel: ObservableObject {
     self.isShowEndDatePicker = isShowEndDatePicker
     self.isShowCategoriesPicker = isShowCategoriesPicker
     self.isShowAlramPicker = isShowAlramPicker
+    self.isShowAlert = false
+    self.alertDiscription = ""
     
-    var fetchedCategories = eventManager.getTaskCategories()
+    let fetchedCategories = eventManager.getTaskCategories()
     self.categories = fetchedCategories.filter { $0.title != "Birthdays"}
     self.category = categories[0]
     self.eventManager = eventManager
@@ -83,6 +88,8 @@ class EventCreateAndEditViewModel: ObservableObject {
     self.isShowEndDatePicker = false
     self.isShowCategoriesPicker = false
     self.isShowAlramPicker = false
+    self.isShowAlert = false
+    self.alertDiscription = ""
     self.categories = eventManager.getTaskCategories()
     self.category = event.category
     self.eventManager = eventManager
@@ -241,7 +248,8 @@ class EventCreateAndEditViewModel: ObservableObject {
     if alram != .none {
       newEvnet.addAlarm(EKAlarm(relativeOffset: alram.second))
     }
-    eventManager.createNewTask(newTask: newEvnet)
+    alertDiscription = eventManager.createNewTask(newTask: newEvnet)
+    isShowAlert = true
     reset()
   }
   

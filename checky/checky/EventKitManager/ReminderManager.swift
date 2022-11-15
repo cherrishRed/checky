@@ -85,14 +85,14 @@ struct ReminderManager: ManagerProtocol {
     }
   }
   
-  func createNewTask(newTask: EKCalendarItem) {
-      guard let newTask = newTask as? EKReminder else { return }
+  func createNewTask(newTask: EKCalendarItem) -> String {
+      guard let newTask = newTask as? EKReminder else { return "" }
       
       do {
         try store.save(newTask, commit: true)
+        return "reminder 저장에 성공했어요!"
       } catch {
-        print("reminder 저장 실패🥲")
-        print(error.localizedDescription)
+        return "reminder 저장에 실패했어요 🥲"
       }
     }
     

@@ -75,14 +75,14 @@ struct EventManager: ManagerProtocol {
     completionHandler(list)
   }
   
-  func createNewTask(newTask: EKCalendarItem) {
-    guard let newTask = newTask as? EKEvent else { return }
+  func createNewTask(newTask: EKCalendarItem) -> String {
+    guard let newTask = newTask as? EKEvent else { return "" }
     
     do {
       try store.save(newTask, span: EKSpan.futureEvents, commit: true)
+      return "event 저장에 성공했습니다."
     } catch {
-      print("event 저장 실패🥲")
-      print(error.localizedDescription)
+      return "event 저장에 실패했어요 🥲"
     }
   }
   

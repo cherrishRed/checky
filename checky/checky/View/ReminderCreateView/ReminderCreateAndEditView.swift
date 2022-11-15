@@ -22,6 +22,11 @@ struct ReminderCreateAndEditView: View {
     .onTapGesture {
       viewModel.action(.tappedOutOfRange)
     }
+    .alert(isPresented: $viewModel.isShowAlert) {
+      Alert(title: Text(viewModel.alertDiscription), dismissButton: .default(Text("확인"), action: {
+        coordinator.dismiss()
+      }))
+    }
   }
   
   var headerView: some View {
@@ -43,7 +48,6 @@ struct ReminderCreateAndEditView: View {
       Button {
         viewModel.action(.tappedCheckButton)
         hideKeyboard()
-        coordinator.dismiss()
       } label: {
         Image(systemName: "checkmark")
           .foregroundColor(.green)

@@ -24,6 +24,9 @@ class ReminderCreateAndEditViewModel: ObservableObject {
   @Published var isShowCategoriesPicker: Bool
   @Published var isShowDatePicker: Bool
   @Published var isShowTimePicker: Bool
+  @Published var isShowAlert: Bool
+  @Published var alertDiscription: String
+  
   
   init(
     mode: ReminderCreateAndEditViewModel.Mode,
@@ -48,9 +51,12 @@ class ReminderCreateAndEditViewModel: ObservableObject {
     self.isShowCategoriesPicker = isShowCategoriesPicker
     self.isShowDatePicker = isShowDatePicker
     self.isShowTimePicker = isShowTimePicker
+    self.isShowAlert = false
+    self.alertDiscription = ""
     self.reminderManager = reminderManager
     self.categories = reminderManager.getTaskCategories()
     self.category = categories[0]
+
     
     self.reminder = nil
   }
@@ -70,6 +76,8 @@ class ReminderCreateAndEditViewModel: ObservableObject {
     self.isShowCategoriesPicker = false
     self.isShowDatePicker = false
     self.isShowTimePicker = false
+    self.isShowAlert = false
+    self.alertDiscription = ""
     self.reminderManager = reminderManager
     self.categories = reminderManager.getTaskCategories()
     self.category = reminder.ekreminder.calendar
@@ -232,7 +240,9 @@ class ReminderCreateAndEditViewModel: ObservableObject {
     newReminder.calendar = category
     
     guard isSetDate == true else {
-      reminderManager.createNewTask(newTask: newReminder)
+      alertDiscription = reminderManager.createNewTask(newTask: newReminder)
+      
+      isShowAlert = true
       return
     }
     
@@ -244,7 +254,9 @@ class ReminderCreateAndEditViewModel: ObservableObject {
       newReminder.dueDateComponents = dateComponents
     }
     
-    reminderManager.createNewTask(newTask: newReminder)
+    alertDiscription = reminderManager.createNewTask(newTask: newReminder)
+    
+    isShowAlert = true
   }
   
   private func editReminder() {
