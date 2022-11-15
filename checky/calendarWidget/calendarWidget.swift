@@ -49,7 +49,7 @@ struct calendarWidgetEntryView : View {
     VStack {
       Text("오늘은 \(Date().month)월 \(Date().day)일")
         .fontWeight(.bold)
-        .foregroundColor(Color.basicGreen)
+        .foregroundColor(Color.fontBlack)
       VStack(spacing: 4) {
         ForEach(entry.events, id: \.eventIdentifier) { event in
           ZStack(alignment: .leading) {
@@ -79,7 +79,8 @@ struct calendarWidget: Widget {
       calendarWidgetEntryView(entry: entry)
     }
     .configurationDisplayName("오늘 목록")
-    .description("This is an example widget.")
+    .description("오늘 할일 목록을 보여주는 위젯입니다")
+    .supportedFamilies([.systemSmall])
   }
 }
 
