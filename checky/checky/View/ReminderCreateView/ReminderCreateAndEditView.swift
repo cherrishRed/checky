@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ReminderCreateAndEditView: View {
   @EnvironmentObject var coordinator: Coordinator<checkyRouter>
-@ObservedObject var viewModel = ReminderCreateAndEditViewModel(mode: .create, reminderManager: ReminderManager())
+  @ObservedObject var viewModel = ReminderCreateAndEditViewModel(mode: .create, reminderManager: ReminderManager())
   
   var body: some View {
     VStack {
@@ -29,6 +29,7 @@ struct ReminderCreateAndEditView: View {
       Button {
         viewModel.action(.tappedCloseButton)
         hideKeyboard()
+        coordinator.dismiss()
       } label: {
         Image(systemName: "xmark")
           .foregroundColor(.red)
@@ -42,6 +43,7 @@ struct ReminderCreateAndEditView: View {
       Button {
         viewModel.action(.tappedCheckButton)
         hideKeyboard()
+        coordinator.dismiss()
       } label: {
         Image(systemName: "checkmark")
           .foregroundColor(.green)
@@ -105,7 +107,7 @@ struct ReminderCreateAndEditView: View {
         } label: {
           HStack {
             Circle()
-              .fill(Color(cgColor: viewModel.category.cgColor))
+              .fill(fetchUserDefaultColor(calendarIdentifier: viewModel.category.calendarIdentifier))
               .frame(width: 10, height: 10)
             Text(viewModel.category.title)
               .foregroundColor(Color.fontDarkBlack)
@@ -123,7 +125,7 @@ struct ReminderCreateAndEditView: View {
           ForEach(viewModel.categories) { cate in
             HStack {
               Circle()
-                .fill(Color(cgColor: cate.cgColor))
+                .fill(fetchUserDefaultColor(calendarIdentifier: cate.calendarIdentifier))
                 .frame(width: 10, height: 10)
               Text(cate.title)
             }.tag(cate)

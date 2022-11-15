@@ -9,6 +9,7 @@ import SwiftUI
 import EventKit
 
 struct EventCreateAndEditView: View {
+  @EnvironmentObject var coordinator: Coordinator<checkyRouter>
   @ObservedObject var viewModel: EventCreateAndEditViewModel
   
   init(viewModel: EventCreateAndEditViewModel) {
@@ -35,6 +36,7 @@ struct EventCreateAndEditView: View {
       Button {
         viewModel.action(.tappedCloseButton)
         hideKeyboard()
+        coordinator.dismiss()
       } label: {
         Image(systemName: "xmark")
           .foregroundColor(.red)
@@ -48,6 +50,7 @@ struct EventCreateAndEditView: View {
       Button {
         viewModel.action(.tappedCheckButton)
         hideKeyboard()
+        coordinator.dismiss()
       } label: {
         Image(systemName: "checkmark")
           .foregroundColor(.green)
@@ -196,7 +199,7 @@ struct EventCreateAndEditView: View {
         } label: {
           HStack {
             Circle()
-              .fill(Color(cgColor: viewModel.category.cgColor))
+              .fill(fetchUserDefaultColor(calendarIdentifier: viewModel.category.calendarIdentifier))
               .frame(width: 10, height: 10)
             Text(viewModel.category.title)
               .foregroundColor(Color.fontDarkBlack)
@@ -214,7 +217,7 @@ struct EventCreateAndEditView: View {
           ForEach(viewModel.categories) { cate in
             HStack {
               Circle()
-                .fill(Color(cgColor: cate.cgColor))
+                .fill(fetchUserDefaultColor(calendarIdentifier: cate.calendarIdentifier))
                 .frame(width: 10, height: 10)
               Text(cate.title)
             }.tag(cate)
