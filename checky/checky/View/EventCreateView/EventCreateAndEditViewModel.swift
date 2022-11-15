@@ -52,7 +52,9 @@ class EventCreateAndEditViewModel: ObservableObject {
     self.isShowEndDatePicker = isShowEndDatePicker
     self.isShowCategoriesPicker = isShowCategoriesPicker
     self.isShowAlramPicker = isShowAlramPicker
-    self.categories = eventManager.getTaskCategories()
+    
+    var fetchedCategories = eventManager.getTaskCategories()
+    self.categories = fetchedCategories.filter { $0.title != "Birthdays"}
     self.category = categories[0]
     self.eventManager = eventManager
     self.event = nil
