@@ -11,8 +11,6 @@ import EventKit
 struct EventManager: ManagerProtocol {
   var store: EKEventStore
   var calendar: Calendar
-  
-  typealias task = Event
 
   init(store: EKEventStore = EKEventStore(),
        calendar: Calendar = Calendar(identifier: .gregorian)) {

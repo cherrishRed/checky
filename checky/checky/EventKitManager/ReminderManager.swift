@@ -11,10 +11,7 @@ import EventKit
 struct ReminderManager: ManagerProtocol {
   var store: EKEventStore
   var calendar: Calendar
-  
-  typealias task = Reminder
-  typealias EKTask = EKReminder
-  
+
   init(store: EKEventStore = EKEventStore(),
        calendar: Calendar = Calendar(identifier: .gregorian)) {
     self.store = store
