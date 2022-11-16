@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import EventKit
 
 class WeeklyCellViewModel: ObservableObject {
   @Published var dateValue: DateValue
@@ -35,7 +36,10 @@ class WeeklyCellViewModel: ObservableObject {
   
   func filteredHightPriorityDuedateReminder() -> [Reminder] {
     reminderManager.filterHighPriorityTask(dueDateReminders, dateValue.date)
-      .filter { $0.ekreminder.isCompleted == false }
+      .filter { reminder in
+        guard let ekreminder = reminder.ek as? EKReminder else { return }
+        return ekreminder.isCompleted == false
+      }
   }
   
   func filteredHightPriorityClearedReminder() -> [Reminder] {

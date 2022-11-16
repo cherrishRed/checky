@@ -30,13 +30,14 @@ struct EventManager: ManagerProtocol {
     }
   }
   
-  func filterTask(_ target: [Event], _ date: Date) -> [Event] {
+  func filterTask(_ target: [CheckyEventkitRepositoryProtocol], _ date: Date) -> [CheckyEventkitRepositoryProtocol] {
     return target.filter { event in
-      return event.ekevent.startDate.compareWithoutTime(date) || event.ekevent.endDate.compareWithoutTime(date)
+      guard let ekevent = event.ek as? EKEvent else { return }
+      return ekevent.startDate.compareWithoutTime(date) || ekevent.endDate.compareWithoutTime(date)
     }
   }
   
-  func getAllTaskforThisMonth(date: Date, completionHandler: @escaping ([Event]) -> Void) {
+  func getAllTaskforThisMonth(date: Date, completionHandler: @escaping ([CheckyEventkitRepositoryProtocol]) -> Void) {
     let allDates = date.getAllDates()
     guard let firstDate = allDates.first, let lastDate = allDates.last else {
       return
@@ -49,7 +50,7 @@ struct EventManager: ManagerProtocol {
     for category in categories {
       let predicate = store.predicateForEvents(withStart: firstDate.minusSevenDates, end: lastDate.plusSevenDates, calendars: [category])
       let eventList = store.events(matching: predicate).map { ekevent -> Event in
-        return Event(ekevent: ekevent, category: category)
+        return Event(ek: ekevent, category: category)
       }
       list.append(contentsOf: eventList)
     }
@@ -64,7 +65,7 @@ struct EventManager: ManagerProtocol {
     for category in categories {
       let predicate = store.predicateForEvents(withStart: date, end: date, calendars: [category])
       let eventList = store.events(matching: predicate).map { ekevent -> Event in
-        return Event(ekevent: ekevent, category: category)
+        return Event(ek: ekevent, category: category)
       }
       list.append(contentsOf: eventList)
     }
@@ -110,7 +111,9 @@ struct EventManager: ManagerProtocol {
   
   private func filterFirstDayEvent(_ data: [Event], _ date: Date) -> Event? {
     data
-      .filter { $0.ekevent.startDate.compare(date) == ComparisonResult.orderedSame }
+      .filter { event in
+        guard let ekevent = event.ek as? EKEvent else { return }
+        ekevent.startDate.compare(date) == ComparisonResult.orderedSame }
       .first
   }
 }

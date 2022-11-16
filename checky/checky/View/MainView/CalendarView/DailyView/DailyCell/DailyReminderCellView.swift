@@ -51,10 +51,10 @@ struct DailyReminderCellView: View {
           } label: {
             HStack {
               VStack(alignment: .leading) {
-                Text(viewModel.reminder.ekreminder.title)
+                Text(viewModel.reminder.ek.title)
                   .font(.headline)
-                if viewModel.reminder.ekreminder.hasNotes {
-                  Text(viewModel.reminder.ekreminder.notes ?? "")
+                if viewModel.reminder.ek.hasNotes {
+                  Text(viewModel.reminder.ek.notes ?? "")
                     .font(.footnote)
                     .padding(.leading, 2)
                     .multilineTextAlignment(.leading)

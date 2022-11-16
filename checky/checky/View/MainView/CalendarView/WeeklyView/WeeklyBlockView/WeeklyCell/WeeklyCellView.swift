@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import EventKit
 
 struct WeeklyCellView: View {
   @StateObject var viewModel: WeeklyCellViewModel
@@ -74,7 +75,7 @@ struct WeeklyEventBlockView: View {
         .frame(maxWidth: .infinity)
         .layoutPriority(1)
       
-      Text(event.ekevent.title)
+      Text(event.ek.title)
         .lineLimit(1)
         .font(.caption)
         .fontWeight(.semibold)
@@ -108,15 +109,20 @@ struct WeeklyReminderBlockView: View {
         Circle()
           .fill(color)
           .frame(width: 6 , height: 6)
-          .opacity(reminder.ekreminder.isCompleted ? 1.0 : 0.0)
+          .opacity(reminderIsCompleted ? 1.0 : 0.0)
       }
       
-      Text(reminder.ekreminder.title)
+      Text(reminder.ek.title)
         .font(.caption)
         .foregroundColor(Color.fontBlack)
         .fixedSize(horizontal: true, vertical: false)
     }
     .padding(.horizontal, 2)
+  }
+  
+  var reminderIsCompleted: Bool {
+    guard let ekreminder = reminder.ek as? EKReminder else { return false }
+    return ekreminder.isCompleted
   }
   
   var color: Color {

@@ -30,26 +30,26 @@ struct ReminderManager: ManagerProtocol {
     }
   }
   
-  func filterTask(_ target: [Reminder], _ date: Date) -> [Reminder] {
+  func filterTask(_ target: [CheckyEventkitRepositoryProtocol], _ date: Date) -> [CheckyEventkitRepositoryProtocol] {
     target
       .filter {
-        $0.ekreminder.dueDateComponents?.day == calendar.dateComponents([.day], from: date).day &&
-        $0.ekreminder.dueDateComponents?.month == calendar.dateComponents([.month], from: date).month && $0.ekreminder.dueDateComponents?.year == calendar.dateComponents([.year], from: date).year
+        $0.ek.dueDateComponents?.day == calendar.dateComponents([.day], from: date).day &&
+        $0.ek.dueDateComponents?.month == calendar.dateComponents([.month], from: date).month && $0.ek.dueDateComponents?.year == calendar.dateComponents([.year], from: date).year
       }
   }
   
   func filterHighPriorityTask(_ target: [Reminder], _ date: Date) -> [Reminder] {
     target
-      .filter { $0.ekreminder.priority == 1 }
+      .filter { $0.ek.priority == 1 }
   }
   
   func filterClearTask(_ target: [Reminder], _ date: Date) -> [Reminder] {
     target
-      .filter { $0.ekreminder.completionDate != nil }
-      .filter { $0.ekreminder.completionDate?.day == date.day && $0.ekreminder.completionDate?.month == date.month && $0.ekreminder.completionDate?.year == date.year }
+      .filter { $0.ek.completionDate != nil }
+      .filter { $0.ek.completionDate?.day == date.day && $0.ek.completionDate?.month == date.month && $0.ek.completionDate?.year == date.year }
   }
   
-  func getAllTaskforThisMonth(date: Date, completionHandler: @escaping ([Reminder]) -> Void) {
+  func getAllTaskforThisMonth(date: Date, completionHandler: @escaping ([CheckyEventkitRepositoryProtocol]) -> Void) {
     let categories = store.calendars(for: .reminder)
     
     var list: [Reminder] = []
@@ -74,7 +74,7 @@ struct ReminderManager: ManagerProtocol {
     
     store.fetchReminders(matching: predicate) { reminders in
       for ekreminder in reminders ?? [] {
-        let reminder = Reminder(ekreminder: ekreminder, category: category)
+        let reminder = Reminder(ek: ekreminder, category: category)
         list.append(reminder)
       }
       completionHandler(list)

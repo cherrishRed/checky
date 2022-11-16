@@ -13,7 +13,7 @@ class MonthlyViewModel: ViewModelable {
   @Published var events: [Event]
   @Published var reminders: [Reminder]
   
-  let eventManager: EventManager
+  let eventManager: any ManagerProtocol
   let reminderManager: ReminderManager
   let calendarHelper: CalendarProtocol
   let moveToWeekly: () -> ()
@@ -65,6 +65,7 @@ class MonthlyViewModel: ViewModelable {
   func fetchEvents() {
     eventManager.getAllTaskforThisMonth(date: dateHolder.date, completionHandler: { [weak self] eventList in
       DispatchQueue.main.async {
+        guard let eventList = eventList as? [Event] else { return }
         self?.events = eventList
       }
     })
@@ -83,11 +84,14 @@ class MonthlyViewModel: ViewModelable {
   }
   
   func filteredEvent(_ date: Date) -> [Event] {
-    eventManager.filterTask(events, date)
+    guard let result = eventManager.filterTask(events, date) as? [Event] else { return [] }
+    
+    return result
   }
   
   func filteredReminder(_ date: Date) -> [Reminder] {
-    reminderManager.filterTask(reminders, date)
+    guard let result = reminderManager.filterTask(reminders, date) as? [Reminder] else { return [] }
+    return result
   }
   
   func filteredClearedReminder(_ date: Date) -> [Reminder] {

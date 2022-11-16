@@ -59,6 +59,7 @@ class WeeklyBlockViewModel: ViewModelable {
   func fetchEvents() {
     eventManager.getAllTaskforThisMonth(date: dateHolder.date, completionHandler: { [weak self] eventList in
       DispatchQueue.main.async {
+        guard let eventList = eventList as? [Event] else { return }
         self?.events = eventList
       }
     })
@@ -67,17 +68,24 @@ class WeeklyBlockViewModel: ViewModelable {
   private func fetchReminder() {
     reminderManager.getAllTaskforThisMonth(date: dateHolder.date, completionHandler: { [weak self] reminderList in
       DispatchQueue.main.async {
+        guard let reminderList = reminderList as? [Reminder] else { return }
         self?.reminders = reminderList
       }
     })
   }
     
   func filteredEvent(_ date: Date) -> [Event] {
-    eventManager.filterTask(events, date)
+    guard let filtetedEvents = eventManager.filterTask(events, date) as? [Event] else {
+      return []
+    }
+    return filtetedEvents
   }
   
   func filteredReminder(_ date: Date) -> [Reminder] {
-    reminderManager.filterTask(reminders, date)
+    guard let filtetedReminders = reminderManager.filterTask(reminders, date) as? [Reminder] else {
+      return []
+    }
+    return filtetedReminders
   }
   
   func filteredClearedReminder(_ date: Date) -> [Reminder] {

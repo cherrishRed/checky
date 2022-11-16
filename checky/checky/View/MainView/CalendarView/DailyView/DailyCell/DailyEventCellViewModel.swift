@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import EventKit
 
 class DailyEventCellViewModel: ViewModelable {
   @Published var event: Event
@@ -36,7 +37,8 @@ class DailyEventCellViewModel: ViewModelable {
   }
   
   var isAllday: Bool {
-    return event.ekevent.isAllDay
+    guard let ekevent = event.ek as? EKEvent else { return false }
+    return ekevent.isAllDay
   }
   
   enum Action {

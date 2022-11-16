@@ -8,12 +8,7 @@
 import Foundation
 import EventKit
 
-struct Reminder: Hashable, ReminderProtocol {
-  var ekreminder: EKReminder
+struct Reminder: Hashable, CheckyEventkitRepositoryProtocol {
+  var ek: EKCalendarItem
   var category: EKCalendar
-}
-
-protocol ReminderProtocol {
-  var ekreminder: EKReminder { get set }
-  var category: EKCalendar { get set }
 }
