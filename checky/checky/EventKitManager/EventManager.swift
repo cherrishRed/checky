@@ -21,12 +21,10 @@ struct EventManager: ManagerProtocol {
   func getPermission() {
     store.requestAccess(to: .event) { granted, error in
       guard error == nil else {
-        print("에러가 있습니다")
         return
       }
       
       guard granted == true else {
-        print("권한이 이상합니다")
         return
       }
     }
