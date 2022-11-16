@@ -44,13 +44,12 @@ struct ReminderView: View {
 
 extension ReminderView {
   var header: some View {
-    ZStack {
-      Rectangle()
-        .fill(.white)
-        .frame(height: 50)
-      Text(Date().dateKoreanWithYear)
+    Text(Date().dateKoreanWithYear)
         .font(.title)
-    }
+        .bold()
+        .foregroundColor(Color.fontBlack)
+        .frame(maxWidth: .infinity)
+        .background(Color.basicWhite)
   }
 }
           
