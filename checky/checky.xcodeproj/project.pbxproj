@@ -55,6 +55,7 @@
 		DA124AE62923C6AC00C6ED6C /* Extension+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3E9DAB29078FE200E72E21 /* Extension+Color.swift */; };
 		DA124AE72923C6F900C6ED6C /* Extension+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91E7D928EB58310091B6A3 /* Extension+Date.swift */; };
 		DA124AEA2923CDCB00C6ED6C /* Extension+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA124AE92923CDCB00C6ED6C /* Extension+UserDefaults.swift */; };
+		DA124AED2924A59400C6ED6C /* Extension+Notification.Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA124AEC2924A59400C6ED6C /* Extension+Notification.Name.swift */; };
 		DA2789952911C7F300E76B53 /* DailyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2789942911C7F300E76B53 /* DailyHeaderView.swift */; };
 		DA2789AF291A125E00E76B53 /* Extension+ViewModelable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2789AE291A125E00E76B53 /* Extension+ViewModelable.swift */; };
 		DA2789B2291A148500E76B53 /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2789B1291A148500E76B53 /* ReminderView.swift */; };
@@ -188,6 +189,7 @@
 		DA124AE82923CD5000C6ED6C /* checkyWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = checkyWidgetExtension.entitlements; sourceTree = "<group>"; };
 		DA124AE92923CDCB00C6ED6C /* Extension+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UserDefaults.swift"; sourceTree = "<group>"; };
 		DA124AEB2923D01200C6ED6C /* checky.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = checky.entitlements; sourceTree = "<group>"; };
+		DA124AEC2924A59400C6ED6C /* Extension+Notification.Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Notification.Name.swift"; sourceTree = "<group>"; };
 		DA2789942911C7F300E76B53 /* DailyHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyHeaderView.swift; sourceTree = "<group>"; };
 		DA2789AE291A125E00E76B53 /* Extension+ViewModelable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+ViewModelable.swift"; sourceTree = "<group>"; };
 		DA2789B1291A148500E76B53 /* ReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderView.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 				DA2789AE291A125E00E76B53 /* Extension+ViewModelable.swift */,
 				DA3E9DAB29078FE200E72E21 /* Extension+Color.swift */,
 				DA124AE92923CDCB00C6ED6C /* Extension+UserDefaults.swift */,
+				DA124AEC2924A59400C6ED6C /* Extension+Notification.Name.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -878,6 +881,7 @@
 				DA91E7E528EC94180091B6A3 /* MonthlyCellView.swift in Sources */,
 				DA4E4A4F290C8ADB00CF45E2 /* DailyViewModel.swift in Sources */,
 				DA3E9DAC29078FE200E72E21 /* Extension+Color.swift in Sources */,
+				DA124AED2924A59400C6ED6C /* Extension+Notification.Name.swift in Sources */,
 				DA91E81828EE01790091B6A3 /* HeaderViewModel.swift in Sources */,
 				DA4E4A46290C288600CF45E2 /* WeeklyView.swift in Sources */,
 				DA124AEA2923CDCB00C6ED6C /* Extension+UserDefaults.swift in Sources */,

@@ -129,6 +129,7 @@ class EventCreateAndEditViewModel: ObservableObject {
       tappedCloseButton()
     case .tappedCheckButton:
       tappedCheckButton()
+      closedModal()
     case .changeMinimumEndDate:
       changeMinimumEndDate()
     case .tappedDeleteButton:
@@ -305,5 +306,9 @@ class EventCreateAndEditViewModel: ObservableObject {
     endDate = .now
     memo = ""
     category = categories[0]
+  }
+  
+  private func closedModal() {
+    NotificationCenter.default.post(name: Notification.Name("closedModal"), object: nil, userInfo: ["modal": true])
   }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct MonthlyView: View {
   @EnvironmentObject var coordinator: Coordinator<checkyRouter>
   @StateObject var viewModel: MonthlyViewModel
+  let closedModalNotification = NotificationCenter.default.publisher(for: .closedModal)
   
   var body: some View {
     VStack(spacing: 0) {
@@ -69,6 +70,8 @@ struct MonthlyView: View {
       .padding(.horizontal, 4)
       .onReceive(viewModel.dateHolder.$date, perform: { output in
         viewModel.fetchEvents()
+      })
+      .onReceive(closedModalNotification, perform: { output in
         viewModel.fetchEvents()
       })
       
