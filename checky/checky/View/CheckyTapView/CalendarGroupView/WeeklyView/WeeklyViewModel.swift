@@ -9,8 +9,9 @@ import SwiftUI
 
 class WeeklyViewModel: ViewModelable {
   @Published var dateHolder: DateHolder
-  @Published var minicarOffset: CGFloat
-  
+  @Published var miniCalendarOffset: CGFloat
+  @Published var currentOffsetX: CGSize
+
   let eventManager: EventManager
   let reminderManager: ReminderManager
   let calendarHelper: CalendarProtocol
@@ -21,6 +22,8 @@ class WeeklyViewModel: ViewModelable {
     eventManager: EventManager,
     reminderManager: ReminderManager,
     calendarHelper: CalendarProtocol,
+    currentOffsetX: CGSize = .zero,
+    miniCalendarOffset: CGFloat = .zero,
     moveToMonthly: @escaping () -> ()
   ) {
     self.moveToMonthly = moveToMonthly
@@ -28,7 +31,8 @@ class WeeklyViewModel: ViewModelable {
     self.eventManager = eventManager
     self.reminderManager = reminderManager
     self.calendarHelper = calendarHelper
-    self.minicarOffset = .zero
+    self.miniCalendarOffset = miniCalendarOffset
+    self.currentOffsetX = currentOffsetX
   }
   
   var pastCurrentFutureDates: [Date] {
@@ -57,6 +61,8 @@ class WeeklyViewModel: ViewModelable {
     case moveToPreviousWeek
     case moveToNextWeek
     case changeMinicarOffset
+    case dragGestur
+    case resetCurrentOffsetX
   }
   
   func action(_ action: Action) {
@@ -68,7 +74,11 @@ class WeeklyViewModel: ViewModelable {
       case .moveToNextWeek:
         moveToNextWeek()
       case .changeMinicarOffset:
-        minicarOffset = minimunCalendarWeekheight(dateHolder.date)
+        miniCalendarOffset = minimunCalendarWeekheight(dateHolder.date)
+    case .dragGestur:
+      dragGestureonEnded()
+    case .resetCurrentOffsetX:
+      resetCurrentOffsetX()
     }
   }
   
@@ -97,5 +107,17 @@ class WeeklyViewModel: ViewModelable {
   
   func extractMonthDates() -> [DateValue] {
     calendarHelper.extractMonthDates(dateHolder.date)
+  }
+  
+  func dragGestureonEnded() {
+    guard currentOffsetX.width < 0 else {
+      dateHolder.date = calendarHelper.minusDate(dateHolder.date)
+      return
+    }
+    dateHolder.date = calendarHelper.plusDate(dateHolder.date)
+  }
+
+  func resetCurrentOffsetX() {
+    currentOffsetX = .zero
   }
 }

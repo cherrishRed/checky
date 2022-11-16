@@ -49,35 +49,20 @@ struct WeeklyView: View {
           .background(Color.backgroundGray)
         }
       }
-      
-      HStack(spacing: 10) {
-        Button {
-          viewModel.action(.moveToPreviousWeek)
-        } label: {
-          ZStack {
-            RoundedRectangle(cornerRadius: 4)
-              .fill(Color.basicWhite)
-            Image(systemName: "arrow.left")
-              .foregroundColor(Color.fontBlack)
-          }
-        }
-        
-        Button {
-          viewModel.action(.moveToNextWeek)
-        } label: {
-          ZStack {
-            RoundedRectangle(cornerRadius: 4)
-              .fill(Color.basicWhite)
-            Image(systemName: "arrow.right")
-              .foregroundColor(Color.fontBlack)
-          }
-        }
-      }
-      .frame(height: 20)
-      .padding(.bottom, 10)
-      .padding(.horizontal, 4)
     }
     .background(Color.backgroundGray)
+    .gesture(
+      DragGesture()
+        .onChanged { value in
+          viewModel.currentOffsetX = value.translation
+        }
+        .onEnded { value in
+          viewModel.action(.dragGestur)
+          withAnimation(.linear(duration: 0.4)) {
+            viewModel.action(.resetCurrentOffsetX)
+          }
+        }
+    )
   }
 }
 
@@ -91,8 +76,8 @@ extension WeeklyView {
           .padding(.horizontal, 10)
           .frame(height: 16, alignment: .center)
           .frame(maxWidth: .infinity)
-          .offset(y: viewModel.minicarOffset)
-          .animation(.easeInOut, value: viewModel.minicarOffset)
+          .offset(y: viewModel.miniCalendarOffset)
+          .animation(.easeInOut, value: viewModel.miniCalendarOffset)
         
         LazyVGrid(columns: columns, spacing: 0) {
           ForEach(viewModel.extractMonthDates()) { value in

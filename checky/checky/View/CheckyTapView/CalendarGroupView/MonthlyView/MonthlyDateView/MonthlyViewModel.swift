@@ -45,8 +45,8 @@ class MonthlyViewModel: ViewModelable {
     case moveToWeekly
     case moveToPreviousMonth
     case moveToNextMonth
-    case rightDragGestur
-    case leftDragGestur
+    case dragGestur
+    case resetCurrentOffsetX
   }
   
   func action(_ action: Action) {
@@ -63,10 +63,10 @@ class MonthlyViewModel: ViewModelable {
       moveToPreviousMonth()
     case .moveToNextMonth:
       moveToNextMonth()
-    case .rightDragGestur:
-      moveToPreviousMonth()
-    case .leftDragGestur:
-      moveToNextMonth()
+    case .dragGestur:
+      dragGestureonEnded()
+    case .resetCurrentOffsetX:
+      resetCurrentOffsetX()
     }
   }
   
@@ -118,5 +118,18 @@ class MonthlyViewModel: ViewModelable {
   func moveToNextMonth() {
     dateHolder.date = calendarHelper.plusDate(dateHolder.date)
   }
+  
+  func dragGestureonEnded() {
+    guard currentOffsetX.width < 0 else {
+      dateHolder.date = calendarHelper.minusDate(dateHolder.date)
+      return
+    }
+    dateHolder.date = calendarHelper.plusDate(dateHolder.date)
+  }
+
+  func resetCurrentOffsetX() {
+    currentOffsetX = .zero
+  }
+
   
 }
