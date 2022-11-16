@@ -10,6 +10,7 @@ import SwiftUI
 struct WeeklyView: View {
   @EnvironmentObject var coordinator: Coordinator<checkyRouter>
   @StateObject var viewModel: WeeklyViewModel
+  let closedModalNotification = NotificationCenter.default.publisher(for: .closedModal)
   
   var body: some View {
     VStack(spacing: 1) {

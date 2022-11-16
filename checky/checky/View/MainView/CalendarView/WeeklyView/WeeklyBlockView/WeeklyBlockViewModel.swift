@@ -56,7 +56,7 @@ class WeeklyBlockViewModel: ViewModelable {
     self.fetchReminder()
   }
   
-  private func fetchEvents() {
+  func fetchEvents() {
     eventManager.getAllTaskforThisMonth(date: dateHolder.date, completionHandler: { [weak self] eventList in
       DispatchQueue.main.async {
         self?.events = eventList

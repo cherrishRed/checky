@@ -131,6 +131,7 @@ class ReminderCreateAndEditViewModel: ObservableObject {
         tappedCloseButton()
       case .tappedCheckButton:
         tappedCheckButton()
+        closedModal()
       case .tappedDeleteButton:
         tappedDeleteButton()
       case .togglePicker(let picker):
@@ -307,5 +308,9 @@ class ReminderCreateAndEditViewModel: ObservableObject {
         alertDiscription = success
         isShowAlert.toggle()
     }
+  }
+  
+  private func closedModal() {
+    NotificationCenter.default.post(name: Notification.Name("closedModal"), object: nil, userInfo: ["modal": true])
   }
 }
