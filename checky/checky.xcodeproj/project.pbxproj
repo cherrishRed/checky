@@ -422,17 +422,6 @@
 			path = CustomTabBar;
 			sourceTree = "<group>";
 		};
-		868C544828F440F6006A9B38 /* MonthlyDateView */ = {
-			isa = PBXGroup;
-			children = (
-				DA466EA128E685D70076AEE4 /* MonthlyView.swift */,
-				DA91E81328EDF38F0091B6A3 /* MonthlyViewModel.swift */,
-				86A5E5FC28EEA6200040DCFB /* DayOfWeekStackView */,
-				864CB8CA2924D16400E1B7D9 /* MonthlyCellView */,
-			);
-			path = MonthlyDateView;
-			sourceTree = "<group>";
-		};
 		869A570E2923A1AB00988D27 /* Error */ = {
 			isa = PBXGroup;
 			children = (
@@ -463,7 +452,10 @@
 		86F0B2BE28F6B667006E2536 /* MonthlyView */ = {
 			isa = PBXGroup;
 			children = (
-				868C544828F440F6006A9B38 /* MonthlyDateView */,
+				DA466EA128E685D70076AEE4 /* MonthlyView.swift */,
+				DA91E81328EDF38F0091B6A3 /* MonthlyViewModel.swift */,
+				86A5E5FC28EEA6200040DCFB /* DayOfWeekStackView */,
+				864CB8CA2924D16400E1B7D9 /* MonthlyCellView */,
 			);
 			path = MonthlyView;
 			sourceTree = "<group>";
