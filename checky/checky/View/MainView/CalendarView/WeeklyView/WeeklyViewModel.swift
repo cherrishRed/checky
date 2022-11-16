@@ -28,7 +28,6 @@ class WeeklyViewModel: ViewModelable {
     self.eventManager = eventManager
     self.reminderManager = reminderManager
     self.calendarHelper = calendarHelper
-    
     self.minicarOffset = .zero
   }
   

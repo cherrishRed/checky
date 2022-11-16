@@ -10,6 +10,7 @@ import SwiftUI
 struct WeeklyBlockView: View {
   @EnvironmentObject var coordinator: Coordinator<checkyRouter>
   @StateObject var viewModel: WeeklyBlockViewModel
+  let closedModalNotification = NotificationCenter.default.publisher(for: .closedModal)
   
   var body: some View {
     let columns = Array(repeating: GridItem(.flexible(), spacing: 0, alignment: nil), count: 2)
@@ -40,9 +41,9 @@ struct WeeklyBlockView: View {
       }
     }
     .frame(maxHeight: .infinity)
-    .onReceive(viewModel.dateHolder.$date) { output in
-      viewModel.action(.actionOnAppear)
-    }
+    .onReceive(closedModalNotification, perform: { output in
+      viewModel.fetchEvents()
+    })
     .onAppear {
       viewModel.action(.actionOnAppear)
     }
