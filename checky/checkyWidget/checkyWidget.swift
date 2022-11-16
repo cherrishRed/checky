@@ -51,16 +51,23 @@ struct calendarWidgetEntryView : View {
         .fontWeight(.bold)
         .foregroundColor(Color.fontBlack)
       VStack(spacing: 4) {
-        ForEach(entry.events, id: \.eventIdentifier) { event in
-          ZStack(alignment: .leading) {
-            RoundedRectangle(cornerRadius: 4)
-              .fill(fetchUserDefaultColor(calendar: event.calendar))
-            Text(event.title)
-              .foregroundColor(Color.basicWhite)
-              .fontWeight(.bold)
-              .padding(.horizontal, 4)
+        if entry.events.count != 0 {
+          ForEach(entry.events, id: \.eventIdentifier) { event in
+            ZStack(alignment: .leading) {
+              RoundedRectangle(cornerRadius: 4)
+                .fill(fetchUserDefaultColor(calendar: event.calendar))
+              Text(event.title)
+                .foregroundColor(Color.basicWhite)
+                .fontWeight(.bold)
+                .padding(.horizontal, 4)
+            }
+            .fixedSize(horizontal: false, vertical: true)
           }
-          .fixedSize(horizontal: false, vertical: true)
+        } else {
+          Text("오늘은 일정이 없어요!")
+            .font(.caption)
+            .foregroundColor(Color.fontMediumGray)
+            .frame(height: 50)
         }
       }
       Spacer()
@@ -91,9 +98,6 @@ struct calendarWidget_Previews: PreviewProvider {
   }
 }
 
-
-
-
 struct EventManagerForWidget  {
   var store: EKEventStore
   var calendar: Calendar
@@ -105,20 +109,21 @@ struct EventManagerForWidget  {
   }
   
   func getAllTaskforToday(date: Date = Date()) -> [EKEvent] {
-    
     let categories = store.calendars(for: .event)
     
     var list: [EKEvent] = []
     
+    guard let startDate = Calendar.current.date(byAdding: .day, value: -1, to: date) else { return [] }
+    guard let endDate = Calendar.current.date(byAdding: .day, value: 1, to: date) else { return [] }
+    
     for category in categories {
-      let predicate = store.predicateForEvents(withStart: date, end: date, calendars: [category])
+      let predicate = store.predicateForEvents(withStart: startDate, end: endDate, calendars: [category])
       let eventList = store.events(matching: predicate)
-      list.append(contentsOf: eventList)
+      list.append(contentsOf: eventList.filter { $0.startDate.day == date.day || $0.endDate.day == date.day })
     }
     
     return list
   }
-  
 }
 
 extension View {
