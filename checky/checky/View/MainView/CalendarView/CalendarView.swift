@@ -13,8 +13,8 @@ struct CalendarView: View {
   @EnvironmentObject var coordinator: Coordinator<checkyRouter>
   @StateObject var viewModel: CalendarViewModel = CalendarViewModel()
   
-  var eventManager: EventManager
-  var reminderManager: ReminderManager
+  let eventManager: EventManager
+  let reminderManager: ReminderManager
   
   var dateHolder = DateHolder()
   var body: some View {
