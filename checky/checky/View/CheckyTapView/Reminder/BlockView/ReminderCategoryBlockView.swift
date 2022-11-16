@@ -26,12 +26,6 @@ struct ReminderCategoryBlockView: View {
           .frame(height: 2)
         ForEach(viewModel.reminders, id: \.self) { reminder in
           HStack {
-            Button {
-              reminder.ekreminder.isCompleted.toggle()
-              let result = viewModel.reminderManager.editTask(task: reminder.ekreminder)
-              print(result)
-              
-            } label: {
               ZStack {
                 Circle()
                   .stroke(viewModel.color)
@@ -41,7 +35,7 @@ struct ReminderCategoryBlockView: View {
                   .frame(width: 8 , height: 8)
                   .opacity(reminder.ekreminder.isCompleted ? 1.0 : 0.0)
               }
-            }
+         
             Text(reminder.ekreminder.title)
           }
         }
