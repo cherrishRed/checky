@@ -12,12 +12,13 @@ class MonthlyViewModel: ViewModelable {
   @Published var dateHolder: DateHolder
   @Published var events: [Event]
   @Published var reminders: [Reminder]
+  @Published var currentOffsetX: CGSize
   
   let eventManager: EventManager
   let reminderManager: ReminderManager
   let calendarHelper: CalendarProtocol
   let moveToWeekly: () -> ()
-    
+  
   init(
     dateHolder: DateHolder,
     eventManager: EventManager,
@@ -35,6 +36,7 @@ class MonthlyViewModel: ViewModelable {
     self.events = events
     self.reminders = reminders
     self.moveToWeekly = moveToWeekly
+    self.currentOffsetX = currentOffsetX
   }
   
   enum Action {
@@ -43,22 +45,28 @@ class MonthlyViewModel: ViewModelable {
     case moveToWeekly
     case moveToPreviousMonth
     case moveToNextMonth
+    case rightDragGestur
+    case leftDragGestur
   }
   
   func action(_ action: Action) {
     switch action {
-      case .actionOnAppear:
-        fetchEvents()
-        fetchReminder()
-      case .onChangeDate:
-        fetchEvents()
-        fetchReminder()
-      case .moveToWeekly:
-        moveToWeekly()
-      case .moveToPreviousMonth:
-        moveToPreviousMonth()
-      case .moveToNextMonth:
-        moveToNextMonth()
+    case .actionOnAppear:
+      fetchEvents()
+      fetchReminder()
+    case .onChangeDate:
+      fetchEvents()
+      fetchReminder()
+    case .moveToWeekly:
+      moveToWeekly()
+    case .moveToPreviousMonth:
+      moveToPreviousMonth()
+    case .moveToNextMonth:
+      moveToNextMonth()
+    case .rightDragGestur:
+      moveToPreviousMonth()
+    case .leftDragGestur:
+      moveToNextMonth()
     }
   }
   
@@ -102,6 +110,7 @@ class MonthlyViewModel: ViewModelable {
     return dateHolder.date.month == Date().month && dateHolder.date.year == Date().year
   }
   
+  
   func moveToPreviousMonth() {
     dateHolder.date = calendarHelper.minusDate(dateHolder.date)
   }
@@ -109,5 +118,5 @@ class MonthlyViewModel: ViewModelable {
   func moveToNextMonth() {
     dateHolder.date = calendarHelper.plusDate(dateHolder.date)
   }
-
+  
 }
