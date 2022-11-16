@@ -11,8 +11,6 @@ import EventKit
 struct EventManager: ManagerProtocol {
   var store: EKEventStore
   var calendar: Calendar
-  
-  typealias task = Event
 
   init(store: EKEventStore = EKEventStore(),
        calendar: Calendar = Calendar(identifier: .gregorian)) {
@@ -23,12 +21,10 @@ struct EventManager: ManagerProtocol {
   func getPermission() {
     store.requestAccess(to: .event) { granted, error in
       guard error == nil else {
-        print("에러가 있습니다")
         return
       }
       
       guard granted == true else {
-        print("권한이 이상합니다")
         return
       }
     }
@@ -60,25 +56,51 @@ struct EventManager: ManagerProtocol {
     completionHandler(list)
   }
   
-  func createNewTask(newTask: EKCalendarItem) {
-    guard let newTask = newTask as? EKEvent else { return }
+  func getAllTaskforThisDay(date: Date, completionHandler: @escaping ([Event]) -> Void) {
+    let categories = store.calendars(for: .event)
+    
+    var list: [Event] = []
+    
+    for category in categories {
+      let predicate = store.predicateForEvents(withStart: date, end: date, calendars: [category])
+      let eventList = store.events(matching: predicate).map { ekevent -> Event in
+        return Event(ekevent: ekevent, category: category)
+      }
+      list.append(contentsOf: eventList)
+    }
+    completionHandler(list)
+  }
+  
+  func createNewTask(newTask: EKCalendarItem) -> Result<String, EventManagerError> {
+    guard let newTask = newTask as? EKEvent else { return .failure(.EKEventTypeCastingError) }
     
     do {
       try store.save(newTask, span: EKSpan.futureEvents, commit: true)
+      return .success("event 저장에 성공했습니다.")
     } catch {
-      print("event 저장 실패🥲")
-      print(error.localizedDescription)
+      return .failure(.createError)
     }
   }
   
-  func editTask(task: EKCalendarItem) {
-    guard let task = task as? EKEvent else { return }
+  func editTask(task: EKCalendarItem) -> Result<Bool, EventManagerError> {
+    guard let task = task as? EKEvent else { return .failure(.EKEventTypeCastingError) }
     
     do {
       try store.save(task, span: EKSpan.futureEvents, commit: true)
+      return .success(true)
     } catch {
-      print("event 저장 실패🥲")
-      print(error.localizedDescription)
+      return .failure(.editError)
+    }
+  }
+  
+  func deleteTask(task: EKCalendarItem) -> Result<String, EventManagerError> {
+    guard let task = task as? EKEvent else { return .failure(.EKEventTypeCastingError) }
+    
+    do {
+      try store.remove(task, span:  EKSpan.futureEvents)
+      return .success("event 삭제 성공😃")
+    } catch {
+      return .failure(.deleteError)
     }
   }
   

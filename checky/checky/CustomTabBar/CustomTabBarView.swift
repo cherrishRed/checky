@@ -24,7 +24,7 @@ extension CustomTabBarView {
       Image(systemName: selection == tab ? tab.selectedName : tab.iconName)
         .padding(.horizontal, 30)
     }
-    .foregroundColor(selection == tab ? tab.color : Color.gray)
+    .foregroundColor(selection == tab ? tab.color : Color.fontMediumGray)
     .padding(.vertical, 8)
   }
   
@@ -54,7 +54,7 @@ extension CustomTabBarView {
 
     }
     .padding(6)
-    .background(Color.white.ignoresSafeArea(edges: .bottom))
+    .background(Color.basicWhite.ignoresSafeArea(edges: .bottom))
     .cornerRadius(10)
   }
   

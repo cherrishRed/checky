@@ -17,7 +17,3 @@ protocol EventProtocol {
   var ekevent: EKEvent { get set }
   var category: EKCalendar { get set }
 }
-
-protocol TaskProtocol: EventProtocol, ReminderProtocol {}
-
-

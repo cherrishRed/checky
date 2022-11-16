@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WeeklyCalendarHelper: CalendarCanDo {
+struct WeeklyCalendarHelper: CalendarProtocol {
   
   var weekOption: WeekOption
   var startingWeek: Week
