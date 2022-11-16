@@ -28,7 +28,7 @@ struct ReminderCategoryBlockView: View {
           HStack {
             Button {
               reminder.ekreminder.isCompleted.toggle()
-              let result = viewModel.reminderManager.editReminder(reminder.ekreminder)
+              let result = viewModel.reminderManager.editTask(task: reminder.ekreminder)
               print(result)
               
             } label: {

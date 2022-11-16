@@ -44,7 +44,7 @@ class DailyReminderCellViewModel: ViewModelable {
     switch action {
     case .tappedCompletion:
       reminder.ekreminder.isCompleted.toggle()
-      switch reminderManager.editReminder(reminder.ekreminder) {
+      switch reminderManager.editTask(task: reminder.ekreminder) {
       case .success(let success):
         isCompletion = success
         alertDescription = "reminder 수정 성공😃"

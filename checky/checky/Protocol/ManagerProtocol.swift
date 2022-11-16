@@ -12,7 +12,7 @@ protocol ManagerProtocol {
   var store: EKEventStore { get set }
   var calendar: Calendar { get set }
   
-  associatedtype Task
+  associatedtype Task: CheckyEventkitRepositoryProtocol
   associatedtype ManagerError: Error
   
   func getPermission()
@@ -20,5 +20,12 @@ protocol ManagerProtocol {
   func getAllTaskforThisMonth(date: Date, completionHandler: @escaping ([Task]) -> Void)
   func createNewTask(newTask: EKCalendarItem) -> Result<String, ManagerError>
   func getTaskCategories() -> [EKCalendar]
+  func editTask(task: EKCalendarItem) -> Result<Bool, ManagerError>
+  func deleteTask(task: EKCalendarItem) -> Result<String, ManagerError>
 }
 
+protocol CheckyEventkitRepositoryProtocol {}
+
+extension Reminder: CheckyEventkitRepositoryProtocol {}
+
+extension Event: CheckyEventkitRepositoryProtocol {}

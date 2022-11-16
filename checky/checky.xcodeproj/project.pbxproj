@@ -282,8 +282,8 @@
 		8647B08A2907B4EE00EE1DA8 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				8647B0882907B13C00EE1DA8 /* CalendarProtocol.swift */,
 				86795898290A3C2D001D5C7F /* ManagerProtocol.swift */,
+				8647B0882907B13C00EE1DA8 /* CalendarProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";

@@ -82,12 +82,12 @@ struct EventManager: ManagerProtocol {
     }
   }
   
-  func editTask(task: EKCalendarItem) -> Result<String, EventManagerError> {
+  func editTask(task: EKCalendarItem) -> Result<Bool, EventManagerError> {
     guard let task = task as? EKEvent else { return .failure(.EKEventTypeCastingError) }
     
     do {
       try store.save(task, span: EKSpan.futureEvents, commit: true)
-      return .success("event 수정 성공😃")
+      return .success(true)
     } catch {
       return .failure(.editError)
     }

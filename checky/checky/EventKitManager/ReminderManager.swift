@@ -35,7 +35,6 @@ struct ReminderManager: ManagerProtocol {
       .filter {
         $0.ekreminder.dueDateComponents?.day == calendar.dateComponents([.day], from: date).day &&
         $0.ekreminder.dueDateComponents?.month == calendar.dateComponents([.month], from: date).month && $0.ekreminder.dueDateComponents?.year == calendar.dateComponents([.year], from: date).year
-        
       }
   }
   
@@ -97,10 +96,11 @@ struct ReminderManager: ManagerProtocol {
     return store.calendars(for: .reminder)
   }
   
-  func editReminder(_ reminder: EKReminder) -> Result<Bool, ReminderManagerError> {
+  func editTask(task: EKCalendarItem) -> Result<Bool, ReminderManagerError> {
+    guard let task = task as? EKReminder else { return .failure(.EKReminderTypeCastingError) }
     do {
-      try store.save(reminder, commit: true)
-      return .success(reminder.isCompleted)
+      try store.save(task, commit: true)
+      return .success(task.isCompleted)
     } catch {
       return .failure(.editError)
     }

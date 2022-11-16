@@ -289,8 +289,8 @@ class EventCreateAndEditViewModel: ObservableObject {
     }
     
     switch eventManager.editTask(task: event.ekevent) {
-    case .success(let success):
-      alertDescription = success
+    case .success:
+      alertDescription = "event 수정 성공😃"
     case .failure(let failure):
       alertDescription = failure.localizedDescription
     }
