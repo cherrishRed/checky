@@ -21,31 +21,31 @@ struct ReminderManager: ManagerProtocol {
   func getPermission() {
     store.requestAccess(to: .reminder) { granted, error in
       guard error == nil else {
-        print("에러가 있습니다")
         return
       }
       
       guard granted == true else {
-        print("권한이 이상합니다")
         return
       }
     }
   }
   
-  func filterTask(_ taget: [Reminder], _ date: Date) -> [Reminder] {
-    taget
+  func filterTask(_ target: [Reminder], _ date: Date) -> [Reminder] {
+    target
       .filter {
         $0.ekreminder.dueDateComponents?.day == calendar.dateComponents([.day], from: date).day &&
-        $0.ekreminder.dueDateComponents?.month == calendar.dateComponents([.month], from: date).month && $0.ekreminder.dueDateComponents?.year == calendar.dateComponents([.year], from: date).year}
+        $0.ekreminder.dueDateComponents?.month == calendar.dateComponents([.month], from: date).month && $0.ekreminder.dueDateComponents?.year == calendar.dateComponents([.year], from: date).year
+        
+      }
   }
   
-  func filterHighPriorityTask(_ taget: [Reminder], _ date: Date) -> [Reminder] {
-    taget
+  func filterHighPriorityTask(_ target: [Reminder], _ date: Date) -> [Reminder] {
+    target
       .filter { $0.ekreminder.priority == 1 }
   }
   
-  func filterClearTask(_ taget: [Reminder], _ date: Date) -> [Reminder] {
-    taget
+  func filterClearTask(_ target: [Reminder], _ date: Date) -> [Reminder] {
+    target
       .filter { $0.ekreminder.completionDate != nil }
       .filter { $0.ekreminder.completionDate?.day == date.day && $0.ekreminder.completionDate?.month == date.month && $0.ekreminder.completionDate?.year == date.year }
   }

@@ -16,7 +16,7 @@ protocol ManagerProtocol {
   associatedtype ManagerError: Error
   
   func getPermission()
-  func filterTask(_ taget: [Task], _ date: Date) -> [Task]
+  func filterTask(_ target: [Task], _ date: Date) -> [Task]
   func getAllTaskforThisMonth(date: Date, completionHandler: @escaping ([Task]) -> Void)
   func createNewTask(newTask: EKCalendarItem) -> Result<String, ManagerError>
   func getTaskCategories() -> [EKCalendar]
