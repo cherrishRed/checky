@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CheckyMainViewModel: ObservableObject {
+class CheckyTapViewModel: ObservableObject {
   @Published var selection: String = "home"
   @Published var tabSelection: TabBarItem = .calendar
   

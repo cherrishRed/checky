@@ -9,6 +9,6 @@ import SwiftUI
 
 struct checkyApp: View {
   var body: some View {
-    CheckyMainView()
+    CheckyTapView()
   }
 }

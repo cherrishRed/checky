@@ -15,14 +15,7 @@ struct ReminderView: View {
   var body: some View {
     VStack {
       header
-      eventView
-      
-      Button("toggle") {
-        // toggle
-      }
-      .buttonStyle(ToggleButtonStyle())
-      
-      GeometryReader { geo in
+          GeometryReader { geo in
         ScrollView {
           LazyHStack(alignment: .top, spacing: 10) {
             LazyVStack {
@@ -58,22 +51,6 @@ extension ReminderView {
       Text(Date().dateKoreanWithYear)
         .font(.title)
     }
-  }
-  
-  var eventView: some View {
-    ZStack {
-      RoundedRectangle(cornerRadius: 4)
-        .fill(.white)
-      VStack {
-        ForEach(viewModel.events, id: \.self) { event in
-          ReminderViewEventBlockView(event: event)
-            .frame(height: 30)
-        }
-      }
-      .padding()
-    }
-    .padding()
-    .fixedSize(horizontal: false, vertical: true)
   }
 }
           

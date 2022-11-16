@@ -6,8 +6,7 @@
 //
 
 import SwiftUI
-import Combine
 
-class CalendarViewModel: ObservableObject {
+class CalendarGroupViewModel: ObservableObject {
   @Published var mode: Bool = true
 }

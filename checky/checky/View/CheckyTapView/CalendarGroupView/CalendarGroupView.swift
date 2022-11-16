@@ -9,9 +9,9 @@ import SwiftUI
 import Combine
 import EventKit
 
-struct CalendarView: View {
+struct CalendarGroupView: View {
   @EnvironmentObject var coordinator: Coordinator<checkyRouter>
-  @StateObject var viewModel: CalendarViewModel = CalendarViewModel()
+  @StateObject var viewModel: CalendarGroupViewModel = CalendarGroupViewModel()
   
   let eventManager: EventManager
   let reminderManager: ReminderManager
