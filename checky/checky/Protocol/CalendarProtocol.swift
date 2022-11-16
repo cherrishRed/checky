@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol CalendarCanDo {
+protocol CalendarProtocol {
   var weekOption: WeekOption { get set }
   var startingWeek: Week { get set }
   var calendar: Calendar { get set }
@@ -18,7 +18,7 @@ protocol CalendarCanDo {
   func extractPastCurrentFutureDates(_ date: Date) -> [Date]
 }
 
-extension CalendarCanDo {
+extension CalendarProtocol {
   func monthYearString(_ date: Date) -> String {
     let dataFormatter = DateFormatter()
     dataFormatter.dateFormat = "LLL YYYY"

@@ -8,10 +8,10 @@
 import Foundation
 
 class HeaderViewModel: ObservableObject {
-  private let calendarHelper: CalendarCanDo
+  private let calendarHelper: CalendarProtocol
   private let dateHolder: DateHolder
   
-  init(dateHolder: DateHolder, calendarHelper: CalendarCanDo) {
+  init(dateHolder: DateHolder, calendarHelper: CalendarProtocol) {
     self.dateHolder = dateHolder
     self.calendarHelper = calendarHelper
   }

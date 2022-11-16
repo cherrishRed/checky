@@ -15,14 +15,14 @@ class MonthlyViewModel: ViewModelable {
   
   let eventManager: EventManager
   let reminderManager: ReminderManager
-  let calendarHelper: CalendarCanDo
+  let calendarHelper: CalendarProtocol
   let moveToWeekly: () -> ()
     
   init(
     dateHolder: DateHolder,
     eventManager: EventManager,
     reminderManager: ReminderManager,
-    calendarHelper: CalendarCanDo,
+    calendarHelper: CalendarProtocol,
     events: [Event] = [],
     reminders: [Reminder] = [],
     currentOffsetX: CGSize = .zero,

@@ -13,14 +13,14 @@ class WeeklyViewModel: ViewModelable {
   
   let eventManager: EventManager
   let reminderManager: ReminderManager
-  let calendarHelper: CalendarCanDo
+  let calendarHelper: CalendarProtocol
   var moveToMonthly: () -> ()
   
   init(
     dateHolder: DateHolder,
     eventManager: EventManager,
     reminderManager: ReminderManager,
-    calendarHelper: CalendarCanDo,
+    calendarHelper: CalendarProtocol,
     moveToMonthly: @escaping () -> ()
   ) {
     self.moveToMonthly = moveToMonthly

@@ -16,13 +16,13 @@ class WeeklyBlockViewModel: ViewModelable {
   
   let eventManager: EventManager
   let reminderManager: ReminderManager
-  let calendarHelper: CalendarCanDo
+  let calendarHelper: CalendarProtocol
   
   init(
     dateHolder: DateHolder,
     eventManager: EventManager,
     reminderManager: ReminderManager,
-    calendarHelper: CalendarCanDo,
+    calendarHelper: CalendarProtocol,
     currentOffsetY: CGSize = .zero,
     events: [Event] = [],
     reminders: [Reminder] = []
