@@ -10,21 +10,20 @@ import SwiftUI
 struct CheckyMainView: View {
   @EnvironmentObject var coordinator: Coordinator<checkyRouter>
   @ObservedObject var checkyMainViewModel: CheckyMainViewModel = CheckyMainViewModel()
-  let eventManager = EventManager()
-  let reminderManager = ReminderManager()
   
   var body: some View {
     VStack {
       CustomTabBarContainerView(selection: $checkyMainViewModel.tabSelection) {
-        CalendarView(eventManager: eventManager, reminderManager: reminderManager)
+        CalendarView(eventManager: EventManager(), reminderManager: ReminderManager())
           .environmentObject(coordinator)
           .tabBarItem(tab: .calendar, selection: $checkyMainViewModel.tabSelection)
-        ReminderView(viewModel: ReminderViewModel(eventManager: eventManager, reminderManager: reminderManager))
+        ReminderView(viewModel: ReminderViewModel(eventManager: EventManager(), reminderManager: ReminderManager()))
           .tabBarItem(tab: .reminder, selection: $checkyMainViewModel.tabSelection)
         SettingListView(viewModel: SettingViewModel(eventManager: EventManager(), reminderManager: ReminderManager()))
           .tabBarItem(tab: .setting, selection: $checkyMainViewModel.tabSelection)
       }
-    }.onAppear {
+    }
+    .onAppear {
       coordinator.navigationController.navigationBar.isHidden = false
     }
   }
