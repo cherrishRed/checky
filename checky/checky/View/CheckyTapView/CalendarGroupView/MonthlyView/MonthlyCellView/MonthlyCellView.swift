@@ -65,7 +65,7 @@ struct EventBlockView: View {
         .padding(1)
         .lineLimit(1)
         .font(.caption2)
-        .fontWeight(.semibold)
+        .font(Font.title.weight(.semibold))
         .foregroundColor(Color.basicWhite)
         .fixedSize(horizontal: true, vertical: false)
     }
