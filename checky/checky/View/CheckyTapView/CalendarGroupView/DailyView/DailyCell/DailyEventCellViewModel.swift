@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class DailyEventCellViewModel: ViewModelable {
+final class DailyEventCellViewModel: ViewModelable {
   @Published var event: Event
   var eventManager: EventManager
   

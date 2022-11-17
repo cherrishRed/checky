@@ -8,7 +8,7 @@
 import Foundation
 import EventKit
 
-class EventCreateAndEditViewModel: ObservableObject {
+final class EventCreateAndEditViewModel: ObservableObject {
   let eventManager: EventManager
   let categories: [EKCalendar]
   let event: Event?

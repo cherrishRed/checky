@@ -7,6 +7,6 @@
 
 import Foundation
 
-class DateHolder: ObservableObject {
+final class DateHolder: ObservableObject {
    @Published var date = Date()
 }

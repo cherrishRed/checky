@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MonthlyCellViewModel: ObservableObject {
+final class MonthlyCellViewModel: ObservableObject {
   @Published var dateValue: DateValue
   @Published var allEvnets: [Event] = []
   @Published var dueDateReminders: [Reminder] = []

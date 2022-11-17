@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class WeeklyBlockViewModel: ViewModelable {
+final class WeeklyBlockViewModel: ViewModelable {
   @Published var dateHolder: DateHolder
   @Published var events: [Event]
   @Published var reminders: [Reminder]

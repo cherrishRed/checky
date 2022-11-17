@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class DailyReminderCellViewModel: ViewModelable {
+final class DailyReminderCellViewModel: ViewModelable {
   @Published var reminder: Reminder
   @Published var isCompletion: Bool
   @Published var isShowAlert: Bool
