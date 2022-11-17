@@ -1,8 +1,24 @@
 # checky 
 
 > 팀원: 🍒[@RED](https://github.com/cherrishRed) 👼[@Taeangel](https://github.com/Taeangel)
+
 > 프로젝트 기간: 2022/10/3 ~ 2022/11/16
 
+
+## ⚙️ 개발환경 ⚙️
+![Combine](https://img.shields.io/badge/Combine-F05138?style=for-the-badge&logo=swift&logoColor=white) ![SwiftUI](https://img.shields.io/badge/SwiftUI-f5bc42?style=for-the-badge&logo=swift&logoColor=white) ![EventKit](https://img.shields.io/badge/EventKit-0A9EDC?style=for-the-badge&logo=swift&logoColor=white)
+
+![target](https://img.shields.io/badge/target-iOS15-16a87c?style=for-the-badge&logo=apple&logoColor=white) ![xcode](https://img.shields.io/badge/Xcode-14.1-5164e0?style=for-the-badge&logo=xcode&logoColor=white)
+
+![xcode](https://img.shields.io/badge/MVVM-900be3?style=for-the-badge)
+
+뷰 컨트롤러와 뷰는 화면을 그리는 역할에만 집중하고, 데이터 관리, 로직 실행은 뷰 모델에서 진행되도록 했습니다.
+
+![xcode](https://img.shields.io/badge/Coordinator-d42464?style=for-the-badge)
+
+화면 전환에 대한 로직을 View로부터 분리하기위해 Coordinator 디자인패턴을 선택하였습니다.
+
+## 📱 구현 화면 📱
 |Monthly|Weekly|Daily|
 |:-:|:-:|:-:|
 |![](https://i.imgur.com/TQxbCJX.png)|![](https://i.imgur.com/YfsrsDG.png)|![](https://i.imgur.com/RAcjd2I.png)|
@@ -26,16 +42,6 @@
 🥲 Reminder Tap에 수정 기능은 제공하고 있지 않아요 추후에 업데이트 예정에 있습니다.
 ✏️ 세팅에서 색상을 선택해 주지 않으면... 아이폰 캘린더 앱에서 설정 된 색상으로 화면에 보이게 됩니다. 
 
-## ⚙️ 개발환경 ⚙️
-![Combine](https://img.shields.io/badge/Combine-F05138?style=for-the-badge&logo=swift&logoColor=white) ![SwiftUI](https://img.shields.io/badge/SwiftUI-f5bc42?style=for-the-badge&logo=swift&logoColor=white) ![EventKit](https://img.shields.io/badge/EventKit-0A9EDC?style=for-the-badge&logo=swift&logoColor=white)
-
-![target](https://img.shields.io/badge/target-iOS15-16a87c?style=for-the-badge&logo=apple&logoColor=white) ![xcode](https://img.shields.io/badge/Xcode-14.1-5164e0?style=for-the-badge&logo=xcode&logoColor=white)
-
-![xcode](https://img.shields.io/badge/MVVM-900be3?style=for-the-badge)
-뷰 컨트롤러와 뷰는 화면을 그리는 역할에만 집중하고, 데이터 관리, 로직 실행은 뷰 모델에서 진행되도록 했습니다.
-
-![xcode](https://img.shields.io/badge/Coordinator-d42464?style=for-the-badge)
-화면 전환에 대한 로직을 View로부터 분리하기위해 Coordinator 디자인패턴을 선택하였습니다.
 
 ## 📚  더 자세한 사항 
 자세한 앱 구현 과정과 trouble shooting에 관한 내용은 [checky wiki](https://github.com/cherrishRed/checky/wiki)를 참고하세요!
