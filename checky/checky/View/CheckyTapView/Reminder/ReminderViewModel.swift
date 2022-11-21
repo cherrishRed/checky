@@ -8,7 +8,7 @@
 import SwiftUI
 import EventKit
 
-class ReminderViewModel: ViewModelable {
+final class ReminderViewModel: ViewModelable {
   @Published var events: [Event]
   let eventManager: EventManager
   let reminderManager: ReminderManager

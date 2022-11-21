@@ -77,7 +77,7 @@ struct WeeklyEventBlockView: View {
       Text(event.ekevent.title)
         .lineLimit(1)
         .font(.caption)
-        .fontWeight(.semibold)
+        .font(Font.title.weight(.semibold))
         .foregroundColor(Color.basicWhite)
         .fixedSize(horizontal: true, vertical: false)
         .padding(.horizontal, 4)

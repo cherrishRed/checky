@@ -7,7 +7,7 @@
 
 import Foundation
 
-class HeaderViewModel: ObservableObject {
+final class HeaderViewModel: ObservableObject {
   private let calendarHelper: CalendarProtocol
   private let dateHolder: DateHolder
   

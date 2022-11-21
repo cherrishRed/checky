@@ -8,7 +8,7 @@
 import Foundation
 import EventKit
 
-class ReminderCreateAndEditViewModel: ObservableObject {
+final class ReminderCreateAndEditViewModel: ObservableObject {
   let reminderManager: ReminderManager
   let categories: [EKCalendar]
   let reminder: Reminder?

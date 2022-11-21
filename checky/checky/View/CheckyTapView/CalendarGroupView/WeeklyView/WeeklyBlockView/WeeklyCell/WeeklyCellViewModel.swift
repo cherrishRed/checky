@@ -7,7 +7,7 @@
 
 import Foundation
 
-class WeeklyCellViewModel: ObservableObject {
+final class WeeklyCellViewModel: ObservableObject {
   @Published var dateValue: DateValue
   @Published var allEvnets: [Event] = []
   @Published var dueDateReminders: [Reminder] = []

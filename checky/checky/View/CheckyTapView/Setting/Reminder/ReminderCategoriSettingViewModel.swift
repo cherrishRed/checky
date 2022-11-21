@@ -9,7 +9,7 @@ import Foundation
 import EventKit
 import SwiftUI
 
-class ReminderCategoriSettingViewModel: ObservableObject {
+final class ReminderCategoriSettingViewModel: ObservableObject {
   let category: EKCalendar
   let reminderManager: ReminderManager
   @Published var imoji: String = ""

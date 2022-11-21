@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DailyViewModel: ViewModelable {
+final class DailyViewModel: ViewModelable {
   @Published var date: Date
   @Published var events: [Event]
   @Published var allDayEvents: [Event]

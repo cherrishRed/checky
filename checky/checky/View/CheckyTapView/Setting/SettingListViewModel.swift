@@ -8,7 +8,7 @@
 import EventKit
 import SwiftUI
 
-class SettingViewModel: ObservableObject {
+final class SettingViewModel: ObservableObject {
   let eventManager: EventManager
   let reminderManager: ReminderManager
   var eventCategories: [EKCalendar]

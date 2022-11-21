@@ -8,7 +8,7 @@
 import EventKit
 import SwiftUI
 
-class EventCategoriSettingViewModel: ObservableObject {
+final class EventCategoriSettingViewModel: ObservableObject {
   let category: EKCalendar
   let eventManager: EventManager
   @Published var emoji: String = ""

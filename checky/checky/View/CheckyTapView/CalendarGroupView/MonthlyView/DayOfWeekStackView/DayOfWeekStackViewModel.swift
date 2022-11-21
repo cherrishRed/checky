@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DayOfWeekStackViewModel: ObservableObject {
+final class DayOfWeekStackViewModel: ObservableObject {
   let calendarHelper: CalendarProtocol
   
   init(calendarHelper: CalendarProtocol = MonthyCalendarHelper()) {

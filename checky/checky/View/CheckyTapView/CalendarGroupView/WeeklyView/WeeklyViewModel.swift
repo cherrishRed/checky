@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class WeeklyViewModel: ViewModelable {
+final class WeeklyViewModel: ViewModelable {
   @Published var dateHolder: DateHolder
   @Published var miniCalendarOffset: CGFloat
   @Published var currentOffsetX: CGSize

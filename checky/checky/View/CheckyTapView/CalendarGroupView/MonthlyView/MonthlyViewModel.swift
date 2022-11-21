@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-class MonthlyViewModel: ViewModelable {
+final class MonthlyViewModel: ViewModelable {
   @Published var dateHolder: DateHolder
   @Published var events: [Event]
   @Published var reminders: [Reminder]

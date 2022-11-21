@@ -30,7 +30,7 @@ struct CreateButtonStyle: ButtonStyle {
       HStack {
         configuration.label
           .font(.title2)
-          .fontWeight(.semibold)
+          .font(Font.title.weight(.semibold))
           .foregroundColor(.fontBlack)
       }
     }
