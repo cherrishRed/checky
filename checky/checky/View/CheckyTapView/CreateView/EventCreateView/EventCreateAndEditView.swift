@@ -106,8 +106,7 @@ struct EventCreateAndEditView: View {
   var titleView: some View {
     TextField("제목", text: $viewModel.title)
       .foregroundColor(Color.fontBlack)
-      .font(.title3)
-      .fontWeight(.bold)
+      .font(.title3.weight(.bold))
       .padding(6)
       .frame(maxWidth: .infinity)
       .background(Color.backgroundGray)
@@ -272,7 +271,7 @@ struct EventCreateAndEditView: View {
         .foregroundColor(Color.fontMediumGray)
         .padding(.top, 10)
         .padding(.trailing, 2)
-      TextField("메모", text: $viewModel.memo, axis: .vertical)
+      TextField("메모", text: $viewModel.memo)
         .foregroundColor(Color.fontBlack)
         .font(.title3)
         .padding(6)
