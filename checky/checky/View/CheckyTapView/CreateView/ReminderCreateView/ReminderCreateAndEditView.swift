@@ -92,7 +92,7 @@ struct ReminderCreateAndEditView: View {
   //MARK: BodyView 안의 세부 View 들
   var titleView: some View {
     TextField("제목", text: $viewModel.title)
-      .foregroundColor(Color("fontDarkBlack"))
+      .foregroundColor(Color.fontBlack)
       .font(.title3)
       .fontWeight(.bold)
       .padding(6)
@@ -115,7 +115,7 @@ struct ReminderCreateAndEditView: View {
               .fill(fetchUserDefaultColor(calendarIdentifier: viewModel.category.calendarIdentifier))
               .frame(width: 10, height: 10)
             Text(viewModel.category.title)
-              .foregroundColor(Color.fontDarkBlack)
+              .foregroundColor(Color.fontBlack)
               .font(.title3)
           }
           .padding(4)
@@ -167,7 +167,7 @@ struct ReminderCreateAndEditView: View {
         .padding(.top, 10)
         .padding(.trailing, 4)
       TextField("메모", text: $viewModel.memo, axis: .vertical)
-        .foregroundColor(Color.fontDarkBlack)
+        .foregroundColor(Color.fontBlack)
         .font(.title3)
         .padding(6)
         .frame(maxWidth: .infinity)
@@ -188,7 +188,7 @@ struct ReminderCreateAndEditView: View {
             hideKeyboard()
           } label: {
             Text(viewModel.date.dateKoreanWithYear)
-              .foregroundColor(Color.fontDarkBlack)
+              .foregroundColor(Color.fontBlack)
               .font(.title3)
               .padding(6)
               .frame(maxWidth: .infinity)
@@ -204,7 +204,7 @@ struct ReminderCreateAndEditView: View {
           HStack {
             Image(systemName: viewModel.isSetDate ? "checkmark.square.fill" : "square")
           }
-          .foregroundColor(Color.fontDarkBlack)
+          .foregroundColor(Color.fontBlack)
         }
         
         if viewModel.isSetDate == false {
@@ -232,7 +232,7 @@ struct ReminderCreateAndEditView: View {
             hideKeyboard()
           } label: {
             Text(viewModel.date.time)
-              .foregroundColor(Color.fontDarkBlack)
+              .foregroundColor(Color.fontBlack)
               .font(.title3)
               .padding(6)
               .frame(maxWidth: .infinity)
@@ -248,7 +248,7 @@ struct ReminderCreateAndEditView: View {
           HStack {
             Image(systemName: viewModel.isSetTime ? "checkmark.square.fill" : "square")
           }
-          .foregroundColor(Color.fontDarkBlack)
+          .foregroundColor(Color.fontBlack)
         }
         
         if viewModel.isSetTime == false {

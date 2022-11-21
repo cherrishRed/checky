@@ -107,7 +107,7 @@ struct ReminderBlockView: View {
           .layoutPriority(1)
         Text(reminder.ekreminder.title)
           .font(.caption2)
-          .foregroundColor(Color.fontDarkBlack)
+          .foregroundColor(Color.fontBlack)
           .fixedSize(horizontal: true, vertical: false)
       }
     }

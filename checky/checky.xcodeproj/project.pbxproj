@@ -1223,8 +1223,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = checky/Info.plist;
-				INFOPLIST_KEY_NSCalendarsUsageDescription = "\"캘린더 사용 디스크립션\"";
-				INFOPLIST_KEY_NSRemindersUsageDescription = "\"리마인더 사용 디스크립션\"";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "\"캘린더 엑세스 권한이 필요합니다.\"";
+				INFOPLIST_KEY_NSRemindersUsageDescription = "\"리마인더 엑세스 권한이 필요합니다.\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1257,8 +1257,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = checky/Info.plist;
-				INFOPLIST_KEY_NSCalendarsUsageDescription = "\"캘린더 사용 디스크립션\"";
-				INFOPLIST_KEY_NSRemindersUsageDescription = "\"리마인더 사용 디스크립션\"";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "\"캘린더 엑세스 권한이 필요합니다.\"";
+				INFOPLIST_KEY_NSRemindersUsageDescription = "\"리마인더 엑세스 권한이 필요합니다.\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

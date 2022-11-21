@@ -105,7 +105,7 @@ struct EventCreateAndEditView: View {
   //MARK: BodyView 안의 세부 View 들
   var titleView: some View {
     TextField("제목", text: $viewModel.title)
-      .foregroundColor(Color.fontDarkBlack)
+      .foregroundColor(Color.fontBlack)
       .font(.title3)
       .fontWeight(.bold)
       .padding(6)
@@ -142,9 +142,9 @@ struct EventCreateAndEditView: View {
             } label: {
               VStack {
                 Text(viewModel.date.dateKorean)
-                  .foregroundColor(Color.fontDarkBlack)
+                  .foregroundColor(Color.fontBlack)
                 Text(viewModel.date.time)
-                  .foregroundColor(Color.fontDarkBlack)
+                  .foregroundColor(Color.fontBlack)
                   .font(.title3)
               }
               .padding(4)
@@ -160,9 +160,9 @@ struct EventCreateAndEditView: View {
             } label: {
               VStack {
                 Text(viewModel.endDate.dateKorean)
-                  .foregroundColor(Color.fontDarkBlack)
+                  .foregroundColor(Color.fontBlack)
                 Text(viewModel.endDate.time)
-                  .foregroundColor(Color.fontDarkBlack)
+                  .foregroundColor(Color.fontBlack)
                   .font(.title3)
               }
               .padding(4)
@@ -180,12 +180,11 @@ struct EventCreateAndEditView: View {
             Image(systemName: viewModel.isAllDay ? "checkmark.square.fill" : "square")
             Text("하루종일")
           }
-          .foregroundColor(Color.fontDarkBlack)
+          .foregroundColor(Color.fontBlack)
         }
       }
       
       if viewModel.isShowDatePicker {
-        
         DatePicker("", selection: $viewModel.date,
                    displayedComponents: viewModel.isAllDay ? [.date] : [.date, .hourAndMinute])
         .datePickerStyle(.wheel)
@@ -211,7 +210,7 @@ struct EventCreateAndEditView: View {
               .fill(fetchUserDefaultColor(calendarIdentifier: viewModel.category.calendarIdentifier))
               .frame(width: 10, height: 10)
             Text(viewModel.category.title)
-              .foregroundColor(Color.fontDarkBlack)
+              .foregroundColor(Color.fontBlack)
               .font(.title3)
           }
           .padding(4)
@@ -248,7 +247,7 @@ struct EventCreateAndEditView: View {
           hideKeyboard()
         } label: {
           Text(viewModel.alram.korean)
-            .foregroundColor(Color.fontDarkBlack)
+            .foregroundColor(Color.fontBlack)
             .font(.title3)
             .padding(4)
             .frame(maxWidth: .infinity)
@@ -274,7 +273,7 @@ struct EventCreateAndEditView: View {
         .padding(.top, 10)
         .padding(.trailing, 2)
       TextField("메모", text: $viewModel.memo, axis: .vertical)
-        .foregroundColor(Color.fontDarkBlack)
+        .foregroundColor(Color.fontBlack)
         .font(.title3)
         .padding(6)
         .frame(maxWidth: .infinity)

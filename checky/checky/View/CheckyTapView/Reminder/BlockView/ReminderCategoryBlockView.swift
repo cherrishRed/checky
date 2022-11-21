@@ -18,7 +18,7 @@ struct ReminderCategoryBlockView: View {
   var body: some View {
     ZStack {
       RoundedRectangle(cornerRadius: 4)
-        .fill(.white)
+        .fill(Color.basicWhite)
       VStack(alignment: .leading) {
         Text(viewModel.category.title)
         Rectangle()
@@ -43,7 +43,6 @@ struct ReminderCategoryBlockView: View {
       .padding()
     }
     .fixedSize(horizontal: false, vertical: true)
-
   }
 }
 
