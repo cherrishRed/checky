@@ -206,9 +206,9 @@ struct EventCreateAndEditView: View {
         } label: {
           HStack {
             Circle()
-              .fill(fetchUserDefaultColor(calendarIdentifier: viewModel.category.calendarIdentifier))
+              .fill(fetchUserDefaultColor(calendarIdentifier: viewModel.category?.calendarIdentifier ?? "none"))
               .frame(width: 10, height: 10)
-            Text(viewModel.category.title)
+            Text(viewModel.category?.title ?? "카테고리 없음")
               .foregroundColor(Color.fontBlack)
               .font(.title3)
           }

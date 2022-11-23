@@ -18,7 +18,7 @@ final class EventCreateAndEditViewModel: ObservableObject {
   @Published var date: Date
   @Published var endDate: Date
   @Published var isAllDay: Bool
-  @Published var category: EKCalendar
+  @Published var category: EKCalendar?
   @Published var memo: String
   @Published var alram: AlramTime
   @Published var isShowDatePicker: Bool
@@ -60,7 +60,7 @@ final class EventCreateAndEditViewModel: ObservableObject {
     
     let fetchedCategories = eventManager.getTaskCategories()
     self.categories = fetchedCategories.filter { $0.title != "Birthdays"}
-    self.category = categories[0]
+    self.category = categories.first
     self.eventManager = eventManager
     self.event = nil
   }
@@ -270,6 +270,7 @@ final class EventCreateAndEditViewModel: ObservableObject {
   
   private func editEvent() {
     guard var event = event else { return }
+    guard var category = category else { return }
     event.ekevent.title = title
     event.ekevent.isAllDay = isAllDay
     event.ekevent.startDate = date
