@@ -230,7 +230,7 @@ final class ReminderCreateAndEditViewModel: ObservableObject {
     isSetTime = false
     isSetTime = false
     priority = 0
-    category = categories[0]
+    category = categories.first
   }
   
   private func saveNewReminder() {
