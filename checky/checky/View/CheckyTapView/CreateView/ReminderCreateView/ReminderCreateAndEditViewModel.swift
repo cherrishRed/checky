@@ -16,7 +16,7 @@ final class ReminderCreateAndEditViewModel: ObservableObject {
   @Published var mode: Mode
   @Published var title: String
   @Published var memo: String
-  @Published var category: EKCalendar
+  @Published var category: EKCalendar?
   @Published var priority: Int
   @Published var date: Date
   @Published var isSetDate: Bool
@@ -55,7 +55,7 @@ final class ReminderCreateAndEditViewModel: ObservableObject {
     self.alertDiscription = ""
     self.reminderManager = reminderManager
     self.categories = reminderManager.getTaskCategories()
-    self.category = categories[0]
+    self.category = categories.first
     
     
     self.reminder = nil
@@ -274,6 +274,8 @@ final class ReminderCreateAndEditViewModel: ObservableObject {
   
   private func editReminder() {
     guard var reminder = reminder else { return }
+    guard let category = category else { return }
+    
     reminder.ekreminder.title = title
     reminder.ekreminder.priority = priority
     reminder.ekreminder.notes = memo
