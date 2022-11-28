@@ -1223,8 +1223,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = checky/Info.plist;
-				INFOPLIST_KEY_NSCalendarsUsageDescription = "\"checky앱은 애플 캘린더와 연동되는 캘린더 앱 입니다. 애플 캘린더의 일정을 checky 앱에 보여지기 위해서는 캘린더 접근 권한이 필요합니다.\"";
-				INFOPLIST_KEY_NSRemindersUsageDescription = "\"checky 앱은 애플 미리알림과 연동되는 캘린더 앱입니다. checky앱의 미리알림을 띄우기 위해서는, 미리알림 정보 접근 권한이 필요합니다.\"";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "\"checky앱은 애플 캘린더와 연동되는 캘린더 앱 입니다. 허용해 주신 정보는 Checky가 일정의 일정추가, 일정수정, 일정 삭제등의 기능에 사용됩니다.\"";
+				INFOPLIST_KEY_NSRemindersUsageDescription = "\"checky앱은 애플 캘린더와 연동되는 캘린더 앱 입니다. 허용해 주신 정보는 Checky가 리마인더의 리마인더추가 리마인더수정등의 기능에 사용됩니다.\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1261,8 +1261,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = checky/Info.plist;
-				INFOPLIST_KEY_NSCalendarsUsageDescription = "\"checky앱은 애플 캘린더와 연동되는 캘린더 앱 입니다. 애플 캘린더의 일정을 checky 앱에 보여지기 위해서는 캘린더 접근 권한이 필요합니다.\"";
-				INFOPLIST_KEY_NSRemindersUsageDescription = "\"checky 앱은 애플 미리알림과 연동되는 캘린더 앱입니다. checky앱의 미리알림을 띄우기 위해서는, 미리알림 정보 접근 권한이 필요합니다.\"";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "\"checky앱은 애플 캘린더와 연동되는 캘린더 앱 입니다. 허용해 주신 정보는 Checky가 일정의 일정추가, 일정수정, 일정 삭제등의 기능에 사용됩니다.\"";
+				INFOPLIST_KEY_NSRemindersUsageDescription = "\"checky앱은 애플 캘린더와 연동되는 캘린더 앱 입니다. 허용해 주신 정보는 Checky가 리마인더의 리마인더추가 리마인더수정등의 기능에 사용됩니다.\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
